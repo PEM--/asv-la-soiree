@@ -15,5 +15,11 @@ mquandalle:stylus
 orionjs:core
 
 # CSS
+pierreeric:creativepure
 materialize:materialize
 orionjs:materialize
+
+# WPO
+meteorhacks:inject-initial
+
+# Security

@@ -19,6 +19,8 @@ deps@1.0.7
 ejson@1.0.6
 email@1.0.6
 fastclick@1.0.3
+gadicohen:headers@0.0.27
+gadicohen:messageformat@0.0.52
 geojson-utils@1.0.3
 gildaspk:autoform-materialize@0.0.18
 html-tools@1.0.4
@@ -65,9 +67,10 @@ orionjs:attributes@1.0.1
 orionjs:base@1.0.1
 orionjs:collections@1.0.1
 orionjs:config@1.0.1
-orionjs:core@1.0.0
+orionjs:core@1.0.1
 orionjs:dictionary@1.0.0
 orionjs:materialize@1.0.5
+pierreeric:creativepure@0.1.15
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
