@@ -4,530 +4,529 @@ mfPkg.syncAll({
       "key": "accounts",
       "lang": "en",
       "text": "Accounts",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "Rhzz22ekhwujiJZ5J",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "gswyCaJHRohSwTSKy",
       "file": "client/views/home/home.jade",
       "line": 2,
       "template": "home",
-      "_id": "tZzsY6Aoav3G9Ccyd"
+      "_id": "2zXKJDKFWjtdjFDDc"
     },
     "edit_roles": {
       "key": "edit_roles",
       "lang": "en",
       "text": "Edit Roles",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "6fAXXgJYaZxxMm8uB",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "Yn485NS5ZhPaixb79",
       "file": "client/views/home/home.jade",
-      "line": 3,
+      "line": 28,
       "template": "home",
-      "_id": "y4tt88woNCcZosX2r"
+      "_id": "eaCGi7ePKMRRSD4Mo"
     },
     "invalid_email": {
       "key": "invalid_email",
       "lang": "en",
       "text": "The email is not valid",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "2fEAveEuyfeT3hfWY",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "G9xnhyKXYiPBvXBYF",
       "file": "client/views/home/home.jade",
       "line": 4,
       "template": "home",
-      "_id": "rqi6sXhvhEiuXRTKp"
+      "_id": "CEpHteYb5PYGDSbh3"
     },
     "passwords_must_match": {
       "key": "passwords_must_match",
       "lang": "en",
       "text": "Passwords must match",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "mgWtesKje8iauPwYZ",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "qezFcpQD8Z4RftEMr",
       "file": "client/views/home/home.jade",
       "line": 5,
       "template": "home",
-      "_id": "wEWrQHm3wLdGbymqF"
-    },
-    "my_account": {
-      "key": "my_account",
-      "lang": "en",
-      "text": "My Account",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "kABe7KMNPnw6xxvMp",
-      "file": "client/views/home/home.jade",
-      "line": 8,
-      "template": "home",
-      "_id": "FWyZj5SfKqCjp6THo"
+      "_id": "2CGhAFN3HLmHc477W"
     },
     "no_permission_for_roles": {
       "key": "no_permission_for_roles",
       "lang": "en",
       "text": "You have no permissions to change user roles",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "D4rujLSfXNzT9PALW",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "btiMYoYft5NqygNHM",
       "file": "client/views/home/home.jade",
       "line": 6,
       "template": "home",
-      "_id": "zx3gEgy5Yf3SPHuy3"
+      "_id": "fXmNAy2urH6eg43X9"
     },
     "invalid_invitation_code": {
       "key": "invalid_invitation_code",
       "lang": "en",
       "text": "The invitation code is invalid",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "ncMuTL9JDi22e6LRE",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "jE7RsQEZ4kBz2nxS4",
       "file": "client/views/home/home.jade",
       "line": 7,
       "template": "home",
-      "_id": "6GdmCCJbbTcsHPi25"
+      "_id": "F6Z2Rt2c2xRR3uN9z"
+    },
+    "my_account": {
+      "key": "my_account",
+      "lang": "en",
+      "text": "My Account",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "ynKjEMh2Mbi3gDBbw",
+      "file": "client/views/home/home.jade",
+      "line": 8,
+      "template": "home",
+      "_id": "atuf3Ti7GZfhm64EC"
     },
     "name": {
       "key": "name",
       "lang": "en",
       "text": "Name",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "9nri2yvQWsXPHdLJG",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "6qtAuj6oYzokQboxa",
       "file": "client/views/home/home.jade",
       "line": 9,
       "template": "home",
-      "_id": "G57igfooW5DSiM4mW"
+      "_id": "2yGuqB3tcoJsMjSDX"
     },
     "your_name": {
       "key": "your_name",
       "lang": "en",
       "text": "Your name",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "MNdtoYcEuwCTKmYFT",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "Ky2bPsa7kTEoBeJTu",
       "file": "client/views/home/home.jade",
       "line": 10,
       "template": "home",
-      "_id": "th8tQQ67aA5qd2mj5"
+      "_id": "phtGkAbhdtgSDLJD9"
     },
     "email": {
       "key": "email",
       "lang": "en",
       "text": "Email",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "32nahRiiPjCdmLhH9",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "ezhyRnsks2ZqNcwq8",
       "file": "client/views/home/home.jade",
       "line": 11,
       "template": "home",
-      "_id": "GemLaDtHMzDYT9YoJ"
+      "_id": "HwfC9rdjv7oxKFdNA"
     },
     "roles": {
       "key": "roles",
       "lang": "en",
       "text": "Roles",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "to59isCXszFMhsbD7",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "uAJ92o3JoM4skdmbj",
       "file": "client/views/home/home.jade",
       "line": 12,
       "template": "home",
-      "_id": "KNqxXcrv8NMoyjn32"
+      "_id": "pWzynwS5dSM5vPhpj"
     },
     "actions": {
       "key": "actions",
       "lang": "en",
       "text": "Actions",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "kFSJmtSqa944hY8hd",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "gTpB9EAhFbT6yuqzo",
       "file": "client/views/home/home.jade",
       "line": 13,
       "template": "home",
-      "_id": "KgkDbo6YmgJLhBLEc"
+      "_id": "acvrJHxkvCQwKAgpe"
     },
     "logout": {
       "key": "logout",
       "lang": "en",
       "text": "Logout",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "NzgobHCfAcafnK7oP",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "H5mj95ZxC9W84a8Kh",
       "file": "client/views/home/home.jade",
       "line": 14,
       "template": "home",
-      "_id": "rqdKGompcKaXn8MuX"
+      "_id": "4srqw3gjskDQ4CQ97"
     },
     "update_profile": {
       "key": "update_profile",
       "lang": "en",
       "text": "Update Profile",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "ryqATi3A7RPJLsnww",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "B25umfeqNAZJtwd7Z",
       "file": "client/views/home/home.jade",
       "line": 15,
       "template": "home",
-      "_id": "iEW4CdiGc93FiB2M9"
+      "_id": "NFeykXvAHRbQR7EYp"
     },
     "change_password": {
       "key": "change_password",
       "lang": "en",
       "text": "Change Password",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "JZ2RPjbsHqi9wdbnp",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "3Jz4q3iJycCL2N4Zh",
       "file": "client/views/home/home.jade",
       "line": 16,
       "template": "home",
-      "_id": "K37LZ6kxoAnEme7GA"
+      "_id": "EkpbjFC4DGketkeTs"
     },
     "invite": {
       "key": "invite",
       "lang": "en",
       "text": "Invite",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "jAzGEw82NkxjiNEP4",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "BZ2Lg9tYPensjXP24",
       "file": "client/views/home/home.jade",
       "line": 17,
       "template": "home",
-      "_id": "iZ9QXydMNAP83xjFu"
+      "_id": "ZDJwcuuQEZBxjvxTP"
     },
     "invitation_created_successfully": {
       "key": "invitation_created_successfully",
       "lang": "en",
       "text": "Invitation created successfully",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "ZqrabyrZ5xv2Y5osN",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "unt4Dyhdh2rvE4PDc",
       "file": "client/views/home/home.jade",
       "line": 18,
       "template": "home",
-      "_id": "5kJ8N9WAEmEgxouEx"
+      "_id": "HhxgEsaW47E3KC4XF"
     },
     "back": {
       "key": "back",
       "lang": "en",
       "text": "Back",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "GFtG4s38CXJdD66at",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "A7xucsg37AXr3vZYa",
       "file": "client/views/home/home.jade",
       "line": 19,
       "template": "home",
-      "_id": "EfabzAPT7G3BcwLsF"
+      "_id": "ejYnm8i6Mf2EMYs48"
     },
     "invite_another": {
       "key": "invite_another",
       "lang": "en",
       "text": "Invite another",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "Ws9dE64LjfFj4B7Yz",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "nF2sMKASGKxr7vjoy",
       "file": "client/views/home/home.jade",
       "line": 20,
       "template": "home",
-      "_id": "K7ptn4265TdEK9P4t"
+      "_id": "ZAgfLBMrCLsN2TLeZ"
     },
     "select_new_user_roles": {
       "key": "select_new_user_roles",
       "lang": "en",
       "text": "Select the roles for the new user",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "trWCDRPhhdfgEecC6",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "XhqdsXumvaMjct9TL",
       "file": "client/views/home/home.jade",
       "line": 21,
       "template": "home",
-      "_id": "b5mnhDdgbdBdSHC3e"
+      "_id": "gMFDKBLWNynAxgzP9"
     },
     "optional_new_user_email": {
       "key": "optional_new_user_email",
       "lang": "en",
       "text": "Email of the new user (optional)",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "q6mvQY82gvF3ja453",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "ENsh6A5xYH6pgdb4o",
       "file": "client/views/home/home.jade",
       "line": 22,
       "template": "home",
-      "_id": "BTuAQsM6g2AmG5eNh"
+      "_id": "wBQzgYEN7NZ48uQ2K"
     },
     "cancel": {
       "key": "cancel",
       "lang": "en",
       "text": "Cancel",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "Znr6eTmSe5kEonXcA",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "6fMpFxy5rFRa4STGS",
       "file": "client/views/home/home.jade",
       "line": 23,
       "template": "home",
-      "_id": "SLMLnuWTqRt87WrgY"
+      "_id": "uxNwKyPzNayWJ4Gc4"
     },
     "login": {
       "key": "login",
       "lang": "en",
       "text": "Login",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "fmhzd59dJzW6KY5Tz",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "Lc3MPYjibQFfkGpAu",
       "file": "client/views/home/home.jade",
       "line": 24,
       "template": "home",
-      "_id": "2iSnYKijFT6gv3YsT"
+      "_id": "p9phJ4Nqo6fxsKn4t"
     },
     "save": {
       "key": "save",
       "lang": "en",
       "text": "Save",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "aopPm8RxTGP2NRPef",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "hjYkME3i9btL7tCZx",
       "file": "client/views/home/home.jade",
       "line": 25,
       "template": "home",
-      "_id": "M22wtkzie63oGQL8v"
+      "_id": "Jpbiodnbn3XcbFYut"
     },
     "register": {
       "key": "register",
       "lang": "en",
       "text": "Register",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "Smjp9TdoFpYuC9q7A",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "fHu48cmaGP4PoJra4",
       "file": "client/views/home/home.jade",
       "line": 26,
       "template": "home",
-      "_id": "dpWSSCYFYbCdn56KQ"
+      "_id": "CnZAvh4MNcB6SNtoq"
     },
     "password_again": {
       "key": "password_again",
       "lang": "en",
       "text": "Password (again)",
-      "ctime": "2015-05-09T11:25:36.000Z",
-      "mtime": "2015-05-09T11:25:36.000Z",
-      "revisionId": "JpkXxrT5FncqZL2TN",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "Ama6to6xthe5QzbCC",
       "file": "client/views/home/home.jade",
       "line": 27,
       "template": "home",
-      "_id": "pofmAeP6iW37j6DY4"
+      "_id": "BYZtdpzBML4cYkFbT"
     },
     "select_user_roles": {
       "key": "select_user_roles",
       "lang": "en",
       "text": "Select the roles for this user",
-      "ctime": "2015-05-09T11:39:36.000Z",
-      "mtime": "2015-05-09T11:39:36.000Z",
-      "revisionId": "AmXD8wyQfbY2b2AbB",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "qCBMoq6wjfGfjE4iS",
       "file": "client/views/home/home.jade",
       "line": 29,
       "template": "home",
-      "_id": "XovzSiSmh4CBrDdN2"
+      "_id": "2JTQfsu978mEtnTAe"
     },
     "create_a": {
       "key": "create_a",
       "lang": "en",
       "text": "Create a",
-      "ctime": "2015-05-09T11:41:30.000Z",
-      "mtime": "2015-05-09T11:41:30.000Z",
-      "revisionId": "dWZAKzgnh7KevsMdq",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "c2EfGvjx5gFWJvhFK",
       "file": "client/views/home/home.jade",
       "line": 30,
       "template": "home",
-      "_id": "3P6GH3PMP7mpkGLA7"
+      "_id": "nPGCCGW5xasvaiMqD"
     },
     "create": {
       "key": "create",
       "lang": "en",
       "text": "Create",
-      "ctime": "2015-05-09T11:42:18.000Z",
-      "mtime": "2015-05-09T11:42:18.000Z",
-      "revisionId": "rtD4Pqm36Xv3qkopX",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "kJK6TZCGTvrYAdrxX",
       "file": "client/views/home/home.jade",
       "line": 31,
       "template": "home",
-      "_id": "2mWC5mpzr4paCyBMh"
-    },
-    "no_permissions": {
-      "key": "no_permissions",
-      "lang": "en",
-      "text": "No permission",
-      "ctime": "2015-05-09T11:42:46.000Z",
-      "mtime": "2015-05-09T11:59:01.689Z",
-      "revisionId": "S9C2nKLYPhnSvPStW",
-      "file": "client/views/home/home.jade",
-      "line": 32,
-      "template": "home",
-      "removed": true,
-      "_id": "gq5fysgdnysJDJkp9"
+      "_id": "x6vzzMFxSEcWhGtR4"
     },
     "no_permission": {
       "key": "no_permission",
       "lang": "en",
       "text": "No permission",
-      "ctime": "2015-05-09T11:42:53.000Z",
-      "mtime": "2015-05-09T11:42:53.000Z",
-      "revisionId": "L9wgh8cLprvGKc8gs",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "bu7MFW2Rc2AegMbAB",
       "file": "client/views/home/home.jade",
       "line": 32,
       "template": "home",
-      "_id": "zrxLcqFQMNdoXWLLb"
+      "_id": "yYi6dy277TYDcfJ4q"
     },
     "delete": {
       "key": "delete",
       "lang": "en",
       "text": "Delete",
-      "ctime": "2015-05-09T11:43:45.000Z",
-      "mtime": "2015-05-09T11:43:45.000Z",
-      "revisionId": "xzjC7FJKkfgwEZQLx",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "XE9ADy67sm9HSCQ4e",
       "file": "client/views/home/home.jade",
       "line": 33,
       "template": "home",
-      "_id": "hba8jCMhd67YHrnWj"
+      "_id": "vbAiCmd35kCtkiGdi"
     },
     "are_you_sure_to_delete_this": {
       "key": "are_you_sure_to_delete_this",
       "lang": "en",
       "text": "Are you sure you want to delete this",
-      "ctime": "2015-05-09T11:44:36.000Z",
-      "mtime": "2015-05-09T11:44:36.000Z",
-      "revisionId": "nAbGN2vpoqqSsLWLH",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "SWE5bu9qccsqmM2wS",
       "file": "client/views/home/home.jade",
       "line": 34,
       "template": "home",
-      "_id": "mty3Dyx6ymu5cNMfK"
+      "_id": "dtNnNALsacDZv9nRi"
     },
     "confirm": {
       "key": "confirm",
       "lang": "en",
       "text": "Confirm",
-      "ctime": "2015-05-09T11:45:14.000Z",
-      "mtime": "2015-05-09T11:45:14.000Z",
-      "revisionId": "TdAd4EvjGa5QSSzpX",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "XTHvZgw7r9w3SwdDF",
       "file": "client/views/home/home.jade",
       "line": 35,
       "template": "home",
-      "_id": "ezsChKNM54GW7qeAa"
+      "_id": "f4EiR33fZaGgatnGs"
     },
     "update": {
       "key": "update",
       "lang": "en",
       "text": "Update",
-      "ctime": null,
-      "mtime": "2015-05-09T11:48:36.000Z",
-      "revisionId": "kSKBbiDgJygv4cGXi",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "Lkwu8esK4QWcnrwyL",
       "file": "client/views/home/home.jade",
       "line": 36,
       "template": "home",
-      "_id": "AD3MNzByXLBmvmBtx"
+      "_id": "wTxv5mYy6hkwv3bPJ"
     },
     "config": {
       "key": "config",
       "lang": "en",
       "text": "Config",
-      "ctime": "2015-05-09T11:48:36.000Z",
-      "mtime": "2015-05-09T11:48:36.000Z",
-      "revisionId": "EucDkYS8vpKFPCddX",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "M66YwGAxvqqNxF68e",
       "file": "client/views/home/home.jade",
       "line": 37,
       "template": "home",
-      "_id": "SqPGbmswkDZYmGbFQ"
+      "_id": "J768iqJrEsb3dipb2"
     },
     "dictionary": {
       "key": "dictionary",
       "lang": "en",
       "text": "Dictionary",
-      "ctime": "2015-05-09T11:49:29.000Z",
-      "mtime": "2015-05-09T11:49:29.000Z",
-      "revisionId": "BaKv9aMDGb7oGfkCj",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "gesMGPpDbsgDMb2af",
       "file": "client/views/home/home.jade",
       "line": 38,
       "template": "home",
-      "_id": "92RSai8KGpRLemmD2"
+      "_id": "E7SW9cFeLkb5HqTH9"
     },
     "create_new_page": {
       "key": "create_new_page",
       "lang": "en",
       "text": "Create a new page",
-      "ctime": "2015-05-09T11:51:18.000Z",
-      "mtime": "2015-05-09T11:51:18.000Z",
-      "revisionId": "bjvK4KaiPsGD8muji",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "iDzsAcoXn2WWJ82W5",
       "file": "client/views/home/home.jade",
       "line": 39,
       "template": "home",
-      "_id": "dqecYu8XWw4K9QNnJ"
+      "_id": "B89JhN9hWrug9j7nf"
     },
     "choose_template": {
       "key": "choose_template",
       "lang": "en",
       "text": "Choose a template",
-      "ctime": "2015-05-09T11:51:48.000Z",
-      "mtime": "2015-05-09T11:51:48.000Z",
-      "revisionId": "JRpmfN6SZbwcGyYox",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "JbkRPBAtpfmbXYPsL",
       "file": "client/views/home/home.jade",
       "line": 40,
       "template": "home",
-      "_id": "zyZ4o4ehtMdSyoSmq"
+      "_id": "HKuRkoT6Xae2A8kSM"
     },
     "choose": {
       "key": "choose",
       "lang": "en",
       "text": "Choose",
-      "ctime": "2015-05-09T11:52:34.000Z",
-      "mtime": "2015-05-09T11:52:34.000Z",
-      "revisionId": "ehu6qRH2x27gkyFzg",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "KEeuMPMFTK9ZMFbAr",
       "file": "client/views/home/home.jade",
       "line": 41,
       "template": "home",
-      "_id": "E9x7LrKoyiLB3xt9R"
+      "_id": "rNKHjsxsmjxLWn5rh"
     },
     "delete_page": {
       "key": "delete_page",
       "lang": "en",
       "text": "Delete page",
-      "ctime": "2015-05-09T11:53:42.000Z",
-      "mtime": "2015-05-09T11:53:42.000Z",
-      "revisionId": "u7W2oTd2gmoXbdu4y",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "2JA5mT6nRJnL4f6rm",
       "file": "client/views/home/home.jade",
       "line": 42,
       "template": "home",
-      "_id": "QQSRzB84MTg4XTAtf"
+      "_id": "5XAnCpJG6QQYJZG63"
     },
     "are_you_sure_to_delete_this_page": {
       "key": "are_you_sure_to_delete_this_page",
       "lang": "en",
       "text": "Are you sure you want to delete this page?",
-      "ctime": "2015-05-09T11:56:00.000Z",
-      "mtime": "2015-05-09T11:56:00.000Z",
-      "revisionId": "5LzGhQ7wQyZhdjEPd",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "nLXkb33P2uZ45dQSk",
       "file": "client/views/home/home.jade",
       "line": 43,
       "template": "home",
-      "_id": "tN53XQ2uEbu3kjFjM"
+      "_id": "fiDTpgrZuq9saqdza"
     },
     "pages": {
       "key": "pages",
       "lang": "en",
       "text": "Pages",
-      "ctime": "2015-05-09T11:57:18.000Z",
-      "mtime": "2015-05-09T11:57:18.000Z",
-      "revisionId": "QnymzvFPQFDbCF2NL",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "ghKgHhLPHbpyGy2sq",
       "file": "client/views/home/home.jade",
       "line": 44,
       "template": "home",
-      "_id": "k7m4tRjf5uW5fJZXS"
+      "_id": "Rh6kh7qW8vb2fG8Cd"
     },
     "update_page": {
       "key": "update_page",
       "lang": "en",
       "text": "Update page",
-      "ctime": "2015-05-09T11:59:00.000Z",
-      "mtime": "2015-05-09T11:59:00.000Z",
-      "revisionId": "ixJr2GubHiX6pQixY",
+      "ctime": "2015-05-09T12:11:11.000Z",
+      "mtime": "2015-05-09T12:11:11.000Z",
+      "revisionId": "E5Do8R4QYwdepKKJ4",
       "file": "client/views/home/home.jade",
       "line": 45,
       "template": "home",
-      "_id": "iKGfKCj5sMmSDhGk6"
+      "_id": "YEHfKCJ5hLhqXq6hn"
+    },
+    "app_configuration": {
+      "key": "app_configuration",
+      "lang": "en",
+      "text": "App Configuration",
+      "ctime": "2015-05-09T12:23:22.000Z",
+      "mtime": "2015-05-09T12:23:22.000Z",
+      "revisionId": "3bYRyYjnsPp5MqxuZ",
+      "file": "client/views/home/home.jade",
+      "line": 46,
+      "template": "home",
+      "_id": "DKs2DfFz2L9GnvyTy"
     }
   },
   "fr": {
@@ -537,7 +536,7 @@ mfPkg.syncAll({
       "text": "Comptes",
       "ctime": 1431161486814,
       "mtime": 1431161486814,
-      "revisionId": "wyH4pwnC7X6YBa9RA",
+      "revisionId": "GNpcZ9oumFFzpaLdr",
       "_id": "xojR6YMDmXn3ifmEo"
     },
     "invalid_email": {
@@ -546,7 +545,7 @@ mfPkg.syncAll({
       "text": "L'email n'est pas valide",
       "ctime": 1431162539451,
       "mtime": 1431162539451,
-      "revisionId": "gPfhgs3wi7n4KSiA9",
+      "revisionId": "fGrh4i27CaAHMch9t",
       "_id": "dmzMRt2f7BPZEnDdG"
     },
     "passwords_must_match": {
@@ -555,7 +554,7 @@ mfPkg.syncAll({
       "text": "Les mots de passes doivent correspondre",
       "ctime": 1431162559188,
       "mtime": 1431162559189,
-      "revisionId": "hvJ69xdFvxoBjadDR",
+      "revisionId": "io33HHgpdT8ALG6uQ",
       "_id": "E8CcRmuWXs44YwMqW"
     },
     "edit_roles": {
@@ -564,7 +563,7 @@ mfPkg.syncAll({
       "text": "Editer les rôles",
       "ctime": 1431163702521,
       "mtime": 1431163702521,
-      "revisionId": "FKJbam6MkY3djteon",
+      "revisionId": "QnkycmtD7ymF7mFsS",
       "_id": "CdC6EaNpBtLbDSfn5"
     },
     "no_permission_for_roles": {
@@ -573,7 +572,7 @@ mfPkg.syncAll({
       "text": "Vous n'avez pas la permission de changer les rôles utilisateurs",
       "ctime": 1431163727177,
       "mtime": 1431163727177,
-      "revisionId": "WbKSs4BAx9iibErCP",
+      "revisionId": "SMMYFBcNcFc22YLZJ",
       "_id": "4BMH6HwRyDQkJniJp"
     },
     "invalid_invitation_code": {
@@ -582,7 +581,7 @@ mfPkg.syncAll({
       "text": "Le code d'invitation n'est pas valide",
       "ctime": 1431163737632,
       "mtime": 1431163737632,
-      "revisionId": "QtJejeHBaN8hgSHuv",
+      "revisionId": "ZrBjCG4aktjEviZcu",
       "_id": "xdfg88vcNadSnYg8b"
     },
     "my_account": {
@@ -591,7 +590,7 @@ mfPkg.syncAll({
       "text": "Mon compte",
       "ctime": 1431163742265,
       "mtime": 1431163742265,
-      "revisionId": "ohbvE6u2NqsMoper6",
+      "revisionId": "LyfW6RuG9NpGvYS9X",
       "_id": "dm7rYR9HpN6Hqjg4f"
     },
     "name": {
@@ -600,7 +599,7 @@ mfPkg.syncAll({
       "text": "Nom",
       "ctime": 1431164837335,
       "mtime": 1431164837335,
-      "revisionId": "p45kE3Hj8LFngQcu9",
+      "revisionId": "Jyi65CbCthutHbP9i",
       "_id": "CpXJ6grvJZfef8q2h"
     },
     "your_name": {
@@ -609,7 +608,7 @@ mfPkg.syncAll({
       "text": "Votre nom",
       "ctime": 1431164856854,
       "mtime": 1431164856854,
-      "revisionId": "hRCBuycTbaDEXoGds",
+      "revisionId": "FW5QTmQB96nZ9fGu8",
       "_id": "kE8BQN3SHrut5TxoY"
     },
     "email": {
@@ -618,7 +617,7 @@ mfPkg.syncAll({
       "text": "Email",
       "ctime": 1431165980509,
       "mtime": 1431165980509,
-      "revisionId": "aNEmMZKiraBeTaZxd",
+      "revisionId": "Em7Ny8S39ZrPgc5f3",
       "_id": "C8Hz4aR8Ei8AfxAfA"
     },
     "roles": {
@@ -627,7 +626,7 @@ mfPkg.syncAll({
       "text": "Rôles",
       "ctime": 1431165984226,
       "mtime": 1431165984226,
-      "revisionId": "kmFotKCF4hEHix9zC",
+      "revisionId": "QiatLgvv3ig5neogR",
       "_id": "5TdwBmPnLbQP6GuXj"
     },
     "actions": {
@@ -636,7 +635,7 @@ mfPkg.syncAll({
       "text": "Actions",
       "ctime": 1431165987131,
       "mtime": 1431165987131,
-      "revisionId": "9uprgQipaMCbohjvq",
+      "revisionId": "sz9KFux9vRqxcgzxK",
       "_id": "cMyYMZEayiK9Znb5h"
     },
     "logout": {
@@ -645,7 +644,7 @@ mfPkg.syncAll({
       "text": "Déconnexion",
       "ctime": 1431165993852,
       "mtime": 1431165993852,
-      "revisionId": "KxT3hkPC7RYJrnuw7",
+      "revisionId": "8tq8GAusdD7ad7o9y",
       "_id": "xNQMQ9PgSLyiDgLsy"
     },
     "update_profile": {
@@ -654,7 +653,7 @@ mfPkg.syncAll({
       "text": "Mettre le profil à jour",
       "ctime": 1431166021019,
       "mtime": 1431169629518,
-      "revisionId": "fQBQacjtFvkferDdL",
+      "revisionId": "uHPtfYSYfyWk2SriP",
       "_id": "WPLMwAesQ73qDiih8"
     },
     "change_password": {
@@ -663,7 +662,7 @@ mfPkg.syncAll({
       "text": "Changer le mot de passe",
       "ctime": 1431166027850,
       "mtime": 1431166027850,
-      "revisionId": "WfaaAYKe67DMcymCT",
+      "revisionId": "cZSayhszqXyRfpw5D",
       "_id": "uHsafxvSHmgNj9zH7"
     },
     "invite": {
@@ -672,7 +671,7 @@ mfPkg.syncAll({
       "text": "Inviter",
       "ctime": 1431169623459,
       "mtime": 1431169623459,
-      "revisionId": "WGY3trRLqxLm48CX6",
+      "revisionId": "2qPb8qxHwaoXYNH2u",
       "_id": "TBtfW2dXNwBcd8mLy"
     },
     "invitation_created_successfully": {
@@ -681,7 +680,7 @@ mfPkg.syncAll({
       "text": "Invitation créée avec succès",
       "ctime": 1431169650639,
       "mtime": 1431169650639,
-      "revisionId": "sF8K4bNDd88zk68sK",
+      "revisionId": "yM24Mszmxz26bYJ4z",
       "_id": "o5AR5D5Fz4QbhuvQr"
     },
     "back": {
@@ -690,7 +689,7 @@ mfPkg.syncAll({
       "text": "Retour",
       "ctime": 1431169653710,
       "mtime": 1431169653710,
-      "revisionId": "os3NchmDGXiuWt3N8",
+      "revisionId": "YzTAM7aiWjwqZ6RGM",
       "_id": "PdXqEP47wyBiCs9Rj"
     },
     "invite_another": {
@@ -699,7 +698,7 @@ mfPkg.syncAll({
       "text": "Inviter un autre utilisateur",
       "ctime": 1431169662027,
       "mtime": 1431169662027,
-      "revisionId": "STi7Debb448D7rmWR",
+      "revisionId": "BmHWJDopa43hxoayt",
       "_id": "WqwqDRAaYsCH9ixEJ"
     },
     "select_new_user_roles": {
@@ -708,7 +707,7 @@ mfPkg.syncAll({
       "text": "Sélectionner les rôles pour le nouvel utilisateur",
       "ctime": 1431169676946,
       "mtime": 1431169676946,
-      "revisionId": "qnPCfdMsPMz6GbcX3",
+      "revisionId": "jBcNp4sMMt3B8HBza",
       "_id": "egGJ2N3TADTAidMHt"
     },
     "optional_new_user_email": {
@@ -717,7 +716,7 @@ mfPkg.syncAll({
       "text": "Email du nouvel utilisateur (optionnel)",
       "ctime": 1431169689865,
       "mtime": 1431169689865,
-      "revisionId": "cvLAF4ak4kpZzrfu8",
+      "revisionId": "bAeWo78twXHJ8YCxH",
       "_id": "eT2QNjiFXyT23SYSG"
     },
     "cancel": {
@@ -726,7 +725,7 @@ mfPkg.syncAll({
       "text": "Annuler",
       "ctime": 1431169693150,
       "mtime": 1431169693150,
-      "revisionId": "xben8GQmqMFSZM9oE",
+      "revisionId": "xZQ2XizirznXzDY8B",
       "_id": "SZXZxJvC4oafLdCHG"
     },
     "login": {
@@ -735,7 +734,7 @@ mfPkg.syncAll({
       "text": "Connexion",
       "ctime": 1431169698088,
       "mtime": 1431169698088,
-      "revisionId": "q5PoZrXm9NLg6BcWz",
+      "revisionId": "BhwzZSpfCedrNMnhM",
       "_id": "qkhbkvb9W8hwQ4ycn"
     },
     "save": {
@@ -744,7 +743,7 @@ mfPkg.syncAll({
       "text": "Enregistrer",
       "ctime": 1431169705952,
       "mtime": 1431169705952,
-      "revisionId": "y5SWiQbu3f95mraAS",
+      "revisionId": "D9dnhjmgd4BGTB87j",
       "_id": "8rFebtdYB98RpbEWr"
     },
     "register": {
@@ -753,7 +752,7 @@ mfPkg.syncAll({
       "text": "Enregistrer",
       "ctime": 1431170806104,
       "mtime": 1431170806104,
-      "revisionId": "E77NnQpvkJLW6qb9p",
+      "revisionId": "zjMoaxW2RGucKe4xk",
       "_id": "dvrD7agFvFqcdPC9x"
     },
     "password_again": {
@@ -762,7 +761,7 @@ mfPkg.syncAll({
       "text": "Confirmation du mot de passe",
       "ctime": 1431170880224,
       "mtime": 1431170880224,
-      "revisionId": "PXwyYDAc9AxNCv2cB",
+      "revisionId": "TPvmeaYjJGuGEsHqB",
       "_id": "yLRzctQesdXZHDyie"
     },
     "select_user_roles": {
@@ -771,7 +770,7 @@ mfPkg.syncAll({
       "text": "Sélectionner les rôles pour cet utilisateur",
       "ctime": 1431172996848,
       "mtime": 1431172996848,
-      "revisionId": "4wdtqxqZJ3y52k4Pa",
+      "revisionId": "AjHRedoJT8X6WFuc3",
       "_id": "yo4mmnAB4YqqJTgXd"
     },
     "create_a": {
@@ -780,7 +779,7 @@ mfPkg.syncAll({
       "text": "Créer une",
       "ctime": 1431173001743,
       "mtime": 1431173001743,
-      "revisionId": "ZWkrntD7pdcC6EWxT",
+      "revisionId": "tH33TyJsGxHfKnYhv",
       "_id": "zLfSfR3dBWftqHmeY"
     },
     "create": {
@@ -789,7 +788,7 @@ mfPkg.syncAll({
       "text": "Créer",
       "ctime": 1431173004657,
       "mtime": 1431173004657,
-      "revisionId": "uNtFxAk4Enz7Te3vp",
+      "revisionId": "JZBExALp73TQx5Ef2",
       "_id": "cGo7qXieCZsoagDBu"
     },
     "no_permission": {
@@ -798,7 +797,7 @@ mfPkg.syncAll({
       "text": "Pas de permission",
       "ctime": 1431173012406,
       "mtime": 1431173012406,
-      "revisionId": "gY7dxGy3i6naSFprj",
+      "revisionId": "aaAnxMkXJ252YeSdv",
       "_id": "jcKNjzG2Znc47LRCx"
     },
     "delete": {
@@ -807,7 +806,7 @@ mfPkg.syncAll({
       "text": "Effacer",
       "ctime": 1431173015137,
       "mtime": 1431173015137,
-      "revisionId": "otWj9AyjKanjk5SkC",
+      "revisionId": "Nx4HximFienzsP6rb",
       "_id": "isTJht56rM5WPbRFJ"
     },
     "are_you_sure_to_delete_this": {
@@ -816,7 +815,7 @@ mfPkg.syncAll({
       "text": "Etes-vous sûr d'effacer cette",
       "ctime": 1431173052725,
       "mtime": 1431173052725,
-      "revisionId": "9JfpiTTCCtoDxo59E",
+      "revisionId": "fkirdxEdXXLcxMq3z",
       "_id": "6MpfuDAscuvMcYnt6"
     },
     "confirm": {
@@ -825,7 +824,7 @@ mfPkg.syncAll({
       "text": "Confirmer",
       "ctime": 1431173057329,
       "mtime": 1431173057329,
-      "revisionId": "bNikaZ4EBtbafSMgm",
+      "revisionId": "TNXrAcswABxFacZ27",
       "_id": "aDbn7m2nrTLC8M7ZM"
     },
     "update": {
@@ -834,7 +833,7 @@ mfPkg.syncAll({
       "text": "Mettre à jour",
       "ctime": 1431173062159,
       "mtime": 1431173062159,
-      "revisionId": "fNJPLzrAF3pzkavi7",
+      "revisionId": "yxki3CD4ggWc9nCTe",
       "_id": "WQi73Fux4ZqCosT8Z"
     },
     "config": {
@@ -843,7 +842,7 @@ mfPkg.syncAll({
       "text": "Configurer",
       "ctime": 1431173065890,
       "mtime": 1431173065890,
-      "revisionId": "NvYNqdzLBbfmfjzQ3",
+      "revisionId": "7Pr869PRDx6CwFyrG",
       "_id": "NSWsxqe5zSGueHm8h"
     },
     "dictionary": {
@@ -852,7 +851,7 @@ mfPkg.syncAll({
       "text": "Dictionnaire",
       "ctime": 1431173071051,
       "mtime": 1431173071051,
-      "revisionId": "gY2GEt6HbeapDMKtb",
+      "revisionId": "93fjwBHC6P3a77RrL",
       "_id": "Xq5frtxhbyK7ju9N2"
     },
     "create_new_page": {
@@ -861,7 +860,7 @@ mfPkg.syncAll({
       "text": "Créer une nouvelle page",
       "ctime": 1431173079861,
       "mtime": 1431173079861,
-      "revisionId": "MdbJhCsz8uDBHajyh",
+      "revisionId": "XMQRvxdb5Agx5XHob",
       "_id": "T4Jmb7m5p5ujyq3w3"
     },
     "choose_template": {
@@ -870,7 +869,7 @@ mfPkg.syncAll({
       "text": "Choisir un modèle",
       "ctime": 1431173087317,
       "mtime": 1431173087317,
-      "revisionId": "p4p5YxDNigG3rmFbg",
+      "revisionId": "EWgSj8AejBcGEeNY4",
       "_id": "ECyCy8u27WtEhtrZT"
     },
     "choose": {
@@ -879,7 +878,7 @@ mfPkg.syncAll({
       "text": "Choisir",
       "ctime": 1431173092498,
       "mtime": 1431173092498,
-      "revisionId": "NSTCR2FZzjCYuDYtX",
+      "revisionId": "GWQZKfDtNfytY8bYi",
       "_id": "qgWucWeRTPHphiKG7"
     },
     "delete_page": {
@@ -888,7 +887,7 @@ mfPkg.syncAll({
       "text": "Effacer une page",
       "ctime": 1431173096990,
       "mtime": 1431173096990,
-      "revisionId": "3pmqsdfDaK7Hwroxi",
+      "revisionId": "eZDPzzM2GKYpAmwxz",
       "_id": "sNFPnKx8HKBPd2zaT"
     },
     "are_you_sure_to_delete_this_page": {
@@ -897,7 +896,7 @@ mfPkg.syncAll({
       "text": "Etes-vous sûr de vouloir effacer cette page ?",
       "ctime": 1431173114104,
       "mtime": 1431173114104,
-      "revisionId": "dcGb7uhwNndw8SSWQ",
+      "revisionId": "vHA4CYcoKvgGeStWq",
       "_id": "icjn5dRqsovExiHp8"
     },
     "pages": {
@@ -906,7 +905,7 @@ mfPkg.syncAll({
       "text": "Pages",
       "ctime": 1431173116567,
       "mtime": 1431173116567,
-      "revisionId": "Sqs6WsNDSzPQTLGGo",
+      "revisionId": "gyHZ7wc4NM4akEa6Z",
       "_id": "FaixqwLA25Fg9qffS"
     },
     "update_page": {
@@ -915,11 +914,20 @@ mfPkg.syncAll({
       "text": "Mettre à jour la page",
       "ctime": 1431173123235,
       "mtime": 1431173123235,
-      "revisionId": "NNv3CoL9yd8ExEYg4",
+      "revisionId": "wyTRoemdYrTDTTu9S",
       "_id": "EScQWypGXwtqKSs6Y"
+    },
+    "app_configuration": {
+      "key": "app_configuration",
+      "lang": "fr",
+      "text": "Configuration de l'application",
+      "ctime": 1431174475756,
+      "mtime": 1431174475756,
+      "revisionId": "MugG2BaifSFqgsHMe",
+      "_id": "NmAAWv5jmRX4sniDC"
     }
   }
 }, {
-  "exportedAt": 1431173429246,
-  "updatedAt": 1431173123235
+  "exportedAt": 1431174488478,
+  "updatedAt": 1431174475756
 });
