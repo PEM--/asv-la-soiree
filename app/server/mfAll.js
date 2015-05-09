@@ -599,6 +599,54 @@ mfPkg.syncAll({
       "line": 52,
       "template": "home",
       "_id": "NYzkGGjwczmykhLz9"
+    },
+    "item": {
+      "key": "item",
+      "lang": "en",
+      "text": "item",
+      "ctime": "2015-05-09T17:28:46.000Z",
+      "mtime": "2015-05-09T17:28:46.000Z",
+      "revisionId": "FXZ5d9NAhQB3kHSP2",
+      "file": "client/views/home/home.jade",
+      "line": 53,
+      "template": "home",
+      "_id": "h9SBFPukjBEvBg743"
+    },
+    "items": {
+      "key": "items",
+      "lang": "en",
+      "text": "items",
+      "ctime": "2015-05-09T17:28:46.000Z",
+      "mtime": "2015-05-09T17:28:46.000Z",
+      "revisionId": "6s7FtYWDC3AvmMZHn",
+      "file": "client/views/home/home.jade",
+      "line": 54,
+      "template": "home",
+      "_id": "v3W7YQjfh5SF5taNT"
+    },
+    "users": {
+      "key": "users",
+      "lang": "en",
+      "text": "users",
+      "ctime": "2015-05-09T17:36:00.000Z",
+      "mtime": "2015-05-09T17:36:00.000Z",
+      "revisionId": "XTk7P6KaHSXHCyCyb",
+      "file": "client/views/home/home.jade",
+      "line": 55,
+      "template": "home",
+      "_id": "GwxZS2iobQjnP4imF"
+    },
+    "user": {
+      "key": "user",
+      "lang": "en",
+      "text": "user",
+      "ctime": "2015-05-09T17:36:00.000Z",
+      "mtime": "2015-05-09T17:36:00.000Z",
+      "revisionId": "LsoXMyG3SJGWday7d",
+      "file": "client/views/home/home.jade",
+      "line": 56,
+      "template": "home",
+      "_id": "iy7e3Xeswdez4YZJG"
     }
   },
   "fr": {
@@ -1051,9 +1099,45 @@ mfPkg.syncAll({
       "mtime": 1431192197814,
       "revisionId": "p5mM4aaZL9Cyopftm",
       "_id": "wCsT9vzWYSYr3JoPQ"
+    },
+    "item": {
+      "key": "item",
+      "lang": "fr",
+      "text": "item",
+      "ctime": 1431193058556,
+      "mtime": 1431193058556,
+      "revisionId": "ZTxJ9azoHr4wFc24t",
+      "_id": "zizNt4kZGFhzGw4Ex"
+    },
+    "items": {
+      "key": "items",
+      "lang": "fr",
+      "text": "items",
+      "ctime": 1431193062903,
+      "mtime": 1431193062903,
+      "revisionId": "FrRhJq5pgzRrXBSbT",
+      "_id": "G9727kudvxnpE9QdK"
+    },
+    "users": {
+      "key": "users",
+      "lang": "fr",
+      "text": "utilisateurs",
+      "ctime": 1431193068130,
+      "mtime": 1431193068130,
+      "revisionId": "tArfiLLw9Q3KsrZZ6",
+      "_id": "pkrrT2JoLg6WdaM9N"
+    },
+    "user": {
+      "key": "user",
+      "lang": "fr",
+      "text": "utilisateur",
+      "ctime": 1431193072851,
+      "mtime": 1431193072851,
+      "revisionId": "MhTjSNhn46bfCraXP",
+      "_id": "TjtuFG2rGgMLTSd6Y"
     }
   }
 }, {
-  "exportedAt": 1431192208293,
-  "updatedAt": 1431192197814
+  "exportedAt": 1431193080237,
+  "updatedAt": 1431193072851
 });
