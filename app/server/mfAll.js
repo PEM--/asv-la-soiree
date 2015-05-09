@@ -647,6 +647,30 @@ mfPkg.syncAll({
       "line": 56,
       "template": "home",
       "_id": "iy7e3Xeswdez4YZJG"
+    },
+    "error_uploading_file": {
+      "key": "error_uploading_file",
+      "lang": "en",
+      "text": "Error uploading file",
+      "ctime": "2015-05-09T17:55:01.000Z",
+      "mtime": "2015-05-09T17:55:01.000Z",
+      "revisionId": "FcNp4TRjF7yNuLSmc",
+      "file": "client/views/home/home.jade",
+      "line": 57,
+      "template": "home",
+      "_id": "wQNtmbBNaJArsKa2j"
+    },
+    "error_removing_file": {
+      "key": "error_removing_file",
+      "lang": "en",
+      "text": "Error removing file",
+      "ctime": "2015-05-09T17:55:01.000Z",
+      "mtime": "2015-05-09T17:55:01.000Z",
+      "revisionId": "vTxB7B2mEBp7M2jmG",
+      "file": "client/views/home/home.jade",
+      "line": 58,
+      "template": "home",
+      "_id": "o5mjqo3aZa6kXEnoX"
     }
   },
   "fr": {
@@ -1135,9 +1159,27 @@ mfPkg.syncAll({
       "mtime": 1431193072851,
       "revisionId": "MhTjSNhn46bfCraXP",
       "_id": "TjtuFG2rGgMLTSd6Y"
+    },
+    "error_uploading_file": {
+      "key": "error_uploading_file",
+      "lang": "fr",
+      "text": "Erreur de chargement de fichier",
+      "ctime": 1431194208353,
+      "mtime": 1431194208353,
+      "revisionId": "4WrWHeQuFQrFPeZxt",
+      "_id": "hx2aNhy9HNcvu3zAn"
+    },
+    "error_removing_file": {
+      "key": "error_removing_file",
+      "lang": "fr",
+      "text": "Erreur d'effacement de fichier",
+      "ctime": 1431194216656,
+      "mtime": 1431194216656,
+      "revisionId": "FYPb8xHnfr6iqgSGy",
+      "_id": "3kQzDz2LsxbCgM9K5"
     }
   }
 }, {
-  "exportedAt": 1431193080237,
-  "updatedAt": 1431193072851
+  "exportedAt": 1431194223035,
+  "updatedAt": 1431194216656
 });
