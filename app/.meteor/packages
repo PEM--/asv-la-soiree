@@ -13,8 +13,8 @@ mquandalle:jade
 mquandalle:stylus
 
 # Development helper
-audit-argument-checks
-meteortoys:allthings
+#audit-argument-checks
+#meteortoys:allthings
 
 # CMS
 orionjs:core
@@ -25,6 +25,7 @@ orionjs:core
 #orionjs:materialize
 twbs:bootstrap
 orionjs:bootstrap
+fortawesome:fontawesome
 
 # WPO
 meteorhacks:inject-initial
