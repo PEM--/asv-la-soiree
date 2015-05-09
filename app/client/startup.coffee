@@ -5,3 +5,5 @@ Meteor.startup ->
     $tags = $ tag
     $head.append $tags.clone()
     $tags.remove()
+  # @TODO Fade this out
+  ($ '.spinner').remove()
