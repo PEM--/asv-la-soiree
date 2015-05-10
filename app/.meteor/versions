@@ -11,6 +11,10 @@ binary-heap@1.0.3
 blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
+browser-policy@1.0.4
+browser-policy-common@1.0.3
+browser-policy-content@1.0.4
+browser-policy-framing@1.0.4
 callback-hook@1.0.3
 check@1.0.5
 coffee:script@1.0.3
@@ -45,6 +49,7 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 matb33:collection-hooks@0.7.13
+matteodem:easy-security@0.1.4
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:inject-initial@1.0.2
@@ -57,8 +62,7 @@ mquandalle:jade@0.4.3
 mquandalle:jade-compiler@0.4.3
 mquandalle:stylus@1.1.0
 msgfmt:core@2.0.0-preview.7
-msgfmt:extract@2.0.0-preview.5
-msgfmt:ui@2.0.0-preview.3
+multiply:iron-router-progress@1.0.1
 nicolaslopezj:options@1.0.1
 nicolaslopezj:reactive-templates@1.2.1
 nicolaslopezj:roles@1.0.5
@@ -77,8 +81,8 @@ orionjs:filesystem@1.1.0
 orionjs:froala@1.1.0
 orionjs:lang-en@1.1.0
 orionjs:lang-fr@1.1.0
-orionjs:lang-ru@1.1.0
 orionjs:pages@1.1.0
+pierreeric:creativepure@0.1.15
 random@1.0.3
 reactive-dict@1.1.0
 reactive-var@1.0.5
