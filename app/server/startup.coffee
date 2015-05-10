@@ -7,17 +7,17 @@ Inject.rawHead 'loader-style',
     'initial-scale=1,user-scalable=no">' +
   # The loading spinner needs some theming.
   '<style>' +
-    'html{background-color: #36342e;}' +
-    'body{color:#ddd;overflow:hidden;width:100%;}' +
-    '.spinner {' +
+    "html{background-color: #{colorTheme.bgBrandColor};}" +
+    "body{color:#{colorTheme.bgBrandColor};overflow:hidden;width:100%;}" +
+    '.initial-spinner {' +
       'bottom:0;height:80px;left:0;margin:auto;position:absolute;' +
       'top:0;right:0;width:80px;' +
       '-webkit-animation: rotation .6s infinite linear;' +
       'animation: rotation .6s infinite linear;' +
-      'border-left:6px solid rgba(255,194,0,.20);' +
-      'border-right:6px solid rgba(255,194,0,.20);' +
-      'border-bottom:6px solid rgba(255,194,0,.20);' +
-      'border-top:6px solid rgba(255,194,0,.9);' +
+      "border-left:6px solid #{colorTheme.transBrandColor};" +
+      "border-right:6px solid #{colorTheme.transBrandColor};" +
+      "border-bottom:6px solid #{colorTheme.transBrandColor};" +
+      "border-top:6px solid #{colorTheme.brandColor};" +
       'border-radius:100%;' +
     '}' +
     '@-webkit-keyframes rotation {' +
@@ -37,7 +37,8 @@ Inject.rawHead 'loader-style',
       'to {transform: rotate(359deg);}' +
     '}' +
     '</style>'
-Inject.rawHead 'loader-body2', '<body><div class="spinner"></div></body>'
+Inject.rawHead 'loader-body2',
+  '<body><div class="initial-spinner"></div></body>'
 
 # OrionJS options
-Options.set 'forbidClientAccountCreation', false
+Options.set 'forbidClientAccountCreation', true
