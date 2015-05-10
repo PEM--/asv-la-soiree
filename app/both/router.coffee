@@ -1,2 +1,2 @@
 Router.map ->
-  @route '/home', path: '/'
+  @route '/home', path: '/', layoutTemplate: 'layout'
