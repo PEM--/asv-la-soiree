@@ -7,3 +7,4 @@ Meteor.startup ->
     $tags.remove()
   # @TODO Fade this out
   ($ '.spinner').remove()
+  mfPkg.setLocale 'ru'

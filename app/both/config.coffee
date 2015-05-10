@@ -1,2 +1,2 @@
-# Initialize internationalization
-msgfmt.init 'en'
+# # Initialize internationalization
+# msgfmt.init 'en'
