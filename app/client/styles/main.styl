@@ -1,16 +1,10 @@
-// Base path for Creative & Pure
-basePath = '.meteor/local/build/programs/web.browser/packages/pierreeric_creativepure/styles/%s'
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'client/styles/*.import'
 
-// Global variables
-roundCorner =     3px
-buttonSmallSize = 70px
+typographic()
 
-// Main colors
-brandColor =    #F89C0E
-textColor =     darken(brandColor, 70%)
-bgColor =       lighten(brandColor, 90%)
-brandPrimary =  brandColor
-brandDanger =   hsl(0, saturation(brandColor),lightness(brandColor))
-brandWarning =  hsl(45, saturation(brandColor),lightness(brandColor))
-brandSuccess =  #D3D800
-brandInfo =     #00ADEF
+@import s(basePath, main)
+@import s(basePath, ironprogress)
+@import s(basePath, links)
