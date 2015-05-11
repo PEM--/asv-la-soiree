@@ -10,6 +10,7 @@
 - [ ] Intégration Gmap avec CMS
 - [ ] Upload GridFS
 - [ ] Not found template
+- [ ] No script et navigateurs trop anciens
 - [ ] Loading subscription template
 - [ ] Video background
 - [ ] Scroll magic
