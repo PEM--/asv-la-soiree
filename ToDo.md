@@ -5,6 +5,10 @@
 - [X] Router progress
 - [X] Preloading spinner
 - [ ] Main template
+- [ ] Notification de déconnexions du serveur
+- [ ] Notification d'erreurs sur le serveur
+- [ ] Intégration Gmap avec CMS
+- [ ] Upload GridFS
 - [ ] Not found template
 - [ ] Loading subscription template
 - [ ] Video background
