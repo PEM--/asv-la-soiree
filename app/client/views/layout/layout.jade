@@ -4,19 +4,24 @@ head
 body
   
 template(name='layout')
-  .main-container(data-role='layout')
-    header
-      +header
-    main
-      +main
-    footer
-      +footer
+  .main-container(data-role='layout')    
+    +header
+    +main
+    +footer
 
 template(name='header')
-  h1 Header
+  header
+    video.bgvid(autoplay, loop, poster='/videos/asv-la-soiree-ballons.jpg')
+      source(src='/videos/asv-la-soiree-ballons.mp4', type='video/mp4')
+    section
+      h1 ASV, la soirée
 
 template(name='main')
-  h1 Main
+  main
+    section
+      h1 Main
 
 template(name='footer')
-  h1 Footer
+  footer
+    section
+      h1 Footer

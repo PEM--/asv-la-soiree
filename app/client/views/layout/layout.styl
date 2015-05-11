@@ -1,3 +1,5 @@
+@import 'nib'
+@import 'jeet'
 @import 'client/styles/global-var.import'
 
 .main-container, header, main, footer
@@ -10,20 +12,40 @@
   display flex
   flex-direction column
   flex-wrap nowrap
-  background violet
   justify-content flex-start
   align-content flex-start
   align-items center
 
 header
-  background red
+  background brandInfo
+  height 100%
+  min-height 100%
+  >section
+    h1
+      z-index 10
+      text-align center
+  video
+    position fixed
+    top 0
+    left 0
+    bottom 0
+    right 0
+    size auto
+    min-width 100%
+    min-height 100%
+    object-fit cover
+    transition all defaultTransitionValue
 
 main
-  background yellow
-  max-width maxSize
+  z-index 1
+  background bgColor
   flex-grow 1
   flex-shrink 0
-  //flex-basis 200px
+  >section
+    center(maxSize)
 
 footer
-  background blue
+  z-index 1
+  background brandSuccess
+  >section
+    center(maxSize)
