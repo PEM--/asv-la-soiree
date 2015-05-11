@@ -5,6 +5,8 @@ Inject.rawHead 'loader-style',
   #  distorted by their default viewport values.
   '<meta name="viewport" content="width=device-width,maximum-scale=1,' +
     'initial-scale=1,user-scalable=no">' +
+  # Tell Google that it's an heavy JS app
+  '<meta name="fragment" content="!">' +
   # Favicons
   '<link rel="apple-touch-icon" sizes="57x57" ' +
     'href="/apple-touch-icon-57x57.png">' +

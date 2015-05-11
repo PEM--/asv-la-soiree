@@ -16,8 +16,14 @@ mquandalle:stylus
 #audit-argument-checks
 #meteortoys:allthings
 
-# SEO
-yasinuslu:blaze-meta
+# Routing
+iron:router
+multiply:iron-router-progress
+
+# SEO & WPO
+lookback:seo
+meteorhacks:inject-initial
+meteorhacks:ssr
 
 # CMS
 orionjs:core
@@ -29,9 +35,6 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 
-# Routing
-multiply:iron-router-progress
-
 # CSS
 pierreeric:creativepure
 #materialize:materialize
@@ -39,9 +42,6 @@ pierreeric:creativepure
 twbs:bootstrap
 orionjs:bootstrap
 fortawesome:fontawesome
-
-# WPO
-meteorhacks:inject-initial
 
 # Translations
 #msgfmt:core

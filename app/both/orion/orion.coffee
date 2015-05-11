@@ -7,4 +7,7 @@ Options.set 'defaultRoles', ['public']
 
 # Dictionnary
 # Site wide values
-orion.dictionary.addDefinition 'title', 'site', type: String, label: 'Titre'
+orion.dictionary.addDefinition 'title', 'site',
+  type: String, label: 'Titre'
+orion.dictionary.addDefinition 'description', 'site',
+  type: String, label: 'Description', autoform: type: 'textarea'
