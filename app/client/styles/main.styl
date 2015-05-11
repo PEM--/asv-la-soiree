@@ -8,15 +8,6 @@ typographic()
 // Normalize CSS using Axis
 normalize-css()
 
-// Set fonts and default colors
-t-headers(monoFont)
-html, body
-  background-color bgColor
-  color textColor
-  font-family monoFont
-  transition all defaultTransitionValue
-  fontSize()
-
 *, *::after, *::before
   // Globally set the sizing behavior
   box-sizing border-box
@@ -24,6 +15,15 @@ html, body
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   -webkit-touch-callout none
+
+// Set fonts and default colors
+t-headers(monoFont)
+html, body
+  background-color sideColor
+  color textColor
+  font-family monoFont
+  //transition all defaultTransitionValue
+  fontSize()
 
 // Set page height
 html, body

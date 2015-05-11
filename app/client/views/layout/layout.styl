@@ -2,50 +2,45 @@
 @import 'jeet'
 @import 'client/styles/global-var.import'
 
-.main-container, header, main, footer
-  width 100%
-
 .main-container
-  min-height 100%
-  overflow auto
+  size 100%
+  // overflow auto
   transition opacity defaultTransitionValue
-  display flex
-  flex-direction column
-  flex-wrap nowrap
-  justify-content flex-start
-  align-content flex-start
-  align-items center
-
-header
-  background brandInfo
-  height 100%
-  min-height 100%
-  >section
+  header
+    margin 0
+    padding 0
+    size 100%
+    background brandInfo
+    //overflow hidden
+    //min-height 100%
     h1
-      z-index 10
       text-align center
-  video
-    position fixed
-    top 0
-    left 0
-    bottom 0
-    right 0
-    size auto
-    min-width 100%
-    min-height 100%
-    object-fit cover
-    transition all defaultTransitionValue
+    video
+      fixed 0 0
+      bottom 0
+      right 0
+      size auto
+      min-width 100%
+      min-height 100%
+      object-fit cover
+      transition all defaultTransitionValue
 
-main
-  z-index 1
-  background bgColor
-  flex-grow 1
-  flex-shrink 0
-  >section
-    center(maxSize)
+  main
+    width 100%
+    margin 0
+    padding 0
+    z-index 1
+    background bgColor
+    flex-grow 1
+    flex-shrink 0
+    >section
+      center(maxSize)
 
-footer
-  z-index 1
-  background brandSuccess
-  >section
-    center(maxSize)
+  footer
+    width 100%
+    margin 0
+    padding 0
+    z-index 1
+    background brandSuccess
+    >section
+      center(maxSize)
