@@ -5,9 +5,40 @@
 
 typographic()
 
-//@import s(basePath, main)
+// Normalize CSS using Axis
+normalize-css()
+
+// Set fonts and default colors
+t-headers(monoFont)
+html, body
+  background-color bgColor
+  color textColor
+  font-family monoFont
+  transition all defaultTransitionValue
+  fontSize()
+
+*, *::after, *::before
+  // Globally set the sizing behavior
+  box-sizing border-box
+  // Ensure font's antialising
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  -webkit-touch-callout none
+
+// Set page height
+html, body, section
+  height 100%
+
+// Styles on text content
+p, blockquote
+  text-align justify
+
+::selection
+  color bgColor
+  background brandColor
+
 @import s(basePath, ironprogress)
-//@import s(basePath, links)
+@import s(basePath, links)
 
 .orion-bootstrap-admin
   background white
