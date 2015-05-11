@@ -25,3 +25,8 @@
 - [ ] Mail chimp
 - [ ] Mangopay
 - [ ] CSV extract
+- [ ] Sécurité : Browserify
+- [ ] Pas sûr : Intégration PhantomJS (SEO statique)
+- [ ] robot.txt
+- [ ] Sitemap automatisée dans le CMS
+- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
