@@ -3,44 +3,49 @@
 @import 'client/styles/global-var.import'
 
 .main-container
-  size 100%
-  // overflow auto
   transition opacity defaultTransitionValue
+  margin 0
+  padding 0
+  size 100%
+  video
+    fixed bottom right
+    min-width 100%
+    min-height 100%
+    size auto
+    overflow hidden
   header
     margin 0
     padding 0
     size 100%
-    background brandInfo
-    //overflow hidden
-    //min-height 100%
-    h1
-      text-align center
-    video
-      fixed 0 0
-      bottom 0
-      right 0
-      size auto
-      min-width 100%
+    >section
+      display inline-block
+      width 100%
+      margin 0
+      padding 0
+      z-index 1
       min-height 100%
-      object-fit cover
-      transition all defaultTransitionValue
-
+      transform translateZ(0)
+      overflow hidden
+      h1
+        text-align center
   main
+    transform translateZ(0)
     width 100%
     margin 0
     padding 0
     z-index 1
     background bgColor
-    flex-grow 1
-    flex-shrink 0
     >section
+      z-index 1
+      display inline-block
       center(maxSize)
-
   footer
+    transform translateZ(0)
     width 100%
     margin 0
     padding 0
     z-index 1
     background brandSuccess
     >section
+      display inline-block
       center(maxSize)
