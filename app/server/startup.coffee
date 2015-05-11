@@ -69,6 +69,3 @@ Inject.rawHead 'loader-style',
     '</style>'
 Inject.rawHead 'loader-body2',
   '<body><div class="initial-spinner"></div></body>'
-
-# OrionJS options
-Options.set 'forbidClientAccountCreation', true
