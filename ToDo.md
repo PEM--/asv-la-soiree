@@ -1,11 +1,22 @@
-[] Video background
-[] Social sharing
-[] Copyrights
-[] Cookie informations
-[] EULA / CGU
-[] Google universal analytics
-[] Rich snippets
-[] G+ links
-[] Mail chimp
-[] Mangopay
-[] CSV extract
+- [X] Favicon
+- [X] CMS
+- [X] French localization :warning: Must wait validation
+- [X] Animated routing
+- [X] Preloading spinner
+- [ ] Main template
+- [ ] Not found template
+- [ ] Loading subscription template
+- [ ] Video background
+- [ ] Scroll magic
+- [ ] Twitter cards
+- [ ] Open graph
+- [ ] Social sharing
+- [ ] Copyrights
+- [ ] Cookie informations
+- [ ] EULA / CGU
+- [ ] Google universal analytics
+- [ ] Rich snippets
+- [ ] G+ links
+- [ ] Mail chimp
+- [ ] Mangopay
+- [ ] CSV extract
