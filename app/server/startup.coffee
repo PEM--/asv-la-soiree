@@ -39,8 +39,11 @@ Inject.rawHead 'loader-style',
   '<meta name="theme-color" content="#ffffff">' +
   # The loading spinner needs some theming.
   '<style>' +
-    "html{background-color: #{colorTheme.bgBrandColor};}" +
-    "body{color:#{colorTheme.bgBrandColor};overflow:hidden;width:100%;}" +
+    # "html{background-color:#{colorTheme.bgBrandColor};}" +
+    # "body{color:#{colorTheme.bgBrandColor};overflow:hidden;width:100%;}" +
+    "html{background-color:#{colorTheme.sideColor};}" +
+    "body{color:#{colorTheme.sideColor};overflow:hidden;width:100%;height:100%}" +
+
     '.initial-spinner {' +
       'bottom:0;height:80px;left:0;margin:auto;position:absolute;' +
       'top:0;right:0;width:80px;' +
@@ -70,4 +73,4 @@ Inject.rawHead 'loader-style',
     '}' +
     '</style>'
 Inject.rawHead 'loader-body2',
-  '<body><div class="initial-spinner"></div></body>'
+  '<body><section><div class="initial-spinner"></div></section></body>'
