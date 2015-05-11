@@ -4,3 +4,8 @@ Options.set 'forbidClientAccountCreation', true
 
 # Default users are not admin but inherit from the public role
 Options.set 'defaultRoles', ['public']
+
+# Dictionnary
+orion.dictionary.addDefinition 'title', 'site',
+  type: String
+  label: 'Titre'

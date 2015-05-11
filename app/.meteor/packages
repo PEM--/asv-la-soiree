@@ -18,9 +18,13 @@ mquandalle:stylus
 
 # CMS
 orionjs:core
+orionjs:config
 orionjs:pages
 orionjs:froala
-orionjs:lang-fr
+#orionjs:lang-fr
+orionjs:filesystem
+orionjs:file-attribute
+orionjs:relationships
 
 # Routing
 multiply:iron-router-progress
