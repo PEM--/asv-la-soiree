@@ -1,8 +1,9 @@
-@import 'jeet'
 @import 'client/styles/global-var.import'
 
-.main-container
+.main-container, header, main, footer
   width 100%
+
+.main-container
   min-height 100%
   overflow auto
   transition opacity defaultTransitionValue
@@ -10,14 +11,19 @@
   flex-direction column
   flex-wrap nowrap
   background violet
+  justify-content flex-start
+  align-content flex-start
+  align-items center
 
 header
   background red
 
 main
   background yellow
-  center(maxSize)
-  width 100%
+  max-width maxSize
+  flex-grow 1
+  flex-shrink 0
+  //flex-basis 200px
 
 footer
   background blue
