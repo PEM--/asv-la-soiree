@@ -2,6 +2,7 @@
 - [X] CMS
 - [X] French localization :warning: Must wait validation
 - [X] Animated routing
+- [X] Router progress
 - [X] Preloading spinner
 - [ ] Main template
 - [ ] Not found template
@@ -11,9 +12,9 @@
 - [ ] Twitter cards
 - [ ] Open graph
 - [ ] Social sharing
-- [ ] Copyrights
-- [ ] Cookie informations
 - [ ] EULA / CGU
+- [ ] Copyrights sur les vidéos et les SVG (cf CGU)
+- [ ] Cookie informations
 - [ ] Google universal analytics
 - [ ] Rich snippets
 - [ ] G+ links
