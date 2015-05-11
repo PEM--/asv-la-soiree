@@ -6,6 +6,5 @@ Options.set 'forbidClientAccountCreation', true
 Options.set 'defaultRoles', ['public']
 
 # Dictionnary
-orion.dictionary.addDefinition 'title', 'site',
-  type: String
-  label: 'Titre'
+# Site wide values
+orion.dictionary.addDefinition 'title', 'site', type: String, label: 'Titre'

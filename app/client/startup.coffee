@@ -7,3 +7,5 @@ Meteor.startup ->
     $tags.remove()
   # @TODO Fade this out
   ($ '.initial-spinner').remove()
+  Meta.setTitle \
+    orion.dictionary.get 'site.title', 'ASV, la soirée'

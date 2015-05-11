@@ -16,6 +16,9 @@ mquandalle:stylus
 #audit-argument-checks
 #meteortoys:allthings
 
+# SEO
+yasinuslu:blaze-meta
+
 # CMS
 orionjs:core
 orionjs:config
