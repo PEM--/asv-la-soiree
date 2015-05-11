@@ -5,16 +5,19 @@ _animate = ($el, anim, next) ->
     $(this).removeClass anim
     next and next()
 
+# All main section that are not the initial spinner
+MAIN_SECTION = 'body>section:not([data-role=\'spinner\'])'
+
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
   onAfterAction: ->
-    _animate $('body > section'), _enterAnimation
+    _animate ($ MAIN_SECTION), _enterAnimation
     ($ window).scrollTop 0
-    # (new WOW).init()
+    (new WOW).init()
     Meteor.setTimeout ->
-      ($ 'body >section').css 'opacity', 1
+      ($ MAIN_SECTION).css 'opacity', 1
     , 64
 
 if Meteor.isClient

@@ -39,20 +39,18 @@ Inject.rawHead 'loader-style',
   '<meta name="theme-color" content="#ffffff">' +
   # The loading spinner needs some theming.
   '<style>' +
-    # "html{background-color:#{colorTheme.bgBrandColor};}" +
-    # "body{color:#{colorTheme.bgBrandColor};overflow:hidden;width:100%;}" +
     "html{background-color:#{colorTheme.sideColor};}" +
-    "body{color:#{colorTheme.sideColor};overflow:hidden;width:100%;height:100%}" +
-
+    "body{color:#{colorTheme.sideColor};" +
+      'overflow:hidden;width:100%;height:100%}' +
     '.initial-spinner {' +
       'bottom:0;height:80px;left:0;margin:auto;position:absolute;' +
       'top:0;right:0;width:80px;' +
       '-webkit-animation: rotation .6s infinite linear;' +
       'animation: rotation .6s infinite linear;' +
-      "border-left:6px solid #{colorTheme.transBrandColor};" +
-      "border-right:6px solid #{colorTheme.transBrandColor};" +
-      "border-bottom:6px solid #{colorTheme.transBrandColor};" +
-      "border-top:6px solid #{colorTheme.brandColor};" +
+      "border-left:6px solid #{colorTheme.transAsideColor};" +
+      "border-right:6px solid #{colorTheme.transAsideColor};" +
+      "border-bottom:6px solid #{colorTheme.transAsideColor};" +
+      "border-top:6px solid #{colorTheme.asideColor};" +
       'border-radius:100%;' +
     '}' +
     '@-webkit-keyframes rotation {' +
@@ -73,4 +71,5 @@ Inject.rawHead 'loader-style',
     '}' +
     '</style>'
 Inject.rawHead 'loader-body2',
-  '<body><section><div class="initial-spinner"></div></section></body>'
+  '<body><section data-role=\'spinner\'>' +
+    '<div class="initial-spinner"></div></section></body>'

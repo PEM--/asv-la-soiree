@@ -4,5 +4,8 @@ for tag in ['meta', 'title']
   $tags = $ tag
   $head.append $tags.clone()
   $tags.remove()
-# @TODO Fade this out
-($ '.initial-spinner').remove()
+# Removing spinner once Meteor has started up
+$('body>section[data-role=\'spinner\']')
+  .css 'opacity', 0
+  .on TRANSITION_END_EVENT, ->
+    ($ @).remove()
