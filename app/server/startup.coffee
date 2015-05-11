@@ -40,7 +40,7 @@ Inject.rawHead 'loader-style',
   # The loading spinner needs some theming.
   '<style>' +
     "html{background-color:#{colorTheme.sideColor};}" +
-    'body>section[data-role=\'spinner\']{' +
+    'body>div.main-container[data-role=\'spinner\']{' +
       "background-color:#{colorTheme.sideColor};" +
       "color:#{colorTheme.sideColor};" +
       'overflow:hidden;width:100%;height:100%}' +
@@ -73,5 +73,5 @@ Inject.rawHead 'loader-style',
     '}' +
     '</style>'
 Inject.rawHead 'loader-body2',
-  '<body><section data-role=\'spinner\'>' +
-    '<div class="initial-spinner"></div></section></body>'
+  '<body><div class=\'main-container\' data-role=\'spinner\'>' +
+    '<div class="initial-spinner"></div></div></body>'

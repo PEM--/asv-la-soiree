@@ -5,7 +5,7 @@ for tag in ['meta', 'title']
   $head.append $tags.clone()
   $tags.remove()
 # Removing spinner once Meteor has started up
-$('body>section[data-role=\'spinner\']')
+$('.main-container[data-role=\'spinner\']')
   .css 'opacity', 0
   .on TRANSITION_END_EVENT, ->
     ($ @).remove()

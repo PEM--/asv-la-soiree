@@ -26,8 +26,13 @@ html, body
   -webkit-touch-callout none
 
 // Set page height
-html, body, section
+html, body
   height 100%
+
+.main-container
+  min-height 100%
+  overflow auto
+  transition opacity defaultTransitionValue
 
 // Styles on text content
 p, blockquote
@@ -43,6 +48,3 @@ p, blockquote
 .orion-bootstrap-admin
   background white
   min-height 100%
-
-body > section
-  transition opacity defaultTransitionValue

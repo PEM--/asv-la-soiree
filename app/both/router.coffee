@@ -6,7 +6,7 @@ _animate = ($el, anim, next) ->
     next and next()
 
 # All main section that are not the initial spinner
-MAIN_SECTION = 'body>section:not([data-role=\'spinner\'])'
+MAIN_SECTION = '.main-container:not([data-role=\'spinner\'])'
 
 Router.configure
   layoutTemplate: 'layout'

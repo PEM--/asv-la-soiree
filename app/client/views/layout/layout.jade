@@ -1,7 +1,22 @@
 head
+  // @TODO: Enhance https://github.com/yasinuslu/blaze-meta for making this possible
   link(rel='publisher', href='https://plus.google.com/105839099099011364699')
 body
   
 template(name='layout')
-  section
-    h1 {{dict 'site.title'}}
+  .main-container(data-role='layout')
+    header
+      +header
+    main
+      +main
+    footer
+      +footer
+
+template(name='header')
+  h1 Header
+
+template(name='main')
+  h1 Main
+
+template(name='footer')
+  h1 Footer
