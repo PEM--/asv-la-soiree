@@ -5,12 +5,24 @@
 - [X] Router progress
 - [X] Preloading spinner
 - [X] Video background
+- [ ] Preloading de la video
+- http://desandro.github.io/imagesloaded/
+- https://github.com/iamkevingreen/imagesloaded
+- [ ] Upload d'image
+- [ ] FTS sur le back office
+  - http://www.okgrow.com/posts/2015/04/27/guide-to-full-text-search-in-meteor/
+- https://github.com/loongmxbt/orion-lfs
+- http://mediaelementjs.com/
+- https://github.com/delgermurun/meteor-mediaelement
 - [ ] Parallax effect
+  - https://github.com/frabrunelle/meteor-fittext
 - [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Main template
 - [ ] Notification de déconnexions du serveur
+  - https://github.com/alexreich/meteor-machina
 - [ ] Notification d'erreurs sur le serveur
 - [ ] Intégration Gmap avec CMS
+  - https://github.com/rwatts3/orionjs-maps
 - [ ] Upload GridFS
 - [ ] Not found template
 - [ ] No script et navigateurs trop anciens
@@ -24,13 +36,18 @@
 - [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
 - [ ] Google universal analytics
+  - https://atmospherejs.com/reywood/iron-router-ga
 - [ ] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
 - [ ] Mangopay
+  - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
+  - https://github.com/jeremyhodges/flaming-bear
 - [ ] CSV extract
-- [ ] Sécurité : Browserify
+- [ ] Sécurité : browser policy
 - [ ] Pas sûr : Intégration PhantomJS (SEO statique)
 - [ ] robot.txt
 - [ ] Sitemap automatisée dans le CMS
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
+- [ ] Pas sûr : Petite appli mobile
+  - https://github.com/rwatts3/orionjs-cordova

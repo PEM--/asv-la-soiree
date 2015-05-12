@@ -11,3 +11,12 @@ orion.dictionary.addDefinition 'title', 'site',
   type: String, label: 'Titre'
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
+
+# Simple pages for EULA, Cookies
+orion.pages.addTemplate
+  template: 'pageStaticContent'
+  layout: 'layout'
+  description: 'Contenus statique'
+,
+  content: orion.attribute 'froala',
+    label: 'Contenu'

@@ -3,7 +3,6 @@ accounts-password@1.1.1
 aldeed:autoform@5.1.2
 aldeed:collection2@2.3.3
 aldeed:simple-schema@1.3.3
-aldeed:tabular@1.2.0
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
@@ -23,6 +22,7 @@ fastclick@1.0.3
 fortawesome:fontawesome@4.3.0
 froala:editor@1.2.6
 geojson-utils@1.0.3
+gildaspk:autoform-materialize@0.0.18
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
@@ -45,7 +45,7 @@ localstorage@1.0.3
 logging@1.0.7
 lookback:seo@1.1.0
 matb33:collection-hooks@0.7.13
-matteodem:easy-security@0.1.4
+materialize:materialize@0.96.1
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:inject-initial@1.0.2
@@ -61,6 +61,7 @@ multiply:iron-router-progress@1.0.1
 nicolaslopezj:options@1.0.1
 nicolaslopezj:reactive-templates@1.2.1
 nicolaslopezj:roles@1.0.5
+nicolaslopezj:tabular-materialize@1.2.1
 noorderstorm:wow@0.1.3
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
@@ -68,7 +69,6 @@ ordered-dict@1.0.3
 orionjs:accounts@1.0.3
 orionjs:attributes@1.0.1
 orionjs:base@1.0.1
-orionjs:bootstrap@1.0.0
 orionjs:collections@1.0.1
 orionjs:config@1.0.1
 orionjs:core@1.0.0
@@ -76,6 +76,7 @@ orionjs:dictionary@1.0.0
 orionjs:file-attribute@1.0.0
 orionjs:filesystem@1.0.1
 orionjs:froala@1.0.0
+orionjs:materialize@1.0.5
 orionjs:pages@1.0.0
 orionjs:relationships@1.0.0
 pierreeric:creativepure@0.1.15
@@ -94,13 +95,12 @@ spacebars-compiler@1.0.6
 srp@1.0.3
 templating@1.1.1
 tracker@1.0.7
-twbs:bootstrap@3.3.4
 ui@1.0.6
 underscore@1.0.3
 underscorestring:underscore.string@3.0.3_1
 url@1.0.4
-useraccounts:bootstrap@1.8.1
 useraccounts:core@1.8.1
+useraccounts:materialize@1.8.1
 webapp@1.2.0
 webapp-hashing@1.0.3
 yasinuslu:blaze-meta@0.3.1
