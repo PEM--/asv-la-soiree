@@ -11,11 +11,12 @@
 - [ ] Upload d'image
 - [ ] FTS sur le back office
   - http://www.okgrow.com/posts/2015/04/27/guide-to-full-text-search-in-meteor/
-- https://github.com/loongmxbt/orion-lfs
-- http://mediaelementjs.com/
-- https://github.com/delgermurun/meteor-mediaelement
+  - https://github.com/loongmxbt/orion-lfs
+  - http://mediaelementjs.com/
+  - https://github.com/delgermurun/meteor-mediaelement
 - [ ] Parallax effect
   - https://github.com/frabrunelle/meteor-fittext
+  - https://github.com/gwendall/meteor-template-animations
 - [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Main template
 - [ ] Notification de déconnexions du serveur
