@@ -4,6 +4,9 @@
 - [X] Animated routing
 - [X] Router progress
 - [X] Preloading spinner
+- [X] Video background
+- [ ] Parallax effect
+- [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Main template
 - [ ] Notification de déconnexions du serveur
 - [ ] Notification d'erreurs sur le serveur
