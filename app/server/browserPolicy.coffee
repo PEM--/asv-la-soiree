@@ -6,7 +6,9 @@ rootUrl = __meteor_runtime_config__.ROOT_URL
 BrowserPolicy.content.allowConnectOrigin rootUrl
 BrowserPolicy.content.allowConnectOrigin (rootUrl.replace 'http', 'ws')
 # Allow origin for Meteor hosting
-BrowserPolicy.content.allowConnectOrigin 'http://*.meteor.com'
-BrowserPolicy.content.allowConnectOrigin 'ws://*.meteor.com'
-BrowserPolicy.content.allowConnectOrigin 'https://*.meteor.com'
-BrowserPolicy.content.allowConnectOrigin 'wss://*.meteor.com'
+for protocol in ['http', 'https', 'ws', 'wss']
+  BrowserPolicy.content.allowConnectOrigin "#{protocol}://*.meteor.com"
+# Allow Google fonts
+for protocol in ['http', 'https']
+  BrowserPolicy.content.allowStyleOrigin "#{protocol}://fonts.googleapis.com"
+  BrowserPolicy.content.allowFontOrigin "#{protocol}://fonts.gstatic.com"

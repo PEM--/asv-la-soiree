@@ -18,5 +18,5 @@ orion.pages.addTemplate
   layout: 'layout'
   description: 'Contenus statique'
 ,
-  content: orion.attribute 'froala',
+  content: orion.attribute 'summernote',
     label: 'Contenu'
