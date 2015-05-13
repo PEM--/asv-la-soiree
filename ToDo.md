@@ -30,6 +30,8 @@
 - [ ] Loading subscription template
 - [ ] Video background
 - [ ] Scroll magic
+- [ ] Zoom sur la GMap : Pas sûr
+  - https://github.com/fat/zoom.js
 - [ ] Twitter cards
 - [ ] Open graph
 - [ ] Social sharing
