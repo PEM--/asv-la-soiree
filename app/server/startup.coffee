@@ -73,5 +73,19 @@ Inject.rawHead 'loader-style',
     '}' +
     '</style>'
 Inject.rawHead 'loader-body2',
-  '<body><div class=\'main-container\' data-role=\'spinner\'>' +
-    '<div class="initial-spinner"></div></div></body>'
+  '<body>' +
+    '<div class=\'main-container\' data-role=\'spinner\'>' +
+      '<div class="initial-spinner"></div>' +
+    '</div>' +
+    # Warn user that their browser is outdated
+    '<script>' +
+      'var $buoop = {vs:{i:10,f:36,o:25,s:7},c:2};' +
+      'function $buo_f(){' +
+        'var e = document.createElement("script");' +
+        'e.src = "//browser-update.org/update.js";' +
+        'document.body.appendChild(e);' +
+      '};' +
+      'try {document.addEventListener("DOMContentLoaded", $buo_f,false)}' +
+      'catch(e){window.attachEvent("onload", $buo_f)}' +
+    '</script>' +
+  '</body>'

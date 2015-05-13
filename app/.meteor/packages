@@ -6,6 +6,7 @@
 
 # Meteor
 meteor-platform
+fastclick
 
 # Language
 coffee:script
@@ -14,7 +15,8 @@ mquandalle:stylus
 
 # Development helper
 #audit-argument-checks
-#meteortoys:allthings
+msavin:mongol
+msavin:jetsetter
 
 # Routing
 iron:router
@@ -36,14 +38,14 @@ orionjs:file-attribute
 orionjs:relationships
 #cfs:gridfs
 
-# CSS
+# CSS & effects
 pierreeric:creativepure
 #materialize:materialize
 #orionjs:materialize
 twbs:bootstrap
 orionjs:bootstrap
 fortawesome:fontawesome
-#noorderstorm:wow
+hipstersmoothie:scrollmagic
 
 # Translations
 #msgfmt:core
@@ -51,6 +53,5 @@ fortawesome:fontawesome
 #msgfmt:ui
 
 # Security
-#browser-policy
-#matteodem:easy-security
-hipstersmoothie:scrollmagic
+browser-policy
+matteodem:easy-security

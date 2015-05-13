@@ -5,6 +5,11 @@
 - [X] Router progress
 - [X] Preloading spinner
 - [X] Video background
+- [ ] Reordering des scripts, links, ... dans le client/startup.coffee
+- [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
+- [ ] Sécurité : problème de browser-policy sur l'administration du CMS
+- [ ] Problème de not found sur orionjs:pages
+- [ ] A vérifier : Remplacement d'InjectRaw par packages/boilerplate
 - [ ] Preloading de la video
 - http://desandro.github.io/imagesloaded/
 - https://github.com/iamkevingreen/imagesloaded
@@ -26,16 +31,18 @@
   - https://github.com/rwatts3/orionjs-maps
 - [ ] Upload GridFS
 - [ ] Not found template
-- [ ] No script et navigateurs trop anciens
+- [ ] No script
+- [X] Navigateurs trop anciens
 - [ ] Loading subscription template
 - [ ] Video background
-- [ ] Scroll magic
 - [ ] Zoom sur la GMap : Pas sûr
   - https://github.com/fat/zoom.js
 - [ ] Twitter cards
 - [ ] Open graph
+  - https://github.com/yasinuslu/blaze-meta
+  - https://github.com/lookback/meteor-seo/
 - [ ] Social sharing
-  https://github.com/meteorclub/shareit
+  - https://github.com/meteorclub/shareit
 - [ ] EULA / CGU
 - [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
