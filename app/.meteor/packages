@@ -18,7 +18,7 @@ mquandalle:stylus
 
 # Routing
 iron:router
-multiply:iron-router-progress
+orionjs:iron-router-progress
 
 # SEO & WPO
 lookback:seo
@@ -38,12 +38,12 @@ orionjs:relationships
 
 # CSS
 pierreeric:creativepure
-materialize:materialize
-orionjs:materialize
-#twbs:bootstrap
-#orionjs:bootstrap
+#materialize:materialize
+#orionjs:materialize
+twbs:bootstrap
+orionjs:bootstrap
 fortawesome:fontawesome
-noorderstorm:wow
+#noorderstorm:wow
 
 # Translations
 #msgfmt:core
@@ -53,3 +53,4 @@ noorderstorm:wow
 # Security
 #browser-policy
 #matteodem:easy-security
+hipstersmoothie:scrollmagic

@@ -35,6 +35,7 @@
 - [ ] Twitter cards
 - [ ] Open graph
 - [ ] Social sharing
+  https://github.com/meteorclub/shareit
 - [ ] EULA / CGU
 - [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
