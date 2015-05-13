@@ -7,7 +7,7 @@
 - [X] Video background
 - [ ] Reordering des scripts, links, ... dans le client/startup.coffee
 - [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
-- [ ] Sécurité : problème de browser-policy sur l'administration du CMS
+- [X] Sécurité : problème de browser-policy sur l'administration du CMS
 - [ ] Problème de not found sur orionjs:pages
 - [ ] A vérifier : Remplacement d'InjectRaw par packages/boilerplate
 - [ ] Preloading de la video
