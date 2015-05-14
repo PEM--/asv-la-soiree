@@ -13,10 +13,10 @@ orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
 
 # Simple pages for EULA, Cookies
-orion.pages.addTemplate
-  template: 'pageStaticContent'
-  layout: 'layout'
-  description: 'Contenus statique'
-,
-  content: orion.attribute 'summernote',
-    label: 'Contenu'
+# orion.pages.addTemplate
+#   template: 'pageStaticContent'
+#   layout: 'layout'
+#   description: 'Contenus statique'
+# ,
+#   content: orion.attribute 'summernote',
+#     label: 'Contenu'

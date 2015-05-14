@@ -6,6 +6,7 @@
 - [X] Preloading spinner
 - [X] Video background
 - [X] Reordering des scripts, links, ... dans le client/startup.coffee
+- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
 - [ ] Problème de not found sur orionjs:pages
@@ -58,7 +59,6 @@
 - [ ] Pas sûr : Intégration PhantomJS (SEO statique)
 - [ ] robot.txt
 - [ ] Sitemap automatisée dans le CMS
-- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
 - [ ] Tests automatisés et gestion CdP automatisée

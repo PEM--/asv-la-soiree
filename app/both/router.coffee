@@ -25,11 +25,10 @@ if Meteor.isClient
     separator: '-'
     description: orion.dictionary.get 'site.description'
 
-Router.map ->
-  @route '',
-    name: 'home'
-    seo:
-      title: -> orion.dictionary.get 'site.title'
-      suffix: null
-      meta:
-        description: -> orion.dictionary.get 'site.description'
+# Router.map ->
+#   @route 'home',
+#     seo:
+#       title: -> orion.dictionary.get 'site.title'
+#       suffix: null
+#       meta:
+#         description: -> orion.dictionary.get 'site.description'

@@ -14,7 +14,7 @@ mquandalle:jade
 mquandalle:stylus
 
 # Development helper
-#audit-argument-checks
+audit-argument-checks
 msavin:mongol
 msavin:jetsetter
 
@@ -30,7 +30,7 @@ meteorhacks:inject-initial
 # CMS
 orionjs:core
 orionjs:config
-orionjs:pages
+#orionjs:pages
 #orionjs:froala
 orionjs:summernote
 #orionjs:lang-fr
