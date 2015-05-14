@@ -5,9 +5,10 @@
 - [X] Router progress
 - [X] Preloading spinner
 - [X] Video background
-- [ ] Reordering des scripts, links, ... dans le client/startup.coffee
+- [X] Reordering des scripts, links, ... dans le client/startup.coffee
 - [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
+- [ ] Manifest pour le caching des assets.
 - [ ] Problème de not found sur orionjs:pages
 - [ ] A vérifier : Remplacement d'InjectRaw par packages/boilerplate
 - [ ] Preloading de la video
@@ -62,3 +63,5 @@
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
+- [ ] Tests automatisés et gestion CdP automatisée
+  - https://atmospherejs.com/xolvio/cucumber

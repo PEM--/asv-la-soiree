@@ -1,6 +1,6 @@
 # Re-order injected tags during the initial PLT default page.
 $head = $ 'head'
-for tag in ['meta', 'title']
+for tag in ['meta', 'title', 'link']
   $tags = $ tag
   $head.append $tags.clone()
   $tags.remove()

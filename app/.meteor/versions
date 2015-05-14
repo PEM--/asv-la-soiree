@@ -84,8 +84,8 @@ orionjs:collections@1.0.1
 orionjs:config@1.0.1
 orionjs:core@1.0.0
 orionjs:dictionary@1.0.0
-orionjs:file-attribute@1.0.0
-orionjs:filesystem@1.0.1
+orionjs:file-attribute@1.0.1
+orionjs:filesystem@1.0.2
 orionjs:iron-router-progress@1.0.3
 orionjs:pages@1.0.1
 orionjs:relationships@1.0.0

@@ -1,6 +1,7 @@
 # Article sources:
 # * https://dweldon.silvrback.com/browser-policy
 # * http://paris.meteor.com/presentations/uByDe8qDLrNGJLzMC
+# * https://github.com/meteor/meteor/tree/21bdac87347e0c80bbdf4fdbca132ff80033b3f3/packages/browser-policy
 # Black list everything
 BrowserPolicy.framing.disallow()
 BrowserPolicy.content.disallowEval()

@@ -9,7 +9,7 @@ meteor-platform
 fastclick
 
 # Language
-coffee:script
+coffeescript
 mquandalle:jade
 mquandalle:stylus
 
