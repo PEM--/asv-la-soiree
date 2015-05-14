@@ -8,9 +8,7 @@
 - [X] Reordering des scripts, links, ... dans le client/startup.coffee
 - [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
-- [ ] Manifest pour le caching des assets.
 - [ ] Problème de not found sur orionjs:pages
-- [ ] A vérifier : Remplacement d'InjectRaw par packages/boilerplate
 - [ ] Preloading de la video
 - http://desandro.github.io/imagesloaded/
 - https://github.com/iamkevingreen/imagesloaded
@@ -32,7 +30,7 @@
   - https://github.com/rwatts3/orionjs-maps
 - [ ] Upload GridFS
 - [ ] Not found template
-- [ ] No script
+- [X] No script
 - [X] Navigateurs trop anciens
 - [ ] Loading subscription template
 - [ ] Video background
