@@ -28,7 +28,3 @@ meteor add mquandalle:stylus orionjs:quill
 ## FAQ
 ### Isobuild report a file not found
 Restart Meteor.
-### Display is weird on browser except Chrome
-This package targets Chrome only.
-
-Please PR if you need additional browser support.
