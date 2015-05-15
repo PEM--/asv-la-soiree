@@ -1,14 +1,21 @@
 @import 'nib'
 @import '/client/styles/global-var.import'
+
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/base'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/link-tooltip'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/image-tooltip'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/toolbar'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/tooltip'
+
 @import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/quill'
 
-quill(red, green, blue, 10px)
+//quill(red, green, blue, 10px)
 
 .quill
   width 100%
   background bgColor
   border none
-  border-radius borderRadius
+  border-radius roundCorner
   .quill-toolbar
     display inline
     margin 0
@@ -18,14 +25,14 @@ quill(red, green, blue, 10px)
     align-items center
     align-content center
     background inherit
-    border-radius borderRadius
+    border-radius roundCorner
     .quill-select-wrapper
       position relative
       border 1px solid darken(bgColor, 20%)
-      border-radius borderRadius
+      border-radius roundCorner
       background bgColor
       padding .2em .5em 0 .5em
-      >select
+      >.ql-picker
         display inline
         color textColor
         margin 0 -1.5em
@@ -37,9 +44,6 @@ quill(red, green, blue, 10px)
         font-weight bold
         box-shadow none
         appearance none
-        option
-          border none
-          font-weight normal
       &:before, &:after
         pointer-events none
         font-family fontawesome
@@ -53,22 +57,18 @@ quill(red, green, blue, 10px)
         margin-right .5em
       &:after
         content '\f0dc'
-      &.ql-active
-        &:before
-          color brandInfo
-      &.ql-size
-        &:before
-          content '\f034'
-      &.ql-font
-        &:before
-          content '\f031'
-      &.ql-background:before
+      &.ql-active:before
+        color brandInfo
+      &.quill-size:before
+        content '\f034'
+      &.quill-font:before
+        content '\f031'
+      &.quill-background:before
         content '\f1fc'
-      &.ql-color:before
+      &.quill-color:before
         content '\f043'
-      &.ql-alignment
-        &:before
-          content '\f036'
+      &.quill-align:before
+        content '\f036'
     button, .ql-picker
       size 2em
       margin 0
@@ -114,4 +114,4 @@ quill(red, green, blue, 10px)
     background white
     color black
     border 1px solid darken(bgColor, 20%)
-    border-radius borderRadius
+    border-radius roundCorner

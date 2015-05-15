@@ -2,6 +2,7 @@
 
 Template.test.onRendered =>
   @quill = new Quill '.quill-editor',
+    theme: 'snow'
     modules:
       toolbar: container: '.quill-toolbar'
       'link-tooltip': true
