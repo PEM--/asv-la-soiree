@@ -12,11 +12,16 @@ orion.dictionary.addDefinition 'title', 'site',
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
 
-# Simple pages for EULA, Cookies
-# orion.pages.addTemplate
-#   template: 'pageStaticContent'
-#   layout: 'layout'
-#   description: 'Contenus statique'
-# ,
-#   content: orion.attribute 'summernote',
-#     label: 'Contenu'
+# Simple pages for Home, EULA, Cookies
+Pages = new orion.collection 'pages',
+  singularName: 'page',
+  pluralName: 'pages'
+  tabular:
+    columns: [
+      { data: 'title', title: 'Titre'  }
+      orion.attributeColumn 'quill', 'body', 'Contenu'
+    ]
+Pages.attachSchema new SimpleSchema
+  title: type: String
+  body: orion.attribute 'quill', label: 'Contenu'
+  createdBy: orion.attribute 'createdBy'

@@ -1,0 +1,28 @@
+template(name='testLayout')
+  +yield
+
+template(name='test')
+  h1 Test Quill
+  .quill
+    .quill-toolbar
+      button.ql-bold
+      button.ql-italic
+      button.ql-strike
+      button.ql-underline
+      button.ql-link
+      .quill-select-wrapper.quill-size
+        select.ql-size
+          option(value='10px') Small
+          option(value='13px', selected) Normal
+          option(value='18px') Large
+          option(value='32px') Huge
+      button.ql-background
+      button.ql-color
+      .quill-select-wrapper.quill-font
+        select.ql-font
+          option(value='sans-serif', selected) Sans-serif
+          option(value='serif') Serif
+          option(value='monospace') Monospace
+    .quill-editor
+      h1 Hello Quill
+      p Quilled

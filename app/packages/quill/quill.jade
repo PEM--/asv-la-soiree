@@ -1,0 +1,10 @@
+template(name='orionAttributesQuill')
+  .orionQuill= atts
+    if isUploading
+      br
+      .progress
+        .progress-bar.progress-bar-striped.active(style="width: {{ progress }}%")
+    .quill
+
+template(name='orionAttributesSummernoteColumn')
+  +preview

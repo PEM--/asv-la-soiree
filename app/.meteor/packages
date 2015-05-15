@@ -30,20 +30,19 @@ meteorhacks:inject-initial
 # CMS
 orionjs:core
 orionjs:config
-#orionjs:pages
 #orionjs:froala
-orionjs:summernote
+orionjs:quill
 #orionjs:lang-fr
 orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
-#cfs:gridfs
+brightbind:orion-gridfs
 
 # CSS & effects
 pierreeric:creativepure
 #materialize:materialize
 #orionjs:materialize
-twbs:bootstrap
+#twbs:bootstrap
 orionjs:bootstrap
 fortawesome:fontawesome
 hipstersmoothie:scrollmagic
