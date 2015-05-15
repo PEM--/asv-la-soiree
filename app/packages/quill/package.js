@@ -31,8 +31,6 @@ Package.onUse(function(api) {
     'styles/base.styl',
     'styles/image-tooltip.styl',
     'styles/link-tooltip.styl',
-    'styles/multi-cursor.styl',
-    'styles/paste-manager.styl',
     'styles/quill.styl',
     'styles/toolbar.styl',
     'styles/tooltip.styl',

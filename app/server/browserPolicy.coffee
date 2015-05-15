@@ -27,7 +27,7 @@ for protocol in ['http', 'https']
   BrowserPolicy.content.allowStyleOrigin "#{protocol}://fonts.googleapis.com"
   BrowserPolicy.content.allowFontOrigin "#{protocol}://fonts.gstatic.com"
 # Trusted sites
-for origin in ['*.google-analytics.com', 'browser-update.org']
+for origin in ['*.google-analytics.com', 'browser-update.org', 'lorempixel.com']
   for protocol in ['http', 'https']
     origin = "#{protocol}://#{origin}"
     BrowserPolicy.content.allowOriginForAll origin
