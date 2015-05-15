@@ -1,75 +1,195 @@
 @import 'nib'
 @import '/client/styles/global-var.import'
 
-@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/base'
+//@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/base'
 @import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/link-tooltip'
 @import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/image-tooltip'
-@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/toolbar'
+//@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/toolbar'
 @import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/tooltip'
-
 @import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/quill'
 
 //quill(red, green, blue, 10px)
+outlineColor = darken(bgColor, 20%)
 
 .quill
   width 100%
   background bgColor
   border none
   border-radius roundCorner
+  // Toolbar
   .quill-toolbar
     display inline
     margin 0
     padding 0
     display flex
     flex-direction row
+    flex-wrap wrap
     align-items center
     align-content center
     background inherit
     border-radius roundCorner
-    .quill-select-wrapper
+    user-select none
+    // Select
+    .ql-picker
+      display block
       position relative
-      border 1px solid darken(bgColor, 20%)
+      border 1px solid outlineColor
       border-radius roundCorner
       background bgColor
-      padding .2em .5em 0 .5em
-      >.ql-picker
-        display inline
+      width 10em
+      display inline
+      color textColor
+      margin-right .5em
+      .ql-picker-label
+        padding .1em 1.5em
+        display block
+        cursor pointer
         color textColor
-        margin 0 -1.5em
-        padding 0 1.5em
-        border none
-        width 8em
-        overflow hidden
-        background transparent
-        font-weight bold
-        box-shadow none
-        appearance none
-      &:before, &:after
-        pointer-events none
-        font-family fontawesome
-        size 1em
-        font-family fontawesome
-        font-size 1.1em
-        line-height @width
-        padding-top 1.5em
-        color textColor
-      &:before
-        margin-right .5em
-      &:after
-        content '\f0dc'
-      &.ql-active:before
-        color brandInfo
-      &.quill-size:before
+        &:before, &:after
+          display block
+          pointer-events none
+          font-family fontawesome
+          size 1em
+          font-size @width
+          line-height @width
+          margin-top (@width*.25)
+          text-align center
+        &:before
+          absolute top left .25em
+        &:after
+          absolute top right .25em
+          content '\f0dc'
+    & .ql-size .ql-picker-label:before
         content '\f034'
-      &.quill-font:before
+    & .ql-font .ql-picker-label:before
         content '\f031'
-      &.quill-background:before
-        content '\f1fc'
-      &.quill-color:before
+    & .ql-color .ql-picker-label:before
         content '\f043'
-      &.quill-align:before
+    // Indentation specificity
+    & .ql-align .ql-picker-label[data-value='left']:before
         content '\f036'
-    button, .ql-picker
+    & .ql-align .ql-picker-label[data-value='center']:before
+        content '\f037'
+    & .ql-align .ql-picker-label[data-value='right']:before
+        content '\f038'
+    & .ql-align .ql-picker-label[data-value='justify']:before
+        content '\f039'
+      .ql-picker-options
+        display block
+        absolute top 1.5em left -1px
+        border-left 1px solid outlineColor
+        border-right @border-left
+        border-bottom @border-left
+        border-bottom-left-radius roundCorner
+        border-bottom-right-radius roundCorner
+        width @width
+        z-index 1
+        transition transform .3s ease-in-out
+        transform scaleY(0)
+        transform-origin 50% 0 0
+        .ql-picker-item
+          background bgColor
+          display block
+          padding 0 .8em
+          transition font-weight .3s ease-in-out
+          &.ql-selected
+            color brandInfo
+          &:hover
+            font-weight bold
+    & .ql-expanded .ql-picker-options
+      transform none
+
+
+    //   iconPickerWidth = 28px
+    //   inputHeight = 14px
+    //   inputPadding = 5px
+    //   separatorMargin = 4px
+    //   inputSize = inputHeight + 2*inputPadding
+    //   toolbarPadding = 8px
+    //   colorItemMargin = 2px
+    //   colorItemWidth = 16px
+    //   colorItemsPerRow = 7
+    //
+    //   .ql-picker-label
+    //     background bgColor
+    //     cursor pointer
+    //     position relative
+    //     width 100%
+    //   .ql-picker-label.ql-active, .ql-picker-labelhover
+    //     color brandInfo
+    //   .ql-picker-options
+    //     background-color bgColor
+    //     //display none
+    //     //padding 0.5*toolbarPadding toolbarPadding
+    //     position absolute
+    //     width 100%
+    //     .ql-picker-item
+    //       cursor pointer
+    //       display block
+    //       // padding-bottom inputPadding
+    //       // padding-top inputPadding
+    //     .ql-picker-item.ql-selected, .ql-picker-item:hover
+    //       color brandInfo
+    // // .ql-picker.ql-expanded
+    // //   .ql-picker-label
+    // //     font-size normal
+    // //     z-index 2
+    // //     padding-bottom 5px
+    // //   .ql-picker-options
+    // //     border-color outlineColor
+    // //     box-shadow rgba(0,0,0,0.2) 0 2px 8px
+    // //     display block
+    // //     z-index 1
+    // // .ql-picker.ql-font, .ql-picker.ql-size
+    // //   .ql-picker-label
+    // //     padding-left toolbarPadding
+    // //     padding-right toolbarPadding
+    // //     background yellow
+    // //     width @width
+    //   &:before, &:after
+    //     display block
+    //     pointer-events none
+    //     font-family fontawesome
+    //     size 1em
+    //     font-size 1.1em
+    //     line-height @width
+    //     padding-top .5em
+    //     color textColor
+    //   &:before
+    //     absolute top left .5em
+    //   &:after
+    //     absolute top right .5em
+    //     content '\f0dc'
+    //   &.ql-active:before
+    //     color brandInfo
+    //   &.quill-size:before
+    //     content '\f034'
+    //   &.quill-font:before
+    //     content '\f031'
+    //   &.quill-background:before
+    //     content '\f1fc'
+    //   &.quill-color:before
+    //     content '\f043'
+    //   &.quill-align:before
+    //     content '\f036'
+    // .ql-picker.ql-color-picker
+    //   .ql-picker-label
+    //     width iconPickerWidth
+    //   .ql-picker-options
+    //     padding inputPadding
+    //     width (colorItemWidth + 2*colorItemMargin) * colorItemsPerRow + 2*inputPadding + 2  // +2 for the border
+    //     .ql-picker-item
+    //       float left
+    //       size colorItemWidth
+    //       margin colorItemMargin
+    //     .ql-picker-item.ql-primary-color
+    //       margin-bottom toolbarPadding
+    //     .ql-picker-item.ql-selected, .ql-picker-itemhover
+    //       border-color outlineColor
+
+
+    // Button
+    button
       size 2em
       margin 0
       padding 0
@@ -87,9 +207,9 @@
         font-size 1.1em
         line-height @width
         color textColor
-      &.ql-active
-        &:before
-          color brandInfo
+        transition color .3s ease-in-out
+      &.ql-active:before
+        color brandInfo
       &.ql-bold:before
         content '\f032'
       &.ql-italic:before
@@ -115,3 +235,7 @@
     color black
     border 1px solid darken(bgColor, 20%)
     border-radius roundCorner
+  .ql-editor
+    margin-top .5em
+    a
+      text-decoration none
