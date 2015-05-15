@@ -6,7 +6,7 @@ Template.test.onRendered =>
     modules:
       toolbar: container: '.quill-toolbar'
       'link-tooltip': true
-      #'image-tooltip': true
+      'image-tooltip': true
 
 Template.test.helpers
   colors: -> [

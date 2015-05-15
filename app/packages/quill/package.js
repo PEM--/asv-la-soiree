@@ -17,10 +17,6 @@ Package.onUse(function(api) {
     'fortawesome:fontawesome@4.3.0'
   ]);
 
-  // api.imply([
-  //   'summernote:standalone',
-  //   ]);
-
   api.addFiles([
     'attribute.coffee',
   ]);
@@ -28,11 +24,9 @@ Package.onUse(function(api) {
   api.addFiles([
     'quill.jade',
     'quill.coffee',
-    'styles/base.styl',
     'styles/image-tooltip.styl',
     'styles/link-tooltip.styl',
     'styles/quill.styl',
-    'styles/toolbar.styl',
     'styles/tooltip.styl',
     'bower_components/quill/dist/quill.min.js'
   ], 'client');

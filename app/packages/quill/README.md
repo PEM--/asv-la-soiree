@@ -20,8 +20,9 @@ meteor add mquandalle:stylus orionjs:quill
   bgColor = white
   textColor = black
   brandInfo = blue
+  outlineColor = darken(bgColor, 20%)
   roundCorner = 2px
-  quill(bgColor, textColor, brandInfo, roundCorner)
+  quill(bgColor, textColor, brandInfo, outlineColor, roundCorner)
   ```
 
 ## FAQ
