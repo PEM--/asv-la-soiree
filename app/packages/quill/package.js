@@ -1,7 +1,7 @@
 Package.describe({
   name: 'orionjs:quill',
   summary: 'Quill editor for orion',
-  version: '1.0.0',
+  version: '1.0.1',
   git: 'https://github.com/orionjs/orion'
 });
 
@@ -28,7 +28,14 @@ Package.onUse(function(api) {
   api.addFiles([
     'quill.jade',
     'quill.coffee',
+    'styles/base.styl',
+    'styles/image-tooltip.styl',
+    'styles/link-tooltip.styl',
+    'styles/multi-cursor.styl',
+    'styles/paste-manager.styl',
     'styles/quill.styl',
+    'styles/toolbar.styl',
+    'styles/tooltip.styl',
     'bower_components/quill/dist/quill.min.js'
   ], 'client');
 });

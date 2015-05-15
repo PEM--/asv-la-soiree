@@ -3,26 +3,51 @@ template(name='testLayout')
 
 template(name='test')
   h1 Test Quill
-  .quill
-    .quill-toolbar
-      button.ql-bold
-      button.ql-italic
-      button.ql-strike
-      button.ql-underline
-      button.ql-link
-      .quill-select-wrapper.quill-size
-        select.ql-size
+  .quill.ql-container
+    .quill-toolbar.ql-toolbar.toolbar-container
+      .quill-select-wrapper.ql-size
+        select.ql-size(title='Size')
           option(value='10px') Small
           option(value='13px', selected) Normal
           option(value='18px') Large
           option(value='32px') Huge
-      button.ql-background
-      button.ql-color
-      .quill-select-wrapper.quill-font
-        select.ql-font
+      .quill-select-wrapper.ql-font
+        select.ql-font(title='Font')
           option(value='sans-serif', selected) Sans-serif
           option(value='serif') Serif
           option(value='monospace') Monospace
+      button.ql-bold(title='Bold')
+      button.ql-italic(title='Italize')
+      button.ql-strike(title='Strike')
+      button.ql-underline(title='Underline')
+      button.ql-picker.ql-link(title='Link')
+      button.ql-picker.ql-image(title='Image')
+      .quill-select-wrapper.ql-background
+        select.ql-background(title='Background Color')
+          each colors
+            option(value=this)
+      .quill-select-wrapper.ql-color
+        select.ql-color(title='Text color')
+          each colors
+            option(value=this)
+      button.ql-list(title='Ordered list')
+      button.ql-bullet(title='Bullet list')
+      .quill-select-wrapper.ql-alignment
+        select.ql-align(title='Text Alignment')
+          option(value='left', selected) Left
+          option(value='center') Center
+          option(value='right') Right
+          option(value='justify') Justify
+      span.ql-color.ql-picker.ql-color-picker.ql-expanded(title='Text Color')
+        span.ql-picker-label(data-value='rgb(0, 0, 0)')
+        span.ql-picker-options
+          each colors
+            span.ql-picker-item(data-value=this, style='background-color:{{this}};')        
+
+      span.ql-format-button.ql-link(title='Link')
+      span.ql-format-button.ql-image(title='Image')
+      span.ql-format-button.ql-list(title='List')
+
     .quill-editor
       h1 Hello Quill
       p Quilled

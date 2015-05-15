@@ -106,7 +106,7 @@ orionjs:dictionary@1.0.0
 orionjs:file-attribute@1.0.1
 orionjs:filesystem@1.0.2
 orionjs:iron-router-progress@1.0.3
-orionjs:quill@1.0.0
+orionjs:quill@1.0.1
 orionjs:relationships@1.0.0
 pierreeric:creativepure@0.1.16
 raix:eventemitter@0.1.2

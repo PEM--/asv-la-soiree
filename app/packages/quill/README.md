@@ -19,8 +19,9 @@ meteor add mquandalle:stylus orionjs:quill
   ```stylus
   bgColor = white
   textColor = black
+  brandInfo = blue
   borderRadius = 2px
-  quill(bgColor, textColor, borderRadius)
+  quill(bgColor, textColor, brandInfo, borderRadius)
   ```
 
 ## FAQ

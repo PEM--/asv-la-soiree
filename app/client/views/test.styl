@@ -1,8 +1,15 @@
 @import 'nib'
 @import '/client/styles/global-var.import'
-@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/quill'
+//@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/quill'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/base'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/link-tooltip'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/image-tooltip'
+//@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/multi-cursor'
+//@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/paste-manager'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/toolbar'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/tooltip'
 
-//quill(red, green, 10px)
+quill(red, green, blue, 10px)
 
 .quill
   width 100%
@@ -53,19 +60,28 @@
         margin-right .5em
       &:after
         content '\f0dc'
-      &.quill-size
+      &.ql-active
+        &:before
+          color brandInfo
+      &.ql-size
         &:before
           content '\f034'
-      &.quill-font
+      &.ql-font
         &:before
           content '\f031'
-    button
+      &.ql-background:before
+        content '\f1fc'
+      &.ql-color:before
+        content '\f043'
+      &.ql-alignment
+        &:before
+          content '\f036'
+    button, .ql-picker
       size 2em
       margin 0
       padding 0
       background inherit
-      //border none
-      border 1px solid black
+      border none
       color transparent
       display inline-flex
       justify-content center
@@ -78,6 +94,9 @@
         font-size 1.1em
         line-height @width
         color textColor
+      &.ql-active
+        &:before
+          color brandInfo
       &.ql-bold:before
         content '\f032'
       &.ql-italic:before
@@ -88,10 +107,18 @@
         content '\f0cd'
       &.ql-link:before
         content '\f0c1'
-      &.ql-color:before
-        content '\f043'
-
+      &.ql-image:before
+        content '\f03e'
+      &.ql-list:before
+        content '\f0ca'
+      &.ql-bullet:before
+        content '\f0cb'
   *:focus
     outline none
   *::-moz-focus-inner
     border 0
+  .quill-editor
+    background white
+    color black
+    border 1px solid darken(bgColor, 20%)
+    border-radius borderRadius
