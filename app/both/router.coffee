@@ -32,5 +32,5 @@ Router.map ->
   #     suffix: null
   #     meta:
   #       description: -> orion.dictionary.get 'site.description'
-  @route 'test',
-    layoutTemplate: 'testLayout'
+  # @route 'test',
+  #   layoutTemplate: 'testLayout'

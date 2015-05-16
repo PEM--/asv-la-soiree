@@ -6,6 +6,8 @@
 - [X] Preloading spinner
 - [X] Video background
 - [X] Reordering des scripts, links, ... dans le client/startup.coffee
+- [ ] Create default users with Meteor.settings
+- [ ] Create default informations at server start: title, description, ...
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
@@ -63,3 +65,13 @@
   - https://github.com/rwatts3/orionjs-cordova
 - [ ] Tests automatisés et gestion CdP automatisée
   - https://atmospherejs.com/xolvio/cucumber
+- [ ] Isolation of logs in Orion (app's log vs server vs Orion)
+  - https://github.com/mad-eye/pince/
+
+## Tutorial
+Orion is based on:
+- [ReactiveTemplates](https://github.com/nicolaslopezj/reactive-templates): A base template that you can inherit from.
+- [Options](https://github.com/nicolaslopezj/options): Reactive options for apps.
+- [Roles](https://github.com/nicolaslopezj/roles): Roles that applies to actions and collections.
+- [Iron router](https://github.com/iron-meteor/iron-router): A router that allow subscription to collection based on routes and layouts. A direct link to the [documentation and guide](https://github.com/iron-meteor/iron-router/blob/devel/Guide.md).
+- [Iron router active](https://github.com/zimme/meteor-iron-router-active): Helpers on routes.

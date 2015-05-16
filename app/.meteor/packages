@@ -17,6 +17,7 @@ mquandalle:stylus
 audit-argument-checks
 msavin:mongol
 msavin:jetsetter
+jag:pince
 
 # Routing
 iron:router
@@ -30,7 +31,7 @@ meteorhacks:inject-initial
 # CMS
 orionjs:core
 orionjs:config
-#orionjs:froala
+orionjs:summernote
 orionjs:quill
 #orionjs:lang-fr
 orionjs:filesystem
