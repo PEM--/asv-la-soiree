@@ -12,6 +12,7 @@
 - [X] Limitations with the security and the rate limiting
   - https://github.com/matteodem/meteor-easy-security
 - [ ] Upload d'image
+  - https://github.com/brightbind/orion-gridFS
 - [ ] Preloading de la video
 - http://desandro.github.io/imagesloaded/
 - https://github.com/iamkevingreen/imagesloaded

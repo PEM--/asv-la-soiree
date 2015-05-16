@@ -1,0 +1,8 @@
+{
+  "name": "orionjs:quill",
+  "version": "1.0.0",
+  "dependencies": {
+    "quill": "0.19.12"
+  },
+  "private": false
+}

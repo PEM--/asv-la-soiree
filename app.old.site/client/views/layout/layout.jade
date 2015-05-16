@@ -1,0 +1,30 @@
+head
+  // @TODO: Enhance https://github.com/yasinuslu/blaze-meta for making this possible
+  link(rel='publisher', href='https://plus.google.com/105839099099011364699')
+body
+  
+template(name='layout')
+  .main-container(data-role='layout')    
+    +header
+    +main
+    +footer
+
+template(name='header')
+  video.bgvid(autoplay, loop, poster='/videos/asv-la-soiree-ballons.jpg')
+    source(src='/videos/asv-la-soiree-ballons.mp4', type='video/mp4')
+  header
+    section
+      .center-all
+        .svg-logo-container
+          +apformLogo
+        h1 ASV, la soirée
+
+template(name='main')
+  main
+    section
+      +yield
+      
+template(name='footer')
+  footer
+    section
+      h1 Footer

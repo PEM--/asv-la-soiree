@@ -1,0 +1,58 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+# Meteor
+meteor-platform
+fastclick
+
+# Language
+coffeescript
+mquandalle:jade
+mquandalle:stylus
+
+# Security
+browser-policy
+matteodem:easy-security
+
+# Development helper
+audit-argument-checks
+msavin:mongol
+msavin:jetsetter
+jag:pince
+
+# CSS & effects
+pierreeric:creativepure
+#materialize:materialize
+#orionjs:materialize
+#twbs:bootstrap
+orionjs:bootstrap
+fortawesome:fontawesome
+hipstersmoothie:scrollmagic
+
+# Routing
+iron:router
+orionjs:iron-router-progress
+
+# SEO & WPO
+lookback:seo
+meteorhacks:inject-initial
+#meteorhacks:ssr
+
+# CMS
+orionjs:core
+orionjs:config
+orionjs:froala
+orionjs:quill
+#orionjs:lang-fr
+orionjs:filesystem
+orionjs:file-attribute
+orionjs:relationships
+brightbind:orion-gridfs
+
+# Translations
+#msgfmt:core
+#msgfmt:extract
+#msgfmt:ui

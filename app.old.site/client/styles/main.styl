@@ -1,0 +1,51 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'client/styles/*.import'
+
+typographic()
+
+// Normalize CSS using Axis
+normalize-css()
+
+*, *::after, *::before
+  // Globally set the sizing behavior
+  box-sizing border-box
+  // Ensure font's antialising
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  -webkit-touch-callout none
+
+// Set fonts and default colors
+t-headers(monoFont)
+html, body
+  //background-color sideColor
+  color textColor
+  font-family monoFont
+  //transition all defaultTransitionValue
+  fontSize()
+
+// Set page height
+html, body
+  height 100%
+
+// Styles on text content
+p, blockquote
+  text-align justify
+
+::selection
+  color bgColor
+  background brandColor
+
+@import s(basePath, ironprogress)
+// Links
+@import s(basePath, links)
+cpLinks(brandColor)
+
+.orion-bootstrap-admin
+  background white
+  min-height 100%
+
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/quill'
+
+quill(bgColor, textColor, brandInfo, outlineColor, roundCorner)

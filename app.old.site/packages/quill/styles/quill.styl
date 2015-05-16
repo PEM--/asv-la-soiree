@@ -1,0 +1,174 @@
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/link-tooltip'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/image-tooltip'
+@import '.meteor/local/build/programs/web.browser/packages/orionjs_quill/styles/tooltip'
+
+quill(bgColor, textColor, brandInfo, outlineColor, roundCorner)
+  .quill
+    width 100%
+    background bgColor
+    border none
+    border-radius roundCorner
+    // Toolbar
+    .quill-toolbar
+      display inline
+      margin 0
+      padding 0
+      display flex
+      flex-direction row
+      flex-wrap wrap
+      align-items center
+      align-content center
+      background inherit
+      border-radius roundCorner
+      user-select none
+      // Select
+      .ql-picker
+        display block
+        position relative
+        border 1px solid outlineColor
+        border-radius roundCorner
+        background bgColor
+        width 10em
+        display inline
+        color textColor
+        margin-right .5em
+        .ql-picker-label
+          padding .1em 1.5em
+          display block
+          cursor pointer
+          color textColor
+          &:before, &:after
+            display block
+            pointer-events none
+            font-family fontawesome
+            size 1em
+            font-size @width
+            line-height @width
+            margin-top (@width*.25)
+            text-align center
+          &:before
+            absolute top left .25em
+          &:after
+            absolute top right .25em
+            content '\f0dc'
+      & .ql-size .ql-picker-label:before
+          content '\f034'
+      & .ql-font .ql-picker-label:before
+          content '\f031'
+      & .ql-color .ql-picker-label:before
+          content '\f043'
+      & .ql-background .ql-picker-label:before
+          content '\f1fc'
+      // Indentation specificity
+      & .ql-align .ql-picker-label[data-value='left']:before
+          content '\f036'
+      & .ql-align .ql-picker-label[data-value='center']:before
+          content '\f037'
+      & .ql-align .ql-picker-label[data-value='right']:before
+          content '\f038'
+      & .ql-align .ql-picker-label[data-value='justify']:before
+          content '\f039'
+        .ql-picker-options
+          display block
+          absolute top 1.5em left -1px
+          border-left 1px solid outlineColor
+          border-right @border-left
+          border-bottom @border-left
+          border-bottom-left-radius roundCorner
+          border-bottom-right-radius roundCorner
+          width @width
+          z-index 1
+          transition transform .3s ease-in-out
+          transform scaleY(0)
+          transform-origin 50% 0 0
+          .ql-picker-item
+            background bgColor
+            display block
+            padding 0 .8em
+            transition font-weight .3s ease-in-out
+            &.ql-selected
+              color brandInfo
+            &:hover
+              font-weight bold
+      & .ql-expanded .ql-picker-options
+        transform none
+      // Color pickers
+      & .ql-color-picker
+        width 3em
+        .ql-picker-label
+          size 100% 1.5em
+          color attr(data-value)
+          &:after
+            color textColor
+          &:before
+            // Not enough web browser support for the moment
+            color attr(data-value)
+        .ql-picker-options
+          background bgColor
+          width 10em
+          display flex
+          flex-direction row
+          flex-wrap wrap
+          justify-content flex-start
+          align-items flex-start
+          align-content flex-start
+          .ql-picker-item
+            display inline-block
+            border 1px solid outlineColor
+            border-radius roundCorner
+            margin 3px
+            size 1em
+            transition border-color .3s ease-in-out
+            &.ql-selected
+              border 1px solid brandInfo
+      // Button
+      button
+        size 2em
+        margin 0
+        padding 0
+        background inherit
+        border none
+        color transparent
+        display inline-flex
+        justify-content center
+        align-items center
+        &:before
+          pointer-events none
+          display block
+          size 1em
+          font-family fontawesome
+          font-size 1.1em
+          line-height @width
+          color textColor
+          transition color .3s ease-in-out
+        &.ql-active:before
+          color brandInfo
+        &.ql-bold:before
+          content '\f032'
+        &.ql-italic:before
+          content '\f033'
+        &.ql-strike:before
+          content '\f0cc'
+        &.ql-underline:before
+          content '\f0cd'
+        &.ql-link:before
+          content '\f0c1'
+        &.ql-image:before
+          content '\f03e'
+        &.ql-list:before
+          content '\f0ca'
+        &.ql-bullet:before
+          content '\f0cb'
+    *:focus
+      outline none
+    *::-moz-focus-inner
+      border 0
+    .quill-editor
+      background white
+      color black
+      border 1px solid darken(bgColor, 20%)
+      border-radius roundCorner
+    .ql-editor
+      margin-top .5em
+      a
+        text-decoration none
