@@ -27,22 +27,22 @@ Inject.rawHead 'loader-style',
   '<link rel="apple-touch-icon" sizes="180x180" ' +
     'href="/apple-touch-icon-180x180.png">' +
   '<link rel="icon" type="image/png" ' +
-    'href="/favicon-32x32.png?v=2" sizes="32x32">' +
+    'href="/favicon-32x32.png?v=3" sizes="32x32">' +
   '<link rel="icon" type="image/png" ' +
     'href="/android-chrome-192x192.png" sizes="192x192">' +
   '<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">' +
   '<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">' +
   '<link rel="manifest" href="/manifest.json">' +
   '<meta name="msapplication-TileColor" ' +
-    "content=\"#{colorTheme.sideColor}\">" +
+    "content=\"#{colorTheme.brandColor}\">" +
   '<meta name="msapplication-TileImage" content="/mstile-144x144.png">' +
   '<meta name="theme-color" content="#ffffff">' +
   # The loading spinner needs some theming.
   '<style>' +
-    "html{background-color:#{colorTheme.sideColor};}" +
+    "html{background-color:#{colorTheme.bgBrandColor};}" +
     'body>div.main-container[data-role=\'spinner\']{' +
-      "background-color:#{colorTheme.sideColor};" +
-      "color:#{colorTheme.sideColor};" +
+      "background-color:#{colorTheme.bgBrandColor};" +
+      "color:#{colorTheme.bgBrandColor};" +
       'overflow:hidden;width:100%;height:100%}' +
     'noscript{background:white;text-align:center;}' +
     'noscript>h1{color:red;}' +
@@ -51,10 +51,10 @@ Inject.rawHead 'loader-style',
       'top:0;right:0;width:80px;' +
       '-webkit-animation:rotation .6s infinite linear;' +
       'animation:rotation .6s infinite linear;' +
-      "border-left:6px solid #{colorTheme.transAsideColor};" +
-      "border-right:6px solid #{colorTheme.transAsideColor};" +
-      "border-bottom:6px solid #{colorTheme.transAsideColor};" +
-      "border-top:6px solid #{colorTheme.asideColor};" +
+      "border-left:6px solid #{colorTheme.transBrandColor};" +
+      "border-right:6px solid #{colorTheme.transBrandColor};" +
+      "border-bottom:6px solid #{colorTheme.transBrandColor};" +
+      "border-top:6px solid #{colorTheme.brandColor};" +
       'border-radius:100%;' +
     '}' +
     '@-webkit-keyframes rotation{' +

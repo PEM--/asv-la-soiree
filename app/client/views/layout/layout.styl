@@ -53,7 +53,7 @@
           font-size 3em
           text-align center
           font-weight 900
-          color brandSuccess
+          color brandColor
           text-shadow 0 0 5px rgba(black, 20%)
   main
     transform translateZ(0)
@@ -61,7 +61,9 @@
     margin 0
     padding 0
     z-index 1
-    background bgColor
+    background textColor
+    p
+      color bgColor
     >section
       z-index 1
       display inline-block
@@ -72,7 +74,8 @@
     margin 0
     padding 0
     z-index 1
-    background brandSuccess
+    background bgColor
+    color textColor
     >section
       display inline-block
       center(maxSize)
