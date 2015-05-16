@@ -9,20 +9,43 @@
   size 100%
   >nav
     fixed top left
+    background textColor
     //background yellow
-    width 100%
     z-index 1000
-    transform translateZ(0)
+    width 100%
     display flex
     justify-content center
-    >ul
-      //background violet
+    >.nav
       width 100%
       max-width maxSize
       display flex
-      flex-wrap no-wrap
-      justify-content space-between
-      inline-list()
-      >li
-        >h1
-          color brandColor
+      >.logo
+        display inline-block
+        relative top .7em left
+        size 11em 4em
+        //background red
+        >.svg-logo-container
+          display inline-block
+          relative top left
+          asvlasoireeBigLogo(100%)
+          vertical-align middle
+          overflow hidden
+          cursor pointer
+      >ul
+        flex-grow 1
+        //background violet
+        display flex
+        flex-wrap no-wrap
+        align-content flex-end
+        justify-content flex-end
+        inline-list()
+        >li
+          margin 1em
+          font-size 1.3em
+          font-family BaronNeue
+          >a
+            transition color .3s ease-in-out
+            color bgColor
+        >li.active
+          >a
+            color brandColor

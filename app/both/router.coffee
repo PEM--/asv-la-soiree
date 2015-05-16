@@ -25,6 +25,12 @@ if Meteor.isClient
     separator: '-'
     description: orion.dictionary.get 'site.description'
 
+@navLinks = [
+  { name: 'Programme', slug: '/program' }
+  { name: 'Inscription en ligne', slug: '/subscription' }
+  { name: 'Contact', slug: '/contact' }
+]
+
 Router.map ->
   @route '/',
     name: 'home'
@@ -33,5 +39,5 @@ Router.map ->
       suffix: null
       meta:
         description: -> orion.dictionary.get 'site.description'
-  @route 'test',
-    layoutTemplate: 'testLayout'
+  for navLink in navLinks
+    @route navLink.slug

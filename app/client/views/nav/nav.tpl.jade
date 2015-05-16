@@ -1,4 +1,8 @@
-nav: ul
-  li: h1 Test 1
-  li: h1 Test 2
-  li: h1 Test 3
+nav
+  .nav
+    .logo
+      .svg-logo-container
+        +asvlasoireeBigLogo
+    ul
+      each links
+        li(class=activeRoute): a(href=slug)= name
