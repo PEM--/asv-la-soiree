@@ -12,6 +12,25 @@ orion.dictionary.addDefinition 'title', 'site',
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
 
+if Meteor.isServer
+  Meteor.startup ->
+    # Check if site description is available.
+    if orion.dictionary.find({site:{'$exists':true}}).count() is 0
+      srvLog.info 'No site description'
+      # There's only one item in the dictionnary which serves
+      #  as an object containing all properties for the site.
+      dicId = (orion.dictionary.findOne())._id
+      orion.dictionary.update dicId,
+        '$set': site:
+          title: 'ASV, la soirée'
+          description: """
+            Une super soirée pour le
+            congrès des ASV, les auxiliaires vétérinaires.
+          """
+      , (err) ->
+        return srvLog.error "Dictionnary update failed: #{err}" if err
+        srvLog.info 'Default site description created'
+
 # Simple pages for Home, EULA, Cookies
 Pages = new orion.collection 'pages',
   singularName: 'page',

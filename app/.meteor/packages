@@ -19,6 +19,15 @@ msavin:mongol
 msavin:jetsetter
 jag:pince
 
+# CSS & effects
+pierreeric:creativepure
+#materialize:materialize
+#orionjs:materialize
+#twbs:bootstrap
+orionjs:bootstrap
+fortawesome:fontawesome
+hipstersmoothie:scrollmagic
+
 # Routing
 iron:router
 orionjs:iron-router-progress
@@ -39,15 +48,6 @@ orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
 
-# CSS & effects
-pierreeric:creativepure
-#materialize:materialize
-#orionjs:materialize
-#twbs:bootstrap
-orionjs:bootstrap
-fortawesome:fontawesome
-hipstersmoothie:scrollmagic
-
 # Translations
 #msgfmt:core
 #msgfmt:extract
@@ -55,4 +55,4 @@ hipstersmoothie:scrollmagic
 
 # Security
 browser-policy
-matteodem:easy-security
+#matteodem:easy-security

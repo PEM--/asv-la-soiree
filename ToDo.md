@@ -6,16 +6,13 @@
 - [X] Preloading spinner
 - [X] Video background
 - [X] Reordering des scripts, links, ... dans le client/startup.coffee
-- [ ] Create default users with Meteor.settings
-- [ ] Create default informations at server start: title, description, ...
-- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
-- [ ] Sécurité : problème d'audit-argument-checks sur orionjs:pages
+- [X] Create default users with Meteor.settings
+- [X] Create default informations at server start: title, description, ...
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
-- [ ] Problème de not found sur orionjs:pages
+- [ ] Upload d'image
 - [ ] Preloading de la video
 - http://desandro.github.io/imagesloaded/
 - https://github.com/iamkevingreen/imagesloaded
-- [ ] Upload d'image
 - [ ] FTS sur le back office
   - http://www.okgrow.com/posts/2015/04/27/guide-to-full-text-search-in-meteor/
   - https://github.com/loongmxbt/orion-lfs
@@ -67,6 +64,7 @@
   - https://atmospherejs.com/xolvio/cucumber
 - [ ] Isolation of logs in Orion (app's log vs server vs Orion)
   - https://github.com/mad-eye/pince/
+- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 
 ## Tutorial
 Orion is based on:
