@@ -9,6 +9,8 @@
 - [X] Create default users with Meteor.settings
 - [X] Create default informations at server start: title, description, ...
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
+- [X] Limitations with the security and the rate limiting
+  - https://github.com/matteodem/meteor-easy-security
 - [ ] Upload d'image
 - [ ] Preloading de la video
 - http://desandro.github.io/imagesloaded/

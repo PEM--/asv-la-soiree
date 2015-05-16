@@ -13,6 +13,10 @@ coffeescript
 mquandalle:jade
 mquandalle:stylus
 
+# Security
+browser-policy
+matteodem:easy-security
+
 # Development helper
 audit-argument-checks
 msavin:mongol
@@ -52,7 +56,3 @@ brightbind:orion-gridfs
 #msgfmt:core
 #msgfmt:extract
 #msgfmt:ui
-
-# Security
-browser-policy
-#matteodem:easy-security
