@@ -10,20 +10,13 @@ template(name='layout')
     +footer
 
 template(name='header')
-  video.bgvid(autoplay, loop, poster='/videos/lyon-festival-light.jpg')
-    source(src='/videos/lyon-festival-light.mp4', type='video/mp4')
-  header
-    section
-      .center-all
-        .svg-logo-container
-          +asvlasoireeLogo
-        h1 {{dict 'site.description'}}
-        h2 2015
+  nav: ul
+    li: h1 Test 1
+    li: h1 Test 2
+    li: h1 Test 3
 
 template(name='main')
-  main
-    section
-      +yield
+  +yield
       
 template(name='footer')
   footer
