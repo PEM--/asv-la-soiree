@@ -31,7 +31,7 @@ meteorhacks:inject-initial
 # CMS
 orionjs:core
 orionjs:config
-orionjs:summernote
+orionjs:froala
 orionjs:quill
 #orionjs:lang-fr
 orionjs:filesystem

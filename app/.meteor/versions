@@ -46,6 +46,7 @@ ejson@1.0.6
 email@1.0.6
 fastclick@1.0.3
 fortawesome:fontawesome@4.3.0
+froala:editor@1.2.7
 geojson-utils@1.0.3
 gwendall:session-json@0.1.7
 hipstersmoothie:scrollmagic@0.0.9
@@ -106,10 +107,10 @@ orionjs:core@1.0.0
 orionjs:dictionary@1.0.0
 orionjs:file-attribute@1.0.1
 orionjs:filesystem@1.0.2
+orionjs:froala@1.0.0
 orionjs:iron-router-progress@1.0.3
 orionjs:quill@1.0.1
 orionjs:relationships@1.0.0
-orionjs:summernote@1.0.0
 pierreeric:creativepure@0.1.16
 raix:eventemitter@0.1.2
 random@1.0.3
@@ -125,7 +126,6 @@ softwarerero:accounts-t9n@1.0.9
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
-summernote:standalone@0.6.6
 templating@1.1.1
 tracker@1.0.7
 ui@1.0.6

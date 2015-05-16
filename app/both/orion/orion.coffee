@@ -19,9 +19,9 @@ Pages = new orion.collection 'pages',
   tabular:
     columns: [
       { data: 'title', title: 'Titre'  }
-      orion.attributeColumn 'summernote', 'body', 'Contenu'
+      orion.attributeColumn 'froala', 'body', 'Contenu'
     ]
 Pages.attachSchema new SimpleSchema
   title: type: String
-  body: orion.attribute 'summernote', label: 'Contenu'
+  body: orion.attribute 'froala', label: 'Contenu'
   createdBy: orion.attribute 'createdBy'
