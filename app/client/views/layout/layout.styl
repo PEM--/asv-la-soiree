@@ -1,31 +1,12 @@
 @import 'nib'
 @import 'jeet'
-@import 'client/styles/global-var.import'
+@import 'client/styles/*.import'
 
 .main-container
   transition opacity defaultTransitionValue
   margin 0
   padding 0
   size 100%
-  >nav
-    fixed top left
-    background yellow
-    width 100%
-    z-index 1000
-    transform translateZ(0)
-    display flex
-    justify-content center
-    >ul
-      background violet
-      width 100%
-      max-width maxSize
-      display flex
-      flex-wrap no-wrap
-      justify-content space-between
-      inline-list()
-      >li
-        >h1
-          color brandColor
   main
     transform translateZ(0)
     width 100%
