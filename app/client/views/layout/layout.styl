@@ -31,34 +31,37 @@ html, body, .main-container, .router-container
     flex-grow 1
     flex-shrink 0
     width 100%
-    margin 5em 0 0 0
     transition opacity defaultTransitionValue
-    background blue
+    //background blue
     //min-height 100%
     display flex
     flex-direction column
     header
       flex-grow 0
       flex-shrink 0
-      //height 100%
-      //min-height 100%
-      background green
+      height 100%
+      min-height 100vh
+      //background green
       section
         h1
           color brandColor
     main
       flex-grow 0
       flex-shrink 0
-      background yellow
+      background red
       section
+        background yellow
+        center(maxSize)
         h1, p
           color brandColor
+    main:not([data-role='home'])
+      margin 4.5em 0 0 0
   footer
     flex-grow 0
     flex-shrink 0
     width 100%
-    //background bgColor
-    background red
+    background bgColor
+    //background red
     color textColor
     section
       center(maxSize)
