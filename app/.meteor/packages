@@ -51,7 +51,7 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
-orionjs:creativepure
+orionjs:admin-unstyled
 
 # Translations
 #msgfmt:core
