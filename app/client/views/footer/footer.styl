@@ -14,9 +14,12 @@
     z-index 1
     transform translateZ(0)
     h1
+      width 100%
       color brandColor
       font-family BaronNeue
       font-size .9rem
+    a, a:visited
+      outline none
     section
       display flex
       flex-direction row
@@ -33,18 +36,31 @@
         display inline-block
         height 100%
         box-sizing content-box
+        display flex
+        flex-direction row
+        flex-wrap wrap
+        a, a:visited
+          display block
+          flex-grow 0
+          flex-shrink 0
       // Steering comittee
       article:nth-child(1)
         width 30%
         flex-basis @width
         padding-right 5%
         border-right 1px solid brandColor
-        a
-          outline none
-          .svg-logo-container
-              apformLogo(40%)
+        a, a:visited, p
+          width 40%
+          margin-right 1em
+        .svg-logo-container:nth-child(1)
+          apformLogo(100%)
       // Partners
       article:nth-child(2)
         width 59%
         padding-left 5%
         flex-basis @width
+        a, a:visited, p
+          margin-right 1em
+          width 30%
+        .svg-logo-container:nth-child(1)
+          snvelLogo(50%)

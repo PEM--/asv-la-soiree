@@ -11,7 +11,6 @@
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
 - [X] Limitations with the security and the rate limiting
   - https://github.com/matteodem/meteor-easy-security
-- [ ] Menu for smartphone
 - [ ] Upload d'image
   - https://github.com/brightbind/orion-gridFS
 - [ ] Preloading de la video
@@ -26,6 +25,7 @@
   - https://github.com/frabrunelle/meteor-fittext
   - https://github.com/gwendall/meteor-template-animations
 - [ ] Replace video on mobiles/tablets with a responsive image
+- [ ] Menu for smartphone
 - [ ] Main template
 - [ ] Notification de déconnexions du serveur
   - https://github.com/alexreich/meteor-machina
