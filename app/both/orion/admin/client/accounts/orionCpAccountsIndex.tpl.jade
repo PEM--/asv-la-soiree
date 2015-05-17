@@ -1,0 +1,26 @@
++Layout template="orionCpSmallContentOffset"
+  +Layout template="orionCpTitle"
+    | Accounts
+    if userHasPermission 'accounts.invite'
+      a.btn.btn-default.btn-xs(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
+
+  +Layout template="orionCpContentContainer"
+    table.table
+      thead: tr
+        th Nom
+        th Email
+        th Rôles
+        th Actions
+      tbody
+        each users
+          tr
+            td: b= profile.name
+            td
+              each emails
+                | {{ address }}
+            td
+              each roles
+                span.label.label-danger= this
+            td
+              each buttons
+                a.btn.btn-default.btn-xs.user-btn-action(data-user="{{ ../_id }}")= title

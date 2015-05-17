@@ -1,0 +1,14 @@
+template(name="orionCpSidebar")
+  ul
+    li
+      a(href="{{ options 'homePath' '/' }}") {{ options 'siteName' 'Admin' }}
+    each links 'top'
+      +orionCpSidebarLink
+    each links 'medium'
+      +orionCpSidebarLink
+    each links 'bottom'
+      +orionCpSidebarLink
+
+template(name="orionCpSidebarLink")
+  li(class="{{ isActiveRoute regex=activeRouteRegex }}")
+    a(href="{{ pathFor routeName }}")= title

@@ -1,0 +1,37 @@
+template(name='orionCpLayout')
+  .admin
+    aside
+      if dictionaryReady
+        +reactiveTemplate template='links'
+    main
+      +orionCpHeader
+        .admin-content
+          if dictionaryReady
+            +yiels
+
+template(name='orionCpOutAdminLayout')
+  h1
+    +yield 'title'
+  +yield
+
+template(name='orionCpHeader')
+  a.menu-toggle
+    i.fa.fa-bars
+
+template(name='orionCpSmallContentOffset')
+  +yield
+
+template(name='orionCpMediumContentOffset')
+  +yield
+
+template(name='orionCpContentContainer')
+  +yield
+
+template(name='orionCpTitle')
+  h1.title
+    +yield
+  hr
+
+template(name='orionCpTabs')
+  +each items
+    a.btn.btn-xs(class="{{ class }}")= title

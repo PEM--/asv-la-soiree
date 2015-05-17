@@ -25,10 +25,8 @@ jag:pince
 
 # CSS & effects
 pierreeric:creativepure
-#materialize:materialize
-#orionjs:materialize
-#twbs:bootstrap
-orionjs:bootstrap
+#twbs:Cp
+#orionjs:Cp
 fortawesome:fontawesome
 hipstersmoothie:scrollmagic
 
@@ -43,10 +41,12 @@ meteorhacks:inject-initial
 #meteorhacks:ssr
 
 # CMS
+aldeed:tabular
+useraccounts:unstyled
 orionjs:core
 orionjs:config
 orionjs:froala
-orionjs:quill
+#orionjs:quill
 #orionjs:lang-fr
 orionjs:filesystem
 orionjs:file-attribute
