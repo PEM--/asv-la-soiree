@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'orionjs:bootstrap',
+  name: 'orionjs:creativepure',
   summary: 'A simple theme for orion',
   version: '1.0.0',
   git: 'https://github.com/orionjs/orion'
@@ -10,62 +10,58 @@ Package.onUse(function(api) {
 
   api.use([
     'meteor-platform',
+    'coffeescript',
     'orionjs:core@1.0.0',
-    'less',
+    'mquandalle:stylus@1.1.1',
     'iron:layout@1.0.7',
     'aldeed:autoform@5.1.2',
     'aldeed:tabular@1.1.0',
-    'useraccounts:bootstrap@1.8.1',
+    'useraccounts:unstyled@1.10.0',
     'zimme:iron-router-active@1.0.4'
-    ]);
+  ]);
 
   api.imply([
     'orionjs:core',
     'iron:layout',
     'aldeed:autoform',
-    'useraccounts:bootstrap',
+    'useraccounts:unstyled',
     'zimme:iron-router-active'
-    ]);
+  ]);
 
   api.addFiles([
-    'init.js',
-    'tabular.js'
-    ]);
+    'both/init.coffee',
+    'both/tabular.coffee'
+  ]);
 
   api.addFiles([
-    'views/layout/layout.html',
-    'views/layout/layout.js',
-    'views/layout/layout.less',
-    'views/sidebar/sidebar.html',
-    'views/sidebar/sidebar.less',
-    'views/accounts/login.html',
-    'views/accounts/register-with-invitation.html',
-    'views/accounts/index.html',
-    'views/accounts/password.html',
-    'views/accounts/profile.html',
-    'views/accounts/profile.js',
-    'views/accounts/accounts.less',
-    'views/accounts/accounts.html',
-    'views/accounts/roles.html',
-    'views/accounts/invite.html',
-    'views/config/update.html',
-    'views/config/update.js',
-    'views/dictionary/update.html',
-    'views/dictionary/update.js',
-    'views/collections/index.html',
-    'views/collections/index.js',
-    'views/collections/index.less',
-    'views/collections/create.html',
-    'views/collections/create.js',
-    'views/collections/update.html',
-    'views/collections/update.js',
-    'views/collections/delete.html',
-    'views/pages/index.html',
-    'views/pages/create.html',
-    'views/pages/update.html',
-    'views/pages/delete.html',
-    'views/pages/pages.js',
-    ], 'client');
+    'client/accounts/orionCpAccountIndex.tpl.jade',
+    'client/accounts/orionCpAccountPassword.tpl.jade',
+    'client/accounts/orionCpAccountProfile.tpl.jade',
+    'client/accounts/orionCpAccountsInvite.tpl.jade',
+    'client/accounts/orionCpAccountsUpdateRoles.tpl.jade',
+    'client/accounts/orionCpLogin.tpl.jade',
+    'client/accounts/orionCpRegisterWithInvitation.tpl.jade',
+    'client/accounts/profile.coffee',
+    'client/collections/create.coffee',
+    'client/collections/index.coffee',
+    'client/collections/orionCpCollectionsCreate.tpl.jade',
+    'client/collections/orionCpCollectionsDelete.tpl.jade',
+    'client/collections/orionCpCollectionsIndex.tpl.jade',
+    'client/collections/orionCpCollectionsUpdate.tpl.jade',
+    'client/collections/update.coffee',
+    'client/config/orionCpConfigUpdate.tpl.jade',
+    'client/config/update.coffee',
+    'client/dictionnary/orionCpDictionaryUpdate.tpl.jade',
+    'client/dictionnary/update.coffee',
+    'client/layout/layout.coffee',
+    'client/layout/layout.jade',
+    'client/pages/orionCpPagesCreate.tpl.jade',
+    'client/pages/orionCpPagesDelete.tpl.jade',
+    'client/pages/orionCpPagesIndex.tpl.jade',
+    'client/pages/orionCpPagesUpdate.tpl.jade',
+    'client/pages/pages.coffee',
+    'client/sidebar/sidebar.jade'
+  ], 'client');
 
   api.export('orion');
 });

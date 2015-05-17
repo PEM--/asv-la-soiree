@@ -42,7 +42,6 @@ meteorhacks:inject-initial
 
 # CMS
 aldeed:tabular
-useraccounts:unstyled
 orionjs:core
 orionjs:config
 orionjs:froala
@@ -52,6 +51,7 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
+orionjs:creativepure
 
 # Translations
 #msgfmt:core

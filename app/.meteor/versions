@@ -103,6 +103,7 @@ orionjs:base@1.0.1
 orionjs:collections@1.0.1
 orionjs:config@1.0.1
 orionjs:core@1.0.0
+orionjs:creativepure@1.0.0
 orionjs:dictionary@1.0.0
 orionjs:file-attribute@1.0.1
 orionjs:filesystem@1.0.2
@@ -131,8 +132,8 @@ ui@1.0.6
 underscore@1.0.3
 underscorestring:underscore.string@3.0.3_1
 url@1.0.4
-useraccounts:core@1.8.1
-useraccounts:unstyled@1.8.1
+useraccounts:core@1.10.0
+useraccounts:unstyled@1.10.0
 webapp@1.2.0
 webapp-hashing@1.0.3
 yasinuslu:blaze-meta@0.3.1
