@@ -13,5 +13,38 @@
     // Create a new context for overlapping video
     z-index 1
     transform translateZ(0)
+    h1
+      color brandColor
+      font-family BaronNeue
+      font-size .9rem
     section
-      center(maxSize)
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content flex-start
+      align-items stretch
+      align-content stretch
+      width 100%
+      max-width maxSize
+      margin 1em auto
+      article
+        flex-grow 1
+        flex-shrink 0
+        display inline-block
+        height 100%
+        box-sizing content-box
+      // Steering comittee
+      article:nth-child(1)
+        width 30%
+        flex-basis @width
+        padding-right 5%
+        border-right 1px solid brandColor
+        a
+          outline none
+          .svg-logo-container
+              apformLogo(40%)
+      // Partners
+      article:nth-child(2)
+        width 59%
+        padding-left 5%
+        flex-basis @width

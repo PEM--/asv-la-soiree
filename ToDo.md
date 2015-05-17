@@ -49,7 +49,7 @@
 - [ ] EULA / CGU
 - [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
-- [ ] Google universal analytics
+- [X] Google universal analytics
   - https://atmospherejs.com/reywood/iron-router-ga
 - [ ] Rich snippets
 - [ ] G+ links

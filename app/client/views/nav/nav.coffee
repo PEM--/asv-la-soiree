@@ -3,7 +3,7 @@ Template.nav.onRendered ->
   @$routerContainer = $('.router-container')
   # Prevent basic link behavior for adding an in between transition
   #  before activating the routing.
-  $('a').on 'click', (e) =>
+  (@$ 'a').on 'click', (e) =>
     e.preventDefault()
     @$routerContainer.css 'opacity', 0
     .on TRANSITION_END_EVENT, =>

@@ -5,6 +5,8 @@ Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
+  # Used for Google universal analytics
+  trackPageView: true
 
 if Meteor.isClient
   Router.plugin 'seo', defaults:

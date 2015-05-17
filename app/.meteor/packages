@@ -35,6 +35,7 @@ hipstersmoothie:scrollmagic
 # Routing
 iron:router
 orionjs:iron-router-progress
+reywood:iron-router-ga
 
 # SEO & WPO
 lookback:seo

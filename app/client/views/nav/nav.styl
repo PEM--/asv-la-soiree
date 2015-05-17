@@ -1,6 +1,7 @@
 @import 'nib'
 @import 'jeet'
 @import 'client/styles/*.import'
+@import s(basePath, links)
 
 .main-container
   transition opacity defaultTransitionValue
@@ -26,10 +27,7 @@
         size 11em 4em
         //background red
         >.svg-logo-container
-          display inline-block
-          relative top left
           asvlasoireeBigLogo(100%)
-          vertical-align middle
           cursor pointer
       >ul
         flex-grow 1
@@ -43,6 +41,7 @@
           margin 1em
           font-size 1.3em
           font-family BaronNeue
+          cpLinks(brandColor)
           >a
             transition color .3s ease-in-out
             color bgColor

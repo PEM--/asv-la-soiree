@@ -1,17 +1,25 @@
-logo1Width = 260
-logo1Height = 254.73
+baseSvgLogo()
+  display inline-block
+  position relative
+  vertical-align middle
+
 asvlasoireeSmallLogo(svgWidth)
+  logo1Width = 260
+  logo1Height = 254.73
+  baseSvgLogo()
   width svgWidth
   padding-bottom (svgWidth*logo1Height/logo1Width)
 
-logo2Width = 400
-logo2Height = 147.77
 asvlasoireeBigLogo(svgWidth)
+  logo2Width = 400
+  logo2Height = 147.77
+  baseSvgLogo()
   width svgWidth
   padding-bottom (svgWidth*logo2Height/logo2Width)
 
-logo3Width = 132.31
-logo3Height = 46.14
 apformLogo(svgWidth)
+  logo3Width = 132.31
+  logo3Height = 46.14
+  baseSvgLogo()
   width svgWidth
   padding-bottom (svgWidth*logo3Height/logo3Width)
