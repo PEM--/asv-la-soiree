@@ -1,5 +1,5 @@
 # Current favicon version
-favIconVersion = '?v=4'
+favIconVersion = '?v=5'
 
 # Default PLT page: Injected initial styles and content
 #  for boosting SEO ranking.
