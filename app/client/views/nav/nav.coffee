@@ -10,6 +10,7 @@ Template.nav.onRendered ->
       # Transition when fade out animation is done
       Router.go e.target.pathname
       @$routerContainer.css 'opacity', 1
+      @$routerContainer.off TRANSITION_END_EVENT
 
 Template.nav.helpers
   links: -> navLinks
@@ -22,3 +23,4 @@ Template.nav.events
     .on TRANSITION_END_EVENT, ->
       Router.go '/'
       t.$routerContainer.css 'opacity', 1
+      t.$routerContainer.off TRANSITION_END_EVENT
