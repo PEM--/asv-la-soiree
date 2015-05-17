@@ -9,8 +9,8 @@ Template.nav.onRendered ->
     .on TRANSITION_END_EVENT, =>
       # Transition when fade out animation is done
       Router.go e.target.pathname
-      @$routerContainer.css 'opacity', 1
       @$routerContainer.off TRANSITION_END_EVENT
+      Meteor.setTimeout (=> @$routerContainer.css 'opacity', 1), 64
 
 Template.nav.helpers
   links: -> navLinks
@@ -22,5 +22,5 @@ Template.nav.events
     t.$routerContainer.css 'opacity', 0
     .on TRANSITION_END_EVENT, ->
       Router.go '/'
-      t.$routerContainer.css 'opacity', 1
       t.$routerContainer.off TRANSITION_END_EVENT
+      Meteor.setTimeout (-> t.$routerContainer.css 'opacity', 1), 64

@@ -3,58 +3,46 @@
 @import 'client/styles/*.import'
 
 .main-container
-  >video
-    fixed bottom right
-    min-width 100%
-    min-height 100%
-    size auto
-    overflow hidden
-  header
-    flex-grow 0
-    flex-shrink 0
-    height 100%
-    min-height 100vh
-    //background green
-    section
-      h1
-        color brandColor
-//   >header
-//     margin 0
-//     padding 0
-//     size 100%
-//     >section
-//       display inline-block
-//       width 100%
-//       margin 0
-//       padding 0
-//       z-index 1
-//       min-height 100%
-//       transform translateZ(0)
-//       overflow hidden
-//       text-align center
-//       //background green
-//       background: linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%);
-//       >.center-all
-//         absolute top 50%
-//         width 100%
-//         padding-top 1.5em
-//         transform translateY(-50%)
-//         >.svg-logo-container
-//           filter drop-shadow(0 0 10px rgba(black, 40%))
-//           display inline-block
-//           position relative
-//           asvlasoireeBigLogo(60%)
-//           vertical-align middle
-//   >main
-//     transform translateZ(0)
-//     width 100%
-//     margin 0
-//     padding 0
-//     z-index 1
-//     background textColor
-//     p
-//       color bgColor
-//     >section
-//       z-index 1
-//       display inline-block
-//       center(maxSize)
+  .router-container
+    >video
+      fixed bottom right
+      min-width 100%
+      min-height 100%
+      size auto
+      overflow hidden
+    header
+      height 100%
+      min-height 100vh
+      // Create a new context for overlapping video
+      z-index 1
+      transform translateZ(0)
+      //background green
+      section
+        // Create a new context for overlapping video
+        z-index 1
+        transform translateZ(0)
+        absolute top left
+        display inline-block
+        size 100%
+        margin 0
+        padding 0
+        min-height 100%
+        overflow hidden
+        background linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%);
+        // background red
+        .center-all
+          //background yellow
+          absolute top 50% left 50%
+          width 60%
+          z-index 1
+          transform translate3d(-50%, -50%, 0)
+          >.svg-logo-container
+            filter drop-shadow(0 0 5px rgba(black, 50%))
+            display inline-block
+            position relative
+            asvlasoireeBigLogo(100%)
+            vertical-align middle
+    main
+      // Create a new context for overlapping video
+      z-index 1
+      transform translateZ(0)

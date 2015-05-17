@@ -1,3 +1,6 @@
+# Current favicon version
+favIconVersion = '?v=4'
+
 # Default PLT page: Injected initial styles and content
 #  for boosting SEO ranking.
 Inject.rawHead 'loader-style',
@@ -9,33 +12,36 @@ Inject.rawHead 'loader-style',
   '<meta name="fragment" content="!">' +
   # Favicons
   '<link rel="apple-touch-icon" sizes="57x57" ' +
-    'href="/apple-touch-icon-57x57.png">' +
+    "href=\"/apple-touch-icon-57x57.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="60x60" ' +
-    'href="/apple-touch-icon-60x60.png">' +
+    "href=\"/apple-touch-icon-60x60.png#{favIconVersion}>\"" +
   '<link rel="apple-touch-icon" sizes="72x72" ' +
-    'href="/apple-touch-icon-72x72.png">' +
+    "href=\"/apple-touch-icon-72x72.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="76x76" ' +
-    'href="/apple-touch-icon-76x76.png">' +
+    "href=\"/apple-touch-icon-76x76.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="114x114" ' +
-    'href="/apple-touch-icon-114x114.png">' +
+    "href=\"/apple-touch-icon-114x114.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="120x120" ' +
-    'href="/apple-touch-icon-120x120.png">' +
+    "href=\"/apple-touch-icon-120x120.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="144x144" ' +
-    'href="/apple-touch-icon-144x144.png">' +
+    "href=\"/apple-touch-icon-144x144.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="152x152" ' +
-    'href="/apple-touch-icon-152x152.png">' +
+    "href=\"/apple-touch-icon-152x152.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="180x180" ' +
-    'href="/apple-touch-icon-180x180.png">' +
+    "href=\"/apple-touch-icon-180x180.png#{favIconVersion}\">" +
   '<link rel="icon" type="image/png" ' +
-    'href="/favicon-32x32.png?v=3" sizes="32x32">' +
+    "href=\"/favicon-32x32.png#{favIconVersion}\" sizes=\"32x32\">" +
   '<link rel="icon" type="image/png" ' +
-    'href="/android-chrome-192x192.png" sizes="192x192">' +
-  '<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">' +
-  '<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">' +
+    "href=\"/android-chrome-192x192.png#{favIconVersion}\" sizes=\"192x192\">" +
+  '<link rel="icon" type="image/png" ' +
+    "href=\"/favicon-96x96.png#{favIconVersion}\" sizes=\"96x96\">" +
+  '<link rel="icon" type="image/png" ' +
+    "href=\"/favicon-16x16.png\" sizes=\"16x16#{favIconVersion}\">" +
   '<link rel="manifest" href="/manifest.json">' +
   '<meta name="msapplication-TileColor" ' +
     "content=\"#{colorTheme.brandColor}\">" +
-  '<meta name="msapplication-TileImage" content="/mstile-144x144.png">' +
+  '<meta name="msapplication-TileImage" ' +
+    "content=\"/mstile-144x144.png#{favIconVersion}\">" +
   '<meta name="theme-color" content="#ffffff">' +
   # The loading spinner needs some theming.
   '<style>' +
