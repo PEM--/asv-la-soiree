@@ -1,16 +1,23 @@
-# OrionJS options
-# Avoid registration without invitation
-Options.set 'forbidClientAccountCreation', true
-
-# Default users are not admin but inherit from the public role
-Options.set 'defaultRoles', ['public']
-
 # Dictionnary
 # Site wide values
 orion.dictionary.addDefinition 'title', 'site',
   type: String, label: 'Titre'
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
+
+# OrionJS options
+# Avoid registration without invitation
+Options.set 'forbidClientAccountCreation', true
+# Default users are not admin but inherit from the public role
+Options.set 'defaultRoles', ['public']
+# Set siteName
+Options.set 'siteName', orion.dictionary.get 'site.title'
+# Set homePath
+Options.set 'homePath', __meteor_runtime_config__.ROOT_URL
+
+# Set default template for Autoform
+if Meteor.isClient
+  AutoForm.setDefaultTemplate 'plain'
 
 if Meteor.isServer
   Meteor.startup ->
