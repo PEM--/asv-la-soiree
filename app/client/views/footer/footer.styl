@@ -47,20 +47,24 @@
       article:nth-child(1)
         width 30%
         flex-basis @width
-        padding-right 5%
+        padding-right 3%
         border-right 1px solid brandColor
-        a, a:visited, p
-          width 40%
-          margin-right 1em
-        .svg-logo-container:nth-child(1)
-          apformLogo(100%)
+        a:nth-child(2)
+          width 60%
+          margin 7% 8% 0 0
+          >.svg-logo-container
+            apformLogo(100%)
+        a:nth-child(3)
+          width 31%
+          >.svg-logo-container
+            gipsaLogo(100%)
       // Partners
       article:nth-child(2)
         width 59%
-        padding-left 5%
+        padding-left 3%
         flex-basis @width
         a, a:visited, p
           margin-right 1em
           width 30%
         .svg-logo-container:nth-child(1)
-          snvelLogo(50%)
+          snvelLogo(100%)

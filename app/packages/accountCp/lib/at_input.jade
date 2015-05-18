@@ -1,0 +1,42 @@
+template(name='atInput')
+  // atInput
+  +Template.dynamic template=templateName
+
+template(name='atTextInput')
+  // atTextInput
+  .at-input(class="{{#if isValidating}}validating{{/if}} {{#if hasError}}has-error{{/if}} {{#if hasSuccess}}has-success{{/if}} {{#if feedback}}has-feedback{{/if}}")
+    span.input
+      input/(type="{{type}}", id="at-field-{{_id}}", name="at-field-{{_id}}", placeholder="{{placeholder}}", autocapitalize='none', autocorrect='off')
+      if showLabels
+        label(for="at-field-{{_id}}"): span {{displayName}} {{#unless required}}{{optionalText}}{{/unless}}
+    if hasIcon
+      span(class="{{iconClass}}")
+    if hasError
+      span= errorText
+
+template(name='atCheckboxInput')
+  // atCheckboxInput
+  span.checkbox.at-input
+    abel(for="at-field-{{_id}}")= displayName
+    input/(type="{{type}}", id="at-field-{{_id}}", name="at-field-{{_id}}", "{{disabled}}")
+
+template(name='atSelectInput')
+  // atSelectInput
+  .at-input
+    label(for="at-field-{{_id}}")= displayName
+    select(id="at-field-{{_id}}" name="at-field-{{_id}}")
+      +each values
+        option(value="{{value}}")= text
+
+template(name='atRadioInput')
+  // atRadioInput
+  .at-input
+    label= displayName
+  each values
+    .at-input
+      input/(id="at-field-{{id}}-choice-{{value}}", type='radio', name="at-field-{{id}}", value="{{value}}")
+      label= text
+
+template(name='atHiddenInput')
+  // atHiddenInput
+  input/(type='hidden', id="at-field-{{_id}}", name="at-field-{{_id}}")

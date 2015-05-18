@@ -16,23 +16,27 @@
     +above('hd')
       font-size @font-size + 4
   typographic()
-
   bgColor = lighten(black, 5%)
   textColor = darken(white, 5%)
+  brandColor = darken(white, 10%)
   brandDanger = red
   roundCorner = 3px
+  outlineColor = rgba(textColor, 30%)
+  fillBg = rgba(textColor, 5%)
   size 100%
   absolute top left
   background bgColor
   t-headers($helvetica)
+  ::selection
+    color white
+    background yellow
   h1, h2, h3, h4, h5, h6, p, a, a:visited, label
     color textColor
-    font-family $helvetica
   >h1
     text-align center
   .at-form
-    border 1px solid textColor
-    background rgba(textColor, 5%)
+    border 1px solid outlineColor
+    background fillBg
     center(maxSize)
     border-radius roundCorner
     padding 1em
@@ -41,3 +45,6 @@
       text-align center
   .at-error
     color brandDanger
+  .at-input
+    cpInput(bgColor, textColor, brandColor)
+    cpInputJiro(textColor, brandColor)

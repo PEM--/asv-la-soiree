@@ -1,16 +1,17 @@
 Package.describe({
   summary: 'Accounts Templates unstyled.',
-  version: '1.10.0',
-  name: 'useraccounts:unstyled',
+  version: '0.1.0',
+  name: 'pierreeric:useraccounts-creativepure',
   git: 'https://github.com/meteor-useraccounts/unstyled.git',
 });
 
 Package.on_use(function(api, where) {
-  api.versionsFrom('METEOR@1.0');
+  api.versionsFrom('METEOR@1.1.0.2');
 
   api.use([
-    'less',
     'templating',
+    'coffeescript',
+    'mquandalle:jade@0.4.3'
   ], 'client');
 
   api.use([
@@ -22,12 +23,13 @@ Package.on_use(function(api, where) {
   ], ['client', 'server']);
 
   api.add_files([
+    'lib/animation.coffee',
     'lib/at_error.html',
     'lib/at_error.js',
     'lib/at_form.html',
     'lib/at_form.js',
-    'lib/at_input.html',
-    'lib/at_input.js',
+    'lib/at_input.jade',
+    'lib/at_input.coffee',
     'lib/at_message.html',
     'lib/at_message.js',
     'lib/at_nav_button.html',
@@ -36,8 +38,8 @@ Package.on_use(function(api, where) {
     'lib/at_oauth.js',
     'lib/at_pwd_form.html',
     'lib/at_pwd_form.js',
-    'lib/at_pwd_form_btn.html',
-    'lib/at_pwd_form_btn.js',
+    'lib/atPwdFormBtn.tpl.jade',
+    'lib/atPwdFormBtn.coffee',
     'lib/at_pwd_link.html',
     'lib/at_pwd_link.js',
     'lib/at_reCaptcha.html',
@@ -58,14 +60,13 @@ Package.on_use(function(api, where) {
     'lib/at_terms_link.js',
     'lib/at_title.html',
     'lib/at_title.js',
-    'lib/full_page_at_form.html',
-    'lib/at_unstyled.css'
+    'lib/full_page_at_form.html'
   ], ['client']);
 });
 
 Package.on_test(function(api) {
   api.use([
-    'useraccounts:unstyled',
+    'pierreeric:useraccounts-creativepure',
     'useraccounts:core@1.10.0',
   ]);
 

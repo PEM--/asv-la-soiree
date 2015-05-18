@@ -16,7 +16,7 @@ Package.onUse(function(api) {
     'iron:layout@1.0.7',
     'aldeed:autoform@5.1.2',
     'aldeed:tabular@1.1.0',
-    'useraccounts:unstyled@1.10.0',
+    'pierreeric:useraccounts-creativepure@0.1.0',
     'zimme:iron-router-active@1.0.4'
   ]);
 
