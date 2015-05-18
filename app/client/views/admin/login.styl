@@ -5,18 +5,29 @@
 @import s(basePath, input)
 
 .admin
+  fontSize()
+    font-size 11px
+    +above('small')
+      font-size @font-size + 1
+    +above('medium')
+      font-size @font-size + 2
+    +above('desktop')
+      font-size @font-size + 3
+    +above('hd')
+      font-size @font-size + 4
   typographic()
-  
+
   bgColor = lighten(black, 5%)
   textColor = darken(white, 5%)
+  brandDanger = red
   roundCorner = 3px
   size 100%
   absolute top left
   background bgColor
+  t-headers($helvetica)
   h1, h2, h3, h4, h5, h6, p, a, a:visited, label
     color textColor
     font-family $helvetica
-    fontSize()
   >h1
     text-align center
   .at-form
@@ -28,3 +39,5 @@
     h3
       margin-top 0
       text-align center
+  .at-error
+    color brandDanger
