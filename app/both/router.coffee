@@ -8,6 +8,17 @@ Router.configure
   # Used for Google universal analytics
   trackPageView: true
 
+# Global router function ensuring to get the current slug.
+# When reloading a page or getting a direct acces, the reactive
+# value Router.current().url provides the full URL but when
+# activated inside the client app, it returns the slug.
+# This function ensure that only the slug is returned.
+Router.getSlug = ->
+  curUrl = Router.current().url
+  count = curUrl.search __meteor_runtime_config__.ROOT_URL
+  return curUrl if count is -1
+  curUrl.substr __meteor_runtime_config__.ROOT_URL.length - 1
+
 if Meteor.isClient
   Router.plugin 'seo', defaults:
     title: orion.dictionary.get 'site.title'

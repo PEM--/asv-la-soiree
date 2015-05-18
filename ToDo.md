@@ -24,6 +24,7 @@
 - [ ] Parallax effect
   - https://github.com/frabrunelle/meteor-fittext
   - https://github.com/gwendall/meteor-template-animations
+- [ ] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox 
 - [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Menu for smartphone
 - [ ] Main template
