@@ -2,7 +2,9 @@ template(name='orionCpSidebar')
   // orionCpSidebar
   ul
     li
-      a(href="{{ options 'homePath' '/' }}") {{ options 'siteName' 'Admin' }}
+      //a(href="{{ options 'homePath' '/' }}") {{ options 'siteName' 'Admin' }}
+      a(href="{{ options 'homePath' '/' }}")
+        +websiteLogo
     each links 'top'
       +orionCpSidebarLink
     each links 'medium'

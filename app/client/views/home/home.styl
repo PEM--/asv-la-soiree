@@ -2,6 +2,8 @@
 @import 'jeet'
 @import 'client/styles/*.import'
 
+@import s(basePath, animate)
+
 .main-container
   .router-container
     >video
@@ -10,6 +12,8 @@
       min-height 100%
       size auto
       overflow hidden
+      opacity 0
+      animation fadeIn 1s 3s ease-in-out forwards
     header
       height 100%
       min-height 100vh
@@ -29,13 +33,22 @@
         min-height 100%
         overflow hidden
         background linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%);
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        align-content center
         // background red
         .center-all
           //background yellow
-          absolute top 50% left 50%
+          flex-grow 0
+          flex-shrink 0
+          opacity 0
+          animation fadeInDown 2s 4s ease-in-out forwards
+          //absolute top 50% left 50%
           width 60%
           z-index 1
-          transform translate3d(-50%, -50%, 0)
+          //transform translate3d(-50%, -50%, 0)
           >.svg-logo-container
             filter drop-shadow(0 0 5px rgba(black, 50%))
             asvlasoireeBigLogo(100%)
