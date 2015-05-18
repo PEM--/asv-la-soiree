@@ -24,7 +24,6 @@ Package.onUse(function(api) {
     'orionjs:core',
     'iron:layout',
     'aldeed:autoform',
-    'useraccounts:unstyled',
     'zimme:iron-router-active'
   ]);
 
