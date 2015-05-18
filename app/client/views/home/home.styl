@@ -52,7 +52,17 @@
           >.svg-logo-container
             filter drop-shadow(0 0 5px rgba(black, 50%))
             asvlasoireeBigLogo(100%)
+        .arrow-down
+          opacity 0
+          animation fadeIn 1s 3s ease-in-out forwards
+          absolute bottom 5% left 46%
+          width 6.5%
+          z-index 1
+          .svg-logo-container
+            arrowDownLogo(100%)
     main
       // Create a new context for overlapping video
       z-index 1
       transform translateZ(0)
+      h1, h2, h3, h4, h5, h6, p, a, a:visited
+        color bgColor
