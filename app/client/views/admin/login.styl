@@ -3,6 +3,7 @@
 @import 'typographic'
 @import 'client/styles/*.import'
 @import s(basePath, input)
+@import s(basePath, buttonInspiration)
 
 .admin
   fontSize()
@@ -39,12 +40,25 @@
     background fillBg
     center(maxSize)
     border-radius roundCorner
+    margin 1em
     padding 1em
     h3
       margin-top 0
       text-align center
-  .at-error
+  .at-error p
+    text-align center
+    font-size 2em
     color brandDanger
+    margin .5em 0
   .at-input
+    margin .5em 0
+    input
+      margin-bottom .2em
     cpInput(bgColor, textColor, brandColor)
     cpInputJiro(textColor, brandColor)
+  form
+    center(400px)
+    cpButtonInspiration(brandColor)
+    cpButtonInspirationWinoma(bgColor, brandColor)
+    button
+      margin-top 2em
