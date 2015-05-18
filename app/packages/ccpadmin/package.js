@@ -9,9 +9,8 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   api.use([
+    'meteor-platform',
     'coffeescript',
-    'templating',
-    'ui',
     'mquandalle:jade@0.4.3',
     'orionjs:core@1.0.0',
     'iron:layout@1.0.7',
@@ -35,8 +34,8 @@ Package.onUse(function(api) {
   ]);
 
   api.addFiles([
-    'client/layout/layout.coffee',
     'client/layout/layout.jade',
+    'client/layout/layout.coffee',
     'client/sidebar/sidebar.jade',
     'client/accounts/orionCpAccountIndex.tpl.jade',
     'client/accounts/orionCpAccountPassword.tpl.jade',
