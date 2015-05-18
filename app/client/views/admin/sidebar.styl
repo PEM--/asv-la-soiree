@@ -1,0 +1,25 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'client/views/admin/*.import'
+
+.admin
+  aside
+    ul
+      inline-list(0)
+      width 100%
+      li
+        display inline
+        width 100%
+        text-align center
+        border-bottom 1px solid outlineColor
+        a, a:visited
+          padding .5em 0
+          display block
+          size inherit
+          outline none
+          text-decoration none
+          transition color defaultTransitionValue, background-color defaultTransitionValue
+          &:hover
+            color white
+            background-color rgba(white, 20%)

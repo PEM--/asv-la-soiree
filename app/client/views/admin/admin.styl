@@ -1,0 +1,57 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'client/views/admin/*.import'
+@import s(basePath, input)
+@import s(basePath, buttonInspiration)
+
+.admin
+  fontSize()
+    font-size 11px
+    +above('small')
+      font-size @font-size + 1
+    +above('medium')
+      font-size @font-size + 2
+    +above('desktop')
+      font-size @font-size + 3
+    +above('hd')
+      font-size @font-size + 4
+  typographic()
+  size 100%
+  absolute top left
+  background bgColor
+  t-headers($helvetica)
+  ::selection
+    color white
+    background yellow
+  h1, h2, h3, h4, h5, h6, p, a, a:visited, label
+    color textColor
+  >h1
+    text-align center
+  .at-form
+    border 1px solid outlineColor
+    background fillBg
+    center(maxSize)
+    border-radius roundCorner
+    margin 1em
+    padding 1em
+    h3
+      margin-top 0
+      text-align center
+  .at-error p
+    text-align center
+    font-size 2em
+    color brandDanger
+    margin .5em 0
+  .at-input
+    margin .5em 0
+    input
+      margin-bottom .2em
+    cpInput(bgColor, textColor, brandColor)
+    cpInputJiro(textColor, brandColor)
+  form
+    center(400px)
+    cpButtonInspiration(brandColor)
+    cpButtonInspirationWinoma(bgColor, brandColor)
+    button
+      margin-top 2em

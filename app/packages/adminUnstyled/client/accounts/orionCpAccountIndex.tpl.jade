@@ -1,10 +1,11 @@
-+Layout template="orionCpSmallContentOffset"
-  +Layout template="orionCpTitle"
+// orionCpAccountIndex
++Layout template='orionCpSmallContentOffset'
+  +Layout template='orionCpTitle'
     | Accounts
     if userHasPermission 'accounts.invite'
       a.btn.btn-default.btn-xs(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
 
-  +Layout template="orionCpContentContainer"
+  +Layout template='orionCpContentContainer'
     table.table
       thead: tr
         th Nom

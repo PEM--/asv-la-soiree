@@ -1,9 +1,10 @@
-+Layout template="orionCpMediumContentOffset"
-  +Layout template="orionCpTitle"
+// orionCpCollectionsIndex
++Layout template='orionCpMediumContentOffset'
+  +Layout template='orionCpTitle'
     | {{ collection.title }}
     if collection.canShowCreate
       a.btn.btn-default.btn-x(href="{{ collection.createPath }}"): i.fa.fa-plus
-  +Layout template="orionCpContentContainer"
+  +Layout template='orionCpContentContainer'
     if collection.canIndex
       if showTable
         +tabular table=collection.tabularTable class="table index-table"

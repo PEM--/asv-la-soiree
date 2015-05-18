@@ -1,8 +1,9 @@
-+Layout template="orionCpSmallContentOffset"
-  +Layout template="orionCpTitle"
+// orionCpAccountProfile
++Layout template='orionCpSmallContentOffset'
+  +Layout template='orionCpTitle'
     | Update Profile
-  +Layout template="orionCpContentContainer"
-    +autoForm schema=getSchema id="updateProfileForm" collection="Meteor.users" type="update" doc=getDoc
+  +Layout template='orionCpContentContainer'
+    +autoForm schema=getSchema id='updateProfileForm' collection='Meteor.users' type='update' doc=getDoc
       +afQuickFields name='profile'
       br
       a.btn.btn-default(href="{{ pathFor 'myAccount.index' }}") Cancel

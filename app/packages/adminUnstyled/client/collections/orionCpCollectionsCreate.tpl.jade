@@ -1,8 +1,9 @@
-+Layout template="orionCpMediumContentOffset"
+// orionCpCollectionsCreate
++Layout template='orionCpMediumContentOffset'
   +if collection.canShowCreate
-    +Layout template="orionCpTitle"
+    +Layout template='orionCpTitle'
       | Create a {{ collection.singularName }}
-    +Layout template="orionCpContentContainer"
+    +Layout template='orionCpContentContainer'
       +quickForm collection=collection id="orionCpCollectionsCreateForm" type="insert" buttonContent=false
       br
       a.btn.btn-default(href="{{ collection.indexPath }}") Cancel
