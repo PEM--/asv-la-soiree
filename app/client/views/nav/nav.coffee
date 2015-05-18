@@ -14,7 +14,16 @@ Template.nav.onRendered ->
 
 Template.nav.helpers
   links: -> navLinks
-  activeRoute: -> if @slug is Router.current().url then 'active' else ''
+  activeRoute: ->
+    curRoute = Router.current().url
+
+
+    ### PEM ###
+    # @TODO Routage mauvais: URL complète au lieu du slug !!!!
+    # @TODO Placer un autorun pour l'opacité du menu.
+
+    console.log curRoute
+    if @slug is curRoute then 'active' else ''
 
 Template.nav.events
   'click .svg-logo-container': (e, t) ->
