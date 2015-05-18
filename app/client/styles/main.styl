@@ -3,6 +3,23 @@
 @import 'typographic'
 @import 'client/styles/*.import'
 
+// Breakpoints using Rupture
+maxSize = 960px
+rupture.scale = 0 320px 600px 800px maxSize
+rupture.scale-names = 'xsmall' 'small' 'medium' 'desktop' 'hd'
+
+// Fonts for Typographic
+fontSize()
+  font-size 11px
+  +above('small')
+    font-size @font-size + 1
+  +above('medium')
+    font-size @font-size + 2
+  +above('desktop')
+    font-size @font-size + 3
+  +above('hd')
+    font-size @font-size + 4
+
 typographic()
 
 // Normalize CSS using Axis
@@ -19,10 +36,8 @@ normalize-css()
 // Set fonts and default colors
 t-headers(monoFont)
 html, body
-  //background-color sideColor
   color textColor
   font-family $helvetica
-  //transition all defaultTransitionValue
   fontSize()
 h1
   font-family BaronNeue

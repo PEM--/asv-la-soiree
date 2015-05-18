@@ -1,27 +1,30 @@
 @import 'nib'
 @import 'jeet'
+@import 'typographic'
 @import 'client/styles/*.import'
 @import s(basePath, input)
 
-// body
-//   >div:not(.main-container)
-//     background white
-//     >div
-//       center(maxSize)
-//       .alert-danger
-//         color brandDanger
-//       h1
-//         text-align center
-//       h3
-//         font-size 2em
-//       form
-//         border-radius roundCorner
-//   input
-//     border 1px solid textColor
-//     border-radius roundCorner
-//     width 100%
-//     max-width 30em
-//   button
-//     border 1px solid textColor
-//     border-radius roundCorner
-//     background rgba(blackBg, 30%)
+.admin
+  typographic()
+  
+  bgColor = lighten(black, 5%)
+  textColor = darken(white, 5%)
+  roundCorner = 3px
+  size 100%
+  absolute top left
+  background bgColor
+  h1, h2, h3, h4, h5, h6, p, a, a:visited, label
+    color textColor
+    font-family $helvetica
+    fontSize()
+  >h1
+    text-align center
+  .at-form
+    border 1px solid textColor
+    background rgba(textColor, 5%)
+    center(maxSize)
+    border-radius roundCorner
+    padding 1em
+    h3
+      margin-top 0
+      text-align center

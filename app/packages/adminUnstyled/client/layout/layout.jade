@@ -1,4 +1,5 @@
 template(name='orionCpLayout')
+  // orionCpLayout
   .admin
     aside
       if dictionaryReady
@@ -10,28 +11,36 @@ template(name='orionCpLayout')
             +yiels
 
 template(name='orionCpOutAdminLayout')
-  h1
-    +yield 'title'
-  +yield
+  // orionCpOutAdminLayout
+  .admin
+    h1
+      +yield 'title'
+    +yield
 
 template(name='orionCpHeader')
+  // orionCpHeader
   a.menu-toggle
     i.fa.fa-bars
 
 template(name='orionCpSmallContentOffset')
+  // orionCpSmallContentOffset
   +yield
 
 template(name='orionCpMediumContentOffset')
+  // orionCpMediumContentOffset
   +yield
 
 template(name='orionCpContentContainer')
+  // orionCpContentContainer
   +yield
 
 template(name='orionCpTitle')
+  // orionCpTitle
   h1.title
     +yield
   hr
 
 template(name='orionCpTabs')
+  // orionCpTabs
   +each items
     a.btn.btn-xs(class="{{ class }}")= title

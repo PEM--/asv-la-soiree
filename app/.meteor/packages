@@ -25,15 +25,13 @@ jag:pince
 
 # CSS & effects
 pierreeric:creativepure
-#twbs:Cp
-#orionjs:Cp
 fortawesome:fontawesome
 hipstersmoothie:scrollmagic
 
 # Routing
 iron:router
 orionjs:iron-router-progress
-reywood:iron-router-ga
+#reywood:iron-router-ga
 
 # SEO & WPO
 lookback:seo
@@ -51,8 +49,8 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
-#orionjs:admin-unstyled
-orionjs:bootstrap
+orionjs:admin-unstyled
+#orionjs:bootstrap
 
 # Translations
 #msgfmt:core
