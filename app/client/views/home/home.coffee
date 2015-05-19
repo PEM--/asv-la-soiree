@@ -12,20 +12,23 @@ class @ScrollerSingleton
         webkitAnimation: 'none'
         animation: 'none'
         opacity: 0
+      # Remove the arrow when user starts scroling
       @arrowScene = new ScrollMagic.Scene
         triggerElement: mainEl
         offset: -headerHeight*.3
       @arrowScene.setTween arrowTween
-        .addIndicators()
+        #.addIndicators()
         .addTo @scCtrl
+      # Show the menu when user reaches the end of the langing page
       menuTween = new TweenMax.to menuEl, 1,
         opacity: 1
       @menuScene = new ScrollMagic.Scene
         triggerElement: mainEl
         offset: -headerHeight*.2
       @menuScene.setTween menuTween
-        .addIndicators()
+        #.addIndicators()
         .addTo @scCtrl
+      #logoTween = 
     destroyScenes: ->
       @scCtrl?.destroy true
       @menuScene?.destroy true
