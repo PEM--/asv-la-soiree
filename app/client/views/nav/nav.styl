@@ -9,6 +9,7 @@
   padding 0
   size 100%
   >nav
+    opacity 0
     fixed top left
     background textColor
     //background yellow
@@ -17,10 +18,14 @@
     display flex
     justify-content center
     >.nav
+      flex-grow 0
+      flex-shrink 0
       width 100%
       max-width maxSize
       display flex
       >.logo
+        flex-grow 0
+        flex-shrink 0
         display inline-block
         relative top .7em left
         size 11em 4em
@@ -30,6 +35,7 @@
           cursor pointer
       >ul
         flex-grow 1
+        flex-shrink 0
         //background violet
         display flex
         flex-wrap no-wrap

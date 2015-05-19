@@ -29,5 +29,5 @@ for protocol in ['http', 'https']
 # Trusted sites
 for origin in ['*.google-analytics.com', 'browser-update.org', 'lorempixel.com']
   for protocol in ['http', 'https']
-    origin = "#{protocol}://#{origin}"
-    BrowserPolicy.content.allowOriginForAll origin
+    porigin = "#{protocol}://#{origin}"
+    BrowserPolicy.content.allowOriginForAll porigin

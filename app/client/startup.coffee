@@ -4,8 +4,11 @@ for tag in ['meta', 'title', 'link']
   $tags = $ tag
   $head.append $tags.clone()
   $tags.remove()
-# Removing spinner once Meteor has started up
-$('.main-container[data-role=\'spinner\']')
+# Removing spinner once Meteor has started up and jQuery is available
+console.log 'Removing spinner'
+spinnerEl = '.main-container[data-role=\'spinner\']'
+$ spinnerEl
   .css 'opacity', 0
   .on TRANSITION_END_EVENT, ->
-    ($ @).remove()
+    ($ spinnerEl).remove()
+    console.log 'Spinner removed'
