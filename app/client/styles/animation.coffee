@@ -2,4 +2,4 @@
   otransitionend oTransitionEnd msTransitionEnd mozAnimationEnd \
   MSAnimationEnd'
 
-@TRANSITION_END_EVENT = 'webkitTransitionEnd transitionEnd oTransitionEnd'
+@TRANSITION_END_EVENT = 'webkitTransitionEnd transitionend oTransitionEnd'
