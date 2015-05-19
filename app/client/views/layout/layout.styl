@@ -46,13 +46,24 @@ html, body, .main-container, .router-container
       background textColor
       // background red
       section
+        margin 0
+        padding 1em 0
         // background yellow
-        margin 1em 0
         center(maxSize)
         h1
           color brandColor
-        h2, h3, h4, h5, h6, p
+      section:nth-child(odd)
+        background textColor
+        h1, h2, h3, h4, h5, h6, p, a, a:visited
           color bgColor
+      section:nth-child(even)
+        background bgColor
+        h1, h2, h3, h4, h5, h6, p, a, a:visited
+          color textColor          
+    main[data-role='home']
+      // Create a new context for overlapping video
+      z-index 1
+      transform translateZ(0)
     main:not([data-role='home'])
       margin 5em 0 0 0
   footer

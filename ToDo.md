@@ -24,7 +24,7 @@
 - [ ] Parallax effect
   - https://github.com/frabrunelle/meteor-fittext
   - https://github.com/gwendall/meteor-template-animations
-- [ ] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox 
+- [ ] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox
 - [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Menu for smartphone
 - [ ] Main template
@@ -63,6 +63,7 @@
 - [ ] Pas sûr : Intégration PhantomJS (SEO statique)
 - [ ] robot.txt
 - [ ] Sitemap automatisée dans le CMS
+  - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
 - [ ] Tests automatisés et gestion CdP automatisée
