@@ -23,27 +23,30 @@ html, body, .main-container, .router-container
   fixed top left
   display flex
   flex-direction column
-  min-height 100vh
   transition opacity defaultTransitionValue
-  width 100%
+  size 100% auto
   z-index 1
   overflow auto
   .router-container
     flex-grow 1
     flex-shrink 0
     width 100%
+    height auto
     transition opacity defaultTransitionValue
-    background blue
-    //display flex
-    //flex-direction column
-    // header, main
-    //   flex-grow 0
-    //   flex-shrink 0
+    // background blue
+    display flex
+    flex-direction column
+    header
+      flex-grow 0
+      flex-shrink 0
+      height 100vh
     main
-      background red
+      flex-grow 1
+      flex-shrink 0
       background textColor
+      // background red
       section
-        background yellow
+        // background yellow
         margin 1em 0
         center(maxSize)
         h1
@@ -52,3 +55,6 @@ html, body, .main-container, .router-container
           color bgColor
     main:not([data-role='home'])
       margin 5em 0 0 0
+  footer
+    flex-grow 0
+    flex-shrink 0
