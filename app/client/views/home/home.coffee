@@ -3,27 +3,28 @@ class @ScrollerSingleton
   class Scroller
     menuEl = '.main-container>nav'
     mainEl = '.main-container>.router-container>main'
-    #logoEl = '.main-container>.router-container>header>section>.s'
+    logoEl = '.main-container>.router-container>header>section>.center-all'
     arrowEl = '.main-container>.router-container>header>section>.arrow-down'
     createScenes: ->
+      headerHeight = $('.main-container>.router-container>header').height()
       @scCtrl = new ScrollMagic.Controller
-      menuTween = new TweenMax.to menuEl, 1,
-        opacity: 1
-      @menuScene = new ScrollMagic.Scene
-        triggerElement: mainEl
-        offset: -100
-      @menuScene.setTween menuTween
-        #.addIndicators()
-        .addTo @scCtrl
       arrowTween = new TweenMax.to arrowEl, 1,
         webkitAnimation: 'none'
         animation: 'none'
         opacity: 0
       @arrowScene = new ScrollMagic.Scene
         triggerElement: mainEl
-        offset: -150
+        offset: -headerHeight*.3
       @arrowScene.setTween arrowTween
-        #.addIndicators()
+        .addIndicators()
+        .addTo @scCtrl
+      menuTween = new TweenMax.to menuEl, 1,
+        opacity: 1
+      @menuScene = new ScrollMagic.Scene
+        triggerElement: mainEl
+        offset: -headerHeight*.2
+      @menuScene.setTween menuTween
+        .addIndicators()
         .addTo @scCtrl
     destroyScenes: ->
       @scCtrl.destroy true
