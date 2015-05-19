@@ -53,6 +53,9 @@ brightbind:orion-gridfs
 orionjs:admin-unstyled
 #orionjs:bootstrap
 
+# Others
+dburles:google-maps
+
 # Translations
 #msgfmt:core
 #msgfmt:extract

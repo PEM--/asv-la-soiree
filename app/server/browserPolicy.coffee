@@ -27,7 +27,16 @@ for protocol in ['http', 'https']
   BrowserPolicy.content.allowStyleOrigin "#{protocol}://fonts.googleapis.com"
   BrowserPolicy.content.allowFontOrigin "#{protocol}://fonts.gstatic.com"
 # Trusted sites
-for origin in ['*.google-analytics.com', 'browser-update.org', 'lorempixel.com']
+for origin in [
+  # Google analytics
+  '*.google-analytics.com'
+  # Google Maps
+  '*.googleapis.com'
+  '*.gstatic.com'
+  # Browser update warning
+  'browser-update.org'
+]
   for protocol in ['http', 'https']
     porigin = "#{protocol}://#{origin}"
     BrowserPolicy.content.allowOriginForAll porigin
+    BrowserPolicy.content.allowEval porigin

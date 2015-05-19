@@ -27,7 +27,7 @@ class @ScrollerSingleton
         .addIndicators()
         .addTo @scCtrl
     destroyScenes: ->
-      @scCtrl.destroy true
+      @scCtrl?.destroy true
       @menuScene?.destroy true
       @arrowScene?.destroy true
   @get: ->
