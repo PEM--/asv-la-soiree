@@ -4,11 +4,11 @@ for tag in ['meta', 'title', 'link']
   $tags = $ tag
   $head.append $tags.clone()
   $tags.remove()
-# Removing spinner once Meteor has started up and jQuery is available
-console.log 'Removing spinner'
+# Removing spinner once Meteor has started up and jQuery is available.
 spinnerEl = '.main-container[data-role=\'spinner\']'
-$ spinnerEl
-  .css 'opacity', 0
-  .on TRANSITION_END_EVENT, ->
-    ($ spinnerEl).remove()
-    console.log 'Spinner removed'
+($ spinnerEl).css 'opacity', 0
+# @NOTE Don't use transitionEnd here as behavior of Safari and Firefox
+# are buggy when their rendering engine starts pumping new data.
+Meteor.setTimeout ->
+  ($ spinnerEl).remove()
+, 300
