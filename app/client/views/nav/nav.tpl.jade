@@ -1,8 +1,7 @@
 nav
-  .nav
-    .logo
-      .svg-logo-container
-        +asvlasoireeBigLogo
+  .nav: .logo
+    .svg-logo-container
+      +asvlasoireeBigLogo
     ul
       each links
         li(class=activeRoute): a(href=slug)= name

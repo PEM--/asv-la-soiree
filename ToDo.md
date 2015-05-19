@@ -2,6 +2,7 @@
 - [X] CMS
 - [X] French localization :warning: Must wait validation
 - [X] Animated routing
+- Jeremieobs:transition
 - [X] Router progress
 - [X] Preloading spinner
 - [X] Video background

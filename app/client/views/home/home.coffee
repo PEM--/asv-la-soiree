@@ -1,43 +1,47 @@
 class @ScrollerSingleton
   instance = null
   class Scroller
-    menuEl = '.main-container>nav'
-    mainEl = '.main-container>.router-container>main'
-    logoEl = '.main-container>.router-container>header>section>.center-all'
-    arrowEl = '.main-container>.router-container>header>section>.arrow-down'
+    mainContainer = '.main-container'
+    menuEl = "#{mainContainer}>nav"
+    routerContainer = "#{mainContainer}>.router-container"
+    mainEl = "#{routerContainer}>main"
+    headerEl = "#{routerContainer}>header"
+    logoEl = "#{headerEl}>section>.center-all"
+    arrowEl = "#{headerEl}>section>.arrow-down>.arrow-down-centered"
     createScenes: ->
-      headerHeight = $('.main-container>.router-container>header').height()
+      headerHeight = ($ headerEl).height()
       @scCtrl = new ScrollMagic.Controller
-      arrowTween = new TweenMax.to arrowEl, 1,
-        webkitAnimation: 'none'
-        animation: 'none'
-        opacity: 0
       # Remove the arrow when user starts scroling
       @arrowScene = new ScrollMagic.Scene
         triggerElement: mainEl
-        offset: -headerHeight*.3
-      @arrowScene.setTween arrowTween
-        #.addIndicators()
-        .addTo @scCtrl
-      # Show the menu when user reaches the end of the langing page
-      menuTween = new TweenMax.to menuEl, 1,
-        opacity: 1
+        offset: -headerHeight*.4
+      .setTween arrowEl, 1, opacity: 0
+      .addIndicators()
+      # Show the menu when user reaches the end of the landing page
       @menuScene = new ScrollMagic.Scene
         triggerElement: mainEl
-        offset: -headerHeight*.2
-      @menuScene.setTween menuTween
-        #.addIndicators()
-        .addTo @scCtrl
-      #logoTween = 
+        offset: -headerHeight*.4
+      .setTween menuEl, 1, opacity: 1
+      .addIndicators()
+      # Slow down logo scrolling and scale it
+      @logoScene = new ScrollMagic.Scene
+        triggerElement: mainEl
+        offset: -headerHeight*.5
+        duration: headerHeight
+      .setTween logoEl, 1,
+        y: headerHeight*.55
+        ease: Linear.easeNone
+      .addIndicators()
+      @scCtrl.addScene [@arrowScene, @menuScene, @logoScene]
     destroyScenes: ->
       @scCtrl?.destroy true
       @menuScene?.destroy true
       @arrowScene?.destroy true
+      @logoScene?.destroy true
   @get: ->
     instance ?= new Scroller
 
 Template.home.onRendered ->
-  console.log 'Home rendered'
   ($ 'nav')
     .css 'webkitOpacity', 0
     .css 'opacity', 0
