@@ -30,7 +30,6 @@ Router.configure
     # Fade in the new content with at least 2 cycles on the RAF
     Meteor.setTimeout (-> $('.router-container').css 'opacity', 1), 64
   , 300
-  ScrollerSingleton.get().destroyScenes()
 
 if Meteor.isClient
   Router.plugin 'seo', defaults:
