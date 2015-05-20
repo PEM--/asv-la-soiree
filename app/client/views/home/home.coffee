@@ -1,10 +1,10 @@
 @mainCntEl = '.main-container[data-role=\'layout\']'
 @menuEl = "#{mainCntEl}>nav"
-@routerContainer = "#{mainCntEl}>.router-container"
-@mainEl = "#{routerContainer}>main"
-@headerEl = "#{routerContainer}>header"
-@logoEl = "#{headerEl}>section>.center-all>.svg-logo-container"
-@arrowEl = "#{headerEl}>section>.arrow-down>.arrow-down-centered"
+@routerEl = "#{mainCntEl}>.router-container"
+@mainEl = "#{routerEl}>main"
+@headerEl = "#{routerEl}>header>section"
+@logoEl = "#{headerEl}>.center-all>.svg-logo-container"
+@arrowEl = "#{headerEl}>.arrow-down>.arrow-down-centered"
 
 class @ScrollerSingleton
   instance = null
@@ -39,16 +39,21 @@ class @ScrollerSingleton
     instance ?= new Scroller
 
 Template.home.onRendered ->
-  ($ 'nav')
-    .css 'webkitOpacity', 0
-    .css 'opacity', 0
+  # Set menu as invisible on the home page uniquely
+  ($ menuEl).css 'opacity', 0
   # Start scrolling container
   ScrollerSingleton.get().start()
-  # Set waypoints
-  ($ arrowEl).waypoint
-    element: ($ @mainCntEl)[0]
-    handler: -> console.log 'started'
-    offset: 10
+  # Waypoint on the arrow and trigger menu visibility
+  ($ arrowEl).waypoint (direction) ->
+    if direction is 'down'
+      ($ @).css 'opacity', 0
+      ($ menuEl).css 'opacity', 1
+    else
+      ($ @).css 'opacity', 1
+      ($ menuEl).css 'opacity', 0
+  ,
+    offset: ($ headerEl).height()*.7
+    context: mainCntEl
 
 Template.home.onDestroyed ->
   # Stop scolling container
