@@ -23,12 +23,24 @@ Router.configure
 # the template rendering is done and a fadeOut when the template
 # is rendered.
 @goNextRoute = (nextRoute) ->
-  $('.router-container').css 'opacity', 0
+  ($ routerEl).css 'opacity', 0
   # Transition when fade out animation is done
   Meteor.setTimeout ->
+    # Reset current scroll position
+    ($ mainCntEl).scrollTop 0
+    # Activate route
     Router.go nextRoute
     # Fade in the new content with at least 2 cycles on the RAF
-    Meteor.setTimeout (-> $('.router-container').css 'opacity', 1), 64
+    Meteor.setTimeout ->
+      ($ routerEl).css 'opacity', 1
+      # Only the opacity to 1 on slug route except home
+      # @NOTE This fixes a bug on Safari iOS and Chrome Android
+      curSlug = getSlug()
+      t = _.pluck navLinks, 'slug'
+      if curSlug in _.pluck navLinks, 'slug'
+        ($ menuEl).css 'opacity', 1
+        Waypoint.disableAll()
+    , 64
   , 300
 
 if Meteor.isClient

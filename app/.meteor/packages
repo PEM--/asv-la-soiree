@@ -24,12 +24,12 @@ raix:handlebar-helpers
 msavin:mongol
 msavin:jetsetter
 jag:pince
+mquandalle:bower
 
 # CSS & effects
 pierreeric:creativepure
 fortawesome:fontawesome
 velocityjs:velocityjs
-jquery-waypoints
 
 # Routing
 iron:router
