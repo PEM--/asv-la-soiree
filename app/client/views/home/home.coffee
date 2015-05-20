@@ -48,14 +48,13 @@ Template.home.onRendered ->
     element: ($ arrowEl)[0]
     handler: (direction) ->
       if direction is 'down'
-        ($ @).css 'opacity', 0
+        ($ arrowEl).css 'opacity', 0
         ($ menuEl).css 'opacity', 1
       else
-        ($ @).css 'opacity', 1
+        ($ arrowEl).css 'opacity', 1
         ($ menuEl).css 'opacity', 0
     offset: ($ headerEl).height()*.7
     context: ($ mainCntEl)[0]
-
 
 Template.home.onDestroyed ->
   # Stop scolling container

@@ -14,7 +14,11 @@ Router.configure
 # activated inside the client app, it returns the slug.
 # This function ensure that only the slug is returned.
 @getSlug = ->
-  curUrl = Router.current().url
+  curUrl = Router.current()?.url
+  return unless curUrl?
+  # Remove hash
+  curUrl = (curUrl.split '#')[0]
+  # Check if current URL contains hostname
   count = curUrl.search __meteor_runtime_config__.ROOT_URL
   return curUrl if count is -1
   curUrl.substr __meteor_runtime_config__.ROOT_URL.length - 1
@@ -33,13 +37,6 @@ Router.configure
     # Fade in the new content with at least 2 cycles on the RAF
     Meteor.setTimeout ->
       ($ routerEl).css 'opacity', 1
-      # Only the opacity to 1 on slug route except home
-      # @NOTE This fixes a bug on Safari iOS and Chrome Android
-      curSlug = getSlug()
-      t = _.pluck navLinks, 'slug'
-      if curSlug in _.pluck navLinks, 'slug'
-        ($ menuEl).css 'opacity', 1
-        Waypoint.disableAll()
     , 64
   , 300
 
@@ -49,6 +46,15 @@ if Meteor.isClient
     suffix: orion.dictionary.get 'site.title'
     separator: '-'
     description: orion.dictionary.get 'site.description'
+  Tracker.autorun (computation) ->
+    curSlug = getSlug()
+    unless computation.firstRun
+      # Only the opacity to 1 on slug route except home
+      # @NOTE This fixes a bug on Safari iOS and Chrome Android
+      t = _.pluck navLinks, 'slug'
+      if curSlug in _.pluck navLinks, 'slug'
+        ($ menuEl).css 'opacity', 1
+        Waypoint.disableAll()
 
 @navLinks = [
   { name: 'Programme', slug: '/program' }
