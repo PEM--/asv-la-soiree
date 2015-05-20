@@ -14,6 +14,7 @@
     width 100%
     display flex
     justify-content center
+    pointer-events none
     >.nav
       flex-grow 0
       flex-shrink 0
@@ -26,10 +27,11 @@
         display inline-block
         relative top .7em left
         size 11em 4em
+        cursor pointer
+        pointer-events auto
         //background red
         >.svg-logo-container
           asvlasoireeBigLogo(100%)
-          cursor pointer
       >ul
         flex-grow 1
         flex-shrink 0
@@ -44,9 +46,11 @@
           font-size 1.3em
           font-family BaronNeue
           cpLinks(brandColor)
+          pointer-events auto
           >a
             transition color .3s ease-in-out
             color bgColor
         >li.active
+          pointer-events none
           >a
             color brandColor

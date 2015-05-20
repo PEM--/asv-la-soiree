@@ -1,3 +1,12 @@
+mainContainer = '.main-container'
+menuEl = "#{mainContainer}>nav"
+routerContainer = "#{mainContainer}>.router-container"
+mainEl = "#{routerContainer}>main"
+headerEl = "#{routerContainer}>header"
+logoEl = "#{headerEl}>section>.center-all"
+arrowEl = "#{headerEl}>section>.arrow-down>.arrow-down-centered"
+
+
 # class @ScrollerSingleton
 #   instance = null
 #   class Scroller
@@ -52,10 +61,16 @@ Template.home.onRendered ->
     .css 'opacity', 0
   # Create a scrolling controller and scenes using ScrollMagic
   # ScrollerSingleton.get().createScenes()
-  # ($ '.main-container').on 'scroll', (e) ->
-  #   console.log 'jQuery scroll', e
-  # ($ window).on 'resize', (e) ->
-  #   console.log 'jQuery resize', e
+  ($ '.main-container').on 'scroll', _.throttle (e) ->
+    console.log 'jQuery scroll', $(mainContainer).scrollTop()
+    Session.set 'debug', "scroll: #{$(mainContainer).scrollTop()}"
+  , 256
+  ($ window).on 'resize', _.throttle (e) ->
+    console.log 'jQuery resize', e
+    $mainContainer = $ mainContainer
+    Session.set 'debug',
+      "size: #{$mainContainer.width()}x#{$mainContainer.height()}"
+  , 256
   @autorun (comp) ->
     console.log 'Recalculate', comp
     unless comp.firstRun
