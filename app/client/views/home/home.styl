@@ -29,7 +29,6 @@
         margin 0
         padding 0
         min-height 100%
-        //overflow hidden
         display flex
         flex-direction column
         justify-content center
@@ -40,13 +39,14 @@
           //background yellow
           flex-grow 0
           flex-shrink 0
-          opacity 1
-          animation fadeInDown 1s ease-in-out
           width 60%
           z-index 1
           >.svg-logo-container
-            transition transform defaultTransitionValue
+            opacity 1
+            animation fadeInDown 1s ease-in-out
             //filter drop-shadow(0 0 5px rgba(black, 50%))
+            transition transform none
+            transform translateZ(0)
             asvlasoireeBigLogo(100%)
         .arrow-down
           background linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%)
@@ -62,5 +62,12 @@
             width 6.5%
             max-width 40px
             .svg-logo-container
-              transition opacity defaultTransitionValue
+              opacity 0
+              transition transform 16 linear
+              animation fadeIn 1s 1s ease-in-out forwards
               arrowDownLogo(100%)
+    main[data-role='home']
+      a, a:visited
+        text-decoration none
+        pointer-events none
+        cursor default

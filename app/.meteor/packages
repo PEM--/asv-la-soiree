@@ -28,7 +28,8 @@ jag:pince
 # CSS & effects
 pierreeric:creativepure
 fortawesome:fontawesome
-hipstersmoothie:scrollmagic
+velocityjs:velocityjs
+jquery-waypoints
 
 # Routing
 iron:router

@@ -2,7 +2,6 @@
 - [X] CMS
 - [X] French localization :warning: Must wait validation
 - [X] Animated routing
-- Jeremieobs:transition
 - [X] Router progress
 - [X] Preloading spinner
 - [X] Video background
@@ -22,15 +21,17 @@
   - https://github.com/loongmxbt/orion-lfs
   - http://mediaelementjs.com/
   - https://github.com/delgermurun/meteor-mediaelement
-- [ ] Parallax effect
+- [X] Parallax effect
   - https://github.com/frabrunelle/meteor-fittext
   - https://github.com/gwendall/meteor-template-animations
-- [ ] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox
+  - http://imakewebthings.com/waypoints
+- [X] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox
 - [ ] Replace video on mobiles/tablets with a responsive image
 - [ ] Menu for smartphone
-- [ ] Main template
+- [X] Main template
 - [ ] Notification de déconnexions du serveur
   - https://github.com/alexreich/meteor-machina
+  - https://github.com/francocatena/meteor-status
 - [ ] Notification d'erreurs sur le serveur
 - [ ] Intégration Gmap avec CMS
   - https://github.com/rwatts3/orionjs-maps
@@ -53,6 +54,7 @@
 - [ ] Cookie informations
 - [X] Google universal analytics
   - https://atmospherejs.com/reywood/iron-router-ga
+  - https://atmospherejs.com/okgrow/analytics
 - [ ] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
