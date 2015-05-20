@@ -72,3 +72,25 @@
         text-decoration none
         pointer-events none
         cursor default
+      section:first-child
+        max-width maxSize
+        margin 0 auto
+        display flex
+        flex-wrap wrap
+        article
+          flex-grow 1
+          flex-shrink 0
+          min-width maxSize*0.3
+          flex-basis @min-width
+        article:nth-child(1)
+          margin-left 0
+          margin-right .5em
+          padding-left 0
+        article:nth-child(2)
+          padding 2em
+          margin-right 0
+          margin-left .5em
+          border 3px solid brandColor
+          background white
+          h1, p
+            color brandColor

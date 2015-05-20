@@ -45,25 +45,35 @@ html, body, .main-container, .router-container
       flex-shrink 0
       background textColor
       // background red
-      section:not(:last-child)
+      section
         margin 0
         padding 1em 0
         article
           // background yellow
           center(maxSize)
-        h1
-          color brandColor
+        p
+          margin-bottom 1em
+          mark
+            background transparent
+            font-weight bold
+            font-size 2em
+            text-transform capitalize
+        p.upper
+          text-transform capitalize
+        p, address
+          &.center
+            text-align center
+      &.map
+        width 100%
+        padding 0
       section:nth-child(odd)
         background textColor
-        h1, h2, h3, h4, h5, h6, p, a, a:visited
+        h1, h2, h3, h4, h5, h6, p, a, a:visited, mark, address, time
           color bgColor
       section:nth-child(even)
         background bgColor
-        h1, h2, h3, h4, h5, h6, p, a, a:visited
+        h1, h2, h3, h4, h5, h6, p, a, a:visited, mark, address, time
           color textColor
-      section:last-child
-        width 100%
-        padding 0
     main[data-role='home']
       // Create a new context for overlapping video
       z-index 1
