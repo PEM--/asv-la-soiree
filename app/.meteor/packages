@@ -7,6 +7,7 @@
 # Meteor
 meteor-platform
 fastclick
+reactive-var
 
 # Language
 coffeescript
@@ -19,6 +20,7 @@ matteodem:easy-security
 
 # Development helper
 audit-argument-checks
+raix:handlebar-helpers
 msavin:mongol
 msavin:jetsetter
 jag:pince

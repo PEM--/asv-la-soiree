@@ -72,6 +72,8 @@
 - [ ] Isolation of logs in Orion (app's log vs server vs Orion)
   - https://github.com/mad-eye/pince/
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
+- [ ] Email template
+ - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 
 ## Tutorial
 Orion is based on:
