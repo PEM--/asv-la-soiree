@@ -53,8 +53,7 @@
           // Create a new context for overlapping video
           z-index 1
           transform translateZ(0)
-          width 100%
-          height 15%
+          size 100% 15%
           absolute bottom left
           .arrow-down-centered
             //background blue
@@ -64,7 +63,6 @@
             max-width 40px
             .svg-logo-container
               opacity 0
-              transition transform 16 linear
               animation fadeIn 1s 1s ease-in-out forwards
               arrowDownLogo(100%)
     main[data-role='home']
@@ -72,6 +70,8 @@
         text-decoration none
         pointer-events none
         cursor default
+      section article
+        opacity 0
       section:first-child
         max-width maxSize
         margin 0 auto
@@ -87,33 +87,55 @@
           margin-right .5em
           padding-left 0
         article:nth-child(2)
-          padding 2em
-          margin-right 0
-          margin-left .5em
-          border 3px solid brandColor
-          background white
-          h1, h2, p, time,
-            color brandColor
-          h1
-            text-align center
-          ul
-            reset-list()
+          >div
+            margin-right 0
+            margin-left .5em
+          >div:nth-child(1)
+            padding 2em
+            border 3px solid brandColor
+            background bgColor
+            h1, h2, p, time,
+              color brandColor
+            h1
+              text-align center
+            ul
+              reset-list()
+              margin-top 1em
+              li
+                margin-bottom 2em
+              h2, time
+                display inline
+                font-size 1.2em
+              time
+                font-weight bold
+                display inline-block
+                width 2em
+                &::after
+                  margin-left .5em
+                  content '//'
+                  width 1em
+              h2
+                font-weight normal
+                margin-left 2.5em
+              p
+                margin 0 0 0 5.7em
+          >div:nth-child(2)
             margin-top 1em
-            li
-              margin-bottom 2em
-            h2, time
-              display inline
-              font-size 1.2em
-            time
-              font-weight bold
-              display inline-block
-              width 2em
-              &::after
-                margin-left .5em
-                content '//'
-                width 1em
+            background brandColor
+            padding .3em 0
             h2
-              font-weight normal
-              margin-left 2.5em
-            p
-              margin 0 0 0 5.7em
+              margin 0
+              color bgColor
+              text-transform uppercase
+              font-size 1.1em
+              text-align center
+          >div:nth-child(3)
+            margin-top 1em
+            display inline-block
+            size 100% 30%
+            .arrow-down-centered
+              margin auto auto
+              width 12.5%
+              max-width 40px
+              .svg-logo-container
+                arrowDownLogo(100%)

@@ -5,6 +5,12 @@
 @headerEl = "#{routerEl}>header>section"
 @logoEl = "#{headerEl}>.center-all>.svg-logo-container"
 @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
+@programCntEl = "#{mainEl}>section:nth-child(1)"
+@prezEl = "#{programCntEl}>article:nth-child(1)"
+@progEl = "#{programCntEl}>article:nth-child(2)"
+@subEl = "#{mainEl}>section:nth-child(2)>article"
+@contactEl = "#{mainEl}>section:nth-child(3)>article"
+@mapEl = "#{mainEl}>section.map>.map-container"
 
 class @ScrollerSingleton
   instance = null
@@ -43,17 +49,55 @@ Template.home.onRendered ->
   ($ menuEl).css 'opacity', 0
   # Start scrolling container
   ScrollerSingleton.get().start()
+  # @TODO Resizing à vérifier + ReactiveVar & Autorun
   # Waypoint on the arrow and trigger menu visibility
-  waypoint = new Waypoint
+  new Waypoint
     element: ($ arrowEl)[0]
     handler: (direction) ->
       if direction is 'down'
-        ($ arrowEl).css 'opacity', 0
-        ($ menuEl).css 'opacity', 1
+        ($ arrowEl).velocity opacity: 0
+        ($ menuEl).velocity opacity: 1
+        ($ prezEl).velocity 'transition.slideLeftIn', display: null
+        ($ progEl).velocity 'transition.slideRightIn', display: null
       else
-        ($ arrowEl).css 'opacity', 1
-        ($ menuEl).css 'opacity', 0
+        ($ arrowEl).velocity opacity: 1
+        ($ menuEl).velocity opacity: 0
+        ($ prezEl).velocity 'transition.slideLeftOut', display: null
+        ($ progEl).velocity 'transition.slideRightOut', display: null
     offset: ($ headerEl).height()*.7
+    context: ($ mainCntEl)[0]
+  # Waypoint subscription content that triggers entrance animation
+  new Waypoint
+    element: ($ subEl)[0]
+    handler: (direction) ->
+      if direction is 'down'
+        ($ subEl).velocity 'transition.flipXIn', display: null
+      else
+        ($ subEl).velocity 'transition.flipXOut', display: null
+    # Animations starts at 10% visibility of the content
+    offset: $(window).height() - ($ subEl).height()*0.1
+    context: ($ mainCntEl)[0]
+  # Waypoint contact content that triggers entrance animation
+  new Waypoint
+    element: ($ contactEl)[0]
+    handler: (direction) ->
+      if direction is 'down'
+        ($ contactEl).velocity 'transition.bounceIn', display: null
+      else
+        ($ contactEl).velocity 'transition.bounceOut', display: null
+    # Animations starts at 10% visibility of the content
+    offset: $(window).height() - ($ contactEl).height()*0.1
+    context: ($ mainCntEl)[0]
+  # Waypoint contact content that triggers entrance animation
+  new Waypoint
+    element: ($ mapEl)[0]
+    handler: (direction) ->
+      if direction is 'down'
+        ($ mapEl).velocity 'transition.fadeIn', display: null
+      else
+        ($ mapEl).velocity 'transition.fadeOut', display: null
+    # Animations starts at 10% visibility of the content
+    offset: $(window).height() - ($ mapEl).height()*0.1
     context: ($ mainCntEl)[0]
 
 Template.home.onDestroyed ->
