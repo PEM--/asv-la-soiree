@@ -1,6 +1,7 @@
 @mainCntEl = '.main-container[data-role=\'layout\']'
 @menuEl = "#{mainCntEl}>nav"
 @routerEl = "#{mainCntEl}>.router-container"
+@videoEl = "#{routerEl}>video"
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
 @logoEl = "#{headerEl}>.center-all>.svg-logo-container"
@@ -20,14 +21,6 @@ class @ScrollerSingleton
     sizeAndPos: ->
       @posEndAnimLogo = @$header.height()
       @logoTop = @$logo.offset().top
-    event: ->
-      @scrollPos = @$mainCntEl.scrollTop()
-      trans = (@scrollPos-@posStartAnimLogo) * .6
-      scale = if @scrollPos > @logoTop
-        1 + .001 * (@scrollPos - @logoTop)
-      else 1
-      @$logo.css 'transform',
-        "translate3d(0,#{trans}px, 0) scale3d(#{scale}, #{scale}, 1)"
     start: ->
       @$mainCntEl = $ mainCntEl
       @$header = $ headerEl
@@ -35,6 +28,14 @@ class @ScrollerSingleton
       @$logo = $ logoEl
       @sizeAndPos()
       @$mainCntEl.on 'scroll', => @event()
+    event: ->
+      @scrollPos = @$mainCntEl.scrollTop()
+      trans = (@scrollPos-@posStartAnimLogo) * .6
+      scale = if @scrollPos > @logoTop
+        1 + .001 * (@scrollPos - @logoTop)
+      else 1
+      @$logo.css 'transform',
+        "translate3d(0,#{trans}px, 1px) scale3d(#{scale}, #{scale}, 1)"
     resizing: ->
       @sizeAndPos()
       @event()
@@ -81,6 +82,18 @@ Template.home.onRendered ->
           ($ prezEl).velocity('stop').velocity 'reverse'
           ($ progEl).velocity('stop').velocity 'reverse'
       offset: ($ headerEl).height()*.7
+      context: $mainCntEl[0]
+    # Waypoint for stopping the video and the Scroller
+    new Waypoint
+      element: ($ arrowEl)[0]
+      handler: (direction) ->
+        console.log 'Fire', direction
+        if direction is 'down'
+          ScrollerSingleton.get().stop()
+          ($ videoEl).hide()
+        else
+          ScrollerSingleton.get().start()
+          ($ videoEl).show()
       context: $mainCntEl[0]
     # Waypoint subscription content that triggers entrance animation
     new Waypoint
