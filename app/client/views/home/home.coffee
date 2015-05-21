@@ -87,7 +87,6 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ arrowEl)[0]
       handler: (direction) ->
-        console.log 'Fire', direction
         if direction is 'down'
           ScrollerSingleton.get().stop()
           ($ videoEl).hide()
