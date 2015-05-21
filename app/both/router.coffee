@@ -54,7 +54,7 @@ if Meteor.isClient
       t = _.pluck navLinks, 'slug'
       if curSlug in _.pluck navLinks, 'slug'
         ($ menuEl).css 'opacity', 1
-        Waypoint.disableAll()
+        Waypoint.destroyAll()
 
 @navLinks = [
   { name: 'Programme', slug: '/program' }
