@@ -87,9 +87,9 @@ Template.home.onRendered ->
       element: ($ subEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ subEl).velocity 'transition.flipXIn'
+          ($ subEl).velocity 'transition.slideUpIn'
         else
-          ($ subEl).velocity 'transition.flipXOut', display: null
+          ($ subEl).velocity 'transition.slideDownOut', display: null
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ subEl).height()*0.1
       context: $mainCntEl[0]
@@ -98,9 +98,9 @@ Template.home.onRendered ->
       element: ($ contactEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ contactEl).velocity 'transition.bounceIn'
+          ($ contactEl).velocity 'transition.slideUpIn'
         else
-          ($ contactEl).velocity 'transition.bounceOut', display: null
+          ($ contactEl).velocity 'transition.slideDownOut', display: null
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ contactEl).height()*0.1
       context: $mainCntEl[0]
@@ -109,9 +109,9 @@ Template.home.onRendered ->
       element: ($ mapEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ mapEl).velocity 'transition.fadeIn'
+          ($ mapEl).velocity 'transition.slideUpIn'
         else
-          ($ mapEl).velocity 'transition.fadeOut', display: null
+          ($ mapEl).velocity 'transition.slideDownOut', display: null
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ mapEl).height()*0.1
       context: $mainCntEl[0]

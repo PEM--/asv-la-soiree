@@ -2,6 +2,10 @@
 @import 'jeet'
 @import 'client/styles/*.import'
 
+// iOS hacks for weird overflow-x behavior
+html, body
+  overflow hidden
+
 html, body, .main-container, .router-container
   margin 0
   padding 0
@@ -26,15 +30,18 @@ html, body, .main-container, .router-container
   transition opacity defaultTransitionValue
   size 100%
   z-index 1
-  overflow auto
+  // iOS hacks for weird overflow-x behavior
+  overflow-x hidden
+  overflow-y auto
   .router-container
     flex-grow 1
     flex-shrink 0
     width 100%
-    overflow-x hidden
     height auto
     transition opacity defaultTransitionValue
-    // background blue
+    // iOS hacks for weird overflow-x behavior
+    overflow-x hidden
+    overflow-y auto
     display flex
     flex-direction column
     header
@@ -45,15 +52,12 @@ html, body, .main-container, .router-container
       flex-grow 1
       flex-shrink 0
       background textColor
-      // background red
       section
         margin 0
         padding 1em 0
         article
-          // background yellow
           margin 0 auto
           max-width maxSize
-          //center(maxSize)
         p
           margin-bottom 1em
           mark
