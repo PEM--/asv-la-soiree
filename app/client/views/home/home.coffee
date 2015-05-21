@@ -71,15 +71,15 @@ Template.home.onRendered ->
       element: ($ arrowEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ arrowEl).velocity opacity: 0
-          ($ menuEl).velocity opacity: 1
-          ($ prezEl).velocity 'transition.slideLeftIn'
-          ($ progEl).velocity 'transition.slideRightIn', display: null
+          ($ arrowEl).css 'opacity', 0
+          ($ menuEl).css 'opacity', 1
+          ($ prezEl).velocity('stop').velocity 'transition.slideLeftIn'
+          ($ progEl).velocity('stop').velocity 'transition.slideRightIn'
         else
-          ($ arrowEl).velocity opacity: 1
-          ($ menuEl).velocity opacity: 0
-          ($ prezEl).velocity 'transition.slideLeftOut'
-          ($ progEl).velocity 'transition.slideRightOut', display: null
+          ($ arrowEl).css 'opacity', 1
+          ($ menuEl).css 'opacity', 0
+          ($ prezEl).velocity('stop').velocity 'reverse'
+          ($ progEl).velocity('stop').velocity 'reverse'
       offset: ($ headerEl).height()*.7
       context: $mainCntEl[0]
     # Waypoint subscription content that triggers entrance animation
@@ -87,9 +87,9 @@ Template.home.onRendered ->
       element: ($ subEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ subEl).velocity 'transition.slideUpIn'
+          ($ subEl).velocity('stop').velocity 'transition.slideUpIn'
         else
-          ($ subEl).velocity 'transition.slideDownOut', display: null
+          ($ subEl).velocity('stop').velocity 'reverse'
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ subEl).height()*0.1
       context: $mainCntEl[0]
@@ -98,9 +98,9 @@ Template.home.onRendered ->
       element: ($ contactEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ contactEl).velocity 'transition.slideUpIn'
+          ($ contactEl).velocity('stop').velocity 'transition.slideUpIn'
         else
-          ($ contactEl).velocity 'transition.slideDownOut', display: null
+          ($ contactEl).velocity('stop').velocity 'reverse'
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ contactEl).height()*0.1
       context: $mainCntEl[0]
@@ -109,9 +109,9 @@ Template.home.onRendered ->
       element: ($ mapEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ mapEl).velocity 'transition.slideUpIn'
+          ($ mapEl).velocity('stop').velocity 'transition.slideUpIn'
         else
-          ($ mapEl).velocity 'transition.slideDownOut', display: null
+          ($ mapEl).velocity('stop').velocity 'reverse'
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ mapEl).height()*0.1
       context: $mainCntEl[0]
