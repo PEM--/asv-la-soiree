@@ -90,10 +90,10 @@ Template.home.onRendered ->
       handler: (direction) ->
         if direction is 'down'
           ScrollerSingleton.get().stop()
-          ($ videoEl).hide()
+          ($ videoEl)?.hide()
         else
           ScrollerSingleton.get().start()
-          ($ videoEl).show()
+          ($ videoEl)?.show()
       context: $mainCntEl[0]
     # Waypoint subscription content that triggers entrance animation
     new Waypoint
