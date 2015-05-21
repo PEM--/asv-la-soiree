@@ -4,11 +4,11 @@ header
   section
     .center-all
       .svg-logo-container
-        +asvlasoireeBigLogo
-    .arrow-down
+        +asvlasoireeBigLogo background='black-bg'
+    .arrow-down-container
       .arrow-down-centered
         .svg-logo-container
-          +arrowDownLogo
+          +arrowDownLogo mainColor='pink'
 main(data-role='home')
   section
     article
@@ -23,26 +23,32 @@ main(data-role='home')
       p Nous espérons vous y retrouver nombreux...
       p L'équipe APFORM & GIPSA
     article
-      a(href='#program'): h1 Programme
-      ul
-        li
-          time 19H
-          h2 Ouverture de la soirée
-        li
-          time 20H
-          h2 Introduction
-          p APFORM & GIPSA / ASSAV / SNVEL / AFVAC / Partenaires
-        li
-          time 20H30
-          h2 Cérémonie Nationale des ASV GIPSA
-          p Remise des caducée officiel aux ASV GIPSA diplômés + attestation
-        li
-          time 21h30
-          h2 Buffet & soirée dansante
-          p Dj, photomaton libre, remise de cadeaux, jeux-concours, ...
-        li
-          time 00H00
-          h2 Fermeture
+      div
+        a(href='#program'): h1 Programme
+        ul
+          li
+            time 19H
+            h2 Ouverture de la soirée
+          li
+            time 20H
+            h2 Introduction
+            p APFORM & GIPSA / ASSAV / SNVEL / AFVAC / Partenaires
+          li
+            time 20H30
+            h2 Cérémonie Nationale des ASV GIPSA
+            p Remise des caducée officiel aux ASV GIPSA diplômés + attestation
+          li
+            time 21h30
+            h2 Buffet & soirée dansante
+            p Dj, photomaton libre, remise de cadeaux, jeux-concours, ...
+          li
+            time 00H00
+            h2 Fermeture
+      div
+        h2 Ourverture des inscriptions le 1er juillet 2015
+      .arrow-down-centered
+        .svg-logo-container
+          +arrowDownLogo mainColor='white'
   section
     article
       a(href='#subscription'): h1 Inscription

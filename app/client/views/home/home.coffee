@@ -4,7 +4,7 @@
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
 @logoEl = "#{headerEl}>.center-all>.svg-logo-container"
-@arrowEl = "#{headerEl}>.arrow-down>.arrow-down-centered"
+@arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
 
 class @ScrollerSingleton
   instance = null
