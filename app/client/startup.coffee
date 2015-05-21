@@ -12,8 +12,3 @@ spinnerEl = '.main-container[data-role=\'spinner\']'
 Meteor.setTimeout ->
   ($ spinnerEl).remove()
 , 300
-
-# Detect if it's a mobile or tablet
-@isTouchDevice() ->
-  (('ontouchstart' in window) or (navigator.MaxTouchPoints > 0) or
-  (navigator.msMaxTouchPoints > 0))

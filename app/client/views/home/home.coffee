@@ -51,6 +51,7 @@ Template.home.onCreated ->
   , 256
 
 Template.home.onRendered ->
+  Session.set 'debug', if 'ontouchstart' of window then 'mobile' else 'desktop'
   # Set menu as invisible on the home page uniquely
   ($ menuEl).css 'opacity', 0
   # Start scrolling container
