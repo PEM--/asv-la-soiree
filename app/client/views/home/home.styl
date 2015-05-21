@@ -92,5 +92,28 @@
           margin-left .5em
           border 3px solid brandColor
           background white
-          h1, p
+          h1, h2, p, time,
             color brandColor
+          h1
+            text-align center
+          ul
+            reset-list()
+            margin-top 1em
+            li
+              margin-bottom 2em
+            h2, time
+              display inline
+              font-size 1em
+            time
+              font-weight bold
+              display inline-block
+              width 2em
+              &::after
+                margin-left .5em
+                content '//'
+                width 1em
+            h2
+              font-weight normal
+              margin-left 2.5em
+            p
+              margin 0 0 0 4.8em
