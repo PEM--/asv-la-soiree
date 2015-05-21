@@ -1,7 +1,6 @@
 @mainCntEl = '.main-container[data-role=\'layout\']'
 @menuEl = "#{mainCntEl}>nav"
 @routerEl = "#{mainCntEl}>.router-container"
-@videoEl = "#{routerEl}>video"
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
 @logoEl = "#{headerEl}>.center-all>.svg-logo-container"
@@ -52,6 +51,10 @@ Template.home.onCreated ->
 
 Template.home.onRendered ->
   Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
+  # Start video on desktop
+  unless IS_MOBILE
+    video = @find 'video'
+    video.play()
   # Set menu as invisible on the home page uniquely
   ($ menuEl).css 'opacity', 0
   # Start scrolling container
@@ -90,10 +93,10 @@ Template.home.onRendered ->
       handler: (direction) ->
         if direction is 'down'
           ScrollerSingleton.get().stop()
-          ($ videoEl)?.hide()
+          video.pause() unless IS_MOBILE
         else
           ScrollerSingleton.get().start()
-          ($ videoEl)?.show()
+          video.play() unless IS_MOBILE
       context: $mainCntEl[0]
     # Waypoint subscription content that triggers entrance animation
     new Waypoint
