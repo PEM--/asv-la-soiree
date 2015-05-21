@@ -33,19 +33,23 @@ html, body, .main-container, .router-container
   // iOS hacks for weird overflow-x behavior
   overflow-x hidden
   overflow-y auto
-  -webkit-overflow-x touch
+  -webkit-overflow-scrolling touch
+  &>*
+    transition tranform3d(0,0,0)
   .router-container
     flex-grow 1
     flex-shrink 0
     width 100%
     height auto
     transition opacity defaultTransitionValue
+    display flex
+    flex-direction column
     // iOS hacks for weird overflow-x behavior
     overflow-x hidden
     overflow-y auto
-    -webkit-overflow-x touch
-    display flex
-    flex-direction column
+    -webkit-overflow-scrolling touch
+    &>*
+      transition tranform3d(0,0,0)
     header
       flex-grow 0
       flex-shrink 0
