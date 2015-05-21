@@ -1,5 +1,8 @@
-//- video.bgvid(autoplay, loop, poster='/videos/lyon-festival-light.jpg')
-//-   source(src='/videos/lyon-festival-light.mp4', type='video/mp4')
+if isMobile
+  img(src='/videos/lyon-festival-light.jpg', defer, alt='Lyon')
+else
+  video(autoplay, loop, poster='/videos/lyon-festival-light.jpg')
+    source(src='/videos/lyon-festival-light.mp4', defer, type='video/mp4')
 header
   section
     .center-all

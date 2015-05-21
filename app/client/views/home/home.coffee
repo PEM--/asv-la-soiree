@@ -51,7 +51,7 @@ Template.home.onCreated ->
   , 256
 
 Template.home.onRendered ->
-  Session.set 'debug', if 'ontouchstart' of window then 'mobile' else 'desktop'
+  Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
   # Set menu as invisible on the home page uniquely
   ($ menuEl).css 'opacity', 0
   # Start scrolling container
@@ -128,3 +128,6 @@ Template.home.onRendered ->
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ mapEl).height()*0.1
       context: $mainCntEl[0]
+
+Template.home.helpers
+  isMobile: -> IS_MOBILE
