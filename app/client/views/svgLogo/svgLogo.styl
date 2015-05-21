@@ -1,0 +1,26 @@
+@import 'nib'
+@import 'jeet'
+@import 'client/styles/*.import'
+
+svg.svg-content.asv-logo
+  .circle
+    transition stroke defaultTransitionValue
+  .year
+    transition fill defaultTransitionValue
+  &.black-bg
+    .circle
+      stroke white
+    .year
+      fill white
+  &:.white-bg
+    .circle
+      stroke brandColor
+    .year
+      fill black
+svg.svg-content.arrow-down
+  &.pink
+    .shape
+      fill brandColor
+  &.white
+    .shape
+      fill white
