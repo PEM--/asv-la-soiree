@@ -13,7 +13,7 @@
   - https://github.com/matteodem/meteor-easy-security
 - [ ] Upload d'image
   - https://github.com/brightbind/orion-gridFS
-- [ ] Preloading de la video
+- [X] Preloading de la video
 - http://desandro.github.io/imagesloaded/
 - https://github.com/iamkevingreen/imagesloaded
 - [ ] FTS sur le back office
@@ -58,6 +58,8 @@
 - [ ] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
+- [ ] One-click actions for GMail
+  - https://developers.google.com/gmail/markup/reference/one-click-action
 - [ ] Mangopay
   - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
   - https://github.com/jeremyhodges/flaming-bear
@@ -76,6 +78,7 @@
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
+- [ ] Language on HTML main tag
 
 ## Tutorial
 Orion is based on:

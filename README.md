@@ -11,3 +11,27 @@ As this is my first app using OrionJS, consider this repo with care.
 
 ## License
 MIT
+
+## Requirements
+* ffmpeg
+```bash
+brew install ffmpeg
+```
+* ImageMagick
+```bash
+brew install imagemagick
+```
+* JpegOptim
+```bash
+brew install jpegoptim
+```
+* WebP
+```bash
+brew install webp
+```
+* Gulp
+```bash
+npm -g install gulp
+cd assets
+npm install
+```
