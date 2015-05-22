@@ -162,6 +162,5 @@ Template.home.onRendered ->
       offset: ($ menuEl).height()
       context: $mainCntEl[0]
 
-
 Template.home.helpers
   isMobile: -> IS_MOBILE
