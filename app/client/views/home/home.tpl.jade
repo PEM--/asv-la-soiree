@@ -1,8 +1,5 @@
 if isMobile
-  picture
-    source(srcset='/videos/lyon-festival-light.jpg', media='(min-width: 1000px)')
-    source(srcset='/videos/lyon-festival-light.jpg', media='(min-width: 500px)')
-    img(src='/videos/lyon-festival-light.jpg', async, alt='Lyon')
+  +picture name='lyon-festival-light' title='Lyon'
 else
   video(preload, loop)
     source(src='/videos/lyon-festival-light.mp4', async, type='video/mp4')

@@ -11,6 +11,7 @@
 - [X] Sécurité : problème de browser-policy sur l'administration du CMS
 - [X] Limitations with the security and the rate limiting
   - https://github.com/matteodem/meteor-easy-security
+- [X] Video background
 - [ ] Upload d'image
   - https://github.com/brightbind/orion-gridFS
 - [X] Preloading de la video
@@ -26,7 +27,7 @@
   - https://github.com/gwendall/meteor-template-animations
   - http://imakewebthings.com/waypoints
 - [X] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox
-- [ ] Replace video on mobiles/tablets with a responsive image
+- [X] Replace video on mobiles/tablets with a responsive image
 - [ ] Menu for smartphone
 - [X] Main template
 - [ ] Notification de déconnexions du serveur
@@ -40,9 +41,7 @@
 - [X] No script
 - [X] Navigateurs trop anciens
 - [ ] Loading subscription template
-- [ ] Video background
-- [ ] Zoom sur la GMap : Pas sûr
-  - https://github.com/fat/zoom.js
+
 - [ ] Twitter cards
 - [ ] Open graph
   - https://github.com/yasinuslu/blaze-meta

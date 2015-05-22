@@ -2,7 +2,8 @@
   "name": "asv-la-soiree",
   "version": "1.0.0",
   "dependencies": {
-    "waypoints": "3.1.1"
+    "waypoints": "3.1.1",
+    "picturefill": "2.3.1"
   },
   "overrides": {
     "waypoints": {

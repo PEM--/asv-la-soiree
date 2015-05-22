@@ -14,4 +14,7 @@ Meteor.setTimeout ->
 , 300
 
 # Global variable determined at Meteor's start
-@IS_MOBILE = 'ontouchstart' of window
+#@IS_MOBILE = 'ontouchstart' of window
+@IS_MOBILE = true
+# Create element polyfill for picture
+document.createElement 'picture'
