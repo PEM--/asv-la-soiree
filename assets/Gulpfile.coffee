@@ -18,6 +18,8 @@ p = require('gulp-load-plugins')
   rename: {}
 # PNG quantization
 pngquant = require 'imagemin-pngquant'
+# Node's utils
+path = require 'path'
 
 # Distribution folders
 videoDist = '../app/public/videos/'
@@ -27,27 +29,44 @@ faviconsDist = '../app/public/'
 # Video compression
 # ffmpeg -y -i $videoIn -vcodec libx264 -preset veryslow -an -f mp4 $videoOut
 gulp.task 'video', ->
-  gulp.src 'src/l*.mp4'
-    .pipe p.fluentFfmpeg (cmd) ->
-      cmd
-        .videoCodec('libx264')
-        .noAudio()
-        .format('avi')
-        .outputOptions(['-preset', 'veryslow', '-an'])
-    .pipe gulp.dest imgDist
+  options =
+    continueOnError: false
+    pipeStdout: false
+    distDir: (f) -> "#{videoDist}#{path.basename f}"
+  reporterOptions =
+    err: true
+    stderr: true
+    stdout: true
+  gulp.src 'src/*.mp4'
+    .pipe p.exec 'ffmpeg -y -i <%= file.path %> -vcodec libx264 \
+      -preset veryslow -an -f mp4 \
+      <%= options.distDir(file.path) %>', options
+    .pipe p.exec.reporter reporterOptions
 
-# Copy plain images
-gulp.task 'copy', ->
-  gulp.src 'src/*.jpg'
-    .pipe gulp.dest imgDist
+# Video screenshot
+# ffmpeg -ss $timeStamp -i $videoOut -frames 1 $tmpCover
+gulp.task 'screenshot', ['video'], ->
+  options =
+    continueOnError: false
+    pipeStdout: false
+    distDir: (f) ->
+      "#{imgDist}#{((path.basename f).split path.extname f)[0]}.jpg"
+  reporterOptions =
+    err: true
+    stderr: true
+    stdout: true
+  gulp.src 'src/*.mp4'
+    .pipe p.exec 'ffmpeg -y -ss 00:00:03 -i <%= file.path %> -frames 1 \
+      <%= options.distDir(file.path) %>', options
+    .pipe p.exec.reporter reporterOptions
 
 # Resize images
-gulp.task 'resize-medium', ['copy'], ->
+gulp.task 'resize-medium', ['screenshot'], ->
   gulp.src 'src/*.jpg'
     .pipe p.imageResize width: 800
     .pipe p.rename (path) -> path.basename += '-medium'
     .pipe gulp.dest imgDist
-gulp.task 'resize-small', ['copy'], ->
+gulp.task 'resize-small', ['screenshot'], ->
   gulp.src 'src/*.jpg'
     .pipe p.imageResize width: 320
     .pipe p.rename (path) -> path.basename += '-small'
@@ -69,4 +88,4 @@ gulp.task 'webp', ['imagemin'], ->
     .pipe gulp.dest imgDist
 
 # Default task call every tasks created so far
-gulp.task 'default', ['video']
+gulp.task 'default', ['webp']
