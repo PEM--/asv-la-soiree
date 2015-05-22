@@ -6,10 +6,9 @@
 .main-container
   >nav
     opacity 0
-    transition opacity defaultTransitionValue
     fixed top left
     background rgba(textColor, 95%)
-    //background yellow
+    transition opacity defaultTransitionValue, background-color defaultTransitionValue
     z-index 1000
     width 100%
     display flex
@@ -30,13 +29,11 @@
         size 11em 4em
         cursor pointer
         pointer-events auto
-        //background red
         >.svg-logo-container
           asvlasoireeBigLogo(100%)
       >ul
         flex-grow 1
         flex-shrink 0
-        //background violet
         display flex
         flex-wrap no-wrap
         align-content flex-end
@@ -49,9 +46,14 @@
           cpLinks(brandColor)
           pointer-events auto
           >a
-            transition color .3s ease-in-out
+            transition color defaultTransitionValue
             color bgColor
         >li.active
           pointer-events none
           >a
             color brandColor
+    &.white
+      background rgba(bgColor, 95%)
+      >.nav >ul >li
+        >a
+          color textColor

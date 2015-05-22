@@ -1,5 +1,6 @@
 @mainCntEl = '.main-container[data-role=\'layout\']'
 @menuEl = "#{mainCntEl}>nav"
+@menuLogoEl = "#{mainCntEl}>nav .logo svg"
 @routerEl = "#{mainCntEl}>.router-container"
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
@@ -48,6 +49,16 @@ Template.home.onCreated ->
   ($ window).on 'resize', _.debounce =>
     @rxMainHeight.set ($ mainEl).height()
   , 256
+
+changeMenuColor = (direction, isInverted) ->
+  whiten = direction is 'up'
+  whiten = not whiten if isInverted
+  if whiten
+    ($ menuLogoEl).attr 'class', 'svg-content asv-logo white'
+    ($ menuEl).addClass 'white'
+  else
+    ($ menuLogoEl).attr 'class', 'svg-content asv-logo black'
+    ($ menuEl).removeClass 'white'
 
 Template.home.onRendered ->
   Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
@@ -110,6 +121,12 @@ Template.home.onRendered ->
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ subEl).height()*0.1
       context: $mainCntEl[0]
+    # Waypoint subscription content menu color change
+    new Waypoint
+      element: ($ subEl)[0]
+      handler: (direction) -> changeMenuColor direction, true
+      offset: ($ menuEl).height()
+      context: $mainCntEl[0]
     # Waypoint contact content that triggers entrance animation
     new Waypoint
       element: ($ contactEl)[0]
@@ -121,7 +138,13 @@ Template.home.onRendered ->
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ contactEl).height()*0.1
       context: $mainCntEl[0]
-    # Waypoint contact content that triggers entrance animation
+    # Waypoint subscription content menu color change
+    new Waypoint
+      element: ($ contactEl)[0]
+      handler: (direction) -> changeMenuColor direction, false
+      offset: ($ menuEl).height()
+      context: $mainCntEl[0]
+    # Waypoint mapEl content that triggers entrance animation
     new Waypoint
       element: ($ mapEl)[0]
       handler: (direction) ->
@@ -132,6 +155,13 @@ Template.home.onRendered ->
       # Animations starts at 10% visibility of the content
       offset: winHeight - ($ mapEl).height()*0.1
       context: $mainCntEl[0]
+    # Waypoint map content menu color change
+    new Waypoint
+      element: ($ mapEl)[0]
+      handler: (direction) -> changeMenuColor direction, true
+      offset: ($ menuEl).height()
+      context: $mainCntEl[0]
+
 
 Template.home.helpers
   isMobile: -> IS_MOBILE
