@@ -51,14 +51,14 @@ Template.home.onCreated ->
 
 Template.home.onRendered ->
   Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
-  # Start video on desktop
   unless IS_MOBILE
+    # Start video
     video = @find 'video'
     video.play()
+    # Start scrolling container
+    ScrollerSingleton.get().start() unless IS_MOBILE
   # Set menu as invisible on the home page uniquely
   ($ menuEl).css 'opacity', 0
-  # Start scrolling container
-  ScrollerSingleton.get().start()
   # Set reactive height
   @rxMainHeight.set ($ mainCntEl).height()
   @autorun (computation) =>
@@ -66,7 +66,7 @@ Template.home.onRendered ->
     mainHeight = @rxMainHeight.get()
     # Handle resizing on Scroller except on the first instanciation
     unless computation.firstRun
-      ScrollerSingleton.get().resizing()
+      ScrollerSingleton.get().resizing() unless IS_MOBILE
       # Recreates waypoints
       Waypoint.destroyAll()
     $mainCntEl = $ mainCntEl
@@ -88,15 +88,16 @@ Template.home.onRendered ->
       offset: ($ headerEl).height()*.7
       context: $mainCntEl[0]
     # Waypoint for stopping the video and the Scroller
-    new Waypoint
-      element: ($ arrowEl)[0]
-      handler: (direction) ->
-        if direction is 'down'
-          ScrollerSingleton.get().stop()
-          video.pause() unless IS_MOBILE
-        else
-          ScrollerSingleton.get().start()
-          video.play() unless IS_MOBILE
+    unless IS_MOBILE
+      new Waypoint
+        element: ($ arrowEl)[0]
+        handler: (direction) ->
+          if direction is 'down'
+            ScrollerSingleton.get().stop()
+            video.pause()
+          else
+            ScrollerSingleton.get().start()
+            video.play()
       context: $mainCntEl[0]
     # Waypoint subscription content that triggers entrance animation
     new Waypoint
