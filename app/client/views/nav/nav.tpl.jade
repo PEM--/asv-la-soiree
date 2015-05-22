@@ -1,6 +1,8 @@
 nav: .nav
   .logo: .svg-logo-container
-      +asvlasoireeBigLogo background='black'
+    +asvlasoireeBigLogo background='black'
+  .hamburger-button
+    span
   ul
     each links
       li(class=activeRoute): a(href=slug)= name

@@ -21,6 +21,7 @@
       width 100%
       max-width maxSize
       display flex
+      justify-content space-between
       >.logo
         flex-grow 0
         flex-shrink 0
@@ -31,7 +32,59 @@
         pointer-events auto
         >.svg-logo-container
           asvlasoireeBigLogo(100%)
+      .hamburger-button
+        +above('medium')
+          display none
+        +below('medium')
+          flex-grow 0
+          flex-shrink 0
+          absolute top .7em right
+          display block
+          size 4em
+          background-color rgba(bgColor, 20%)
+          border 2px solid brandColor
+          border-radius 50%
+          pointer-events auto
+          cursor pointer
+          transition transform defaultTransitionValue, background-color defaultTransitionValue
+        span
+          absolute top 50% left 50%
+          size 2.5em 2px
+          display block
+          transform translate3d(-50%,-50%,0)
+          background-color bgColor
+          transition background-color defaultTransitionValue
+          border-radius @height
+          pointer-events none
+          &:before, &:after
+            absolute top left
+            size 2.5em 2px
+            content ''
+            display block
+            border-radius @height
+            transform translate3d(0,-6px,0)
+            background-color bgColor
+            transition transform defaultTransitionValue, background-color defaultTransitionValue
+            transform-origin 50% 50%
+            pointer-events none
+          &:after
+            transform translate3d(0,6px,0)
+        &:hover
+          span:before
+            transform translate3d(0,-8px,0)
+          span:after
+            transform translate3d(0,8px,0)
+        &.open
+          transform rotateZ(180deg)
+          span
+            background transparent
+            &:before
+              transform translate3d(0,0,0) rotateZ(45deg)
+            &:after
+              transform translate3d(0,0,0) rotateZ(-45deg)
       >ul
+        +below('medium')
+          display none
         flex-grow 1
         flex-shrink 0
         display flex
@@ -54,6 +107,13 @@
             color brandColor
     &.white
       background rgba(bgColor, 95%)
-      >.nav >ul >li
-        >a
-          color textColor
+      >.nav
+        >ul >li
+          >a
+            color textColor
+        .hamburger-button
+            background-color rgba(textColor, 20%)
+          span
+            background-color brandColor
+            &:before, &:after
+              background-color brandColor

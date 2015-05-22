@@ -13,3 +13,4 @@ Template.nav.helpers
 
 Template.nav.events
   'click .svg-logo-container': (e, t) -> goNextRoute '/'
+  'click .hamburger-button': (e, t) -> (t.$ e.target).toggleClass 'open'

@@ -41,7 +41,6 @@
 - [X] No script
 - [X] Navigateurs trop anciens
 - [ ] Loading subscription template
-
 - [ ] Twitter cards
 - [ ] Open graph
   - https://github.com/yasinuslu/blaze-meta
@@ -57,6 +56,7 @@
 - [ ] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
+  - https://www.youtube.com/watch?v=ahvJkaoc7Gk
 - [ ] One-click actions for GMail
   - https://developers.google.com/gmail/markup/reference/one-click-action
 - [ ] Mangopay

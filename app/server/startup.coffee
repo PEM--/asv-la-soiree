@@ -37,6 +37,9 @@ Inject.rawHead 'loader-style',
     "href=\"/favicon-96x96.png#{favIconVersion}\" sizes=\"96x96\">" +
   '<link rel="icon" type="image/png" ' +
     "href=\"/favicon-16x16.png\" sizes=\"16x16#{favIconVersion}\">" +
+  '<!--[if IE]>' +
+    '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' +
+  '<![endif]-->' +
   '<link rel="manifest" href="/manifest.json">' +
   '<meta name="msapplication-TileColor" ' +
     "content=\"#{colorTheme.brandColor}\">" +
