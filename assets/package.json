@@ -11,6 +11,7 @@
   "devDependencies": {
     "coffee-script": "^1.9.2",
     "concurrent-transform": "^1.0.0",
+    "gulp-fluent-ffmpeg": "^1.0.1",
     "gulp-image-resize": "^0.6.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-load-plugins": "^0.10.0",

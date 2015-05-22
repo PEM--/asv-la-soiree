@@ -24,6 +24,18 @@ videoDist = '../app/public/videos/'
 imgDist = '../app/public/img/'
 faviconsDist = '../app/public/'
 
+# Video compression
+# ffmpeg -y -i $videoIn -vcodec libx264 -preset veryslow -an -f mp4 $videoOut
+gulp.task 'video', ->
+  gulp.src 'src/l*.mp4'
+    .pipe p.fluentFfmpeg (cmd) ->
+      cmd
+        .videoCodec('libx264')
+        .noAudio()
+        .format('avi')
+        .outputOptions(['-preset', 'veryslow', '-an'])
+    .pipe gulp.dest imgDist
+
 # Copy plain images
 gulp.task 'copy', ->
   gulp.src 'src/*.jpg'
@@ -57,4 +69,4 @@ gulp.task 'webp', ['imagemin'], ->
     .pipe gulp.dest imgDist
 
 # Default task call every tasks created so far
-gulp.task 'default', ['webp']
+gulp.task 'default', ['video']
