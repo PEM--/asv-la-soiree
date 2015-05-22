@@ -6,14 +6,24 @@
 
 .main-container
   .router-container
-    >video, >picture
+    >video, >.picture
       fixed bottom right
       min-width 100%
       min-height 100%
       size auto
       overflow hidden
-      opacity 0
+      opacity 1
       animation fadeIn 1s 4s ease-in-out forwards
+    >.picture
+      @media screen and (min-width: 800px)
+        background url('img/lyon-festival-light.jpg') black no-repeat center fixed
+        background-size cover
+      @media screen and (min-width: 320px) and (max-width: 800px)
+        background url('img/lyon-festival-light-medium.jpg') black no-repeat center fixed
+        background-size cover
+      @media screen and (max-width: 320px)
+        background url('img/lyon-festival-light-small.jpg') black no-repeat center fixed
+        background-size cover
     header
       // Create a new context for overlapping video
       z-index 1
