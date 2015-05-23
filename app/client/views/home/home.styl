@@ -74,11 +74,11 @@
                 display block
                 width 100%
                 font-size 1.2em
-                +at('medium')
+                +above('medium')
                   font-size 1.3em
-                +at('desktop')
+                +above('desktop')
                   font-size 1.9em
-                +at('hd')
+                +above('hd')
                   font-size 2.3em
               h1
                 font-family $helvetica
@@ -118,9 +118,10 @@
                   +above('medium')
                     flex-grow 0
                     flex-shrink 0
-                    width auto
+                    width 12em
                     padding 0 1em
                   +above('desktop')
+                    width 15em
                     padding 0 2em
                   text-transform uppercase
                   text-align center
