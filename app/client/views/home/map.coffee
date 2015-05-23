@@ -9,7 +9,7 @@ Template.map.helpers
   mapOptions: ->
     if GoogleMaps.loaded()
       center: new google.maps.LatLng 45.76404, 4.83566
-      zoom: 13
+      zoom: 14
       panControl: false
       zoomControl: false
       mapTypeControl: false
@@ -36,14 +36,14 @@ Template.map.helpers
           featureType: 'all'
           elementType: 'labels.text.fill'
           stylers: [
-            { color: ct.bgColor }
-            { weight: 2.0 }
+            { color: ct.textColor }
+            { weight: 5.0 }
           ]
         }
         {
           featureType: 'all'
           elementType: 'labels.text.stroke'
-          stylers: [{ color: ct.textColor }]
+          stylers: [{ color: ct.bgColor }]
         }
         {
           featureType: 'all'
@@ -157,26 +157,34 @@ Template.map.helpers
         }
         {
           featureType: 'transit'
-          elementType: 'geometry'
+          elementType: 'geometry.fill'
           stylers: [
             { color: ct.textColor }
-            {weight: 2.0}
+            { lightness: 40 }
+            { weight: 2.0 }
           ]
+        }
+        {
+          featureType: 'transit'
+          elementType: 'geometry.stroke'
+          stylers: [{ color: ct.textColor }]
+        }
+        {
+          featureType: 'transit.station.rail'
+          elementType: 'all'
+          stylers: [ { visibility: 'on' } ]
         }
         {
           featureType: 'water'
           elementType: 'geometry.fill'
           stylers: [
             { color: ct.waterColor }
-            { lightness: 30 }
+            { lightness: 60 }
           ]
         }
         {
           featureType: 'water'
           elementType: 'geometry.stroke'
-          stylers: [
-            { color: ct.waterColor }
-            { weight: 2.0 }
-          ]
+          stylers: [{ color: ct.waterColor }]
         }
       ]

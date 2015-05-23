@@ -4,7 +4,8 @@
 @routerEl = "#{mainCntEl}>.router-container"
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
-@logoEl = "#{headerEl}>.center-all>.svg-logo-container"
+@logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
+@teaserEl = "#{headerEl}>.center-all>.teaser"
 @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
 @programCntEl = "#{mainEl}>section:nth-child(1)"
 @prezEl = "#{programCntEl}>article:nth-child(1)"
@@ -25,13 +26,13 @@ class @ScrollerSingleton
       console.log 'Scroller Start'
       @$mainCntEl = $ mainCntEl
       @$header = $ headerEl
-      @posStartAnimLogo = 20
+      @posStartAnimLogo = 0
       @$logo = $ logoEl
       @sizeAndPos()
       @$mainCntEl.on 'scroll', => @event()
     event: ->
       @scrollPos = @$mainCntEl.scrollTop()
-      trans = (@scrollPos-@posStartAnimLogo) * .6
+      trans = (@scrollPos-@posStartAnimLogo) * .8
       scale = if @scrollPos > @logoTop
         1 + .001 * (@scrollPos - @logoTop)
       else 1
@@ -90,11 +91,13 @@ Template.home.onRendered ->
       handler: (direction) ->
         if direction is 'down'
           ($ arrowEl).css 'opacity', 0
+          ($ teaserEl).css 'opacity', 0
           ($ menuEl).css 'opacity', 1
           ($ prezEl).velocity('stop').velocity 'transition.slideLeftIn'
           ($ progEl).velocity('stop').velocity 'transition.slideRightIn'
         else
           ($ arrowEl).css 'opacity', 1
+          ($ teaserEl).css 'opacity', 1
           ($ menuEl).css 'opacity', 0
           ($ prezEl).velocity('stop').velocity 'reverse'
           ($ progEl).velocity('stop').velocity 'reverse'
