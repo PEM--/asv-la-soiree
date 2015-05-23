@@ -48,7 +48,7 @@ Template.home.onCreated ->
   @rxMainHeight = new ReactiveVar
   ($ window).on 'resize', _.debounce =>
     @rxMainHeight.set ($ mainEl).height()
-  , 256
+  , if IS_MOBILE then 256 else 1024
 
 changeMenuColor = (direction, isInverted) ->
   whiten = direction is 'up'
