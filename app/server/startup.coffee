@@ -42,16 +42,16 @@ Inject.rawHead 'loader-style',
   '<![endif]-->' +
   '<link rel="manifest" href="/manifest.json">' +
   '<meta name="msapplication-TileColor" ' +
-    "content=\"#{colorTheme.brandColor}\">" +
+    "content=\"#{ct.brandColor}\">" +
   '<meta name="msapplication-TileImage" ' +
     "content=\"/mstile-144x144.png#{favIconVersion}\">" +
   '<meta name="theme-color" content="#ffffff">' +
   # The loading spinner needs some theming.
   '<style>' +
-    "html{background-color:#{colorTheme.bgBrandColor};}" +
+    "html{background-color:#{ct.bgBrandColor};}" +
     'body>div.main-container[data-role=\'spinner\']{' +
-      "background-color:#{colorTheme.bgBrandColor};" +
-      "color:#{colorTheme.bgBrandColor};" +
+      "background-color:#{ct.bgBrandColor};" +
+      "color:#{ct.bgBrandColor};" +
       'overflow:hidden;width:100%;height:100%}' +
     'noscript{background:white;text-align:center;}' +
     'noscript>h1{color:red;}' +
@@ -60,10 +60,10 @@ Inject.rawHead 'loader-style',
       'top:0;right:0;width:80px;' +
       '-webkit-animation:rotation .6s infinite linear;' +
       'animation:rotation .6s infinite linear;' +
-      "border-left:6px solid #{colorTheme.transBrandColor};" +
-      "border-right:6px solid #{colorTheme.transBrandColor};" +
-      "border-bottom:6px solid #{colorTheme.transBrandColor};" +
-      "border-top:6px solid #{colorTheme.brandColor};" +
+      "border-left:6px solid #{ct.transBrandColor};" +
+      "border-right:6px solid #{ct.transBrandColor};" +
+      "border-bottom:6px solid #{ct.transBrandColor};" +
+      "border-top:6px solid #{ct.brandColor};" +
       'border-radius:100%;' +
     '}' +
     '@-webkit-keyframes rotation{' +

@@ -22,6 +22,7 @@ class @ScrollerSingleton
       @posEndAnimLogo = @$header.height()
       @logoTop = @$logo.offset().top
     start: ->
+      console.log 'Scroller Start'
       @$mainCntEl = $ mainCntEl
       @$header = $ headerEl
       @posStartAnimLogo = 20
@@ -40,6 +41,7 @@ class @ScrollerSingleton
       @sizeAndPos()
       @event()
     stop: ->
+      console.log 'Scroller Stop'
       @$mainCntEl.off 'scroll'
   @get: ->
     instance ?= new Scroller
