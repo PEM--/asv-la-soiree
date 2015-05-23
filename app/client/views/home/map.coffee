@@ -19,6 +19,11 @@ Template.map.helpers
       styles: [
         {
           featureType: 'all'
+          elementType: 'all'
+          stylers: [ { saturation: 1 }, { lightness: 1 }, { gamma: 1 } ]
+        }
+        {
+          featureType: 'all'
           elementType: 'geometry'
           stylers: [ { visibility: 'on' } ]
         }
@@ -172,7 +177,7 @@ Template.map.helpers
         {
           featureType: 'transit.station.rail'
           elementType: 'all'
-          stylers: [ { visibility: 'on' } ]
+          stylers: [ { visibility: 'on' }, { hue: ct.brandColor } ]
         }
         {
           featureType: 'water'
