@@ -13,7 +13,7 @@ Template.map.helpers
       panControl: false
       zoomControl: false
       mapTypeControl: false
-      scaleControl: true
+      scaleControl: false
       streetViewControl: false
       overviewMapControl: false
       styles: [
@@ -35,12 +35,15 @@ Template.map.helpers
         {
           featureType: 'all'
           elementType: 'labels.text.fill'
-          stylers: [{ color: ct.textColor }]
+          stylers: [
+            { color: ct.bgColor }
+            { weight: 2.0 }
+          ]
         }
         {
           featureType: 'all'
           elementType: 'labels.text.stroke'
-          stylers: [{ color: ct.bgColor }]
+          stylers: [{ color: ct.textColor }]
         }
         {
           featureType: 'all'
@@ -49,15 +52,8 @@ Template.map.helpers
         }
         {
           featureType: 'administrative'
-          elementType: 'geometry.fill'
-          stylers: [{ color: ct.brandColor }]
-        }
-        {
-          featureType: 'administrative'
-          elementType: 'geometry.stroke'
-          stylers: [
-            { color: ct.brandColor }
-          ]
+          elementType: 'geometry'
+          stylers: [{ color: ct.bgColor }]
         }
         {
           featureType: 'administrative.country'
@@ -77,7 +73,10 @@ Template.map.helpers
         {
           featureType: 'administrative.locality'
           elementType: 'all'
-          stylers: [ { visibility: 'on' } ]
+          stylers: [
+            { visibility: 'on' }
+            { weight: 3.0 }
+          ]
         }
         {
           featureType: 'administrative.locality'
@@ -97,7 +96,7 @@ Template.map.helpers
         {
           featureType: 'administrative.land_parcel'
           elementType: 'geometry'
-          stylers: [{ color: ct.grassColor }]
+          stylers: [ { visibility: 'off' } ]
         }
         {
           featureType: 'landscape'
@@ -117,18 +116,40 @@ Template.map.helpers
         {
           featureType: 'road.highway'
           elementType: 'geometry.fill'
-          stylers: [ { color: ct.highwayColor }]
+          stylers: [
+            { color: ct.highwayColor }
+            { lightness: 60 }
+            { weight: 1.5 }
+          ]
         }
         {
           featureType: 'road.highway'
           elementType: 'geometry.stroke'
-          stylers: [ { color: ct.highwayColor, weight: 1.2 } ]
+          stylers: [ { color: ct.highwayColor } ]
         }
         {
           featureType: 'road.arterial'
-          elementType: 'geometry'
-          stylers: [{ color: ct.roadColor }]
+          elementType: 'geometry.fill'
+          stylers: [
+            { color: ct.roadColor}
+            { lightness: 60 }
+            { weight: 0.2 }
+          ]
         }
+        {
+          featureType: 'road.arterial'
+          elementType: 'geometry.stroke'
+          stylers: [
+            { color: ct.roadColor }
+            { weight: 0.2 }
+          ]
+        }
+        {
+          featureType: 'road.arterial'
+          elementType: 'labels'
+          stylers: [{ visibility: 'off' }]
+        }
+
         {
           featureType: 'road.local'
           elementType: 'geometry'
@@ -137,11 +158,25 @@ Template.map.helpers
         {
           featureType: 'transit'
           elementType: 'geometry'
-          stylers: [{ color: ct.textColor }]
+          stylers: [
+            { color: ct.textColor }
+            {weight: 2.0}
+          ]
         }
         {
           featureType: 'water'
-          elementType: 'geometry'
-          stylers: [{ color: ct.waterColor }]
+          elementType: 'geometry.fill'
+          stylers: [
+            { color: ct.waterColor }
+            { lightness: 30 }
+          ]
+        }
+        {
+          featureType: 'water'
+          elementType: 'geometry.stroke'
+          stylers: [
+            { color: ct.waterColor }
+            { weight: 2.0 }
+          ]
         }
       ]
