@@ -16,14 +16,12 @@
       opacity 0
       animation fadeIn 1s 4s ease-in-out forwards
     >.picture
-      +below('medium')
-        background url('img/lyon-festival-light-small.jpg') black no-repeat center fixed
+      background url('img/lyon-festival-light-small.jpg') black no-repeat center fixed
+      background-size cover
       +above('medium')
         background url('img/lyon-festival-light-medium.jpg') black no-repeat center fixed
-        background-size cover
-      +above('hd')
+      +above('desktop')
         background url('img/lyon-festival-light.jpg') black no-repeat center fixed
-        background-size cover
     header
       // Create a new context for overlapping video
       z-index 1
@@ -65,7 +63,7 @@
             .teaser-content
               margin-top 3em
               opacity 0
-              animation fadeIn 1s 1s ease-in-out forwards
+              animation fadeIn 2s 1s ease-in-out forwards
               time, h1
                 text-align center
                 color bgColor
@@ -75,41 +73,78 @@
               time
                 display block
                 width 100%
-                font-size 220%
+                font-size 1.2em
+                +at('medium')
+                  font-size 1.3em
+                +at('desktop')
+                  font-size 1.9em
+                +at('hd')
+                  font-size 2.3em
               h1
-                font-size 260%
                 font-family $helvetica
                 font-weight 100
                 word-spacing .5em
+                font-size 1.4em
+                +above('medium')
+                  font-size 1.6em
+                +above('desktop')
+                  font-size 2.25em
+                +above('hd')
+                  font-size 2.7em
                 em
                   font-weight normal
                   font-style normal
                   color brandColor
               .links
-                width 60%
-                max-width 600px
-                margin 1em auto
-                display flex
-                justify-content space-between
+                margin 1em 2em
+                width 100%
+                max-width 400px
+                +above('medium')
+                  display flex
+                  justify-content space-between
+                  width 90%
+                  max-width 380px
+                  margin 1em auto
+                +above('desktop')
+                  width 80%
+                  max-width 500px
+                +above('hd')
+                  width 60%
+                  max-width 600px
                 a, a:visited
-                  flex-grow 0
-                  flex-shrink 0
-                  display inline-block
+                  width calc(100% - 4em)
+                  display block
+                  margin-bottom 1em
+                  +above('medium')
+                    flex-grow 0
+                    flex-shrink 0
+                    width auto
+                    padding 0 1em
+                  +above('desktop')
+                    padding 0 2em
                   text-transform uppercase
-                  size auto 3rem
-                  padding 0 2em
                   text-align center
                   text-decoration none
-                  line-height 2.8rem
+                  line-height 2.8em
+                  border 2px solid brandColor
+                  border-radius (roundCorner/2)
+                  transition color defaultTransitionValue, background-color defaultTransitionValue, transform defaultTransitionValue, border-color defaultTransitionValue
                   &:nth-child(1)
                     background brandColor
                     font-weight bold
                     color bgColor
                   &:nth-child(2)
-                    border 2px solid brandColor
-                    background transparent
+                    background rgba(black, 80%)
                     color brandColor
-
+                  &:hover
+                    transform scale3d(1.05, 1.05, 1)
+                    border-color lighten(brandColor, 30%)
+                    &:nth-child(1)
+                      background lighten(brandColor, 30%)
+                      color bgColor
+                    &:nth-child(2)
+                      background rgba(black, 95%)
+                      color lighten(brandColor, 30%)
         .arrow-down-container
           background linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%)
           // Create a new context for overlapping video
