@@ -1,11 +1,17 @@
 # Current favicon version
 favIconVersion = '?v=5'
 
+console.log 'Current orion title', orion.dictionary.get 'site.title'
+
+
 # Default PLT page: Injected initial styles and content
 #  for boosting SEO ranking.
 Inject.rawHead 'loader-style',
   # Force the initial scale for Android and iOS as our spinner may be
   #  distorted by their default viewport values.
+  '<title data-bind=\'html: title\'>' +
+    (orion.dictionary.get 'site.title') +
+  '</title>' +
   '<meta name="viewport" content="width=device-width,maximum-scale=1,' +
     'initial-scale=1,user-scalable=no">' +
   # Tell Google that it's an heavy JS app

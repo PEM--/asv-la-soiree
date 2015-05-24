@@ -1,9 +1,16 @@
 # Re-order injected tags during the initial PLT default page.
 $head = $ 'head'
-for tag in ['meta', 'title', 'link']
+for tag in ['meta', 'link']
   $tags = $ tag
+  console.log 'Moving tags'
+  console.dir $tags
   $head.append $tags.clone()
   $tags.remove()
+
+@SeoViewModel = new ViewModel 'SeoViewModel',
+  title: 'Toto'
+SeoViewModel.bind ($ 'head')
+
 # Removing spinner once Meteor has started up and jQuery is available.
 spinnerEl = '.main-container[data-role=\'spinner\']'
 ($ spinnerEl).css 'opacity', 0
