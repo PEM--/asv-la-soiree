@@ -10,6 +10,7 @@ Template.orionCpCollectionsIndex.events
         Router.go path
 
 Template.orionCpCollectionsIndex.onRendered ->
+  console.log 'Displaying collections'
   @autorun ->
     Template.currentData()
     Session.set 'orionCpCollectionsIndex_showTable', false

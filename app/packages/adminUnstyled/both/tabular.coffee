@@ -1,7 +1,9 @@
 orion.collections.onCreated ->
   self = this
   # if the collection doesn't has the tabular option, nothing to do here!
-  return unless _.has this, 'tabular'
+  unless _.has this, 'tabular'
+    console.log 'No tabular collection'
+    return
   tabularOptions = _.extend
     name: "tabular_#{@name}"
     collection: @
