@@ -1,4 +1,4 @@
-if isMobile
+if $.Session.get 'IS_MOBILE'
   .picture
 else
   video(preload, loop)
@@ -9,7 +9,7 @@ header
       .logo-resizer
         .svg-logo-container
           +asvlasoireeBigLogo
-      .teaser
+      .teaser(data-bind='style: {opacity: teaserOpacity}')
         .teaser-content
           time Vendredi 27 Novembre 2015 - Lyon
           h1 La soirée du congrès <em>ASV</em>
@@ -17,7 +17,7 @@ header
             a(href='#subscription') Pré-inscription
             a(href='#program') Programme
     .arrow-down-container
-      .arrow-down-centered
+      .arrow-down-centered(data-bind='style: {opacity: arrowOpacity}')
         .svg-logo-container
           +arrowDownLogo
 main(data-role='home')

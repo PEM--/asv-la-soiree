@@ -1,36 +1,13 @@
-class @MainMenuSingleton
-  instance = null
-  menuEl = 'nav'
-  menuLogoEl = "#{menuEl} svg"
-  menuContentEl = "#{menuEl} ul"
-  @get: (t = null) ->
-    return if t is null and instance is null
-    instance ?= new MainMenu t
-  class MainMenu
-    constructor: (t) ->
-      @template = t unless t is null
-      @$mainMenu = t.$ menuEl
-      @$menuLogo = t.$ menuLogoEl
-      @$menuContent = t.$ menuContentEl
-      console.log 'DOM', @$mainMenu, @$menuLogo, @$menuContent
-    height: ->
-      console.log 'Height'
-      @$mainMenu.height()
-    show: ->
-      console.log 'Show'
-      @$mainMenu.css 'opacity', 1
-    hide: ->
-      console.log 'Hide'
-      @$mainMenu.css 'opacity', 0
-
-Template.nav.onRendered ->
-  console.log 'Nav instanciation', @
-  # Initialize the menu singleton on the menu template
-  MainMenuSingleton.get @
-
-Template.nav.viewmodel 'mainMenu',
+@mainMenuModel = new ViewModel 'mainMenu',
   white: false
   menuContentOpened: false
+  opacity: 1
+  show: ->  @opacity 1
+  hide: -> @opacity 0
+  height: ->
+    # TODO Fix this hideous hack
+    if @templateInstance is undefined then 52 \
+    else (@templateInstance.$ 'nav').height()
   goHome: ->
     @menuContentOpened false
     goNextRoute '/'
@@ -47,3 +24,5 @@ Template.nav.viewmodel 'mainMenu',
     activeRoute: ->
       curSlug = getSlug()
       if @slug is curSlug then 'active' else ''
+
+Template.nav.onRendered -> mainMenuModel.bind @

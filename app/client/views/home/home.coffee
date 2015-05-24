@@ -3,7 +3,6 @@
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
 @logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
-@teaserEl = "#{headerEl}>.center-all>.teaser"
 @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
 @programCntEl = "#{mainEl}>section:nth-child(1)"
 @prezEl = "#{programCntEl}>article:nth-child(1)"
@@ -47,28 +46,30 @@ Template.home.onCreated ->
   @rxMainHeight = new ReactiveVar
   ($ window).on 'resize', _.debounce =>
     @rxMainHeight.set ($ mainEl).height()
-  , if IS_MOBILE then 256 else 1024
+  , if Session.get 'IS_MOBILE' then 256 else 1024
 
 changeMenuColor = (direction, isInverted) ->
   whiten = direction is 'up'
   whiten = not whiten if isInverted
-  # MainMenuSingleton.get().whiten whiten
-  (ViewModel.byId 'mainMenu').white whiten
+  mainMenuModel.white whiten
+
+homeModel = new ViewModel
+  arrowOpacity: 1
+  teaserOpacity: 1
 
 Template.home.onRendered ->
   console.log 'Home instanciation', @
-
-  # @TODO Attendre l'instanciation du menu via un autorun et une session
-
-  Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
-  unless IS_MOBILE
+  homeModel.bind @
+  Session.set 'debug', if Session.get 'IS_MOBILE' then 'mobile' else 'desktop'
+  unless Session.get 'IS_MOBILE'
     # Start video
     video = @find 'video'
     video.play()
     # Start scrolling container
-    ScrollerSingleton.get().start() unless IS_MOBILE
+    ScrollerSingleton.get().start()
   # Set menu as invisible on the home page uniquely
-  MainMenuSingleton.get()?.hide()
+  # @TODO Must fix load ordering issues
+  mainMenuModel.hide()
   # Set reactive height
   @rxMainHeight.set ($ mainCntEl).height()
   @autorun (computation) =>
@@ -76,7 +77,7 @@ Template.home.onRendered ->
     mainHeight = @rxMainHeight.get()
     # Handle resizing on Scroller except on the first instanciation
     unless computation.firstRun
-      ScrollerSingleton.get().resizing() unless IS_MOBILE
+      ScrollerSingleton.get().resizing() unless Session.get 'IS_MOBILE'
       # Recreates waypoints
       Waypoint.destroyAll()
     $mainCntEl = $ mainCntEl
@@ -86,21 +87,21 @@ Template.home.onRendered ->
       element: ($ arrowEl)[0]
       handler: (direction) ->
         if direction is 'down'
-          ($ arrowEl).css 'opacity', 0
-          ($ teaserEl).css 'opacity', 0
-          MainMenuSingleton.get().show()
+          homeModel.arrowOpacity 0
+          homeModel.teaserOpacity 0
+          mainMenuModel.show()
           ($ prezEl).velocity('stop').velocity 'transition.slideLeftIn'
           ($ progEl).velocity('stop').velocity 'transition.slideRightIn'
         else
-          ($ arrowEl).css 'opacity', 1
-          ($ teaserEl).css 'opacity', 1
-          MainMenuSingleton.get().hide()
+          homeModel.arrowOpacity 1
+          homeModel.teaserOpacity 1
+          mainMenuModel.hide()
           ($ prezEl).velocity('stop').velocity 'reverse'
           ($ progEl).velocity('stop').velocity 'reverse'
       offset: ($ headerEl).height()*.7
       context: $mainCntEl[0]
     # Waypoint for stopping the video and the Scroller
-    unless IS_MOBILE
+    unless Session.get 'IS_MOBILE'
       new Waypoint
         element: ($ arrowEl)[0]
         handler: (direction) ->
@@ -126,7 +127,7 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ subEl)[0]
       handler: (direction) -> changeMenuColor direction, true
-      offset: MainMenuSingleton.get().height()
+      offset: mainMenuModel.height()
       context: $mainCntEl[0]
     # Waypoint contact content that triggers entrance animation
     new Waypoint
@@ -143,7 +144,7 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ contactEl)[0]
       handler: (direction) -> changeMenuColor direction, false
-      offset: MainMenuSingleton.get().height()
+      offset: mainMenuModel.height()
       context: $mainCntEl[0]
     # Waypoint mapEl content that triggers entrance animation
     new Waypoint
@@ -160,8 +161,5 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ mapEl)[0]
       handler: (direction) -> changeMenuColor direction, true
-      offset: MainMenuSingleton.get().height()
+      offset: mainMenuModel.height()
       context: $mainCntEl[0]
-
-Template.home.helpers
-  isMobile: -> IS_MOBILE
