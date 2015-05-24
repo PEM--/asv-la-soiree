@@ -18,16 +18,18 @@ mquandalle:stylus
 browser-policy
 matteodem:easy-security
 
-# Development helper
+# Development helpers
+# Development helpers: Must be removed in production
 audit-argument-checks
-raix:handlebar-helpers
+manuel:viewmodel-explorer
 msavin:mongol
 msavin:jetsetter
+# Development helpers: OK for production
+raix:handlebar-helpers
 jag:pince
 mquandalle:bower
 manuel:viewmodel
-manuel:viewmodel-explorer
-peerlibrary:blaze-components
+
 
 # CSS & effects
 pierreeric:creativepure

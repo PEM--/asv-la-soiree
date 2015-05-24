@@ -22,14 +22,6 @@ class @MainMenuSingleton
     hide: ->
       console.log 'Hide'
       @$mainMenu.css 'opacity', 0
-    whiten: (isWhiten) ->
-      console.log 'Menu whitening', isWhiten, @$menuLogo, @$mainMenu
-      if isWhiten
-        @$menuLogo.attr 'class', 'svg-content asv-logo white'
-        @$mainMenu.addClass 'white'
-      else
-        @$menuLogo.attr 'class', 'svg-content asv-logo black'
-        @$mainMenu.removeClass 'white'
 
 Template.nav.onRendered ->
   console.log 'Nav instanciation', @
@@ -55,5 +47,3 @@ Template.nav.viewmodel 'mainMenu',
     activeRoute: ->
       curSlug = getSlug()
       if @slug is curSlug then 'active' else ''
-  sharedModel: -> @
-, ['sharedModel']
