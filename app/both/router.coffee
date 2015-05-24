@@ -53,7 +53,7 @@ if Meteor.isClient
       # @NOTE This fixes a bug on Safari iOS and Chrome Android
       t = _.pluck navLinks, 'slug'
       if curSlug in _.pluck navLinks, 'slug'
-        ($ menuEl).css 'opacity', 1
+        MainMenuSingleton.get().show()
         Waypoint.destroyAll()
 
 @navLinks = [

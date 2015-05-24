@@ -41,6 +41,7 @@
 - [X] No script
 - [X] Navigateurs trop anciens
 - [ ] Loading subscription template
+  - https://github.com/pcel/meteor-loading/
 - [ ] Twitter cards
 - [ ] Open graph
   - https://github.com/yasinuslu/blaze-meta
@@ -78,6 +79,16 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [ ] Language on HTML main tag
+- [ ] Accelerate routing
+  - https://github.com/meteorhacks/subs-manager
+- [ ] Check presence of online users
+  - https://github.com/dburles/meteor-presence
+- [ ] Get avatar on connected users
+  - https://github.com/bengott/meteor-avatar
+- [ ] Enhancing key combo
+  - https://atmospherejs.com/mousetrap/mousetrap
+- [ ] Pagination support
+  - https://github.com/alethes/meteor-pages
 
 ## Tutorial
 Orion is based on:

@@ -2,25 +2,25 @@
 @import 'jeet'
 @import 'client/styles/*.import'
 
+// ASV big logo with 2 states, default is for black background,
+//  second is white background.
 svg.svg-content.asv-logo
   .circle
     transition stroke defaultTransitionValue
+    stroke white
   .year
     transition fill defaultTransitionValue
-  &.black
-    .circle
-      stroke white
-    .year
-      fill white
+    fill white
   &.white
     .circle
       stroke brandColor
     .year
       fill black
+
+// Small arrow with 2 states, a pink one and a white one.
 svg.svg-content.arrow-down
-  &.pink
-    .shape
-      fill brandColor
+  .shape
+    fill brandColor
   &.white
     .shape
       fill white

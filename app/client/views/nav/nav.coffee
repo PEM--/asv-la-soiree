@@ -1,16 +1,59 @@
+class @MainMenuSingleton
+  instance = null
+  menuEl = 'nav'
+  menuLogoEl = "#{menuEl} svg"
+  menuContentEl = "#{menuEl} ul"
+  @get: (t = null) ->
+    return if t is null and instance is null
+    instance ?= new MainMenu t
+  class MainMenu
+    constructor: (t) ->
+      @template = t unless t is null
+      @$mainMenu = t.$ menuEl
+      @$menuLogo = t.$ menuLogoEl
+      @$menuContent = t.$ menuContentEl
+      console.log 'DOM', @$mainMenu, @$menuLogo, @$menuContent
+    height: ->
+      console.log 'Height'
+      @$mainMenu.height()
+    show: ->
+      console.log 'Show'
+      @$mainMenu.css 'opacity', 1
+    hide: ->
+      console.log 'Hide'
+      @$mainMenu.css 'opacity', 0
+    whiten: (isWhiten) ->
+      console.log 'Menu whitening', isWhiten, @$menuLogo, @$mainMenu
+      if isWhiten
+        @$menuLogo.attr 'class', 'svg-content asv-logo white'
+        @$mainMenu.addClass 'white'
+      else
+        @$menuLogo.attr 'class', 'svg-content asv-logo black'
+        @$mainMenu.removeClass 'white'
+
 Template.nav.onRendered ->
-  # Prevent basic link behavior for adding an in between transition
-  #  before activating the routing.
-  (@$ 'a').on 'click', (e) ->
+  console.log 'Nav instanciation', @
+  # Initialize the menu singleton on the menu template
+  MainMenuSingleton.get @
+
+Template.nav.viewmodel 'mainMenu',
+  white: false
+  menuContentOpened: false
+  goHome: ->
+    @menuContentOpened false
+    goNextRoute '/'
+  hamburger: (e) -> @menuContentOpened not @menuContentOpened()
+  changeRoute: (e) ->
     e.preventDefault()
+    @menuContentOpened false
     goNextRoute e.target.pathname
-
-Template.nav.helpers
-  links: -> navLinks
-  activeRoute: ->
-    curSlug = getSlug()
-    if @slug is curSlug then 'active' else ''
-
-Template.nav.events
-  'click .svg-logo-container': (e, t) -> goNextRoute '/'
-  'click .hamburger-button': (e, t) -> (t.$ e.target).toggleClass 'open'
+  blaze_helpers: ->
+    # These elements are stored in a regular Blaze helpers as they
+    #  are using global values that ViewModel doesn't handle.
+    # @TODO Set these in a regular ViewModel
+    links: -> navLinks
+    activeRoute: ->
+      curSlug = getSlug()
+      if @slug is curSlug then 'active' else ''
+  sharedModel: -> @
+, ['sharedModel']

@@ -1,6 +1,4 @@
 @mainCntEl = '.main-container[data-role=\'layout\']'
-@menuEl = "#{mainCntEl}>nav"
-@menuLogoEl = "#{mainCntEl}>nav .logo svg"
 @routerEl = "#{mainCntEl}>.router-container"
 @mainEl = "#{routerEl}>main"
 @headerEl = "#{routerEl}>header>section"
@@ -16,6 +14,8 @@
 
 class @ScrollerSingleton
   instance = null
+  @get: ->
+    instance ?= new Scroller
   class Scroller
     constructor: ->
       @scrollPos = 0
@@ -23,7 +23,6 @@ class @ScrollerSingleton
       @posEndAnimLogo = @$header.height()
       @logoTop = @$logo.offset().top
     start: ->
-      console.log 'Scroller Start'
       @$mainCntEl = $ mainCntEl
       @$header = $ headerEl
       @posStartAnimLogo = 0
@@ -42,10 +41,7 @@ class @ScrollerSingleton
       @sizeAndPos()
       @event()
     stop: ->
-      console.log 'Scroller Stop'
       @$mainCntEl.off 'scroll'
-  @get: ->
-    instance ?= new Scroller
 
 Template.home.onCreated ->
   @rxMainHeight = new ReactiveVar
@@ -56,14 +52,14 @@ Template.home.onCreated ->
 changeMenuColor = (direction, isInverted) ->
   whiten = direction is 'up'
   whiten = not whiten if isInverted
-  if whiten
-    ($ menuLogoEl).attr 'class', 'svg-content asv-logo white'
-    ($ menuEl).addClass 'white'
-  else
-    ($ menuLogoEl).attr 'class', 'svg-content asv-logo black'
-    ($ menuEl).removeClass 'white'
+  # MainMenuSingleton.get().whiten whiten
+  (ViewModel.byId 'mainMenu').white whiten
 
 Template.home.onRendered ->
+  console.log 'Home instanciation', @
+
+  # @TODO Attendre l'instanciation du menu via un autorun et une session
+
   Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
   unless IS_MOBILE
     # Start video
@@ -72,7 +68,7 @@ Template.home.onRendered ->
     # Start scrolling container
     ScrollerSingleton.get().start() unless IS_MOBILE
   # Set menu as invisible on the home page uniquely
-  ($ menuEl).css 'opacity', 0
+  MainMenuSingleton.get()?.hide()
   # Set reactive height
   @rxMainHeight.set ($ mainCntEl).height()
   @autorun (computation) =>
@@ -92,13 +88,13 @@ Template.home.onRendered ->
         if direction is 'down'
           ($ arrowEl).css 'opacity', 0
           ($ teaserEl).css 'opacity', 0
-          ($ menuEl).css 'opacity', 1
+          MainMenuSingleton.get().show()
           ($ prezEl).velocity('stop').velocity 'transition.slideLeftIn'
           ($ progEl).velocity('stop').velocity 'transition.slideRightIn'
         else
           ($ arrowEl).css 'opacity', 1
           ($ teaserEl).css 'opacity', 1
-          ($ menuEl).css 'opacity', 0
+          MainMenuSingleton.get().hide()
           ($ prezEl).velocity('stop').velocity 'reverse'
           ($ progEl).velocity('stop').velocity 'reverse'
       offset: ($ headerEl).height()*.7
@@ -130,7 +126,7 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ subEl)[0]
       handler: (direction) -> changeMenuColor direction, true
-      offset: ($ menuEl).height()
+      offset: MainMenuSingleton.get().height()
       context: $mainCntEl[0]
     # Waypoint contact content that triggers entrance animation
     new Waypoint
@@ -147,7 +143,7 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ contactEl)[0]
       handler: (direction) -> changeMenuColor direction, false
-      offset: ($ menuEl).height()
+      offset: MainMenuSingleton.get().height()
       context: $mainCntEl[0]
     # Waypoint mapEl content that triggers entrance animation
     new Waypoint
@@ -164,7 +160,7 @@ Template.home.onRendered ->
     new Waypoint
       element: ($ mapEl)[0]
       handler: (direction) -> changeMenuColor direction, true
-      offset: ($ menuEl).height()
+      offset: MainMenuSingleton.get().height()
       context: $mainCntEl[0]
 
 Template.home.helpers

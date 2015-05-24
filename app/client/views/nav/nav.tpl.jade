@@ -1,8 +1,8 @@
-nav: .nav
-  .logo: .svg-logo-container
-    +asvlasoireeBigLogo background='black'
-  .hamburger-button
+nav(data-bind='class: {white: white}'): .nav
+  .logo: .svg-logo-container(data-bind='click: goHome')
+    +asvlasoireeBigLogo sharedModel
+  button.hamburger-button(data-bind='class: {open: menuContentOpened}, click: hamburger')
     span
-  ul
+  ul(data-bind='class: {open: menuContentOpened}')
     each links
-      li(class=activeRoute): a(href=slug)= name
+      li(class=activeRoute): a(href=slug, data-bind='click: changeRoute')= name
