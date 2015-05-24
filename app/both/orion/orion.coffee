@@ -16,8 +16,8 @@ Options.set 'siteName', orion.dictionary.get 'site.title'
 Options.set 'homePath', __meteor_runtime_config__.ROOT_URL
 
 # Set default template for Autoform
-if Meteor.isClient
-  AutoForm.setDefaultTemplate 'plain'
+# if Meteor.isClient
+#   AutoForm.setDefaultTemplate 'plain'
 
 if Meteor.isServer
   Meteor.startup ->

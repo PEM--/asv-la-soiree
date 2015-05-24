@@ -1,0 +1,22 @@
+// orionBootstrapAccountIndex
++Layout template='orionBootstrapSmallContentOffset'
+  +Layout template='orionBootstrapTitle'
+    | My Account
+  +Layout template='orionBootstrapContentContainer'
+    .row
+      if currentUser.profile.picture
+        .col-sm-2
+          p
+            img.profile-picture(src="{{ currentUser.profile.picture.url }}")
+      .col-sm-10
+        p: b= currentUser.profile.name
+        with currentUser
+          each emails
+            p= address
+          p
+            each roles
+              span= this
+    hr
+    a.logout Logout
+    a(href="{{ pathFor 'myAccount.profile' }}") Update Profile
+    a(href="{{ pathFor 'myAccount.password' }}") Change Password

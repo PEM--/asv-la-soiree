@@ -36,7 +36,7 @@ Package.onUse(function(api) {
     'client/layout/layout.jade',
     'client/layout/layout.coffee',
     'client/sidebar/sidebar.jade',
-    'client/accounts/orionCpAccountIndex.tpl.jade',
+    'client/accounts/orionCpAccountsIndex.tpl.jade',
     'client/accounts/orionCpAccountPassword.tpl.jade',
     'client/accounts/orionCpAccountProfile.tpl.jade',
     'client/accounts/orionCpAccountsInvite.tpl.jade',

@@ -1,0 +1,10 @@
+// orionBootstrapAccountProfile
++Layout template='orionBootstrapSmallContentOffset'
+  +Layout template='orionBootstrapTitle'
+    | Update Profile
+  +Layout template='orionBootstrapContentContainer'
+    +autoForm schema=getSchema id='updateProfileForm' collection='Meteor.users' type='update' doc=getDoc
+      +afQuickFields name='profile'
+      br
+      a(href="{{ pathFor 'myAccount.index' }}") Cancel
+      button Save

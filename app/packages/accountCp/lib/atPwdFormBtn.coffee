@@ -6,9 +6,16 @@ Template.atPwdFormBtn.events
     e.preventDefault()
     $button = t.$ e.target
     $button.addClass 'clicked'
-    $button.on TRANSITION_END_EVENT, ->
+    # $button.on TRANSITION_END_EVENT, ->
+    #   $button
+    #     .off TRANSITION_END_EVENT
+    #     .removeClass 'clicked'
+    #   $form = t.view.parentView.templateInstance().$ 'form'
+    #   $form.submit()
+    Meteor.setTimeout ->
       $button
         .off TRANSITION_END_EVENT
         .removeClass 'clicked'
       $form = t.view.parentView.templateInstance().$ 'form'
       $form.submit()
+    , 300
