@@ -1,8 +1,8 @@
 Template.orionCpLayout.onCreated ->
-  console.log 'orionCpLayout created'
+  orionLog.info 'orionCpLayout created'
 
 Template.orionCpOutAdminLayout.onCreated ->
-  console.log 'orionCpOutAdminLayout created'
+  orionLog.info 'orionCpOutAdminLayout created'
 
 Template.orionCpLayout.events
   'click aside.toggled': (e, t) -> (t.$ 'aside').removeClass 'toggled'

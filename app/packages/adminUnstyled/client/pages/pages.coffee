@@ -1,14 +1,14 @@
 Template.orionCpPagesIndex.onCreated ->
-  console.log 'orionCpPagesIndex created'
+  orionLog.info 'orionCpPagesIndex created'
 
 Template.orionCpPagesCreate.onCreated ->
-  console.log 'orionCpPagesCreate created'
+  orionLog.info 'orionCpPagesCreate created'
 
 Template.orionCpPagesUpdate.onCreated ->
-  console.log 'orionCpPagesUpdate created'
+  orionLog.info 'orionCpPagesUpdate created'
 
 Template.orionCpPagesDelete.onCreated ->
-  console.log 'orionCpPagesDelete created'
+  orionLog.info 'orionCpPagesDelete created'
 
 Template.orionCpPagesIndex.events
   'click tr': (event) ->

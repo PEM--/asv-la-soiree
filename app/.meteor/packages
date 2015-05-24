@@ -57,14 +57,7 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
-
-
-
-#orionjs:admin-unstyled
-orionjs:bootstrap
-
-
-
+orionjs:admin-unstyled
 meteorhacks:subs-manager
 
 # Others

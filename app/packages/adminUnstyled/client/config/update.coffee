@@ -1,5 +1,5 @@
 Template.orionCpConfigUpdate.onCreated ->
-  console.log 'orionCpConfigUpdate created'
+  orionLog.info 'orionCpConfigUpdate created'
 
 Template.orionCpConfigUpdate.helpers
   getDataForTabs: ->

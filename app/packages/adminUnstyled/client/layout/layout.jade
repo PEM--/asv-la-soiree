@@ -6,9 +6,9 @@ template(name='orionCpLayout')
         +reactiveTemplate template='links'
     main
       +orionCpHeader
-        .admin-content
-          if dictionaryReady
-            +yield
+      .admin-content
+        if dictionaryReady
+          +yield
 
 template(name='orionCpOutAdminLayout')
   // orionCpOutAdminLayout

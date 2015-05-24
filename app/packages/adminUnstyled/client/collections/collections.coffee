@@ -1,5 +1,5 @@
 Template.orionCpCollectionsIndex.onCreated ->
-  console.log 'orionCpCollectionsIndex created'
+  orionLog.info 'orionCpCollectionsIndex created'
 
 Template.orionCpCollectionsIndex.onRendered ->
   @autorun ->
@@ -23,7 +23,7 @@ Template.orionCpCollectionsIndex.helpers
     Session.get 'orionCpCollectionsIndex_showTable'
 
 Template.orionCpCollectionsCreate.onCreated ->
-  console.log 'orionCpCollectionsCreate created'
+  orionLog.info 'orionCpCollectionsCreate created'
 
 Template.orionCpCollectionsCreate.events
   'click .create-btn': ->
@@ -33,7 +33,7 @@ AutoForm.addHooks 'orionCpCollectionsCreateForm',
   onSuccess: -> Router.go @collection.indexPath()
 
 Template.orionCpCollectionsUpdate.onCreated ->
-  console.log 'orionCpCollectionsUpdate created'
+  orionLog.info 'orionCpCollectionsUpdate created'
 
 Template.orionCpCollectionsUpdate.events
   'click .save-btn': ->
@@ -43,4 +43,4 @@ AutoForm.addHooks 'orionCpCollectionsUpdateForm',
   onSuccess: -> Router.go this.collection.indexPath()
 
 Template.orionCpCollectionsDelete.onCreated ->
-  console.log 'orionCpCollectionsDelete created'
+  orionLog.info 'orionCpCollectionsDelete created'

@@ -1,22 +1,22 @@
 Template.orionCpAccountIndex.onCreated ->
-  console.log 'orionCpAccountIndex created'
+  orionLog.info 'orionCpAccountIndex created'
 
 Template.orionCpAccountPassword.onCreated ->
-  console.log 'orionCpAccountPassword created'
+  orionLog.info 'orionCpAccountPassword created'
 
 Template.orionCpAccountProfile.onCreated ->
-  console.log 'orionCpAccountProfile created'
+  orionLog.info 'orionCpAccountProfile created'
 
 Template.orionCpAccountsInvite.onCreated ->
-  console.log 'orionCpAccountsInvite created'
+  orionLog.info 'orionCpAccountsInvite created'
 
 Template.orionCpAccountsUpdateRoles.onCreated ->
-  console.log 'orionCpAccountsUpdateRoles created'
+  orionLog.info 'orionCpAccountsUpdateRoles created'
 
 Template.orionCpLogin.onCreated ->
-  console.log 'orionCpLogin created'
+  orionLog.info 'orionCpLogin created'
 
 Template.orionCpRegisterWithInvitation.onCreated ->
-  console.log 'orionCpRegisterWithInvitation created'
+  orionLog.info 'orionCpRegisterWithInvitation created'
 
 AutoForm.addHooks 'updateProfileForm', onSuccess: -> Router.go 'myAccount.index'
