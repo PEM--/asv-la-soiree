@@ -30,7 +30,6 @@ jag:pince
 mquandalle:bower
 manuel:viewmodel
 
-
 # CSS & effects
 pierreeric:creativepure
 fortawesome:fontawesome
@@ -38,8 +37,7 @@ velocityjs:velocityjs
 
 # Routing
 iron:router
-#orionjs:iron-router-progress
-#reywood:iron-router-ga
+orionjs:iron-router-progress
 
 # SEO & WPO
 meteorhacks:inject-initial
@@ -59,8 +57,12 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
-orionjs:admin-unstyled
-#orionjs:bootstrap
+
+#orionjs:admin-unstyled
+
+#twbs:bootstrap
+orionjs:bootstrap
+
 meteorhacks:subs-manager
 
 # Others

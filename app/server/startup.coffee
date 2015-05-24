@@ -87,7 +87,7 @@ Inject.rawHead 'loader-style',
       'to{transform: rotate(359deg);}' +
     '}' +
     '</style>' +
-    # @TODO Meke an external reference
+    # @TODO Make an external reference
     # Google analytics
     '<script>' +
       '(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){' +
