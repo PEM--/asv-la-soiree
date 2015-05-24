@@ -1,3 +1,4 @@
+# https://support.google.com/webmasters/answer/183668?hl=fr
 # required: page
 # optional: lastmod, changefreq, priority, xhtmlLinks, images, videos
 # https://support.google.com/webmasters/answer/178636?hl=en
