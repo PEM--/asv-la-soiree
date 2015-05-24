@@ -41,8 +41,10 @@ iron:router
 orionjs:iron-router-progress
 #reywood:iron-router-ga
 
-# WPO
+# SEO & WPO
 meteorhacks:inject-initial
+gadicohen:sitemaps
+gadicohen:robots-txt
 #meteorhacks:ssr
 
 # CMS
