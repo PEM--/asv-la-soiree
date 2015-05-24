@@ -2,14 +2,19 @@
 $head = $ 'head'
 for tag in ['meta', 'link']
   $tags = $ tag
-  console.log 'Moving tags'
-  console.dir $tags
   $head.append $tags.clone()
   $tags.remove()
+# Inject lang in the html tag
+($ 'html').attr 'lang', 'fr'
+# Create all meta informations for SEO
+$head = $ 'head'
 
+
+# Create reactive SEO data structure
 @SeoViewModel = new ViewModel 'SeoViewModel',
-  title: 'Toto'
-SeoViewModel.bind ($ 'head')
+  title: "#{orion.dictionary.get 'site.title'}"
+  description: "#{orion.dictionary.get 'site.description'}"
+SeoViewModel.bind $head
 
 # Removing spinner once Meteor has started up and jQuery is available.
 spinnerEl = '.main-container[data-role=\'spinner\']'
@@ -23,5 +28,3 @@ Meteor.setTimeout ->
 # Global variable determined at Meteor's start
 Session.set 'IS_MOBILE', 'ontouchstart' of window
 #Session.set 'IS_MOBILE', true
-# Create element polyfill for picture
-document.createElement 'picture'
