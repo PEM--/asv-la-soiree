@@ -3,14 +3,14 @@
   +Layout template='orionCpTitle'
     | Accounts
     if userHasPermission 'accounts.invite'
-      a.btn.btn-default.btn-xs(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
+      a(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
 
   +Layout template='orionCpContentContainer'
     table.table
       thead: tr
-        th Nom
+        th Name
         th Email
-        th Rôles
+        th Roles
         th Actions
       tbody
         each users
@@ -21,7 +21,7 @@
                 | {{ address }}
             td
               each roles
-                span.label.label-danger= this
+                span= this
             td
               each buttons
-                a.btn.btn-default.btn-xs.user-btn-action(data-user="{{ ../_id }}")= title
+                a.user-btn-action(data-user="{{ ../_id }}")= title

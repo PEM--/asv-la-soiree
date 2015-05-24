@@ -5,5 +5,5 @@
   +Layout template='orionCpContentContainer'
     p Are you sure you want to delete this {{ collection.singularName }}?
     if item.canShowRemove
-      a.btn.btn-default(href="{{ collection.indexPath }}") Cancel
-      a.btn.btn-danger.confirm-delete Confirm
+      a(href="{{ collection.indexPath }}") Cancel
+      a.confirm-delete Confirm

@@ -36,7 +36,7 @@ for entity in [
 
 if Meteor.isClient
   console.log 'Use the default plain template for Autoform'
-  AutoForm.setDefaultTemplate 'plain'
+  #AutoForm.setDefaultTemplate 'plain'
 
 # Reactive template on pages
 for rxTpl in [

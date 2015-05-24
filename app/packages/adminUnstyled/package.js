@@ -14,8 +14,8 @@ Package.onUse(function(api) {
     'mquandalle:jade@0.4.3',
     'orionjs:core@1.0.0',
     'iron:layout@1.0.7',
-    'aldeed:autoform@5.1.2',
-    'aldeed:tabular@1.1.0',
+    'aldeed:autoform@5.2.0',
+    'aldeed:tabular@1.2.0',
     'pierreeric:useraccounts-creativepure@0.1.0',
     'zimme:iron-router-active@1.0.4'
   ]);
@@ -52,9 +52,7 @@ Package.onUse(function(api) {
     'client/collections/orionCpCollectionsDelete.tpl.jade',
     'client/collections/orionCpCollectionsIndex.tpl.jade',
     'client/collections/orionCpCollectionsUpdate.tpl.jade',
-    'client/collections/create.coffee',
-    'client/collections/index.coffee',
-    'client/collections/update.coffee',
+    'client/collections/collections.coffee',
     'client/pages/orionCpPagesCreate.tpl.jade',
     'client/pages/orionCpPagesDelete.tpl.jade',
     'client/pages/orionCpPagesIndex.tpl.jade',

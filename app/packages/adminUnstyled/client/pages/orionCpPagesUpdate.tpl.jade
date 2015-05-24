@@ -6,6 +6,6 @@
 		if getSchema
 			+quickForm collection='orion.pages.collection' schema=getSchema doc=this id='orionPagesUpdateForm' type='update' buttonContent=false
 			br
-			a.btn.btn-default.cancel-btn(href="{{ pathFor 'pages.index' }}") Cancel
-			a.btn.btn-danger.delete-btn(href="{{ pathFor 'pages.delete' }}") Delete
-			a.btn.btn-primary.save-btn Save
+			a.cancel-btn(href="{{ pathFor 'pages.index' }}") Cancel
+			a.delete-btn(href="{{ pathFor 'pages.delete' }}") Delete
+			a.save-btn Save

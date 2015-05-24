@@ -1,6 +1,6 @@
 // orionCpAccountsUpdateRoles
 +Layout template='orionCpSmallContentOffset'
-  +Layout template="orionCpTitle"
+  +Layout template='orionCpTitle'
     | Edit Roles
     small= user.profile.name
   +Layout template='orionCpContentContainer'
@@ -9,11 +9,11 @@
       each roles
         label
           if hasRole
-            input(type="checkbox", role=this, checked)
+            input(type='checkbox', role=this, checked)
             code= this
           else
-            input(type="checkbox", role=this)
+            input(type='checkbox', role=this)
             code= this
       hr
-      a.btn.btn-default(href="{{ pathFor 'accounts.index' }}") Cancel
-      button.btn.btn-primary.btn-save Save
+      a(href="{{ pathFor 'accounts.index' }}") Cancel
+      button.btn-save Save

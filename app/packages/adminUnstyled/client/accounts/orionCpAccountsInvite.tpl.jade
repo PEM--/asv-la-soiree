@@ -10,8 +10,8 @@
       p
         a(href="{{ pathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
       hr
-      a.btn.btn-default(href="{{ pathFor 'accounts.index' }}") Back
-      button.btn.btn-primary.btn-invite-another Invite another
+      a(href="{{ pathFor 'accounts.index' }}") Back
+      button.btn-invite-another Invite another
     else
       form.invite
         p Select the roles for the new user
@@ -20,7 +20,7 @@
             input(type="checkbox", role="{{ this }}")
             code= this
         p Email of the new user (optional)
-        input(type="email")
+        input(type='email')
         hr
-        a.btn.btn-default(href="{{ pathFor 'accounts.index' }}") Cancel
-        button.btn.btn-primary Invite
+        a(href="{{ pathFor 'accounts.index' }}") Cancel
+        button Invite

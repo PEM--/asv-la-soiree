@@ -1,3 +1,6 @@
+Template.orionCpConfigUpdate.onCreated ->
+  console.log 'orionCpConfigUpdate created'
+
 Template.orionCpConfigUpdate.helpers
   getDataForTabs: ->
     categories = orion.config.getCategories()

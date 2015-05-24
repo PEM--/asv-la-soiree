@@ -3,7 +3,8 @@
   +Layout template='orionCpTitle'
     | Dictionary
   +Layout template='orionCpContentContainer'
-    p {{> reactiveTemplate template="tabs" data=getDataForTabs }}
+    p
+      +reactiveTemplate template="tabs" data=getDataForTabs
     hr
     +autoForm collection='orion.dictionary' id='updateDictionaryForm' type='update' doc=getDoc
       if currentCategory

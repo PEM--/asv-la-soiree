@@ -5,7 +5,7 @@
   +Layout template='orionCpContentContainer'
     +if item.canShowUpdate
       +quickForm collection=collection doc=item id='orionCpCollectionsUpdateForm' type='update' buttonContent=false
-      a.btn.btn-default(href="{{ collection.indexPath }}") Cancel
+      a(href="{{ collection.indexPath }}") Cancel
       if item.canShowRemove
-        a.btn.btn-danger(href="{{ collection.deletePath item._id }}") Delete
-      a.btn.btn-primary.save-btn Save
+        a(href="{{ collection.deletePath item._id }}") Delete
+      a.save-btn Save

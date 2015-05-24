@@ -1,3 +1,6 @@
+Template.orionCpDictionaryUpdate.onCreated ->
+  console.log 'orionCpDictionaryUpdate created'
+
 Template.orionCpDictionaryUpdate.helpers
   getDataForTabs: ->
     categories = orion.dictionary.availableCategories()

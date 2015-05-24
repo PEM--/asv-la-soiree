@@ -38,7 +38,7 @@ velocityjs:velocityjs
 
 # Routing
 iron:router
-orionjs:iron-router-progress
+#orionjs:iron-router-progress
 #reywood:iron-router-ga
 
 # SEO & WPO
@@ -61,6 +61,7 @@ orionjs:relationships
 brightbind:orion-gridfs
 orionjs:admin-unstyled
 #orionjs:bootstrap
+meteorhacks:subs-manager
 
 # Others
 dburles:google-maps
