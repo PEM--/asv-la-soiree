@@ -6,21 +6,20 @@ template(name='orionCpLayout')
         +reactiveTemplate template='links'
     main
       +orionCpHeader
-      .admin-content
+      article
         if dictionaryReady
           +yield
 
 template(name='orionCpOutAdminLayout')
   // orionCpOutAdminLayout
   .admin
-    h1
-      +yield 'title'
     +yield
 
 template(name='orionCpHeader')
   // orionCpHeader
   header
-    a.menu-toggle: i.fa.fa-bars
+    h1
+      +yield 'title'
 
 template(name='orionCpSmallContentOffset')
   // orionCpSmallContentOffset
@@ -38,7 +37,6 @@ template(name='orionCpTitle')
   // orionCpTitle
   h1.title
     +yield
-  hr
 
 template(name='orionCpTabs')
   // orionCpTabs

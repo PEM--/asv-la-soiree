@@ -35,7 +35,7 @@
 
 	// CSS-only spinner
 	// The spinner only shows, after 0.5 seconds of load time
-	&.spinner:before {
+	&.spinner::before {
 		content            : "";
 		display            : block;
 		position           : fixed;
@@ -71,7 +71,7 @@
 	// When we're done, set the opacity of our element, and it's spinner to zero
 	&.done {
 		opacity : 0;
-		&.spinner:before {
+		&.spinner::before {
 			opacity : 0;
 		}
 	}
