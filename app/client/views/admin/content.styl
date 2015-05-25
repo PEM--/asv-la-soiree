@@ -29,15 +29,23 @@
   // Boutons
   .user-btn-action, button, .btn
     button bgColor
-    hover-darken()
+    hover-darken(50%)
   .user-btn-action-warning
     button brandWarning
-    hover-darken()
+    hover-darken(50%)
   .user-btn-action, button, .user-btn-action-warning
     margin-right 1em
     transition all defaultTransitionValue
     &.disabled
-      button-disabled()
+      pointer-events none
+      cursor pointer
+      button outlineColor
+      color outlineColor
+      font-weight normal
+      font-style italic
+      transition all defaultTransitionValue
+      a, a:visited
+        color inherit
   // Tabs
   .orionCpTabs
     width 100%
@@ -91,10 +99,13 @@
       margin 0
   ul.pagination
     inline-list()
-    a
+    margin-bottom 1em
+    li
       @extend .admin .user-btn-action
+      a, a:visited
+        text-decoration none
       &.disabled
-        button-disabled()
+        @extend .admin .user-btn-action.disabled
   // Froala view
   .froala-view
     color black
