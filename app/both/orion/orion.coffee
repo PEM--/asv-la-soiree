@@ -4,6 +4,9 @@ orion.dictionary.addDefinition 'title', 'site',
   type: String, label: 'Titre'
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
+# Analytics
+orion.dictionary.addDefinition 'google-ua', 'analytics',
+  type: String, label: 'Google UA'
 
 # OrionJS options
 # Avoid registration without invitation

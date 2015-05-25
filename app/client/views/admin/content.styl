@@ -4,8 +4,9 @@
 @import 'client/views/admin/*.import'
 
 .admin
+  // Tables
   table
-    table(striped: false, condensed: true)
+    table(striped: false)
     border-color outlineColor
     thead
       background-color outlineColor
@@ -25,11 +26,35 @@
           background-color outlineColor
         &:hover
           background-color alpha(white, 20%)
-  .user-btn-action
+  // Boutons
+  .user-btn-action, button
     button bgColor
-    // border 1px solid outlineColor
-    // border-radius roundCorner
-    // background-color alpha(white, 5%)
-    // transition background-color defaultTransitionValue
-    // &:hover
-    //   background-color outlineColor
+    margin-right 1em
+  // Tabs
+  .orionCpTabs
+    width 100%
+    border-bottom 1px solid outlineColor
+    margin 0
+    padding 0
+    relative top left
+    height 1.8em
+    a, a:visited
+      relative bottom left
+      display inline-block
+      height @height
+      line-height @height
+      padding 0 2em
+      margin 0
+      cursor pointer
+      border-top 1px solid outlineColor
+      border-right 1px solid outlineColor
+      transition background-color defaultTransitionValue
+      &:first-child
+        border-left 1px solid outlineColor
+        border-top-left-radius roundCorner
+      &:last-child
+        border-top-right-radius roundCorner
+      &.disabled
+        background-color fillBg
+        pointer-events none
+        cursor default
