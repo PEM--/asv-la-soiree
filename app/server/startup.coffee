@@ -42,7 +42,7 @@ Inject.rawHead 'loader-style',
   '<link rel="icon" type="image/png" ' +
     "href=\"/favicon-96x96.png#{favIconVersion}\" sizes=\"96x96\">" +
   '<link rel="icon" type="image/png" ' +
-    "href=\"/favicon-16x16.png\" sizes=\"16x16#{favIconVersion}\">" +
+    "href=\"/favicon-16x16.png#{favIconVersion}\" sizes=\"16x16\">" +
   '<!--[if IE]>' +
     '<meta http-equiv="X-UA-Compatible" content="IE=edge" />' +
   '<![endif]-->' +
