@@ -7,8 +7,19 @@
   header
     background bgColor
     size 100% 8.05em
+    relative top left
     h1
       margin 0
-      size 100% 100%
+      padding 0
+      size 100%
+      relative top left
       background lighten(bgColor, 5%)
-      animation fadeIn defaultTransitionValue
+      span
+        absolute bottom .4em left .4em
+        animation fadeIn defaultTransitionValue
+        a, a:visited
+          absolute bottom right -3em
+          font-size 60%
+          transition color defaultTransitionValue
+          &:hover
+            color brandWarning
