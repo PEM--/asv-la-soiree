@@ -8,8 +8,10 @@ Inject.rawHead 'loader-style',
   #  distorted by their default viewport values.
   "<title data-bind='html: title'>#{orion.dictionary.get 'site.title'}</title>"+
   '<meta charset="utf-8">' +
-  '<meta data-bind=\'value: description, attr: { content: description }\'' +
-    " content='#{orion.dictionary.get 'site.description'}'>" +
+  # Site description
+  '<meta name=\'description\' ' +
+    "content='#{orion.dictionary.get 'site.description'}' " +
+    'data-bind=\'value: description, attr: { content: description }\'>' +
   '<meta name="viewport" content="width=device-width,maximum-scale=1,' +
     'initial-scale=1,user-scalable=no">' +
   # Tell Google that it's an heavy JS app
@@ -18,7 +20,7 @@ Inject.rawHead 'loader-style',
   '<link rel="apple-touch-icon" sizes="57x57" ' +
     "href=\"/apple-touch-icon-57x57.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="60x60" ' +
-    "href=\"/apple-touch-icon-60x60.png#{favIconVersion}>\"" +
+    "href=\"/apple-touch-icon-60x60.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="72x72" ' +
     "href=\"/apple-touch-icon-72x72.png#{favIconVersion}\">" +
   '<link rel="apple-touch-icon" sizes="76x76" ' +
