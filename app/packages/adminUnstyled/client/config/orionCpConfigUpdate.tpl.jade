@@ -2,8 +2,7 @@
 +Layout template='orionCpTitle'
   | Config
 +Layout template='orionCpContentContainer'
-  p
-    +reactiveTemplate template='tabs' data=getDataForTabs
+  +reactiveTemplate template='tabs' data=getDataForTabs
   +autoForm collection='orion.config.collection' id='updateConfigForm' type='update' doc=getDoc
     if getFields
       +each afFieldNames fields=getFields

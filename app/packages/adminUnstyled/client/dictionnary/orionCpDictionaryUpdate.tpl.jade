@@ -2,8 +2,7 @@
 +Layout template='orionCpTitle'
   | Dictionary
 +Layout template='orionCpContentContainer'
-  p
-    +reactiveTemplate template="tabs" data=getDataForTabs
+  +reactiveTemplate template="tabs" data=getDataForTabs
   +autoForm collection='orion.dictionary' id='updateDictionaryForm' type='update' doc=getDoc
     if currentCategory
       +afQuickFields name=currentCategory

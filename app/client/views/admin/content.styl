@@ -27,14 +27,20 @@
         &:hover
           background-color alpha(white, 20%)
   // Boutons
+  .user-btn-action, button, .user-btn-action-warning
+    margin-right 1em
+    transition all defaultTransitionValue
   .user-btn-action, button
     button bgColor
-    margin-right 1em
+    hover-darken()
+  .user-btn-action-warning
+    button brandWarning
+    hover-darken()
   // Tabs
   .orionCpTabs
     width 100%
     border-bottom 1px solid outlineColor
-    margin 0
+    margin 0 0 1em 0
     padding 0
     relative top left
     height 1.8em
@@ -58,3 +64,28 @@
         background-color fillBg
         pointer-events none
         cursor default
+  // Forms within main
+  main form, main article form
+    animation fadeIn defaultTransitionValue
+    width 100%
+    max-width 100%
+    margin 0 0 1em 0
+    padding 0
+    a
+      @extend .admin .user-btn-action
+    input, textarea
+      border 1px solid outlineColor
+      border-radius roundCorner
+    textarea
+      width 100%
+  // Datatables
+  .dataTables_info
+    color textColor
+  table.dataTable
+    margin-top 1em
+    p
+      margin 0
+  ul.pagination
+    inline-list()
+    a
+      @extend .admin .user-btn-action
