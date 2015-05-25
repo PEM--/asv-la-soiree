@@ -27,15 +27,17 @@
         &:hover
           background-color alpha(white, 20%)
   // Boutons
-  .user-btn-action, button, .user-btn-action-warning
-    margin-right 1em
-    transition all defaultTransitionValue
-  .user-btn-action, button
+  .user-btn-action, button, .btn
     button bgColor
     hover-darken()
   .user-btn-action-warning
     button brandWarning
     hover-darken()
+  .user-btn-action, button, .user-btn-action-warning
+    margin-right 1em
+    transition all defaultTransitionValue
+    &.disabled
+      button-disabled()
   // Tabs
   .orionCpTabs
     width 100%
@@ -79,13 +81,22 @@
     textarea
       width 100%
   // Datatables
+  .dataTables_wrapper
+    >.row:nth-child(2)
+      margin 1em 0
   .dataTables_info
     color textColor
   table.dataTable
-    margin-top 1em
     p
       margin 0
   ul.pagination
     inline-list()
     a
       @extend .admin .user-btn-action
+      &.disabled
+        button-disabled()
+  // Froala view
+  .froala-view
+    color black
+    p
+      color inherit
