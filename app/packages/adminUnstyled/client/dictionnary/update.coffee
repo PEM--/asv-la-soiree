@@ -1,5 +1,5 @@
 Template.orionCpDictionaryUpdate.onCreated ->
-  console.log 'orionCpDictionaryUpdate created'
+  orionLog.info 'orionCpDictionaryUpdate created'
 
 Template.orionCpDictionaryUpdate.helpers
   getDataForTabs: ->
