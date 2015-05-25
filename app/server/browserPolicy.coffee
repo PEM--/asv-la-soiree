@@ -35,6 +35,8 @@ for origin in [
   '*.gstatic.com'
   # Browser update warning
   'browser-update.org'
+  # Mix Panel analytics
+  'cdn.mxpnl.com'
 ]
   for protocol in ['http', 'https']
     porigin = "#{protocol}://#{origin}"

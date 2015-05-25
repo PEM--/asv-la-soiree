@@ -51,9 +51,9 @@
 - [ ] EULA / CGU
 - [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
-- [X] Google universal analytics
-  - https://atmospherejs.com/reywood/iron-router-ga
-  - https://atmospherejs.com/okgrow/analytics
+- [ ] Google universal analytics
+  - ~~https://atmospherejs.com/reywood/iron-router-ga~~
+  - ~~https://atmospherejs.com/okgrow/analytics~~
 - [ ] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
