@@ -1,13 +1,11 @@
 // orionCpConfigUpdate
-+Layout template='orionCpSmallContentOffset'
-  +Layout template='orionCpTitle'
-    | Config
-  +Layout template='orionCpContentContainer'
-    p
-      +reactiveTemplate template='tabs' data=getDataForTabs
-    hr
-    +autoForm collection='orion.config.collection' id='updateConfigForm' type='update' doc=getDoc
-      if getFields
-        +each afFieldNames fields=getFields
-          +afQuickField name=this.name options=afOptionsFromSchema
-      button Save
++Layout template='orionCpTitle'
+  | Config
++Layout template='orionCpContentContainer'
+  p
+    +reactiveTemplate template='tabs' data=getDataForTabs
+  +autoForm collection='orion.config.collection' id='updateConfigForm' type='update' doc=getDoc
+    if getFields
+      +each afFieldNames fields=getFields
+        +afQuickField name=this.name options=afOptionsFromSchema
+    button Save

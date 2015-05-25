@@ -1,20 +1,19 @@
 // orionCpPagesCreate
-+Layout template='orionCpMediumContentOffset'
-  +Layout template='orionCpTitle'
-    if choosenTemplate
-      | Create a new page - {{ choosenTemplate.name }}
-    else
-      | Choose a template
-  +Layout template='orionCpContentContainer'
-    if choosenTemplate
-      +quickForm collection='orion.pages.collection' schema=choosenTemplate.schema id='orionPagesCreateForm' type='insert' buttonContent=false
-      br
-      button.cancel-btn Back
-      button.submit-btn Create
-    else
-      each templates
-        h4= name
-        p= description
-        p: button.template-choose Choose
-      hr
-      a(href="{{ pathFor 'pages.index' }}") Back
++Layout template='orionCpTitle'
+  if choosenTemplate
+    | Create a new page - {{ choosenTemplate.name }}
+  else
+    | Choose a template
++Layout template='orionCpContentContainer'
+  if choosenTemplate
+    +quickForm collection='orion.pages.collection' schema=choosenTemplate.schema id='orionPagesCreateForm' type='insert' buttonContent=false
+    br
+    button.cancel-btn Back
+    button.submit-btn Create
+  else
+    each templates
+      h4= name
+      p= description
+      p: button.template-choose Choose
+    hr
+    a(href="{{ pathFor 'pages.index' }}") Back

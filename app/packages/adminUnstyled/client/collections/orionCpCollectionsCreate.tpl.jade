@@ -1,12 +1,11 @@
 // orionCpCollectionsCreate
-+Layout template='orionCpMediumContentOffset'
-  +if collection.canShowCreate
-    +Layout template='orionCpTitle'
-      | Create a {{ collection.singularName }}
-    +Layout template='orionCpContentContainer'
-      +quickForm collection=collection id='orionCpCollectionsCreateForm' type='insert' buttonContent=false
-      br
-      a(href="{{ collection.indexPath }}") Cancel
-      a.create-btn Create
-  else
-    p: b No permissions
++if collection.canShowCreate
+  +Layout template='orionCpTitle'
+    | Create a {{ collection.singularName }}
+  +Layout template='orionCpContentContainer'
+    +quickForm collection=collection id='orionCpCollectionsCreateForm' type='insert' buttonContent=false
+    br
+    a(href="{{ collection.indexPath }}") Cancel
+    a.create-btn Create
+else
+  p: b No permissions

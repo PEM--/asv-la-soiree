@@ -1,10 +1,8 @@
 // orionCpAccountProfile
-+Layout template='orionCpSmallContentOffset'
-  +Layout template='orionCpTitle'
-    | Update Profile
-  +Layout template='orionCpContentContainer'
-    +autoForm schema=getSchema id='updateProfileForm' collection='Meteor.users' type='update' doc=getDoc
-      +afQuickFields name='profile'
-      br
-      a(href="{{ pathFor 'myAccount.index' }}") Cancel
-      button Save
++Layout template='orionCpTitle'
+  | Update Profile
++Layout template='orionCpContentContainer'
+  +autoForm schema=getSchema id='updateProfileForm' collection='Meteor.users' type='update' doc=getDoc
+    +afQuickFields name='profile'
+    a(href="{{ pathFor 'myAccount.index' }}") Cancel
+    button Save

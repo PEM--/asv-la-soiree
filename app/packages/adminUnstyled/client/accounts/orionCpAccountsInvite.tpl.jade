@@ -1,26 +1,22 @@
 // orionCpAccountsInvite
-+Layout template='orionCpSmallContentOffset'
-  +Layout template='orionCpTitle'
-    | Invite
-
-  +Layout template='orionCpContentContainer'
-    if invitationId
-      .alert.alert-success
-        | Invitation created successfully
-      p
-        a(href="{{ pathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
-      hr
-      a(href="{{ pathFor 'accounts.index' }}") Back
-      button.btn-invite-another Invite another
-    else
-      form.invite
-        p Select the roles for the new user
-        each roles
-          label
-            input(type="checkbox", role="{{ this }}")
-            code= this
-        p Email of the new user (optional)
-        input(type='email')
-        hr
-        a(href="{{ pathFor 'accounts.index' }}") Cancel
-        button Invite
++Layout template='orionCpTitle'
+  | Invite
++Layout template='orionCpContentContainer'
+  if invitationId
+    .alert.alert-success
+      | Invitation created successfully
+    p
+      a(href="{{ pathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
+    a(href="{{ pathFor 'accounts.index' }}") Back
+    button.btn-invite-another Invite another
+  else
+    form.invite
+      p Select the roles for the new user
+      each roles
+        label
+          input(type="checkbox", role="{{ this }}")
+          code= this
+      p Email of the new user (optional)
+      input(type='email')
+      a(href="{{ pathFor 'accounts.index' }}") Cancel
+      button Invite

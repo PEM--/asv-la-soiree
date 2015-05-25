@@ -1,27 +1,26 @@
 // orionCpAccountIndex
-+Layout template='orionCpSmallContentOffset'
-  +Layout template='orionCpTitle'
-    | Accounts
-    if userHasPermission 'accounts.invite'
-      a(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
++Layout template='orionCpTitle'
+  | Accounts
+  if userHasPermission 'accounts.invite'
+    a(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
 
-  +Layout template='orionCpContentContainer'
-    table.table
-      thead: tr
-        th Name
-        th Email
-        th Roles
-        th Actions
-      tbody
-        each users
-          tr
-            td: b= profile.name
-            td
-              each emails
-                | {{ address }}
-            td
-              each roles
-                span= this
-            td
-              each buttons
-                a.user-btn-action(data-user="{{ ../_id }}")= title
++Layout template='orionCpContentContainer'
+  table.table
+    thead: tr
+      th Name
+      th Email
+      th Roles
+      th Actions
+    tbody
+      each users
+        tr
+          td: b= profile.name
+          td
+            each emails
+              | {{ address }}
+          td
+            each roles
+              span= this
+          td
+            each buttons
+              a.user-btn-action(data-user="{{ ../_id }}")= title

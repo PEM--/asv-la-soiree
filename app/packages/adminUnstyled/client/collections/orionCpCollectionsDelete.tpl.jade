@@ -1,9 +1,8 @@
 // orionCpCollectionsDelete
-+Layout template='orionCpSmallContentOffset'
-  +Layout template='orionCpTitle'
-    | Delete {{ collection.singularName }}
-  +Layout template='orionCpContentContainer'
-    p Are you sure you want to delete this {{ collection.singularName }}?
-    if item.canShowRemove
-      a(href="{{ collection.indexPath }}") Cancel
-      a.confirm-delete Confirm
++Layout template='orionCpTitle'
+  | Delete {{ collection.singularName }}
++Layout template='orionCpContentContainer'
+  p Are you sure you want to delete this {{ collection.singularName }}?
+  if item.canShowRemove
+    a(href="{{ collection.indexPath }}") Cancel
+    a.confirm-delete Confirm

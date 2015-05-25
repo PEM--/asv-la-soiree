@@ -1,3 +1,10 @@
+// Used for login screens
+template(name='orionCpOutAdminLayout')
+  // orionCpOutAdminLayout
+  .admin
+    +yield
+
+// Used for admin content
 template(name='orionCpLayout')
   // orionCpLayout
   .admin
@@ -5,40 +12,32 @@ template(name='orionCpLayout')
       if dictionaryReady
         +reactiveTemplate template='links'
     main
-      +orionCpHeader
-      article
-        if dictionaryReady
-          +yield
-
-template(name='orionCpOutAdminLayout')
-  // orionCpOutAdminLayout
-  .admin
-    +yield
+      //+orionCpHeader    
+      if dictionaryReady
+        +yield
 
 template(name='orionCpHeader')
   // orionCpHeader
   header
     h1
-      +yield 'title'
-
-template(name='orionCpSmallContentOffset')
-  // orionCpSmallContentOffset
-  +yield
-
-template(name='orionCpMediumContentOffset')
-  // orionCpMediumContentOffset
-  +yield
-
-template(name='orionCpContentContainer')
-  // orionCpContentContainer
-  +yield
+      +orionCpTitle
+      //- h1
+      //-   +yield 'title'
 
 template(name='orionCpTitle')
   // orionCpTitle
-  h1.title
+  header
+    h1
+      +yield
+    +yield 'title'
+
+template(name='orionCpContentContainer')
+  // orionCpContentContainer
+  article
     +yield
 
 template(name='orionCpTabs')
   // orionCpTabs
-  +each items
-    a(class="{{ class }}")= title
+  .orionCpTabs
+    +each items
+      a(class="{{ class }}")= title

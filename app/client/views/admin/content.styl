@@ -6,8 +6,18 @@
 .admin
   main
     article
+      margin 1em
       padding 1em
       overflow-x hidden
       overflow-y auto
+      background outlineColor
+      border-radius roundCorner
+      animation fadeIn defaultTransitionValue
       table
         table()
+        border-color outlineColor
+        thead
+          background-color outlineColor
+          color textColor
+          tr, th
+            color inherit

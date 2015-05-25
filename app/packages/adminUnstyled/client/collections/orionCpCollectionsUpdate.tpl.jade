@@ -1,11 +1,10 @@
 // orionCpCollectionsUpdate
-+Layout template='orionCpMediumContentOffset'
-  +Layout template='orionCpTitle'
-    | Update {{ collection.singularName }}
-  +Layout template='orionCpContentContainer'
-    +if item.canShowUpdate
-      +quickForm collection=collection doc=item id='orionCpCollectionsUpdateForm' type='update' buttonContent=false
-      a(href="{{ collection.indexPath }}") Cancel
-      if item.canShowRemove
-        a(href="{{ collection.deletePath item._id }}") Delete
-      a.save-btn Save
++Layout template='orionCpTitle'
+  | Update {{ collection.singularName }}
++Layout template='orionCpContentContainer'
+  +if item.canShowUpdate
+    +quickForm collection=collection doc=item id='orionCpCollectionsUpdateForm' type='update' buttonContent=false
+    a(href="{{ collection.indexPath }}") Cancel
+    if item.canShowRemove
+      a(href="{{ collection.deletePath item._id }}") Delete
+    a.save-btn Save

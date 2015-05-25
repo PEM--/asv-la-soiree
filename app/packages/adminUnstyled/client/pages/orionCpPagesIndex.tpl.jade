@@ -1,7 +1,6 @@
 // orionCpPagesIndex
-+Layout template='orionCpMediumContentOffset'
-  +Layout template='orionCpTitle'
-    | Pages
-    a(href="{{ pathFor 'pages.create' }}"): i.fa.fa-plus
-  +Layout template='orionCpContentContainer'
-    +tabular table=tabularTable class='table index-table'
++Layout template='orionCpTitle'
+  | Pages
+  a(href="{{ pathFor 'pages.create' }}"): i.fa.fa-plus
++Layout template='orionCpContentContainer'
+  +tabular table=tabularTable class='table index-table'
