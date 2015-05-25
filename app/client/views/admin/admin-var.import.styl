@@ -1,14 +1,29 @@
 bgColor = alpha(black, 60%)
-textColor = alpha(white, 80%)
+textColor = white
 brandColor = alpha(white, 90%)
 brandDanger = red
-outlineColor = alpha(white, 15%)
+outlineColor = alpha(white, 10%)
 fillBg = alpha(white, 3%)
 defaultTransitionValue = .3s ease-in-out
 longAnimationValue = .8s ease-in-out
 roundCorner = 3px
 buttonSmallSize = 70px
 maxSize = 960px
-rupture.scale = 0 320px 600px 800px maxSize
-rupture.scale-names = 'xsmall' 'small' 'medium' 'desktop' 'hd'
+rupture.scale = 0 321px 801px maxSize
+rupture.scale-names = 'small' 'medium' 'desktop' 'hd'
 basePath = '.meteor/local/build/programs/web.browser/packages/pierreeric_creativepure/styles/%s'
+
+// Fonts for Typographic
+fontSize()
+  font-size 12px
+  +above('small')
+    font-size @font-size + 1
+  +above('medium')
+    font-size @font-size + 2
+  +above('desktop')
+    font-size @font-size + 3
+  +above('hd')
+    font-size @font-size + 4
+
+// Default transition values
+defaultTransitionValue = .3s ease-out
