@@ -4,17 +4,15 @@
 +Layout template='orionCpContentContainer'
   .row
     if currentUser.profile.picture
-      .col-sm-2
-        p
-          img.profile-picture(src="{{ currentUser.profile.picture.url }}")
-    .col-sm-10
-      p: b= currentUser.profile.name
-      with currentUser
-        each emails
-          p= address
-        p
-          each roles
-            span= this
-  a.logout Logout
-  a(href="{{ pathFor 'myAccount.profile' }}") Update Profile
-  a(href="{{ pathFor 'myAccount.password' }}") Change Password
+      p
+        img.profile-picture(src="{{ currentUser.profile.picture.url }}")
+    p: b= currentUser.profile.name
+    with currentUser
+      each emails
+        p= address
+      p
+        each roles
+          span= this
+  a.user-btn-action.logout Logout
+  a.user-btn-action(href="{{ pathFor 'myAccount.profile' }}") Update Profile
+  a.user-btn-action(href="{{ pathFor 'myAccount.password' }}") Change Password

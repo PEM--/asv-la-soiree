@@ -4,20 +4,32 @@
 @import 'client/views/admin/*.import'
 
 .admin
-  main
-    article
-      margin 1em
-      padding 1em
-      overflow-x hidden
-      overflow-y auto
-      background outlineColor
-      border-radius roundCorner
-      animation fadeIn defaultTransitionValue
-      table
-        table()
+  table
+    table(striped: false, condensed: true)
+    border-color outlineColor
+    thead
+      background-color outlineColor
+      color textColor
+      tr, th
+        color inherit
         border-color outlineColor
-        thead
+    tbody
+      color textColor
+      td
+        background-color transparent
+        border-color outlineColor
+      tr
+        background-color transparent
+        transition background-color defaultTransitionValue
+        &:nth-child(2n)
           background-color outlineColor
-          color textColor
-          tr, th
-            color inherit
+        &:hover
+          background-color alpha(white, 20%)
+  .user-btn-action
+    button bgColor
+    // border 1px solid outlineColor
+    // border-radius roundCorner
+    // background-color alpha(white, 5%)
+    // transition background-color defaultTransitionValue
+    // &:hover
+    //   background-color outlineColor
