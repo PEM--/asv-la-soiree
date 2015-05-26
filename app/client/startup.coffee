@@ -1,6 +1,3 @@
-# Create a log system for the client
-@appLog = new Logger 'app'
-
 # Re-order injected tags during the initial PLT default page.
 $head = $ 'head'
 for tag in ['meta', 'link']

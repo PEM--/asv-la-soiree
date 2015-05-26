@@ -1,1 +1,0 @@
-@srvLog = new Logger 'server'
