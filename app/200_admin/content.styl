@@ -1,0 +1,142 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '200_admin/*.import'
+
+.admin
+  // Tables
+  table
+    table(striped: false)
+    border-color outlineColor
+    thead
+      background-color outlineColor
+      color textColor
+      tr, th
+        color inherit
+        border-color outlineColor
+    tbody
+      color textColor
+      td
+        background-color transparent
+        border-color outlineColor
+      tr
+        background-color transparent
+        transition background-color defaultTransitionValue
+        &:nth-child(2n)
+          background-color outlineColor
+        &:hover
+          background-color alpha(white, 20%)
+  // Boutons
+  .user-btn-action, button, .btn
+    button bgColor
+    hover-darken(50%)
+  .user-btn-action-warning
+    button brandWarning
+    hover-darken(50%)
+  .user-btn-action, button, .user-btn-action-warning
+    margin-right 1em
+    transition all defaultTransitionValue
+    &.disabled
+      pointer-events none
+      cursor pointer
+      button outlineColor
+      color outlineColor
+      font-weight normal
+      font-style italic
+      transition all defaultTransitionValue
+      a, a:visited
+        color inherit
+  // Tabs
+  .orionCpTabs
+    width 100%
+    border-bottom 1px solid outlineColor
+    margin 0 0 1em 0
+    padding 0
+    relative top left
+    height 1.8em
+    a, a:visited
+      relative bottom left
+      display inline-block
+      height @height
+      line-height @height
+      padding 0 2em
+      margin 0
+      cursor pointer
+      border-top 1px solid outlineColor
+      border-right 1px solid outlineColor
+      transition background-color defaultTransitionValue
+      &:first-child
+        border-left 1px solid outlineColor
+        border-top-left-radius roundCorner
+      &:last-child
+        border-top-right-radius roundCorner
+      &.disabled
+        background-color fillBg
+        pointer-events none
+        cursor default
+  // Forms within main
+  main form, main article form
+    animation fadeIn defaultTransitionValue
+    width 100%
+    max-width 100%
+    margin 0 0 1em 0
+    padding 0
+    text-align justify
+    a
+      @extend .admin .user-btn-action
+    input, textarea
+      border 1px solid outlineColor
+      border-radius roundCorner
+    textarea
+      width 100%
+  // Datatables
+  .dataTables_wrapper
+    >.row:nth-child(2)
+      margin 1em 0
+  .dataTables_info
+    color textColor
+  table.dataTable
+    p
+      margin 0
+  ul.pagination
+    inline-list()
+    margin-bottom 1em
+    li
+      @extend .admin .user-btn-action
+      a, a:visited
+        text-decoration none
+      &.disabled
+        @extend .admin .user-btn-action.disabled
+  // Froala view
+  .froala-view
+    color black
+    p
+      color inherit
+  // Roles
+  span.role
+    font-size 70%
+    padding .5em
+    border-radius roundCorner
+    font-weight normal
+    color brandInfo
+    border 1px solid brandInfo
+    &[data-attr='admin']
+      color brandWarning
+      border 1px solid brandWarning
+    &:not(:first-child)
+      margin-left 1em
+
+  // Alerts
+  .alert
+    width 100%
+    padding .5em
+    border-radius roundCorner
+    text-align center
+    font-weight normal
+    color textColor
+  .alert-success
+    background-color brandInfo
+  .alert-warning
+    background-color brandWarning
+  .alert-danger
+    background-color brandDanger

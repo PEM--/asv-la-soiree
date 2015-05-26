@@ -1,0 +1,16 @@
+@import 'nib'
+@import '020_colorsTheme/*.import'
+
+.main-container
+  .router-container
+    .not-found
+      display block
+      relative top left 50%
+      transform translate3d(-50%, 0, 0)
+      width 40%
+      cursor pointer
+      pointer-events auto
+      opacity 0
+      animation fadeIn 1s 1s ease-in-out forwards
+      >.svg-logo-container
+        asvlasoireeBigLogo(100%)

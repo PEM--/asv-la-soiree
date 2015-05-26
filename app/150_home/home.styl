@@ -1,0 +1,243 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+
+@import s(basePath, animate)
+
+.main-container
+  .router-container
+    >video, >.picture
+      fixed bottom right
+      min-width 100%
+      min-height 100%
+      size auto
+      overflow hidden
+      opacity 0
+      animation fadeIn 1s 4s ease-in-out forwards
+    >.picture
+      background url('img/lyon-festival-light-small.jpg') black no-repeat center fixed
+      background-size cover
+      +above('medium')
+        background url('img/lyon-festival-light-medium.jpg') black no-repeat center fixed
+        background-size cover
+      +above('desktop')
+        background url('img/lyon-festival-light.jpg') black no-repeat center fixed
+        background-size cover
+    header
+      // Create a new context for overlapping video
+      z-index 1
+      transform translateZ(0)
+      section
+        // Create a new context for overlapping video
+        z-index 1
+        transform translateZ(0)
+        absolute top left
+        display inline-block
+        size 100%
+        margin 0
+        padding 0
+        min-height 100%
+        display flex
+        flex-direction column
+        justify-content center
+        align-items center
+        align-content center
+        .center-all
+          flex-grow 0
+          flex-shrink 0
+          width 100%
+          z-index 1
+          .logo-resizer
+            width 60%
+            max-width 600px
+            margin 0 auto
+            >.svg-logo-container
+              opacity 1
+              animation fadeInDown 1s ease-in-out
+              z-index 1
+              //filter drop-shadow(0 0 5px rgba(black, 50%))
+              transition transform none
+              transform translateZ(0)
+              asvlasoireeBigLogo(100%)
+          .teaser
+            transition opacity defaultTransitionValue
+            .teaser-content
+              margin-top 3em
+              opacity 0
+              animation fadeIn 2s 1s ease-in-out forwards
+              time, h1
+                text-align center
+                color bgColor
+                text-transform uppercase
+                text-shadow 0 0 1px black
+                filter drop-shadow(0 0 1px black)
+              time
+                display block
+                width 100%
+                font-size 1.2em
+                +above('medium')
+                  font-size 1.3em
+                +above('desktop')
+                  font-size 1.9em
+                +above('hd')
+                  font-size 2.3em
+              h1
+                font-family $helvetica
+                font-weight 100
+                word-spacing .5em
+                font-size 1.4em
+                +above('medium')
+                  font-size 1.6em
+                +above('desktop')
+                  font-size 2.25em
+                +above('hd')
+                  font-size 2.7em
+                em
+                  font-weight normal
+                  font-style normal
+                  color brandColor
+              .links
+                margin 1em
+                width 100%
+                max-width 400px
+                +above('medium')
+                  display flex
+                  justify-content space-between
+                  width 90%
+                  max-width 380px
+                  margin 1em auto
+                +above('desktop')
+                  width 80%
+                  max-width 500px
+                +above('hd')
+                  width 60%
+                  max-width 600px
+                a, a:visited
+                  width calc(100% - 2em)
+                  display block
+                  margin-bottom 1em
+                  +above('medium')
+                    flex-grow 0
+                    flex-shrink 0
+                    width 12em
+                    padding 0 1em
+                  +above('desktop')
+                    width 15em
+                    padding 0 2em
+                  text-transform uppercase
+                  text-align center
+                  text-decoration none
+                  line-height 2.8em
+                  border 2px solid brandColor
+                  border-radius (roundCorner/2)
+                  transition color defaultTransitionValue, background-color defaultTransitionValue, transform defaultTransitionValue, border-color defaultTransitionValue
+                  &:nth-child(1)
+                    background brandColor
+                    font-weight bold
+                    color bgColor
+                  &:nth-child(2)
+                    background rgba(black, 80%)
+                    color brandColor
+                  &:hover
+                    transform scale3d(1.05, 1.05, 1)
+                    border-color lighten(brandColor, 30%)
+                    &:nth-child(1)
+                      background lighten(brandColor, 30%)
+                      color bgColor
+                    &:nth-child(2)
+                      background rgba(black, 95%)
+                      color lighten(brandColor, 30%)
+        .arrow-down-container
+          background linear-gradient(to bottom, rgba(29,29,27,0) 0%,rgba(29,29,27,0) 80%,rgba(29,29,27,1) 100%)
+          // Create a new context for overlapping video
+          z-index 1
+          transform translateZ(0)
+          width 100%
+          height 20%
+          +above('medium')
+            height 10%
+          absolute bottom left
+          .arrow-down-centered
+            transition opacity .3s ease-in-out
+            margin auto auto
+            width 6.5%
+            max-width 40px
+            .svg-logo-container
+              opacity 0
+              animation fadeIn 1s 2s ease-in-out forwards
+              arrowDownLogo(100%)
+    main[data-role='home']
+      a, a:visited
+        text-decoration none
+        pointer-events none
+        cursor default
+      section article
+        opacity 0
+      section:first-child
+        max-width maxSize
+        margin 0 auto
+        display flex
+        flex-wrap wrap
+        article
+          flex-grow 1
+          flex-shrink 0
+          min-width maxSize*0.3
+          flex-basis @min-width
+        article:nth-child(1)
+          margin-left 0
+          margin-right .5em
+          padding-left 0
+        article:nth-child(2)
+          >div
+            margin-right 0
+            margin-left .5em
+          >div:nth-child(1)
+            padding 2em
+            border 3px solid brandColor
+            background bgColor
+            h1, h2, p, time,
+              color brandColor
+            h1
+              text-align center
+            ul
+              reset-list()
+              margin-top 1em
+              li
+                margin-bottom 2em
+              h2, time
+                display inline
+                font-size 1.2em
+              time
+                font-weight bold
+                display inline-block
+                width 2em
+                &::after
+                  margin-left .5em
+                  content '//'
+                  width 1em
+              h2
+                font-weight normal
+                margin-left 2.5em
+              p
+                margin 0 0 0 5.7em
+          >div:nth-child(2)
+            margin-top 1em
+            background brandColor
+            padding .3em 0
+            h2
+              margin 0
+              color bgColor
+              text-transform uppercase
+              font-size 1.1em
+              text-align center
+          >div:nth-child(3)
+            margin-top 1em
+            display inline-block
+            size 100% 30%
+            .arrow-down-centered
+              margin auto auto
+              width 12.5%
+              max-width 40px
+              .svg-logo-container
+                arrowDownLogo(100%)
