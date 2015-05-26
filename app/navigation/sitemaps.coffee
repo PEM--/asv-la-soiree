@@ -23,7 +23,6 @@
 #     { rel: 'alternate', hreflang: 'en', href: '/lang/english' }
 #   ]
 # }
-
 if Meteor.isServer
   ###*
    * Update the sitemaps when data changes on the Pages collection.
