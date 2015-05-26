@@ -66,7 +66,7 @@
 - [X] Sécurité : browser policy
 - [ ] Pas sûr : Intégration PhantomJS (SEO statique)
 - [X] robot.txt
-- [ ] Sitemap automatisée dans le CMS
+- [X] Sitemap automatisée dans le CMS
   - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova

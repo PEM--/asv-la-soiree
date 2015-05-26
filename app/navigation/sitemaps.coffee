@@ -32,7 +32,7 @@ if Meteor.isServer
   ###
   updateSitemapOnPage = (cursor, isFirstRun = false) ->
     appLog.info if isFirstRun then 'Creating sitemap' else \
-      'Page change detected. Recreating sitemap.'
+      'Page or dictionary change detected. Recreating sitemap.'
     pages = pagesCursor.fetch()
     entries = _.map pages, (page) ->
       page: page.slug
@@ -48,7 +48,11 @@ if Meteor.isServer
     added: -> updateSitemapOnPage pagesCursor
     removed: -> updateSitemapOnPage pagesCursor
     changed: -> updateSitemapOnPage pagesCursor
-
-
-  # @TODO Change date of home in site map when info are changed on it
-  # @TODO Store the date in the dictionnary
+  # Observe changes on the dictionary in case the date for forcing
+  #  a new sitemap has changed.
+  dictionaryCursor = orion.dictionary.find()
+  dictionaryCursor.observeChanges
+    # @NOTE The dictionary always exists and is a collection with
+    #  a single value. Items are never added or removed. Only its single
+    #  value content may change.
+    changed: -> updateSitemapOnPage pagesCursor
