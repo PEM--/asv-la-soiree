@@ -9,9 +9,9 @@
       label
         if hasRole
           input(type='checkbox', role=this, checked)
-          code= this
+          span.role= this
         else
           input(type='checkbox', role=this)
-          code= this
+          span.role(data-attr=this)= this
     a(href="{{ pathFor 'accounts.index' }}") Cancel
     button.btn-save Save

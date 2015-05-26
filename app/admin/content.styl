@@ -26,8 +26,6 @@
           background-color outlineColor
         &:hover
           background-color alpha(white, 20%)
-        span:not(:first-child)
-          margin-left .5em
   // Boutons
   .user-btn-action, button, .btn
     button bgColor
@@ -114,6 +112,20 @@
     color black
     p
       color inherit
+  // Roles
+  span.role
+    font-size 70%
+    padding .5em
+    border-radius roundCorner
+    font-weight normal
+    color brandInfo
+    border 1px solid brandInfo
+    &[data-attr='admin']
+      color brandWarning
+      border 1px solid brandWarning
+    &:not(:first-child)
+      margin-left 1em
+
   // Alerts
   .alert
     width 100%

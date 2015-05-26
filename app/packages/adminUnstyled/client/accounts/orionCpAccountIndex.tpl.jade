@@ -12,7 +12,7 @@
         p= address
       p
         each roles
-          span= this
+          span.role(data-attr=this)= this
   a.user-btn-action.logout Logout
   a.user-btn-action(href="{{ pathFor 'myAccount.profile' }}") Update Profile
   a.user-btn-action(href="{{ pathFor 'myAccount.password' }}") Change Password

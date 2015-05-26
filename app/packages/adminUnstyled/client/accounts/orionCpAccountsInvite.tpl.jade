@@ -16,7 +16,7 @@
       each roles
         label
           input(type="checkbox", role="{{ this }}")
-          code= this
+          span.role(data-attr=this)= this
       p Email of the new user (optional)
       input(type='email')
       a.user-btn-action(href="{{ pathFor 'accounts.index' }}") Cancel

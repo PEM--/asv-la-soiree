@@ -20,7 +20,7 @@
               | {{ address }}
           td
             each roles
-              span= this
+              span.role(data-attr=this)= this
           td
             each buttons
               a.user-btn-action(data-user="{{ ../_id }}")= title
