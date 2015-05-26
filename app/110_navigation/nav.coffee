@@ -1,5 +1,5 @@
 if Meteor.isClient
-  @mainMenuModel = new ViewModel 'mainMenu',
+  @mainMenuModel = new ViewModel
     white: false
     menuContentOpened: false
     opacity: 1
@@ -17,11 +17,11 @@ if Meteor.isClient
       e.preventDefault()
       @menuContentOpened false
       goNextRoute e.target.pathname
+    links: []
     blaze_helpers: ->
       # These elements are stored in a regular Blaze helpers as they
       #  are using global values that ViewModel doesn't handle.
       # @TODO Set these in a regular ViewModel
-      links: -> navLinks
       activeRoute: ->
         curSlug = getSlug()
         if @slug is curSlug then 'active' else ''

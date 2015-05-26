@@ -39,12 +39,25 @@ if Meteor.isClient
   @navLinks = []
 
   Meteor.startup ->
-    # Code for server and client
-    Router.map ->
-      @route '/',
-        name: 'home'
-      for navLink in navLinks
-        @route navLink.slug
+    # Set static routes
+    Router.route '/', name: 'home'
+    # Set dynamic routes depending on pages created in Orion
+    pageHandler = Meteor.subscribe 'pages'
+    #Pages.find().observe
+
+    Tracker.autorun (computation) ->
+      appLog.info 'New pages'
+      unless pageHandler.ready()
+        return appLog.warn 'Waiting to pages subscription'
+      pages = Pages.find()
+      currentPages = mainMenuModel.links()
+      console.log 'Current pages', currentPages
+      for page in pages
+        # Only insert page that are not already added
+        unless page in currentPages
+          Router.route page.slug
+          mainMenuModel.links().push slug: page.slug, name: page.title
+
 
 
     Tracker.autorun (computation) ->

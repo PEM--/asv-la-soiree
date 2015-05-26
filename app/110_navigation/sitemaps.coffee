@@ -42,11 +42,9 @@ if Meteor.isServer
   pagesCursor = Pages.find {}, sort: createAd: -1
   return appLog.warn 'No page found' if pagesCursor.count() is 0
   updateSitemapOnPage pagesCursor, true
-  # Observe change on page in case new links are inserted
-  pagesCursor.observeChanges
-    added: -> updateSitemapOnPage pagesCursor
-    removed: -> updateSitemapOnPage pagesCursor
-    changed: -> updateSitemapOnPage pagesCursor
+  # Observe change on page in case new links are inserted, removed or modified.
+  pagesCursor.observe (changes) ->
+    updateSitemapOnPage pagesCursor
   # Observe changes on the dictionary in case the date for forcing
   #  a new sitemap has changed.
   dictionaryCursor = orion.dictionary.find()

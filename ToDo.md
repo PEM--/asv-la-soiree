@@ -88,6 +88,11 @@
   - https://atmospherejs.com/mousetrap/mousetrap
 - [ ] Pagination support
   - https://github.com/alethes/meteor-pages
+- [ ] Lazy loading of resources depending on routes
+  - https://atmospherejs.com/numtel/privatesources
+  - https://github.com/numtel/meteor-component-example
+  - https://github.com/MiroHibler/meteor-preloader
+  - https://atmospherejs.com/numtel/publicsources
 
 ## Tutorial
 Orion is based on:
