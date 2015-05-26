@@ -4,6 +4,10 @@ orion.dictionary.addDefinition 'title', 'site',
   type: String, label: 'Titre'
 orion.dictionary.addDefinition 'description', 'site',
   type: String, label: 'Description', autoform: type: 'textarea'
+orion.dictionary.addDefinition 'lastModified', 'site',
+  type: Date, label: 'Dernière modification (utile pour indiquer au moteur de \
+    recherche que de nouvelles informations sont disponibles)', \
+    autoform: type: 'date'
 # Analytics
 orion.dictionary.addDefinition 'google-ua', 'analytics',
   type: String, label: 'Google UA'
@@ -35,6 +39,7 @@ if Meteor.isServer
           title: 'ASV, la soirée'
           description: 'Une super soirée pour le congrès des ASV, \
             les auxiliaires vétérinaires.'
+          lastModified: new Date()
       , (err) ->
         return appLog.error "Dictionnary update failed: #{err}" if err
         appLog.info 'Default site description created'

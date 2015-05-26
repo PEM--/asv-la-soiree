@@ -27,24 +27,28 @@
 if Meteor.isServer
   ###*
    * Update the sitemaps when data changes on the Pages collection.
-   * @param  {Object} cursor Collection cursor
+   * @param  {Object} cursor Collection cursor.
+   * @param  {Boolean} isFirstRun Flag for initial creation (false by default).
   ###
-  updateSitemapOnPage = (cursor) ->
+  updateSitemapOnPage = (cursor, isFirstRun = false) ->
+    appLog.info if isFirstRun then 'Creating sitemap' else \
+      'Page change detected. Recreating sitemap.'
     pages = pagesCursor.fetch()
     entries = _.map pages, (page) ->
       page: page.slug
       lastmod: page.createdAt
-    entries.push page: '/', lastmod: new Date()
+    entries.push page: '/', lastmod: orion.dictionary.get 'site.lastModified'
     sitemaps.add '/sitemap.xml', -> entries
+  # Create an initial sitemap
+  pagesCursor = Pages.find {}, sort: createAd: -1
+  return appLog.warn 'No page found' if pagesCursor.count() is 0
+  updateSitemapOnPage pagesCursor, true
+  # Observe change on page in case new links are inserted
+  pagesCursor.observeChanges
+    added: -> updateSitemapOnPage pagesCursor
+    removed: -> updateSitemapOnPage pagesCursor
+    changed: -> updateSitemapOnPage pagesCursor
+
 
   # @TODO Change date of home in site map when info are changed on it
   # @TODO Store the date in the dictionnary
-
-  pagesCursor = Pages.find {}, sort: createAd: -1
-  return appLog.warn 'No page found' if pagesCursor.count() is 0
-  # Set the initial sitemaps
-  updateSitemapOnPage pagesCursor
-  # Observe change on page in case new links are inserted
-  pagesCursor.observeChanges
-    changed: ->
-      updateSitemapOnPage @
