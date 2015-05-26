@@ -1,0 +1,24 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'both/views/admin/*.import'
+
+.admin
+  header
+    h1
+      margin 0
+      padding 0
+      size 100%
+      relative top left
+      background lighten(bgColor, 5%)
+      span
+        absolute bottom .4em left .4em
+        animation fadeIn defaultTransitionValue
+        small
+          relative right -1em
+        a, a:visited
+          absolute bottom -.1em right -2em
+          font-size 60%
+          transition color defaultTransitionValue
+          &:hover
+            color brandWarning

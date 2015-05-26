@@ -1,0 +1,68 @@
+@import 'nib'
+@import 'jeet'
+@import 'both/styles/*.import'
+
+.main-container
+  footer
+    width 100%
+    background bgColor
+    //background red
+    color textColor
+    // Create a new context for overlapping video
+    z-index 1
+    transform translateZ(0)
+    h1
+      width 100%
+      color brandColor
+      font-family BaronNeue
+      font-size .9rem
+    a, a:visited
+      outline none
+    section
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content flex-start
+      align-items stretch
+      align-content stretch
+      width 100%
+      max-width maxSize
+      margin 1em auto
+      article
+        flex-grow 1
+        flex-shrink 0
+        display inline-block
+        height 100%
+        box-sizing content-box
+        display flex
+        flex-direction row
+        flex-wrap wrap
+        a, a:visited
+          display block
+          flex-grow 0
+          flex-shrink 0
+      // Steering comittee
+      article:nth-child(1)
+        width 30%
+        flex-basis @width
+        padding-right 3%
+        border-right 1px solid brandColor
+        a:nth-child(2)
+          width 60%
+          margin 7% 8% 0 0
+          >.svg-logo-container
+            apformLogo(100%)
+        a:nth-child(3)
+          width 31%
+          >.svg-logo-container
+            gipsaLogo(100%)
+      // Partners
+      article:nth-child(2)
+        width 59%
+        padding-left 3%
+        flex-basis @width
+        a, a:visited, p
+          margin-right 1em
+          width 30%
+        .svg-logo-container:nth-child(1)
+          snvelLogo(100%)

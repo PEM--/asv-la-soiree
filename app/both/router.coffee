@@ -38,25 +38,38 @@ Router.configure
     , 64
   , 300
 
-if Meteor.isClient
-  Tracker.autorun (computation) ->
-    curSlug = getSlug()
-    unless computation.firstRun
-      # Only the opacity to 1 on slug route except home
-      # @NOTE This fixes a bug on Safari iOS and Chrome Android
-      t = _.pluck navLinks, 'slug'
-      if curSlug in _.pluck navLinks, 'slug'
-        ViewModel.byId('mainMenu').show()
-        Waypoint.destroyAll()
-
 @navLinks = [
   { name: 'Programme', slug: '/program' }
   { name: 'Inscription en ligne', slug: '/subscription' }
   { name: 'Contact', slug: '/contact' }
 ]
 
-Router.map ->
-  @route '/',
-    name: 'home'
-  for navLink in navLinks
-    @route navLink.slug
+Meteor.startup ->
+  # Code for server and client
+  Router.map ->
+    @route '/',
+      name: 'home'
+    for navLink in navLinks
+      @route navLink.slug
+    
+
+
+  # Pages.find
+
+
+  # Specific to Server
+  # if Meteor.isServer
+
+
+
+  # Specific to client
+  if Meteor.isClient
+    Tracker.autorun (computation) ->
+      curSlug = getSlug()
+      unless computation.firstRun
+        # Only the opacity to 1 on slug route except home
+        # @NOTE This fixes a bug on Safari iOS and Chrome Android
+        t = _.pluck navLinks, 'slug'
+        if curSlug in _.pluck navLinks, 'slug'
+          ViewModel.byId('mainMenu').show()
+          Waypoint.destroyAll()

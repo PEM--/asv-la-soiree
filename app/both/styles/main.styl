@@ -1,0 +1,54 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import 'both/styles/*.import'
+
+// Normalize CSS using Axis
+normalize-css()
+
+typographic()
+// Set fonts and default colors
+t-headers($helvetica)
+html, body
+  color textColor
+  font-family $helvetica
+  fontSize()
+h1
+  font-family BaronNeue
+
+// Global settings
+*, *::after, *::before
+  // Globally set the sizing behavior
+  box-sizing border-box
+  // Ensure font's antialising
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  -webkit-touch-callout none
+  // Remove outlining
+  outline none
+  &:hover, &:focus, &:active
+    outline none
+  // Mobile specific for iOS and Android: removes text selection
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  // Accelerate scrolling
+  backface-visibility hidden
+
+// Set page height
+html, body
+  height 100%
+
+// Styles on text content
+p, blockquote
+  text-align justify
+
+::selection
+  color bgColor
+  background brandColor
+
+// Iron router theming
+@import s(basePath, ironprogress)
+
+// Set responsive SVG
+.svg-content
+  display inline-block
+  absolute top left

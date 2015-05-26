@@ -1,0 +1,43 @@
+@import 'nib'
+//@import 'jeet'
+@import 'both/styles/*.import'
+@import s(basePath, links)
+
+@media only screen and (min-width 801px)
+  .main-container
+    >nav
+      >.nav
+        display flex
+        flex-direction row
+        flex-wrap nowrap
+        justify-content space-between
+        height 4em
+        .logo
+          flex-grow 0
+          flex-shrink 0
+        // Hide the hambuger menu
+        .hamburger-button
+          display none
+        ul
+          flex-grow 0
+          flex-shrink 0
+          z-index 0
+          relative top right
+          transform none
+          display inline-block
+          size auto 4em
+          padding 1.3em 0
+          background transparent
+        // Remove menu's background for mobile
+        ul:after
+          content none
+        ul li
+          display inline
+          width auto
+          border none
+          margin-left 2em
+          cpLinks(brandColor)
+          a
+            size auto
+            background transparent
+            color white
