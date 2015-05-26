@@ -1,6 +1,7 @@
 @import 'nib'
 @import 'jeet'
 @import 'colorsTheme/*.import'
+@import s(basePath, links)
 
 // iOS hacks for weird overflow-x behavior
 html, body
@@ -93,6 +94,10 @@ html, body, .main-container, .router-container
       transform translateZ(0)
     main:not([data-role='home'])
       margin 5em 0 0 0
+      cpLinks(brandColor)
+      section article
+        a, a:visited
+          color brandColor
   footer
     flex-grow 0
     flex-shrink 0

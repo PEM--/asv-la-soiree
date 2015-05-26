@@ -1,5 +1,5 @@
 Router.configure
-  layoutTemplate: 'layout'
+  layoutTemplate: 'mainLayout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
 
@@ -48,10 +48,6 @@ Meteor.startup ->
       name: 'home'
     for navLink in navLinks
       @route navLink.slug
-
-
-  # Pages.find
-
 
   # Specific to Server
   # if Meteor.isServer

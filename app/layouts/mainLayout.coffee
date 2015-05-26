@@ -1,4 +1,4 @@
 if Meteor.isClient
-  Template.layout.onRendered ->
+  Template.mainLayout.onRendered ->
     @$('.main-container:not([data-role=\'spinner\'])')
       .css 'opacity', 1

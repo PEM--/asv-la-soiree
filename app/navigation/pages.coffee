@@ -52,6 +52,6 @@ if Meteor.isServer
           order: 2
           display: 'Menu et Footer'
           createdBy: admin._id
-      appLog.info "Cookie policy created for account: #{admin.profile.name}"
+        appLog.info "Cookie policy created for account: #{admin.profile.name}"
     catch err
       appLog.error err.reason
