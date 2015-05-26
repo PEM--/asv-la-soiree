@@ -50,7 +50,3 @@ spinnerEl = '.main-container[data-role=\'spinner\']'
 Meteor.setTimeout ->
   ($ spinnerEl).remove()
 , 300
-
-# Global variable determined at Meteor's start
-Session.set 'IS_MOBILE', 'ontouchstart' of window
-#Session.set 'IS_MOBILE', true
