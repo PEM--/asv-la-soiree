@@ -1,6 +1,3 @@
-# All main section that are not the initial spinner
-MAIN_SECTION = '.main-container:not([data-role=\'spinner\'])'
-
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
@@ -51,7 +48,6 @@ Meteor.startup ->
       name: 'home'
     for navLink in navLinks
       @route navLink.slug
-    
 
 
   # Pages.find
