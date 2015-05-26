@@ -33,10 +33,8 @@ if Meteor.isServer
       orion.dictionary.update dicId,
         '$set': site:
           title: 'ASV, la soirée'
-          description: """
-            Une super soirée pour le
-            congrès des ASV, les auxiliaires vétérinaires.
-          """
+          description: 'Une super soirée pour le congrès des ASV, \
+            les auxiliaires vétérinaires.'
       , (err) ->
         return srvLog.error "Dictionnary update failed: #{err}" if err
         srvLog.info 'Default site description created'
