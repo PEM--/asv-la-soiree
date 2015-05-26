@@ -50,19 +50,3 @@ if Meteor.isServer
       , (err) ->
         return srvLog.error "Dictionnary update failed: #{err}" if err
         srvLog.info 'Default site description created'
-
-# Simple pages for Home, EULA, Cookies
-Pages = new orion.collection 'pages',
-  singularName: 'page',
-  pluralName: 'pages'
-  tabular:
-    columns: [
-      { data: 'title', title: 'Titre'  }
-      orion.attributeColumn 'file', 'image', 'Image'
-      orion.attributeColumn 'froala', 'body', 'Contenu'
-    ]
-Pages.attachSchema new SimpleSchema
-  title: type: String
-  image: orion.attribute 'file', label: 'Image', optional: true
-  body: orion.attribute 'froala', label: 'Contenu'
-  createdBy: orion.attribute 'createdBy'

@@ -81,6 +81,7 @@
     max-width 100%
     margin 0 0 1em 0
     padding 0
+    text-align justify
     a
       @extend .admin .user-btn-action
     input, textarea
@@ -111,3 +112,17 @@
     color black
     p
       color inherit
+  // Alerts
+  .alert
+    width 100%
+    padding .5em
+    border-radius roundCorner
+    text-align center
+    font-weight normal
+    color textColor
+  .alert-success
+    background-color brandInfo
+  .alert-warning
+    background-color brandWarning
+  .alert-danger
+    background-color brandDanger
