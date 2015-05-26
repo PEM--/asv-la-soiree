@@ -124,6 +124,3 @@ Inject.rawHead 'loader-body2',
       'catch(e){window.attachEvent("onload", $buo_f)}' +
     '</script>' +
   '</body>'
-
-# Set initial language
-#msgfmt.init('en')
