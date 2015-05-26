@@ -36,8 +36,8 @@
 - [ ] Notification d'erreurs sur le serveur
 - [ ] Intégration Gmap avec CMS
   - https://github.com/rwatts3/orionjs-maps
-- [ ] Upload GridFS
-- [ ] Not found template
+- [X] Upload GridFS
+- [X] Not found template
 - [X] No script
 - [X] Navigateurs trop anciens
 - [ ] Loading subscription template
@@ -49,9 +49,8 @@
 - [ ] Social sharing
   - https://github.com/meteorclub/shareit
 - [ ] EULA / CGU
-- [ ] Copyrights sur les vidéos et les SVG (cf CGU)
 - [ ] Cookie informations
-- [ ] Google universal analytics
+- [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
 - [ ] Rich snippets
@@ -64,21 +63,21 @@
   - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
   - https://github.com/jeremyhodges/flaming-bear
 - [ ] CSV extract
-- [ ] Sécurité : browser policy
+- [X] Sécurité : browser policy
 - [ ] Pas sûr : Intégration PhantomJS (SEO statique)
-- [ ] robot.txt
+- [X] robot.txt
 - [ ] Sitemap automatisée dans le CMS
   - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
 - [ ] Tests automatisés et gestion CdP automatisée
   - https://atmospherejs.com/xolvio/cucumber
-- [ ] Isolation of logs in Orion (app's log vs server vs Orion)
+- [X] Isolation of logs in Orion (app's log vs server vs Orion)
   - https://github.com/mad-eye/pince/
 - [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
-- [ ] Language on HTML main tag
+- [X] Language on HTML main tag
 - [ ] Accelerate routing
   - https://github.com/meteorhacks/subs-manager
 - [ ] Check presence of online users
