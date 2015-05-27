@@ -20,12 +20,14 @@ if Meteor.isClient
 
   # Subscribe to pages
   Template.nav.onCreated ->
-    appLog.info 'Creating main menu'
+    appLog.info 'Creating main menu', @data
     # Template level subscription for Pages used in the navigation links
-    @subscribe 'pages'
+    # @subscribe 'pages'
+    # appLog.info 'Data received?'
     # Expose its properties for Blaze
     @vm = mainMenuModel
     @vm.addHelper 'links', @
+    appLog.info 'Property set?'
 
   Template.nav.onRendered ->
     appLog.info 'Rendering main menu'

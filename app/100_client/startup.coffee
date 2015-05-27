@@ -14,9 +14,6 @@ if Meteor.isClient
       return
     appLog.info 'Orion\'s dictionnary is ready. \
       Start real time modification of SEO values.'
-    appLog.info "#{orion.dictionary.get 'site.title'}"
-    appLog.info "#{orion.dictionary.get 'site.description'}"
-    appLog.info "#{orion.dictionary.get 'analytics.google-ua'}"
     # Wait for jQuery to stabilyze
     Meteor.defer =>
       # Create or update reactive SEO data structure

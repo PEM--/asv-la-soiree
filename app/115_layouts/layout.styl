@@ -95,9 +95,11 @@ html, body, .main-container, .router-container
     main:not([data-role='home'])
       margin 5em 0 0 0
       cpLinks(brandColor)
-      section article
-        a, a:visited
-          color brandColor
+      section
+        article
+          center(maxSize)
+          a, a:visited
+            color brandColor
   footer
     flex-grow 0
     flex-shrink 0

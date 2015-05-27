@@ -36,12 +36,20 @@ if Meteor.isClient
       layoutTemplate: 'mainLayout'
       loadingTemplate: 'loading'
       notFoundTemplate: 'notFound'
-    
+      waitOn: -> [
+        Meteor.subscribe 'pages'
+      ]
+
     # Set static routes
-    Router.route '/', name: 'home'
+    Router.route '/', ->
+      @render 'nav', to: 'nav', data: -> Pages.find()
+      @render 'home', data: -> Pages.find()
+      @render 'footer', to: 'footer', data: -> Pages.find()
     # Set dynamic routes depending on pages created in Orion
-    pageHandler = Meteor.subscribe 'pages'
     Pages.find().observeChanges
       added: (id, fields) ->
         appLog.info 'Route added', fields.slug, fields.title
-        Router.route fields.slug
+        Router.route fields.slug, ->
+          @render 'nav', to: 'nav', data: -> Pages.find()
+          @render 'basicPage', data: -> Pages.findOne id
+          @render 'footer', to: 'footer', data: -> Pages.find()
