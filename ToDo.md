@@ -70,29 +70,31 @@
   - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
-- [ ] Tests automatisés et gestion CdP automatisée
-  - https://atmospherejs.com/xolvio/cucumber
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
   - https://github.com/mad-eye/pince/
-- [ ] Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
+- [ ] Fix GridFS issue on Orion's module.
 - [ ] Accelerate routing
   - https://github.com/meteorhacks/subs-manager
-- [ ] Check presence of online users
+- [ ] Bonus: Check presence of online users
   - https://github.com/dburles/meteor-presence
-- [ ] Get avatar on connected users
+- [ ] Bonus: Get avatar on connected users
   - https://github.com/bengott/meteor-avatar
-- [ ] Enhancing key combo
+- [ ] Bonus: Enhancing key combo
   - https://atmospherejs.com/mousetrap/mousetrap
-- [ ] Pagination support
+- [ ] Bonus: Display avatar in admin's accounts
+- [ ] Bonus: Pagination support
   - https://github.com/alethes/meteor-pages
-- [ ] Lazy loading of resources depending on routes
+- [ ] Bonus: Lazy loading of resources depending on routes
   - https://atmospherejs.com/numtel/privatesources
   - https://github.com/numtel/meteor-component-example
   - https://github.com/MiroHibler/meteor-preloader
   - https://atmospherejs.com/numtel/publicsources
+- [ ] Bonus: Séparation front / backoffice : 2 serveurs connectés par DDP
+- [ ] Bonus: Tests automatisés et gestion CdP automatisée
+  - https://atmospherejs.com/xolvio/cucumber
 
 ## Tutorial
 Orion is based on:

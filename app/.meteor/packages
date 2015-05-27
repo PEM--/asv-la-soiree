@@ -25,6 +25,7 @@ manuel:viewmodel-explorer
 msavin:mongol
 msavin:jetsetter
 # Development helpers: OK for production
+underscorestring:underscore.string
 raix:handlebar-helpers
 jag:pince
 mquandalle:bower

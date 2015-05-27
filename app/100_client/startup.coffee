@@ -1,14 +1,14 @@
 if Meteor.isClient
-  # Re-order injected tags during the initial PLT default page.
-  $head = $ 'head'
-  for tag in ['meta', 'link']
-    $tags = $ tag
-    $head.append $tags.clone()
-    $tags.remove()
-  # Inject lang in the html tag
-  ($ 'html').attr 'lang', 'fr'
-  # Create all meta informations for SEO
-  $head = $ 'head'
+  # # Re-order injected tags during the initial PLT default page.
+  # $head = $ 'head'
+  # for tag in ['meta', 'link']
+  #   $tags = $ tag
+  #   $head.append $tags.clone()
+  #   $tags.remove()
+  # # Inject lang in the html tag
+  # ($ 'html').attr 'lang', 'fr'
+  # # Create all meta informations for SEO
+  # $head = $ 'head'
   # Ensure that the SEO ViewModel is never instantiated twice
   @SeoViewModel = null
   # Wait for Orion's dictionary to get ready
