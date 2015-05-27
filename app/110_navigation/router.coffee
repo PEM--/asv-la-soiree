@@ -43,20 +43,24 @@ if Meteor.isClient
     Router.route '/', name: 'home'
     # Set dynamic routes depending on pages created in Orion
     pageHandler = Meteor.subscribe 'pages'
-    #Pages.find().observe
+    Pages.find().observeChanges
+      added: (id, fields) ->
+        console.log 'Added', id, fields
+        Router.route fields.slug
+        #mainMenuModel.links().push slug: fields.slug, name: fields.title
 
-    Tracker.autorun (computation) ->
-      appLog.info 'New pages'
-      unless pageHandler.ready()
-        return appLog.warn 'Waiting to pages subscription'
-      pages = Pages.find()
-      currentPages = mainMenuModel.links()
-      console.log 'Current pages', currentPages
-      for page in pages
-        # Only insert page that are not already added
-        unless page in currentPages
-          Router.route page.slug
-          mainMenuModel.links().push slug: page.slug, name: page.title
+    # Tracker.autorun (computation) ->
+    #   appLog.info 'New pages'
+    #   unless pageHandler.ready()
+    #     return appLog.warn 'Waiting to pages subscription'
+    #   pages = Pages.find()
+    #   currentPages = mainMenuModel.links()
+    #   console.log 'Current pages', currentPages
+    #   for page in pages
+    #     # Only insert page that are not already added
+    #     unless page in currentPages
+    #       Router.route page.slug
+    #       mainMenuModel.links().push slug: page.slug, name: page.title
 
 
 
