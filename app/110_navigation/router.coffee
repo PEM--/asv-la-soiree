@@ -36,8 +36,6 @@ if Meteor.isClient
       , 64
     , 300
 
-  @navLinks = []
-
   Meteor.startup ->
     # Set static routes
     Router.route '/', name: 'home'
@@ -45,31 +43,5 @@ if Meteor.isClient
     pageHandler = Meteor.subscribe 'pages'
     Pages.find().observeChanges
       added: (id, fields) ->
-        console.log 'Added', id, fields
+        appLog.info 'Route added', fields.slug, fields.title
         Router.route fields.slug
-        #mainMenuModel.links().push slug: fields.slug, name: fields.title
-
-    # Tracker.autorun (computation) ->
-    #   appLog.info 'New pages'
-    #   unless pageHandler.ready()
-    #     return appLog.warn 'Waiting to pages subscription'
-    #   pages = Pages.find()
-    #   currentPages = mainMenuModel.links()
-    #   console.log 'Current pages', currentPages
-    #   for page in pages
-    #     # Only insert page that are not already added
-    #     unless page in currentPages
-    #       Router.route page.slug
-    #       mainMenuModel.links().push slug: page.slug, name: page.title
-
-
-
-    Tracker.autorun (computation) ->
-      curSlug = getSlug()
-      unless computation.firstRun
-        # Only the opacity to 1 on slug route except home
-        # @NOTE This fixes a bug on Safari iOS and Chrome Android
-        t = _.pluck navLinks, 'slug'
-        if curSlug in _.pluck navLinks, 'slug'
-          ViewModel.byId('mainMenu').show()
-          Waypoint.destroyAll()

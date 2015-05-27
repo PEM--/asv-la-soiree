@@ -16,18 +16,11 @@ if Meteor.isClient
     hamburger: (e) -> @menuContentOpened not @menuContentOpened()
     # @TODO Get only the relevant page that are set for the menu or
     # menu and footer
-    links: -> Pages.find {}, sort: order: 1
-
-    # blaze_helpers: ->
-    #   # These elements are stored in a regular Blaze helpers as they
-    #   #  are using global values that ViewModel doesn't handle.
-    #   # @TODO Set these in a regular ViewModel
-    #   activeRoute: ->
-    #     curSlug = getSlug()
-    #     if @slug is curSlug then 'active' else ''
+    links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
   # Subscribe to pages
   Template.nav.onCreated ->
+    appLog.info 'Creating main menu'
     # Template level subscription for Pages used in the navigation links
     @subscribe 'pages'
     # Expose its properties for Blaze
@@ -35,6 +28,7 @@ if Meteor.isClient
     @vm.addHelper 'links', @
 
   Template.nav.onRendered ->
+    appLog.info 'Rendering main menu'
     # Bind ViewModel to template
     mainMenuModel.bind @
 
@@ -48,3 +42,4 @@ if Meteor.isClient
       e.preventDefault()
       @parent().menuContentOpened false
       goNextRoute @slug()
+    #activeRoute: -> if @slug() is getSlug() then 'active' else ''

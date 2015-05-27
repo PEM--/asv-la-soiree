@@ -58,8 +58,9 @@ if Meteor.isClient
     arrowOpacity: 1
     teaserOpacity: 1
 
+  Template.home.onCreated -> appLog.info 'Creating home screen'
   Template.home.onRendered ->
-    console.log 'Home instanciation', @
+    appLog.info 'Rendering home screen'
     homeModel.bind @
     Session.set 'debug', if Session.get 'IS_MOBILE' then 'mobile' else 'desktop'
     unless Session.get 'IS_MOBILE'
