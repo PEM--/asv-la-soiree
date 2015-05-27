@@ -1,9 +1,4 @@
 if Meteor.isClient
-  Router.configure
-    layoutTemplate: 'mainLayout'
-    loadingTemplate: 'loading'
-    notFoundTemplate: 'notFound'
-
   # Global router function ensuring to get the current slug.
   # When reloading a page or getting a direct acces, the reactive
   # value Router.current().url provides the full URL but when
@@ -37,6 +32,11 @@ if Meteor.isClient
     , 300
 
   Meteor.startup ->
+    Router.configure
+      layoutTemplate: 'mainLayout'
+      loadingTemplate: 'loading'
+      notFoundTemplate: 'notFound'
+    
     # Set static routes
     Router.route '/', name: 'home'
     # Set dynamic routes depending on pages created in Orion
