@@ -14,17 +14,13 @@ if Meteor.isClient
       @menuContentOpened false
       goNextRoute '/'
     hamburger: (e) -> @menuContentOpened not @menuContentOpened()
-    # @TODO Get only the relevant page that are set for the menu or
-    # menu and footer
+    # @NOTE The pages are requested again for taking use of a reative cursor
     links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
   # Subscribe to pages
   Template.nav.onCreated ->
-    appLog.info 'Creating main menu', @data
-    # Template level subscription for Pages used in the navigation links
-    # @subscribe 'pages'
-    # appLog.info 'Data received?'
-    # Expose its properties for Blaze
+    appLog.info 'Creating main menu'
+    # Expose the ViewModel's helpers to Blaze
     @vm = mainMenuModel
     @vm.addHelper 'links', @
     appLog.info 'Property set?'

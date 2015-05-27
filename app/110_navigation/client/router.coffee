@@ -31,25 +31,59 @@ if Meteor.isClient
       , 64
     , 300
 
-  Meteor.startup ->
-    Router.configure
-      layoutTemplate: 'mainLayout'
-      loadingTemplate: 'loading'
-      notFoundTemplate: 'notFound'
-      waitOn: -> [
-        Meteor.subscribe 'pages'
-      ]
+  Router.configure
+    layoutTemplate: 'mainLayout'
+    loadingTemplate: 'loading'
+    notFoundTemplate: 'notFound'
+    waitOn: -> [
+      Meteor.subscribe 'pages'
+    ]
+    onBeforeAction: ->
+      ($ routerEl).css 'opacity', 0
+      @next()
+    onAfterAction: ->
+      ($ mainCntEl).scrollTop 0
+      ($ routerEl).css 'opacity', 1
+      #@next()
+    #   console.log @
+    #   # Transition when fade out animation is done
+    #   Meteor.setTimeout =>
+    #     # Reset current scroll position
+    #     ($ mainCntEl).scrollTop 0
+    #     # Activate route
+    #     #@next()
+    #     # Router.go nextRoute
+    #     # Fade in the new content with at least 2 cycles on the RAF
+    #     Meteor.setTimeout ->
+    #       ($ routerEl).css 'opacity', 1
+    #     , 64
+    #   , 300
+    #   #@pause()
+    #   @next()
 
+  Meteor.startup ->
     # Set static routes
     Router.route '/', ->
-      @render 'nav', to: 'nav', data: -> Pages.find()
+      @render 'nav', to: 'nav',
+        data: ->
+          Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+            .fetch()
       @render 'home', data: -> Pages.find()
-      @render 'footer', to: 'footer', data: -> Pages.find()
+      @render 'footer', to: 'footer',
+        data: ->
+          Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+            .fetch()
     # Set dynamic routes depending on pages created in Orion
     Pages.find().observeChanges
       added: (id, fields) ->
         appLog.info 'Route added', fields.slug, fields.title
         Router.route fields.slug, ->
-          @render 'nav', to: 'nav', data: -> Pages.find()
+          @render 'nav', to: 'nav',
+            data: ->
+              Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+                .fetch()
           @render 'basicPage', data: -> Pages.findOne id
-          @render 'footer', to: 'footer', data: -> Pages.find()
+          @render 'footer', to: 'footer',
+            data: ->
+              Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+                .fetch()
