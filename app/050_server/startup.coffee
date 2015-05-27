@@ -28,7 +28,7 @@ if Meteor.isServer
       # - Set proper charset as soon as possible
       # - Title from Orion's dictionary with ViewModel bindings
       # - Site description from Orion's dictionary with ViewModel bindings
-      # -Tell Google that it's an heavy JS app
+      # - Tell Google that it's an heavy JS app
       '<meta charset="utf-8">' +
       "<title data-bind='html: title'>#{orion.dictionary.get 'site.title'}" +
         '</title>' +
@@ -36,6 +36,11 @@ if Meteor.isServer
         "content='#{orion.dictionary.get 'site.description'}' " +
         'data-bind=\'value: description, attr: { content: description }\'>' +
       '<meta name="fragment" content="!">' +
+      # @TODO Finalize SEO on G+
+      '<link rel=\'publisher\' ' +
+        'href=\'https://plus.google.com/105839099099011364699\'>' +
+      '<link rel=\'author\' ' +
+        'href=\'https://plus.google.com/+PierreEricMarchandet\'>' +
       # Force the initial scale for Android and iOS as our spinner may be
       #  distorted by their default viewport values.
       '<meta name="viewport" content="width=device-width,maximum-scale=1,' +
