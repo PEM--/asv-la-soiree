@@ -1,4 +1,5 @@
-@orionLog = new Logger 'orion'
+#@orionLog = new Logger 'orion'
+@orionLog = console
 
 # Global admin option
 for option in ['homePath', 'siteName']

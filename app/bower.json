@@ -2,11 +2,11 @@
   "name": "asv-la-soiree",
   "version": "1.0.0",
   "dependencies": {
-    "waypoints": "3.1.1"
+    "waypoints": "3.1.1",
+    "loglevel": "1.2.0"
   },
   "overrides": {
-    "waypoints": {
-      "arch": [ "client" ]
-    }
+    "waypoints": { "arch": [ "client" ] },
+    "loglevel": { "arch": [ "client" ] }
   }
 }

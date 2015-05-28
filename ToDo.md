@@ -70,6 +70,7 @@
   - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
+- [ ] Log system
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
   - https://github.com/mad-eye/pince/
 - [ ] Email template

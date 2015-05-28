@@ -27,9 +27,9 @@ msavin:jetsetter
 # Development helpers: OK for production
 underscorestring:underscore.string
 raix:handlebar-helpers
-jag:pince
 mquandalle:bower
 manuel:viewmodel
+meteorhacks:zones
 
 # CSS & effects
 pierreeric:creativepure
