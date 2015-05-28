@@ -72,7 +72,6 @@
   - https://github.com/rwatts3/orionjs-cordova
 - [ ] Log system
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
-  - https://github.com/mad-eye/pince/
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
