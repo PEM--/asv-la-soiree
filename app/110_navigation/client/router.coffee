@@ -31,6 +31,11 @@
   , 300
 
 Router.configure
+  ###
+  #
+  # https://atmospherejs.com/gwendall/template-animations
+  #
+  # ###
   layoutTemplate: 'mainLayout'
   loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
