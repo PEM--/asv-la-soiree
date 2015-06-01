@@ -1,0 +1,7 @@
+bundle/.meteor/local
+bundle/.meteor/.finished-upgraders
+bundle/.meteor/local
+bundle/.meteor/versions
+bundle/.meteor/.id
+bundle/.meteor/cordova-plugins
+bundle/packages/*/.build*
