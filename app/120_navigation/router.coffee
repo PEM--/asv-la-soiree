@@ -31,7 +31,7 @@ if Meteor.isClient
 
   # Global router behabior
   Router.configure
-    #autostart: false
+    autostart: false
     layoutTemplate: 'mainLayout'
     loadingTemplate: 'loading'
     notFoundTemplate: 'notFound'
