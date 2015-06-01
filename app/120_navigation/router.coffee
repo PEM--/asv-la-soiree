@@ -1,4 +1,6 @@
 if Meteor.isClient
+  @mainCntEl = '.main-container[data-role=\'layout\']'
+  @routerEl = "#{mainCntEl}>.router-container"
   # Global router function ensuring to get the current slug.
   # When reloading a page or getting a direct acces, the reactive
   # value Router.current().url provides the full URL but when
@@ -65,8 +67,8 @@ if Meteor.isClient
       @render 'home', data: -> Pages.find()
       @render 'footer', to: 'footer', data: ->
         Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-
-  Meteor.startup ->
+    # Start router
+    Router.start()
     # Set dynamic routes depending on pages created in Orion
     Pages.find().observeChanges
       added: (id, fields) ->

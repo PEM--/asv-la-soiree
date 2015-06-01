@@ -1,6 +1,4 @@
 if Meteor.isClient
-  @mainCntEl = '.main-container[data-role=\'layout\']'
-  @routerEl = "#{mainCntEl}>.router-container"
   @mainEl = "#{routerEl}>main"
   @headerEl = "#{routerEl}>header>section"
   @logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
