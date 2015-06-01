@@ -48,7 +48,6 @@ gadicohen:robots-txt
 #meteorhacks:ssr
 
 # CMS
-#aldeed:tabular
 aldeed:autoform
 orionjs:core
 orionjs:config
@@ -60,7 +59,7 @@ orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
 orionjs:admin-unstyled
-meteorhacks:subs-manager
+#meteorhacks:subs-manager
 
 # Others
 dburles:google-maps
