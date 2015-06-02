@@ -1,0 +1,29 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+@import s(basePath, animate)
+
+.main-container
+  .router-container
+    section.subscription
+      article.header
+        width 100%
+        h1, h2, p
+          text-align center
+        h2
+          text-transform uppercase
+          color brandColor
+          font-size 1.3em
+        >p
+          text-transform uppercase
+          font-size 105%
+          font-weight bold
+      article.form
+        form
+          width 45%
+          fieldset
+            border transparent
+            legend
+              margin-left 0
+              padding-left 0

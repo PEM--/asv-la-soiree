@@ -59,7 +59,7 @@ if Meteor.isClient
       e.preventDefault()
       ($ "a[href='#{e.target.hash}']").velocity 'scroll',
         container: $ mainCntEl
-        offset: -mainMenuModel.height()
+        offset: (-> -30 - mainMenuModel.height())()
 
   Template.home.onCreated -> appLog.info 'Creating home screen'
   Template.home.onRendered ->
