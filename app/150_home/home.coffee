@@ -127,7 +127,7 @@ if Meteor.isClient
       new Waypoint
         element: ($ subEl)[0]
         handler: (direction) -> changeMenuColor direction, true
-        mainMenuModel.height()
+        offset: 52
         context: $mainCntEl[0]
       # Waypoint contact content that triggers entrance animation
       new Waypoint
@@ -144,7 +144,7 @@ if Meteor.isClient
       new Waypoint
         element: ($ contactEl)[0]
         handler: (direction) -> changeMenuColor direction, false
-        mainMenuModel.height()
+        offset: 52
         context: $mainCntEl[0]
       # Waypoint mapEl content that triggers entrance animation
       new Waypoint
@@ -161,5 +161,5 @@ if Meteor.isClient
       new Waypoint
         element: ($ mapEl)[0]
         handler: (direction) -> changeMenuColor direction, true
-        mainMenuModel.height()
+        offset: 52
         context: $mainCntEl[0]

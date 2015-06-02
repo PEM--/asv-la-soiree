@@ -32,43 +32,43 @@ if Meteor.isClient
     , 300
 
   # Global router behabior
-  Router.configure
-    autostart: false
-    layoutTemplate: 'mainLayout'
-    loadingTemplate: 'loading'
-    notFoundTemplate: 'notFound'
-    waitOn: -> [
-      Meteor.subscribe 'pages'
-    ]
-    onBeforeAction: ->
-      ($ routerEl).css 'opacity', 0
-      @next()
-    onAfterAction: ->
-      ($ mainCntEl).scrollTop 0
-      ($ routerEl).css 'opacity', 1
+  # Router.configure
+  #   #autostart: false
+  #   layoutTemplate: 'mainLayout'
+  #   loadingTemplate: 'loading'
+  #   notFoundTemplate: 'notFound'
+  #   onBeforeAction: ->
+  #     ($ routerEl).css 'opacity', 0
+  #     @next()
+  #   onAfterAction: ->
+  #     ($ mainCntEl).scrollTop 0
+  #     ($ routerEl).css 'opacity', 1
 
+  appLog.info 'Starting subscription and routing'
   Meteor.subscribe 'pages', ->
     # Dynamic routes
-    pages = Pages.find().fetch()
-    for page in pages
-      appLog.info 'Defining route', page.slug
-      do (page = page) ->
-        Router.route page.slug, ->
-          @render 'nav', to: 'nav', data: ->
-            Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-          @render 'basicPage', data: -> page
-          @render 'footer', to: 'footer', data: ->
-            Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-    # Static routes
-    appLog.info 'Defining home route'
-    Router.route '/', ->
-      @render 'nav', to: 'nav', data: ->
-        Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-      @render 'home', data: -> Pages.find()
-      @render 'footer', to: 'footer', data: ->
-        Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+    # pages = Pages.find().fetch()
+    # for page in pages
+    #   appLog.info 'Defining route', page.slug
+    #   do (page = page) ->
+    #     Router.route page.slug, ->
+    #       @render 'nav', to: 'nav', data: ->
+    #         Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+    #       @render 'basicPage', data: -> page
+    #       @render 'footer', to: 'footer', data: ->
+    #         Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+    #     , fastRender: true
+    # # Static routes
+    # appLog.info 'Defining home route'
+    # Router.route '/', ->
+    #   @render 'nav', to: 'nav', data: ->
+    #     Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+    #   @render 'home', data: -> Pages.find()
+    #   @render 'footer', to: 'footer', data: ->
+    #     Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+    #   , fastRender: true
     # Start router
-    Router.start()
+    #Router.start()
     # Set dynamic routes depending on pages created in Orion
     Pages.find().observeChanges
       added: (id, fields) ->

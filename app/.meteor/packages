@@ -43,6 +43,7 @@ orionjs:iron-router-progress
 # SEO & WPO
 #ongoworks:spiderable
 meteorhacks:inject-initial
+meteorhacks:fast-render
 gadicohen:sitemaps
 gadicohen:robots-txt
 #meteorhacks:ssr

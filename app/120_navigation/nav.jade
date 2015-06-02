@@ -7,9 +7,10 @@ template(name='nav')
     //ul(data-bind='class: {open: menuContentOpened}')
       each links
         li(class=activeRoute): a(href=slug, data-bind='click: changeRoute')= name
-    ul(data-bind='class: {open: menuContentOpened}')
-      each links
-        +navItem
+    if Template.subscriptionsReady
+      ul(data-bind='class: {open: menuContentOpened}')
+        each links
+          +navItem
 
 template(name='navItem')
   li: a(data-bind='value: slug, attr: { href: slug }, click: changeRoute, text: name')

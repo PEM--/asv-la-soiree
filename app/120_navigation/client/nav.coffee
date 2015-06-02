@@ -14,7 +14,9 @@
     goNextRoute '/'
   hamburger: (e) -> @menuContentOpened not @menuContentOpened()
   # @NOTE The pages are requested again for taking use of a reative cursor
-  links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+  links: ->
+    appLog.warn 'Links created'
+    Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
 # Subscribe to pages
 Template.nav.onCreated ->
