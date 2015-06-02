@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'mquandalle:jade@0.4.3',
     'orionjs:core@1.0.0',
     'iron:layout@1.0.7',
-    'aldeed:autoform@5.2.0',
+    'aldeed:autoform@5.3.0',
     'aldeed:tabular@1.2.0',
     'pierreeric:useraccounts-creativepure@0.1.0',
     'zimme:iron-router-active@1.0.4'
@@ -61,11 +61,11 @@ Package.onUse(function(api) {
     'client/collections/orionCpCollectionsUpdate.tpl.jade',
     'client/collections/collections.coffee',
     // Pages
-    'client/pages/orionCpPagesCreate.tpl.jade',
-    'client/pages/orionCpPagesDelete.tpl.jade',
-    'client/pages/orionCpPagesIndex.tpl.jade',
-    'client/pages/orionCpPagesUpdate.tpl.jade',
-    'client/pages/pages.coffee',
+    // 'client/pages/orionCpPagesCreate.tpl.jade',
+    // 'client/pages/orionCpPagesDelete.tpl.jade',
+    // 'client/pages/orionCpPagesIndex.tpl.jade',
+    // 'client/pages/orionCpPagesUpdate.tpl.jade',
+    // 'client/pages/pages.coffee',
   ], 'client');
 
   api.export('orion');
