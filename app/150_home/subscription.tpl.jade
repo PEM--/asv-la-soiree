@@ -1,0 +1,37 @@
+section.subscription
+  article.header
+    a(href='#subscription'): h1 Inscription
+    h2 Les inscription à la soirée ASV du congrés 2015 ne sont pas encore ouvertes.
+    p Pour réserver votre entrée, remplissez le formulaire ci-dessous.
+    p.error Vous n'avez pas entrer correctement les informations nécessaires.
+  article.form
+    form
+      fieldset
+        legend Votre profil
+        .input-profil
+          label(for='profile-1') ASV diplômé en 2014 ou 2015
+          input#profile-1(type='radio', name='profile', value='1')
+          label(for='profile-2') ASV en poste
+          input#profile-2(type='radio', name='profile', value='2')
+          label(for='profile-2') Accompagnant
+          input#profile-3(type='radio', name='profile', value='3')
+        .input-contact
+          span.input
+            input#name(type='text', name='name')
+            label(for='name'): span Nom
+          span.input
+            input#forname(type='text', name='forname')
+            label(for='forname'): span Prénom
+          span.input
+            input#email(type='email', name='email')
+            label(for='email'): span E-mail
+      fieldset
+        legend Je veux être alerter de l'ouverture des inscriptions en ligne et des tarifs par :
+        label(for='contact-type-1') Mail
+        input#contact-type-1(type='radio', name='contact-type', value='1')
+        label(for='contact-type-2') Téléphone
+        input#contact-type-2(type='radio', name='contact-type', value='2')
+      .submit
+        button.inspiration(type='button', data-text='Je me pré-inscris')
+          span Je me pré-inscris
+        

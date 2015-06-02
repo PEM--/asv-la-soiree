@@ -38,4 +38,3 @@ Template.navItem.viewmodel (data) ->
   changeRoute: (e) ->
     e.preventDefault()
     goNextRoute @slug()
-  #activeRoute: -> if @slug() is getSlug() then 'active' else ''
