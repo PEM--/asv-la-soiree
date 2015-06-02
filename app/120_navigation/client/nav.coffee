@@ -2,7 +2,7 @@
 @mainMenuModel = new ViewModel
   white: false
   menuContentOpened: false
-  opacity: 1
+  opacity: 0
   show: ->  @opacity 1
   hide: -> @opacity 0
   height: ->
@@ -14,9 +14,7 @@
     goNextRoute '/'
   hamburger: (e) -> @menuContentOpened not @menuContentOpened()
   # @NOTE The pages are requested again for taking use of a reative cursor
-  links: ->
-    appLog.warn 'Links created'
-    Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+  links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
 # Subscribe to pages
 Template.nav.onCreated ->
@@ -24,12 +22,13 @@ Template.nav.onCreated ->
   # Expose the ViewModel's helpers to Blaze
   @vm = mainMenuModel
   @vm.addHelper 'links', @
-  appLog.info 'Property set?'
+  mainMenuModel.reset()
 
 Template.nav.onRendered ->
   appLog.info 'Rendering main menu'
   # Bind ViewModel to template
   mainMenuModel.bind @
+  mainMenuModel.show() unless getSlug() is '/'
 
 # ViewModel for the menu's items
 Template.navItem.viewmodel (data) ->
@@ -39,6 +38,5 @@ Template.navItem.viewmodel (data) ->
   name: -> @page().title
   changeRoute: (e) ->
     e.preventDefault()
-    @parent().menuContentOpened false
     goNextRoute @slug()
   #activeRoute: -> if @slug() is getSlug() then 'active' else ''

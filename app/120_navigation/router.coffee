@@ -23,6 +23,12 @@ if Meteor.isClient
     ($ routerEl).css 'opacity', 0
     # Transition when fade out animation is done
     Meteor.setTimeout ->
+      appLog.info 'Going slug', nextRoute
+      mainMenuModel.reset()
+      unless nextRoute is '/'
+        Waypoint.destroyAll()
+        ScrollerSingleton.get().stop()
+        mainMenuModel.show()
       # Reset current scroll position
       ($ mainCntEl).scrollTop 0
       # Activate route
@@ -31,22 +37,9 @@ if Meteor.isClient
       Meteor.setTimeout (-> ($ routerEl).css 'opacity', 1), 64
     , 300
 
-  # Global router behabior
-  # Router.configure
-  #   #autostart: false
-  #   layoutTemplate: 'mainLayout'
-  #   loadingTemplate: 'loading'
-  #   notFoundTemplate: 'notFound'
-  #   onBeforeAction: ->
-  #     ($ routerEl).css 'opacity', 0
-  #     @next()
-  #   onAfterAction: ->
-  #     ($ mainCntEl).scrollTop 0
-  #     ($ routerEl).css 'opacity', 1
-
+  # Set dynamic routes depending on pages created in Orion
   appLog.info 'Starting subscription and routing'
   Meteor.subscribe 'pages', ->
-    # Set dynamic routes depending on pages created in Orion
     Pages.find().observeChanges
       added: (id, fields) ->
         if Router.routes[fields.slug] is undefined
