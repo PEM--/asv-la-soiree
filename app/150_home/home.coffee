@@ -64,6 +64,7 @@ if Meteor.isClient
   Template.home.onCreated -> appLog.info 'Creating home screen'
   Template.home.onRendered ->
     appLog.info 'Rendering home screen'
+    mainMenuModel.hide()
     homeModel.bind @
     Session.set 'debug', if Session.get 'IS_MOBILE' then 'mobile' else 'desktop'
     unless Session.get 'IS_MOBILE'
