@@ -20,6 +20,9 @@ if Meteor.isClient
   # the template rendering is done and a fadeOut when the template
   # is rendered.
   @goNextRoute = (nextRoute) ->
+    if nextRoute is getSlug()
+      ($ mainCntEl).scrollTop 0
+      return
     ($ routerEl).css 'opacity', 0
     # Transition when fade out animation is done
     Meteor.setTimeout ->
