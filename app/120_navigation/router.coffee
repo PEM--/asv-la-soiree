@@ -1,6 +1,16 @@
 if Meteor.isClient
   @mainCntEl = '.main-container[data-role=\'layout\']'
   @routerEl = "#{mainCntEl}>.router-container"
+
+  # Get only the slug from an URL
+  @slugIt = (url) ->
+    # Remove hash
+    url = (url.split '#')[0]
+    # Check if current URL contains hostname
+    count = url.search __meteor_runtime_config__.ROOT_URL
+    return url if count is -1
+    url.substr __meteor_runtime_config__.ROOT_URL.length - 1
+
   # Global router function ensuring to get the current slug.
   # When reloading a page or getting a direct acces, the reactive
   # value Router.current().url provides the full URL but when
@@ -9,17 +19,13 @@ if Meteor.isClient
   @getSlug = ->
     curUrl = Router.current()?.url
     return unless curUrl?
-    # Remove hash
-    curUrl = (curUrl.split '#')[0]
-    # Check if current URL contains hostname
-    count = curUrl.search __meteor_runtime_config__.ROOT_URL
-    return curUrl if count is -1
-    curUrl.substr __meteor_runtime_config__.ROOT_URL.length - 1
+    @slugIt curUrl
 
   # Global router function ensuring transition with fadeIn before the
   # the template rendering is done and a fadeOut when the template
   # is rendered.
   @goNextRoute = (nextRoute) ->
+    nextRoute = slugIt nextRoute
     if nextRoute is getSlug()
       ($ routerEl).velocity('scroll', {container: $ mainCntEl})
       return

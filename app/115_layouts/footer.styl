@@ -1,6 +1,7 @@
 @import 'nib'
 @import 'jeet'
 @import '020_colorsTheme/*.import'
+@import s(basePath, links)
 
 .main-container
   footer
@@ -21,7 +22,7 @@
     section
       display flex
       flex-direction row
-      flex-wrap nowrap
+      flex-wrap wrap
       justify-content flex-start
       align-items stretch
       align-content stretch
@@ -66,3 +67,19 @@
           width 30%
         .svg-logo-container:nth-child(1)
           snvelLogo(100%)
+      // Partners
+      article:nth-child(3)
+        width 100%
+        margin-top 1em
+        border-top 1px solid brandColor
+        padding-top .8em
+        text-align center
+        aside
+          margin 0
+          padding 0
+          width 100%
+          display block
+          cpLinks(brandColor)
+        a, a:visited
+          color textColor
+          font-size 80%
