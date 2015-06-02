@@ -38,34 +38,47 @@
           >fieldset, .group-contact-submit fieldset
             border none
             .input-profil
-              display flex
-              flex-wrap wrap
-              flex-justify space-between
               span.choice
-                flex-grow 0
-                flex-shrink 0
-                display block
-                width 33%
+                display inline-block
+                width 120px
                 text-align center
+                input
+                  transform translateX(-10000px)
                 label
-                  margin 0 auto
-                  font-size .9em
+                  cursor pointer
+                  margin 0 20px
+                  font-size 8px
                   display block
-                  line-height 1em
-                  size 9em
+                  position relative
+                  line-height @font-size
+                  size 80px
                   border 2px solid brandColor
                   color brandColor
-                  border-radius 50%
+                  border-radius 40px
                   text-transform uppercase
-                &:nth-child(1)
-                  label
-                    padding-top 3em
-                &:nth-child(2)
-                  label
-                    padding-top 3.3em
-                &:nth-child(3)
-                  label
-                    padding-top 3.8em
+                  transition transform defaultTransitionValue
+                  &::before, &::after
+                    content ''
+                    display block
+                    transition transform defaultTransitionValue, background-color defaultTransitionValue
+                  &::before
+                    size 14px
+                    border-radius 7px
+                    background brandColor
+                    absolute bottom -22px left 31px
+                  &::after
+                    size 6px
+                    border-radius 5px
+                    background brandColor
+                    absolute bottom -18px left 35px
+                &:nth-child(1) label
+                  padding-top 26px
+                &:nth-child(2) label
+                  padding-top 30px
+                &:nth-child(3) label
+                  padding-top 34px
+              input:checked + label::after
+                background bgColor
             .input-contact
               cpInput(bgColor, textColor, brandColor)
               cpInputJiro(textColor, brandColor)
