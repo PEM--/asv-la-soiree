@@ -4,7 +4,7 @@
 @import s(basePath, links)
 
 .main-container
-  edit()
+  //edit()
   >nav
     opacity 0
     fixed top left
@@ -88,7 +88,7 @@
         align-content flex-start
         align-items flex-start
         background rgba(textColor, 95%)
-        transition transform defaultTransitionValue
+        transition transform defaultTransitionValue, background defaultTransitionValue
         transform translate3d(100%,0,0)
         &.open
           transform none
@@ -106,6 +106,7 @@
           font-family BaronNeue
           pointer-events auto
           border-bottom 1px solid bgColor
+          transition border-color defaultTransitionValue
           position relative
           display block
           size 100% 4em
@@ -125,9 +126,12 @@
     &.white
       background rgba(bgColor, 95%)
       .nav
-        .sub-nav ul li
-          a
-            color textColor
+        ul
+          background rgba(bgColor, 95%)
+          li
+            border-color textColor
+            a
+              color textColor
         .hamburger-button
             background-color rgba(textColor, 20%)
           span

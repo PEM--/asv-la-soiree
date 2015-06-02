@@ -72,6 +72,22 @@ Router.configure
   notFoundTemplate: 'notFound'
 # Dynamic routes
 pages = Pages.find().fetch()
+# for page in pages
+#   do (page = page) ->
+#     appLog.info 'Defining route', page.slug
+#     Router.route "/#{page.slug}", ->
+#       @render 'nav', to: 'nav', data: ->
+#         _.sortBy \
+#           (_.filter pages, (page) -> page.display is 1 or page.display is 2)
+#         , (page) -> page.order
+#       @render 'basicPage', data: -> page
+#       @render 'footer', to: 'footer', data: ->
+#         _.sortBy \
+#           (_.filter pages, (page) -> page.display is 2 or page.display is 3)
+#         , (page) -> page.order
+#     , fastRender: true
+# Static routes
+appLog.info 'Defining route cgu'
 Router.route '/cgu', ->
   @render 'nav', to: 'nav', data: ->
     _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 2)
@@ -81,6 +97,7 @@ Router.route '/cgu', ->
     _.sortBy (_.filter pages, (page) -> page.display is 2 or page.display is 3)
     , (page) -> page.order
 , fastRender: true
+appLog.info 'Defining route cookie'
 Router.route '/cookie', ->
   @render 'nav', to: 'nav', data: ->
     _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 2)
@@ -90,8 +107,7 @@ Router.route '/cookie', ->
     _.sortBy (_.filter pages, (page) -> page.display is 2 or page.display is 3)
     , (page) -> page.order
 , fastRender: true
-# Static routes
-appLog.info 'Defining home route'
+appLog.info 'Defining route home'
 Router.route '/', ->
   @render 'nav', to: 'nav', data: ->
     _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 2)

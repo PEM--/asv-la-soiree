@@ -46,29 +46,6 @@ if Meteor.isClient
 
   appLog.info 'Starting subscription and routing'
   Meteor.subscribe 'pages', ->
-    # Dynamic routes
-    # pages = Pages.find().fetch()
-    # for page in pages
-    #   appLog.info 'Defining route', page.slug
-    #   do (page = page) ->
-    #     Router.route page.slug, ->
-    #       @render 'nav', to: 'nav', data: ->
-    #         Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-    #       @render 'basicPage', data: -> page
-    #       @render 'footer', to: 'footer', data: ->
-    #         Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-    #     , fastRender: true
-    # # Static routes
-    # appLog.info 'Defining home route'
-    # Router.route '/', ->
-    #   @render 'nav', to: 'nav', data: ->
-    #     Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-    #   @render 'home', data: -> Pages.find()
-    #   @render 'footer', to: 'footer', data: ->
-    #     Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-    #   , fastRender: true
-    # Start router
-    #Router.start()
     # Set dynamic routes depending on pages created in Orion
     Pages.find().observeChanges
       added: (id, fields) ->

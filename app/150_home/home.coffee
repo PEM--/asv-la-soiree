@@ -50,7 +50,7 @@ if Meteor.isClient
   changeMenuColor = (direction, isInverted) ->
     whiten = direction is 'up'
     whiten = not whiten if isInverted
-    # TODO PEM .white whiten
+    mainMenuModel.white whiten
 
   homeModel = new ViewModel
     arrowOpacity: 1
