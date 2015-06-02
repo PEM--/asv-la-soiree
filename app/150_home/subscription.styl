@@ -48,12 +48,24 @@
                 width 33%
                 text-align center
                 label
+                  margin 0 auto
+                  font-size .9em
                   display block
-                  size 8em
+                  line-height 1em
+                  size 9em
                   border 2px solid brandColor
                   color brandColor
                   border-radius 50%
                   text-transform uppercase
+                &:nth-child(1)
+                  label
+                    padding-top 3em
+                &:nth-child(2)
+                  label
+                    padding-top 3.3em
+                &:nth-child(3)
+                  label
+                    padding-top 3.8em
             .input-contact
               cpInput(bgColor, textColor, brandColor)
               cpInputJiro(textColor, brandColor)
