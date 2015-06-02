@@ -30,12 +30,13 @@ section.subscription
             label(for='email'): span E-mail
       .group-contact-submit
         fieldset
-          legend Je veux être alerter de l'ouverture des inscriptions en ligne et des tarifs par :
-          input#contact-type-1(type='radio', name='contact-type', value='1', checked)
-          label(for='contact-type-1') Mail
-          input#contact-type-2(type='radio', name='contact-type', value='2')
-          label(for='contact-type-2') Téléphone
+          legend Je veux être alerté de l'ouverture des inscriptions en ligne et des tarifs par :
+          span.choice
+            input#contact-type-1(type='radio', name='contact-type', value='1', checked)
+            label(for='contact-type-1') Mail
+          span.choice
+            input#contact-type-2(type='radio', name='contact-type', value='2')
+            label(for='contact-type-2') Téléphone
         .submit
           button.inspiration(type='button', data-text='Je me pré-inscris')
             span Je me pré-inscris
-          

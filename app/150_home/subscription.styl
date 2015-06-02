@@ -7,6 +7,35 @@
 
 .main-container
   .router-container
+    // Base class for radio buttoin
+    span.choice
+      display inline-block
+      input
+        transform translateX(-10000px)
+      label
+        cursor pointer
+        display block
+        position relative
+        transition background-color defaultTransitionValue
+        &::before, &::after
+          content ''
+          display block
+          transition background-color defaultTransitionValue
+        &::before
+          size 14px
+          border-radius 7px
+          background brandColor
+          absolute bottom -22px left 31px
+        &::after
+          size 6px
+          border-radius 5px
+          background brandColor
+          absolute bottom -18px left 35px
+    input:checked + label
+      background lighten(brandColor, 80%)
+      &::after
+        background bgColor
+
     section.subscription
       article.header
         width 100%
@@ -39,37 +68,25 @@
             border none
             .input-profil
               span.choice
-                display inline-block
                 width 120px
                 text-align center
-                input
-                  transform translateX(-10000px)
                 label
-                  cursor pointer
                   margin 0 20px
                   font-size 8px
-                  display block
-                  position relative
                   line-height @font-size
                   size 80px
                   border 2px solid brandColor
                   color brandColor
                   border-radius 40px
                   text-transform uppercase
-                  transition transform defaultTransitionValue
+                  transition background-color defaultTransitionValue
                   &::before, &::after
                     content ''
                     display block
-                    transition transform defaultTransitionValue, background-color defaultTransitionValue
+                    transition background-color defaultTransitionValue
                   &::before
-                    size 14px
-                    border-radius 7px
-                    background brandColor
                     absolute bottom -22px left 31px
                   &::after
-                    size 6px
-                    border-radius 5px
-                    background brandColor
                     absolute bottom -18px left 35px
                 &:nth-child(1) label
                   padding-top 26px
@@ -77,8 +94,8 @@
                   padding-top 30px
                 &:nth-child(3) label
                   padding-top 34px
-              input:checked + label::after
-                background bgColor
+              input:checked + label
+                background lighten(brandColor, 80%)
             .input-contact
               cpInput(bgColor, textColor, brandColor)
               cpInputJiro(textColor, brandColor)
@@ -87,6 +104,7 @@
               padding-left 0
               font-weight 300
           .group-contact-submit
+            //fieldset span
             button
               margin 2em auto 0 auto
               text-transform uppercase
