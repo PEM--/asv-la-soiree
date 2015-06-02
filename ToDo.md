@@ -28,7 +28,7 @@
   - http://imakewebthings.com/waypoints
 - [X] Contournement de bug Safari OSX (uniquement) sur l'utilisation des FlexBox
 - [X] Replace video on mobiles/tablets with a responsive image
-- [ ] Menu for smartphone
+- [X] Menu for smartphone
 - [X] Main template
 - [ ] Notification de déconnexions du serveur
   - https://github.com/alexreich/meteor-machina
@@ -40,6 +40,7 @@
 - [X] Not found template
 - [X] No script
 - [X] Navigateurs trop anciens
+- [X] Dynamic and editable footer
 - [ ] Loading subscription template
   - https://github.com/pcel/meteor-loading/
 - [ ] Twitter cards
@@ -48,7 +49,7 @@
   - https://github.com/lookback/meteor-seo/
 - [ ] Social sharing
   - https://github.com/meteorclub/shareit
-- [ ] EULA / CGU
+- [X] EULA / CGU
 - [ ] Cookie informations
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~

@@ -5,10 +5,7 @@ Template.footer.onCreated ->
 # ViewModel for the footer
 Template.footer.viewmodel
   links: ->
-    pages = Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-    console.log '*****'
-    console.log pages
-    Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+    Pages.find {$or: [{display: 1}, {display: 3}]}, sort: order: 1
 , 'links'
 
 # ViewModel for the footer's items
