@@ -55,6 +55,11 @@ if Meteor.isClient
   homeModel = new ViewModel
     arrowOpacity: 1
     teaserOpacity: 1
+    goInnerLink: (e) ->
+      e.preventDefault()
+      ($ "a[href='#{e.target.hash}']").velocity 'scroll',
+        container: $ mainCntEl
+        offset: -mainMenuModel.height()
 
   Template.home.onCreated -> appLog.info 'Creating home screen'
   Template.home.onRendered ->
@@ -67,9 +72,6 @@ if Meteor.isClient
       video.play()
       # Start scrolling container
       ScrollerSingleton.get().start()
-    # Set menu as invisible on the home page uniquely
-    # @TODO Must fix load ordering issues
-    mainMenuModel.hide()
     # Set reactive height
     @rxMainHeight.set ($ mainCntEl).height()
     @autorun (computation) =>
