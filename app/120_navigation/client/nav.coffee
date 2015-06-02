@@ -16,7 +16,6 @@
   # @NOTE The pages are requested again for taking use of a reative cursor
   links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
-# Subscribe to pages
 Template.nav.onCreated ->
   appLog.info 'Creating main menu'
   # Expose the ViewModel's helpers to Blaze

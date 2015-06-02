@@ -4,9 +4,6 @@ template(name='nav')
       +asvlasoireeBigLogo
     button.hamburger-button(data-bind='class: {open: menuContentOpened}, click: hamburger')
       span
-    //ul(data-bind='class: {open: menuContentOpened}')
-      each links
-        li(class=activeRoute): a(href=slug, data-bind='click: changeRoute')= name
     if Template.subscriptionsReady
       ul(data-bind='class: {open: menuContentOpened}')
         each links
