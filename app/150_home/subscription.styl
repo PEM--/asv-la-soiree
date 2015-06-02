@@ -37,12 +37,30 @@
             width 50%
           >fieldset, .group-contact-submit fieldset
             border none
+            .input-profil
+              display flex
+              flex-wrap wrap
+              flex-justify space-between
+              span.choice
+                flex-grow 0
+                flex-shrink 0
+                display block
+                width 33%
+                text-align center
+                label
+                  display block
+                  size 8em
+                  border 2px solid brandColor
+                  color brandColor
+                  border-radius 50%
+                  text-transform uppercase
+            .input-contact
+              cpInput(bgColor, textColor, brandColor)
+              cpInputJiro(textColor, brandColor)
             legend
               margin-left 0
               padding-left 0
               font-weight 300
-            cpInput(bgColor, textColor, brandColor)
-            cpInputJiro(textColor, brandColor)
           .group-contact-submit
             button
               margin 2em auto 0 auto
@@ -55,6 +73,7 @@
               color brandColor
               &:hover
                 transform scale3d(1.05, 1.05, 1)
-                border-color lighten(brandColor, 30%)
+                border-color darken(brandColor, 10%)
                 background rgba(black, 5%)
-                color lighten(brandColor, 30%)
+                font-weight bold
+                color darken(brandColor, 10%)
