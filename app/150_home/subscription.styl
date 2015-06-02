@@ -3,6 +3,7 @@
 @import 'typographic'
 @import '020_colorsTheme/*.import'
 @import s(basePath, animate)
+@import s(basePath, input)
 
 .main-container
   .router-container
@@ -14,16 +15,46 @@
         h2
           text-transform uppercase
           color brandColor
-          font-size 1.3em
-        >p
+          font-size 1.2em
+          margin-bottom 0
+        p:not(.error)
+          margin-top 0
           text-transform uppercase
-          font-size 105%
+          font-size 0.9em
           font-weight bold
       article.form
         form
-          width 45%
-          fieldset
-            border transparent
+          display flex
+          flex-wrap wrap
+          flex-justify space-between
+          margin 0
+          padding 0
+          >fieldset, .group-contact-submit
+            flex-grow 0
+            flex-shrink 0
+            margin 0
+            padding 0 .5em
+            width 50%
+          >fieldset, .group-contact-submit fieldset
+            border none
             legend
               margin-left 0
               padding-left 0
+              font-weight 300
+            cpInput(bgColor, textColor, brandColor)
+            cpInputJiro(textColor, brandColor)
+          .group-contact-submit
+            button
+              margin 2em auto 0 auto
+              text-transform uppercase
+              line-height 2.8em
+              border 2px solid brandColor
+              background bgColor
+              border-radius (roundCorner/2)
+              transition color defaultTransitionValue,background-color defaultTransitionValue,transform defaultTransitionValue,border-color defaultTransitionValue, font-weight defaultTransitionValue
+              color brandColor
+              &:hover
+                transform scale3d(1.05, 1.05, 1)
+                border-color lighten(brandColor, 30%)
+                background rgba(black, 5%)
+                color lighten(brandColor, 30%)
