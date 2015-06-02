@@ -21,7 +21,7 @@ if Meteor.isClient
   # is rendered.
   @goNextRoute = (nextRoute) ->
     if nextRoute is getSlug()
-      ($ mainCntEl).scrollTop 0
+      ($ routerEl).velocity('scroll', {container: $ mainCntEl})
       return
     ($ routerEl).css 'opacity', 0
     # Transition when fade out animation is done
