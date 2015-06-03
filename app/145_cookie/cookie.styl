@@ -1,0 +1,34 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+@import s(basePath, animate)
+@import s(basePath, links)
+
+.cookie
+  width 100%
+  z-index 3000
+  background bgColor
+  transform translated3d(0,0 3000px)
+  fixed top left
+  size 100% auto
+  margin 0
+  padding 1em 1em
+  border 0
+  font-size 12px
+  >p
+    display block
+    margin 0
+    padding 0
+    color textColor
+    center(960px)
+    text-align justify
+    button
+      button(brandColor, 'small', bgColor)
+      transition background-color defaultTransitionValue, color defaultTransitionValue
+      margin 0 1.5em
+      &:hover
+        background-color darken(brandColor, 10%)
+        color darken(bgColor, 5%)
+    // Links
+    cpLinks(brandColor)
