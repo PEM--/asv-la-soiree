@@ -5,8 +5,8 @@ orion.collections.onCreated ->
     orionLog.info 'No tabular collection'
     return
   tabularOptions = _.extend
-    name: "tabular_#{@.name}"
-    collection: @
+    name: "tabular_#{self.name}"
+    collection: self
     columns: [data: '_id', title: 'ID']
     selector: (userId) ->
       selectors = Roles.helper userId, "collection.#{self.name}.indexFilter"

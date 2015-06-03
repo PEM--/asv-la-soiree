@@ -1,6 +1,7 @@
 // orionCpAccountsUpdate
 +Layout template='orionCpTitle'
   | {{ i18n 'accounts.update.title' }}
++Layout template='orionCpContentContainer'
   +autoForm id="accountsUpdateEmailsForm" schema=emailsSchema type="method-update" doc=user meteormethod="orionAccountsUpdateEmails"
     +afQuickField name='emails'
     button {{ i18n 'global.save' }}
