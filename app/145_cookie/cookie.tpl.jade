@@ -1,8 +1,7 @@
 // cookie
-.cookie
-  p
-    | {{ dict 'cookie.message' }}
-    button OK
-    a(href='/cookie') En savoir plus...
-    
-  
+unless isCookieAccepted
+  .cookie
+    p
+      | {{ dict 'cookie.message' }}
+      button OK
+      a(href='/cookie') En savoir plus...
