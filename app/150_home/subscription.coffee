@@ -29,12 +29,28 @@ if Meteor.isClient
                 'N° de téléphone doit être supérieur ou égal à [min]'
             'Le n° de téléphone doit être du type: 0612345678'
           else text
+        appLog.info 'Subscription not filled: ',text
         @errorText text
-        appLog.info 'Subscription values: ', error.message, @errorText()
         return true
       # Reset error text when field seems OK
       @errorText ''
       return false
+    subscribe: (e) ->
+      obj =
+        profile: @profile()
+        name: @name()
+        forname: @forname()
+        email: @email()
+        contactType: @contactType()
+        phone: @phone()
+      appLog.info 'Subscription attempt', obj
+      
+      Cookies.set 'AsvLaSoiree',
+        preSubscriptionValue: obj
+        preSubscriptionDate: new Date
+      ,
+        expires: 6*31
+
 
 # Subscribers
 @Subscribers = new orion.collection 'subscribers',
