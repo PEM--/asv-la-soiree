@@ -25,7 +25,7 @@
 # }
 if Meteor.isServer
   ###*
-   * Update the sitemaps when data changes on the Pages collection.
+   * Update the sitemaps when data changes on the BasicPages collection.
    * @param  {Object} cursor Collection cursor.
    * @param  {Boolean} isFirstRun Flag for initial creation (false by default).
   ###
@@ -39,7 +39,7 @@ if Meteor.isServer
     entries.push page: '/', lastmod: orion.dictionary.get 'site.lastModified'
     sitemaps.add '/sitemap.xml', -> entries
   # Create an initial sitemap
-  pagesCursor = Pages.find {}, sort: createAd: -1
+  pagesCursor = BasicPages.find {}, sort: createAd: -1
   return appLog.warn 'No page found' if pagesCursor.count() is 0
   updateSitemapOnPage pagesCursor, true
   # Observe change on page in case new links are inserted, removed or modified.

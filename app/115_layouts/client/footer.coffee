@@ -1,17 +1,17 @@
 Template.footer.onCreated ->
   appLog.log 'Footer created'
-  @subscribe 'pages'
+  @subscribe 'basicpages'
 
 # ViewModel for the footer
 Template.footer.viewmodel
   links: ->
-    Pages.find {$or: [{display: 1}, {display: 3}]}, sort: order: 1
+    BasicPages.find {$or: [{display: 1}, {display: 3}]}, sort: order: 1
 , 'links'
 
 # ViewModel for the footer's items
 Template.footerItem.viewmodel (data) ->
   id: data._id
-  page: -> Pages.findOne @id()
+  page: -> BasicPages.findOne @id()
   slug: -> @page().slug
   name: -> @page().title
   changeRoute: (e) ->

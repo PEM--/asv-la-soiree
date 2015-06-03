@@ -2,7 +2,7 @@
 +Layout template='orionCpTitle'
   | {{ collection.title }}
   if collection.canShowCreate
-    a.btn-x(href="{{ collection.createPath }}"): i.fa.fa-plus
+    a(href="{{ collection.createPath }}"): i.fa.fa-plus
 +Layout template='orionCpContentContainer'
   if collection.canIndex
     if showTable

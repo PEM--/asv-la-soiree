@@ -61,11 +61,11 @@ Package.onUse(function(api) {
     'client/collections/orionCpCollectionsDelete.tpl.jade',
     'client/collections/collections.coffee',
     // Pages
-    // 'client/pages/orionCpPagesCreate.tpl.jade',
-    // 'client/pages/orionCpPagesDelete.tpl.jade',
-    // 'client/pages/orionCpPagesIndex.tpl.jade',
-    // 'client/pages/orionCpPagesUpdate.tpl.jade',
-    // 'client/pages/pages.coffee',
+    'client/pages/orionCpPagesCreate.tpl.jade',
+    'client/pages/orionCpPagesDelete.tpl.jade',
+    'client/pages/orionCpPagesIndex.tpl.jade',
+    'client/pages/orionCpPagesUpdate.tpl.jade',
+    'client/pages/pages.coffee',
   ], 'client');
 
   api.export('orion');

@@ -48,16 +48,16 @@ if Meteor.isClient
 
   # Set dynamic routes depending on pages created in Orion
   appLog.info 'Starting subscription and routing'
-  Meteor.subscribe 'pages', ->
-    Pages.find().observeChanges
+  Meteor.subscribe 'basicpages', ->
+    BasicPages.find().observeChanges
       added: (id, fields) ->
         if Router.routes[fields.slug] is undefined
           appLog.info 'Route added', fields.slug, fields.title
           Router.route fields.slug, ->
             @render 'nav', to: 'nav', data: ->
-              Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-            @render 'basicPage', data: -> Pages.findOne id
+              BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+            @render 'basicPage', data: -> BasicPages.findOne id
             @render 'footer', to: 'footer', data: ->
-              Pages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
+              BasicPages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
         else
           appLog.info 'Route already exists', fields.slug

@@ -42,11 +42,11 @@ if Meteor.isClient
   AutoForm.setDefaultTemplate 'plain'
 
 # Reactive template on pages
-# for rxTpl in [
-#   {name: 'pages.index', layout: 'orionCpPagesIndex'}
-#   {name: 'pages.create', layout: 'orionCpPagesCreate'}
-#   {name: 'pages.update', layout: 'orionCpPagesUpdate'}
-#   {name: 'pages.delete', layout: 'orionCpPagesDelete'}
-# ]
-#   orionLog.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
-#   ReactiveTemplates.set rxTpl.name, rxTpl.layout
+for rxTpl in [
+  {name: 'pages.index', layout: 'orionCpPagesIndex'}
+  {name: 'pages.create', layout: 'orionCpPagesCreate'}
+  {name: 'pages.update', layout: 'orionCpPagesUpdate'}
+  {name: 'pages.delete', layout: 'orionCpPagesDelete'}
+]
+  orionLog.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
+  ReactiveTemplates.set rxTpl.name, rxTpl.layout

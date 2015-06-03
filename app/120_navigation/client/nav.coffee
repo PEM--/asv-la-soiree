@@ -14,7 +14,7 @@
     goNextRoute '/'
   hamburger: (e) -> @menuContentOpened not @menuContentOpened()
   # @NOTE The pages are requested again for taking use of a reative cursor
-  links: -> Pages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+  links: -> BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
 Template.nav.onCreated ->
   appLog.info 'Creating main menu'
@@ -32,7 +32,7 @@ Template.nav.onRendered ->
 # ViewModel for the menu's items
 Template.navItem.viewmodel (data) ->
   id: data._id
-  page: -> Pages.findOne @id()
+  page: -> BasicPages.findOne @id()
   slug: -> @page().slug
   name: -> @page().title
   changeRoute: (e) ->
