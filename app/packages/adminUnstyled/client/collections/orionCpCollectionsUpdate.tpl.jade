@@ -1,10 +1,10 @@
 // orionCpCollectionsUpdate
 +Layout template='orionCpTitle'
-  | Update {{ collection.singularName }}
+  | {{i18n 'collections.update.title' collection.singularName }}
 +Layout template='orionCpContentContainer'
   +if item.canShowUpdate
     +quickForm collection=collection doc=item id='orionCpCollectionsUpdateForm' type='update' buttonContent=false
-    a.user-btn-action(href="{{ collection.indexPath }}") Cancel
+    a.user-btn-action(href="{{ collection.indexPath }}") {{ i18n 'global.cancel' }}
     if item.canShowRemove
-      a.user-btn-action-warning(href="{{ collection.deletePath item._id }}") Delete
-    a.user-btn-action.save-btn Save
+      a.user-btn-action-warning(href="{{ collection.deletePath item._id }}") {{i18n 'global.delete' }}
+    a.user-btn-action.save-btn {{ i18n 'global.save' }}
