@@ -1,6 +1,6 @@
 // orionCpAccountIndex
 +Layout template='orionCpTitle'
-  +i18n 'accounts.index.title'
+  | {{i18n 'accounts.index.title'}}
   if userHasPermission 'accounts.invite'
     a(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
 

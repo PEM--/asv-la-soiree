@@ -1,23 +1,39 @@
 // orionCpAccountsInvite
 +Layout template='orionCpTitle'
-  | Invite
+  | {{i18n 'accounts.create.title'}}
 +Layout template='orionCpContentContainer'
   if invitationId
     .alert.alert-success
-      | Invitation created successfully
+      | {{i18n 'accounts.messages.successfullyCreated'}}
     p
-      | Link for the invitation page:
       a(href="{{ pathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
-    a.user-btn-action(href="{{ pathFor 'accounts.index' }}") Back
-    button.btn-invite-another Invite another
+    a.user-btn-action(href="{{ pathFor 'accounts.index' }}") {{i18n 'global.back'}}
+    button.btn-invite-another {{i18n 'accounts.invite.inviteOther'}}
   else
     form.invite
-      p Select the roles for the new user
+      span.choice
+        input#createInvitation(type='radio', name='createMethod', value='invitation', checked)
+        label(for='createInvitation') {{i18n 'accounts.create.createInvitation'}}
+      span.choice
+        input#createUserNow(type='radio', name='createMethod', value='now')
+        label(for='createUserNow') {{i18n 'accounts.create.createUserNow'}}
+      p {{ i18n 'accounts.create.selectRoles' }}
       each roles
-        label
-          input(type="checkbox", role="{{ this }}")
-          span.role(data-attr=this)= this
-      p Email of the new user (optional)
-      input(type='email')
-      a.user-btn-action(href="{{ pathFor 'accounts.index' }}") Cancel
-      button Invite
+        span.choice
+          input(type="checkbox", role="{{ this }}", id="{{ this }}")
+          label(for="{{ this }}", data-attr=this)= this
+      p {{i18n 'accounts.create.email'}}
+        if createWithInvitation
+          | {{i18n 'global.optional'}}
+      unless createWithInvitation
+        p
+          | {{i18n 'accounts.schema.profile.name'}}
+          input(type='text', name='name')
+        p
+          | {{i18n 'accounts.schema.password.new'}}
+          input(type='password', name='password')
+        p
+          | {{i18n 'accounts.schema.password.confirm'}}
+          input(type='password', name='confirm')
+      a.user-btn-action(href="{{ pathFor 'accounts.index' }}") {{i18n 'global.cancel'}}
+      button {{i18n 'global.create'}}

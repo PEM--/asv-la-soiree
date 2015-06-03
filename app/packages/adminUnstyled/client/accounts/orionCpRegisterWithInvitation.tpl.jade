@@ -1,7 +1,7 @@
 // orionCpRegisterWithInvitation
 .invite
   +contentFor 'title'
-    | Register
+    | {{ i18n 'accounts.registerWithInvitation.title' }}
   if invitation
     if error
       p= error
@@ -9,15 +9,15 @@
       p
         label= invitation._id
     form
-      label Email
+      label {{i18n 'accounts.registerWithInvitation.fields.email'}}
       if invitation.email
         input.form-control(value="{{ invitation.email }}", name='email', type='email', disabled)
       else
-        input.form-control(placeholder='Email', name='email', type='email')
-      label Name
-      input.form-control(placeholder='Name', name='name', type='text')
-      label Password
-      input.form-control(placeholder='Password', name='password', type='password')
-      label Password (again)
-      input.form-control(placeholder='Password (again)', name='password-confirm', type='password')
-      button Register
+        input.form-control(placeholder="{{i18n 'accounts.registerWithInvitation.fields.email'}}", name='email', type='email')
+      label {{i18n 'accounts.registerWithInvitation.fields.name'}}
+      input.form-control(placeholder="{{i18n 'accounts.registerWithInvitation.fields.name'}}", name='name', type='text')
+      label {{i18n 'accounts.registerWithInvitation.fields.password'}}
+      input.form-control(placeholder="{{i18n 'accounts.registerWithInvitation.fields.password'}}", name='password', type='password')
+      label {{i18n 'accounts.registerWithInvitation.fields.confirmPassword'}}
+      input.form-control(placeholder="{{i18n 'accounts.registerWithInvitation.fields.confirmPassword'}}", name='password-confirm', type='password')
+      button {{i18n 'accounts.registerWithInvitation.registerButton'}}

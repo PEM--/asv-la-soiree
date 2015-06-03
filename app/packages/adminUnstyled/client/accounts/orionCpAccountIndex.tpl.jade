@@ -1,6 +1,6 @@
 // orionCpAccountIndex
 +Layout template='orionCpTitle'
-  | My Account
+  | {{i18n 'accounts.myAccount.title'}}
 +Layout template='orionCpContentContainer'
   .row
     if currentUser.profile.picture
@@ -13,6 +13,6 @@
       p
         each roles
           span.role(data-attr=this)= this
-  a.user-btn-action.logout Logout
-  a.user-btn-action(href="{{ pathFor 'myAccount.profile' }}") Update Profile
-  a.user-btn-action(href="{{ pathFor 'myAccount.password' }}") Change Password
+  a.user-btn-action.logout {{ i18n 'global.logout' }}
+  a.user-btn-action(href="{{ pathFor 'myAccount.profile' }}") {{ i18n 'accounts.updateProfile.title' }}
+  a.user-btn-action(href="{{ pathFor 'myAccount.password' }}") {{ i18n 'accounts.changePassword.title' }}

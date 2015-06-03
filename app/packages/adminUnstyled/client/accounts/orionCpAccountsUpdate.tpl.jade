@@ -1,17 +1,34 @@
-// orionCpAccountsUpdateRoles
+// orionCpAccountsUpdate
 +Layout template='orionCpTitle'
-  | Edit Roles
-  small= user.profile.name
-+Layout template='orionCpContentContainer'
-  form.roles
-    p Select the roles for this user
-    each roles
-      label
-        if hasRole
-          input(type='checkbox', role=this, checked)
-          span.role= this
-        else
-          input(type='checkbox', role=this)
-          span.role(data-attr=this)= this
-    a(href="{{ pathFor 'accounts.index' }}") Cancel
-    button.btn-save Save
+  | {{ i18n 'accounts.update.title' }}
+  +autoForm id="accountsUpdateEmailsForm" schema=emailsSchema type="method-update" doc=user meteormethod="orionAccountsUpdateEmails"
+    +afQuickField name='emails'
+    button {{ i18n 'global.save' }}
+  h2 {{ i18n 'accounts.update.sections.profile.title' }}
+  div.well
+    +autoForm id="accountsUpdateProfileForm" schema=profileSchema type="method-update" doc=user meteormethod="orionAccountsUpdateProfile"
+      +afQuickFields name='profile'
+      button {{ i18n 'global.save' }}
+  h2 {{ i18n 'accounts.update.sections.roles.title' }}
+  div.well
+    form.roles
+      p {{ i18n 'accounts.update.sections.roles.selectRoles' }}
+      each roles
+        span.choice
+          if hasRole this
+            input(type='checkbox', role=this, checked, id=this)
+          else
+            input(type='checkbox', role=this, id=this)
+          label(for=this)= this
+      button {{ i18n 'global.save' }}
+   h2 {{ i18n 'accounts.update.sections.changePassword.title' }}
+   div.well
+    +autoForm id="accountsUpdatePasswordForm" schema=passwordSchema type="method-update" doc=user meteormethod="orionAccountsUpdatePassword"
+      +afQuickField name='password'
+      +afQuickField name='confirm'
+      button {{ i18n 'global.save' }}
+    h2 {{ i18n 'accounts.update.sections.deleteUser.title' }}
+    div.well
+      p  {{ i18n 'accounts.update.sections.deleteUser.advice' }}
+      button#btnDeleteUser.user-btn-action-warning(user="{{user._id}}") {{ i18n 'accounts.update.sections.deleteUser.button' }}
+        
