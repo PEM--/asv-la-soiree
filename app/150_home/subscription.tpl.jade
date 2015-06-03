@@ -3,7 +3,7 @@ section.subscription
     a(href='#subscription'): h1 Inscription en ligne
     h2 Les inscription à la soirée ASV du congrés 2015 ne sont pas encore ouvertes.
     p Pour réserver votre entrée, remplissez le formulaire ci-dessous.
-    p.error Vous n'avez pas entrer correctement les informations nécessaires.
+    p.error: span.shake Vous n'avez pas entrer correctement les informations nécessaires.
   article.form
     form
       fieldset
@@ -11,35 +11,35 @@ section.subscription
         .input-profil
           span.choice
             input#profile-1(type='radio', name='profile', value='1')
-            label(for='profile-1') ASV diplômé<br>en 2014<br>ou 2015
+            label(for='profile-1'): span ASV diplômé<br>en 2014<br>ou 2015
           span.choice
             input#profile-2(type='radio', name='profile', value='2')
-            label(for='profile-2') ASV<br>en poste
+            label(for='profile-2'): span ASV<br>en poste
           span.choice
             input#profile-3(type='radio', name='profile', value='3')
-            label(for='profile-3') Accompagnant
+            label(for='profile-3'): span Accompagnant
         .input-contact
           span.input
-            input#name(type='text', name='name')
+            input#name(type='text', name='name', data-bind='value: name, class: {filled: name}')
             label(for='name'): span Nom
           span.input
-            input#forname(type='text', name='forname')
+            input#forname(type='text', name='forname', data-bind='value: forname, class: {filled: forname}')
             label(for='forname'): span Prénom
           span.input
-            input#email(type='email', name='email')
+            input#email(type='email', name='email', data-bind='value: email, class: {filled: email}')
             label(for='email'): span E-mail
       .group-contact-submit
         fieldset
           legend Je veux être alerté de l'ouverture des inscriptions en ligne et des tarifs par :
           span.choice
-            input#contact-type-1(type='radio', name='contact-type', value='1', checked)
-            label(for='contact-type-1') Mail
+            input#contact-type-mail(type='radio', name='contactType', value='mail', data-bind='checked: contactType')
+            label(for='contact-type-mail'): span Mail
           span.choice
-            input#contact-type-2(type='radio', name='contact-type', value='2')
-            label(for='contact-type-2') Téléphone
+            input#contact-type-phone(type='radio', name='contactType', value='phone', data-bind='checked: contactType')
+            label(for='contact-type-phone'): span Téléphone
           span.input
-            input#phone(type='phone', name='phone')
+            input#phone(type='phone', name='phone', data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired')
             label(for='phone'): span Numéro
         .submit
-          button.inspiration(type='button', data-text='Je me pré-inscris')
+          button.inspiration(type='button', data-text='Je me pré-inscris', data-bind='disabled: disabledSubmit')
             span Je me pré-inscris

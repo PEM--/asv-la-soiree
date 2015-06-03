@@ -10,27 +10,70 @@
     // Base class for radio button
     span.choice
       display inline-block
-      input
+      >input
         transform translateX(-10000px)
-      label
+      >label
         cursor pointer
         display block
         position relative
         transition background-color defaultTransitionValue
+        >span
+          pointer-events none
         &::before, &::after
           content ''
           display block
           transition background-color defaultTransitionValue
         &::before
           size 14px
-          border-radius 7px
+          border-radius @width
           background brandColor
           absolute bottom left
         &::after
           size 6px
-          border-radius 5px
+          border-radius @width
           background brandColor
           absolute bottom 4px left 4px
+    // Base class for input text/email/phone
+    fieldset, .input-contact
+      cpInput(brandColor, bgColor, brandColor)
+      >span.input
+        width 100%
+        max-width 100%
+        font-size 12px
+        margin-top @font-size
+        margin-bottom 4*@font-size
+        line-height 1.2*@font-size
+        ::selection
+          color brandColor
+          background lighten(brandColor, 90%)
+        >input
+          absolute top left
+          width 100%
+          padding .8*@font-size
+          border-radius roundCorner
+          font-size @font-size
+          transition opacity defaultTransitionValue
+        >label
+          pointer-events none
+          padding 0 @font-size
+          transition opacity defaultTransitionValue
+          >span
+            pointer-events none
+            padding 0
+            absolute top (0.8*@font-size) left @font-size
+            color bgColor
+            transition transform defaultTransitionValue, color defaultTransitionValue
+        >input:focus, >input.filled
+          + label
+            span
+              transform translate3d(-@font-size, (-2.3*@font-size), 0)
+              color brandColor
+        >input:disabled
+          pointer-events none
+          opacity .5
+          + label
+            opacity .5
+
     input:checked + label::after
       background bgColor
     section.subscription
@@ -52,55 +95,72 @@
         form
           display flex
           flex-wrap wrap
-          flex-justify space-between
+          justify-content space-between
           margin 0
           padding 0
           >fieldset, .group-contact-submit
-            flex-grow 0
-            flex-shrink 0
+            flex-grow 1
+            flex-shrink 1
+            flex-basis 49%
             margin 0
             padding 0 .5em
-            width 50%
+            min-width 320px
+            //width 100%
           >fieldset, .group-contact-submit fieldset
             border none
             .input-profil
+              width 100%
+              display flex
+              flex-wrap nowrap
+              justify-content space-between
               span.choice
-                width 120px
+                flex-grow 0
+                flex-shrink 0
+                size 100px 125px
                 text-align center
-                label
-                  margin 0 20px
-                  font-size 8px
-                  line-height @font-size
-                  size 80px
+                display block
+                relative top left
+                >label
+                  absolute top left
+                  display block
+                  size 100px
                   border 2px solid brandColor
                   color brandColor
-                  border-radius 40px
-                  text-transform uppercase
+                  border-radius @width
                   transition background-color defaultTransitionValue
+                  >span
+                    display block
+                    font-size 10px
+                    line-height 1.1*@font-size
+                    text-transform uppercase
                   &::before, &::after
                     content ''
                     display block
                     transition background-color defaultTransitionValue
                   &::before
-                    absolute bottom -22px left 31px
+                    absolute bottom -22px left 41px
                   &::after
-                    absolute bottom -18px left 35px
-                &:nth-child(1) label
-                  padding-top 26px
-                &:nth-child(2) label
-                  padding-top 30px
-                &:nth-child(3) label
-                  padding-top 34px
-              input:checked + label
-                background lighten(brandColor, 80%)
+                    absolute bottom -18px left 45px
+                &:nth-child(1) label >span
+                  margin-top 32px
+                &:nth-child(2) label >span
+                  margin-top 35px
+                &:nth-child(3) label >span
+                  margin-top 40px
+                >input:checked + label
+                  background lighten(brandColor, 80%)
+            // Button for contact profile
             .input-contact
-              cpInput(bgColor, textColor, brandColor)
-              cpInputJiro(textColor, brandColor)
+              margin-top 1em
+              width 100%
             legend
               margin-left 0
               padding-left 0
               font-weight 300
           .group-contact-submit
+            fieldset
+              padding 0
+              border 0
             // Inlined radio button
             span.choice
               width 100%
@@ -116,8 +176,13 @@
               &:nth-child(3)
                 width 30%
             // Input phone
-            cpInput(brandColor, bgColor, brandColor)
-
+            fieldset
+              span.input
+                width 65%
+                margin-top 0
+                font-size 12px
+                >input
+                  font-size 12px
             button
               margin 2em auto 0 auto
               text-transform uppercase
@@ -127,7 +192,9 @@
               border-radius (roundCorner/2)
               transition color defaultTransitionValue,transform defaultTransitionValue,border-color defaultTransitionValue
               color brandColor
-              &:hover
+              &not(:disabled):hover
                 transform scale3d(1.01, 1.01, 1)
                 border-color darken(brandColor, 10%)
                 color darken(brandColor, 10%)
+              &:disabled
+                opacity .5
