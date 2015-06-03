@@ -1,5 +1,5 @@
 if Meteor.isClient
-  isCookieAccepted = ->
+  @isCookieAccepted = ->
     cookie = Cookies.getJSON 'AsvLaSoiree'
     appLog.info 'Current cookie acceptation status', cookie
     return false if cookie is undefined
@@ -31,3 +31,6 @@ if Meteor.isClient
       Cookies.set 'AsvLaSoiree', cookie, expire: 6*31
       # Remove cookie notification
       t.$('.cookie').velocity 'transition.bounceUpOut'
+      # Remove all cookie masks
+      $masks = ($ '.cookieMask')
+      $masks.velocity 'transition.fadeOut', -> $masks.remove()

@@ -77,7 +77,7 @@
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
 - [ ] Fix GridFS issue on Orion's module.
-- [ ] Accelerate routing
+- [ ] Bonus: Accelerate routing
   - https://github.com/meteorhacks/subs-manager
 - [ ] Bonus: Check presence of online users
   - https://github.com/dburles/meteor-presence

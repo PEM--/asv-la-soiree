@@ -1,5 +1,6 @@
 if Meteor.isClient
   Template.subscription.viewmodel
+    isCookieAccepted: isCookieAccepted
     profile: ''
     name: ''
     forname: ''
@@ -44,13 +45,12 @@ if Meteor.isClient
         contactType: @contactType()
         phone: @phone()
       appLog.info 'Subscription attempt', obj
-      
+
       Cookies.set 'AsvLaSoiree',
         preSubscriptionValue: obj
         preSubscriptionDate: new Date
       ,
         expires: 6*31
-
 
 # Subscribers
 @Subscribers = new orion.collection 'subscribers',
