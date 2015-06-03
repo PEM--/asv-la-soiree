@@ -11,6 +11,10 @@ orion.dictionary.addDefinition 'lastModified', 'site',
 # Analytics
 orion.dictionary.addDefinition 'google-ua', 'analytics',
   type: String, label: 'Google UA'
+# Cookie information
+orion.dictionary.addDefinition 'message', 'cookie',
+  type: String, label: 'Message d\'information'
+  autoform: type: 'textarea'
 
 # OrionJS options
 # Avoid registration without invitation
@@ -41,11 +45,16 @@ if Meteor.isServer
     #  as an object containing all properties for the site.
     dicId = (orion.dictionary.findOne())._id
     orion.dictionary.update dicId,
-      '$set': site:
-        title: 'ASV, la soirée'
-        description: 'Une super soirée pour le congrès des ASV, \
-          les auxiliaires vétérinaires.'
-        lastModified: new Date()
+      '$set':
+        site:
+          title: 'ASV, la soirée'
+          description: 'Une super soirée pour le congrès des ASV, \
+            les auxiliaires vétérinaires.'
+          lastModified: new Date()
+        cookie:
+          message: "En poursuivant votre navigation sur ce site, \
+            vous acceptez l'utilisation des cookies pour vous \
+            proposer des services et offres adaptés."
     , (err) ->
       return appLog.error "Dictionnary update failed: #{err}" if err
       appLog.info 'Default site description created'
