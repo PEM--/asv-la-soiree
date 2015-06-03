@@ -6,11 +6,13 @@ template(name='orionCpSidebar')
       a(href="{{ options 'homePath' '/' }}")
         +websiteLogo
         span {{ options 'siteName' 'Admin' }}
-    each links 'top'
+    each adminLinks 'top'
       +orionCpSidebarLink
-    each links 'medium'
+    each adminLinks 'medium'
       +orionCpSidebarLink
-    each links 'bottom'
+    each adminLinks 'user'
+      +orionCpSidebarLink
+    each adminLinks 'bottom'
       +orionCpSidebarLink
 
 template(name='orionCpSidebarLink')
