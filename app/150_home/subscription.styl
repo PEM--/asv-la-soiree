@@ -7,7 +7,7 @@
 
 .main-container
   .router-container
-    // Base class for radio buttoin
+    // Base class for radio button
     span.choice
       display inline-block
       input
@@ -25,17 +25,14 @@
           size 14px
           border-radius 7px
           background brandColor
-          absolute bottom -22px left 31px
+          absolute bottom left
         &::after
           size 6px
           border-radius 5px
           background brandColor
-          absolute bottom -18px left 35px
-    input:checked + label
-      background lighten(brandColor, 80%)
-      &::after
-        background bgColor
-
+          absolute bottom 4px left 4px
+    input:checked + label::after
+      background bgColor
     section.subscription
       article.header
         width 100%
@@ -104,7 +101,21 @@
               padding-left 0
               font-weight 300
           .group-contact-submit
-            //fieldset span
+            span.choice
+              background yellow
+              width 100%
+              label
+                margin 0
+                padding 0
+                line-height 1em
+                relative bottom 16px left 24px
+                &::before
+                  absolute bottom 0 left -18px
+                &::after
+                  absolute bottom 4px left -14px
+              &:nth-child(3)
+                background darkblue
+                width 30%
             button
               margin 2em auto 0 auto
               text-transform uppercase
@@ -112,11 +123,9 @@
               border 2px solid brandColor
               background bgColor
               border-radius (roundCorner/2)
-              transition color defaultTransitionValue,background-color defaultTransitionValue,transform defaultTransitionValue,border-color defaultTransitionValue, font-weight defaultTransitionValue
+              transition color defaultTransitionValue,transform defaultTransitionValue,border-color defaultTransitionValue
               color brandColor
               &:hover
-                transform scale3d(1.05, 1.05, 1)
+                transform scale3d(1.01, 1.01, 1)
                 border-color darken(brandColor, 10%)
-                background rgba(black, 5%)
-                font-weight bold
                 color darken(brandColor, 10%)
