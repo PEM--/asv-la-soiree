@@ -101,8 +101,8 @@
               padding-left 0
               font-weight 300
           .group-contact-submit
+            // Inlined radio button
             span.choice
-              background yellow
               width 100%
               label
                 margin 0
@@ -114,8 +114,10 @@
                 &::after
                   absolute bottom 4px left -14px
               &:nth-child(3)
-                background darkblue
                 width 30%
+            // Input phone
+            cpInput(brandColor, bgColor, brandColor)
+
             button
               margin 2em auto 0 auto
               text-transform uppercase

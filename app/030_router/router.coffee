@@ -69,7 +69,7 @@ Router.configure
   waitOn: -> [ Meteor.subscribe 'pages']
   layoutTemplate: 'mainLayout'
   loadingTemplate: 'loading'
-  notFoundTemplate: 'notFound'
+
 # Dynamic routes
 pages = Pages.find().fetch()
 # for page in pages
@@ -113,6 +113,16 @@ Router.route '/', ->
     _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 2)
     , (page) -> page.order
   @render 'home', data: -> pages
+  @render 'footer', to: 'footer', data: ->
+    _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 3)
+    , (page) -> page.order
+, fastRender: true
+# Not found routes
+Router.route '/:unknown', ->
+  @render 'nav', to: 'nav', data: ->
+    _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 2)
+    , (page) -> page.order
+  @render 'notFound'
   @render 'footer', to: 'footer', data: ->
     _.sortBy (_.filter pages, (page) -> page.display is 1 or page.display is 3)
     , (page) -> page.order
