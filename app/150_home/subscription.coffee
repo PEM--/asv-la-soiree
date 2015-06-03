@@ -15,9 +15,9 @@ if Meteor.isClient
   title: 'Inscrits'
   tabular:
     columns: [
-      { data: 'name', title: 'Nom'  }
-      { data: 'forname', title: 'Prénom'  }
-      { data: 'email', title: 'Email'  }
+      { data: 'name', title: 'Nom' }
+      { data: 'forname', title: 'Prénom' }
+      { data: 'createdAt', title: 'Inscrit le' }
     ]
 
 @SubscribersSchema = new SimpleSchema
@@ -34,8 +34,22 @@ if Meteor.isClient
   email:
     type: String
     label: 'E-mail'
+    regEx: SimpleSchema.RegEx.Email
+    unique: true
     min: 5
     max: 256
+  contactType:
+    type: String
+    allowedValues: ['mail', 'phone']
+  phone:
+    type: String
+    label: 'N° de téléphone'
+    min: 10
+    max: 10
+    optional: true
+    custom: ->
+      if @value.length is 0 and  @field('contactType') is 'phone'
+        return 'required'
   createdAt: orion.attribute 'createdAt'
 
 Subscribers.attachSchema SubscribersSchema
