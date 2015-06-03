@@ -3,42 +3,69 @@ section.subscription
     a(href='#subscription'): h1 Inscription en ligne
     h2 Les inscription à la soirée ASV du congrés 2015 ne sont pas encore ouvertes.
     p Pour réserver votre entrée, remplissez le formulaire ci-dessous.
-    p.error: span.shake Vous n'avez pas entrer correctement les informations nécessaires.
+    p.error: span.shake(data-bind='text: errorText')
   article.form
     form
       fieldset
         legend Votre profil
         .input-profil
           span.choice
-            input#profile-1(type='radio', name='profile', value='1')
-            label(for='profile-1'): span ASV diplômé<br>en 2014<br>ou 2015
+            input#profile-graduate(
+              type='radio', name='profile', value='asv_graduate',
+              data-bind='checked: profile, change: disabledSubmit'
+            )
+            label(for='profile-graduate'): span ASV diplômé<br>en 2014<br>ou 2015
           span.choice
-            input#profile-2(type='radio', name='profile', value='2')
-            label(for='profile-2'): span ASV<br>en poste
+            input#profile-serving(
+              type='radio', name='profile', value='asv_serving',
+              data-bind='checked: profile, change: disabledSubmit'
+            )
+            label(for='profile-serving'): span ASV<br>en poste
           span.choice
-            input#profile-3(type='radio', name='profile', value='3')
-            label(for='profile-3'): span Accompagnant
+            input#profile-attendant(
+              type='radio', name='profile', value='attendant',
+              data-bind='checked: profile, change: disabledSubmit'
+            )
+            label(for='profile-attendant'): span Accompagnant
         .input-contact
           span.input
-            input#name(type='text', name='name', data-bind='value: name, class: {filled: name}')
+            input#name(
+              type='text', name='name',
+              data-bind='value: name, class: {filled: name}, change: disabledSubmit'
+            )
             label(for='name'): span Nom
           span.input
-            input#forname(type='text', name='forname', data-bind='value: forname, class: {filled: forname}')
+            input#forname(
+              type='text', name='forname',
+              data-bind='value: forname, class: {filled: forname}, change: disabledSubmit'
+            )
             label(for='forname'): span Prénom
           span.input
-            input#email(type='email', name='email', data-bind='value: email, class: {filled: email}')
+            input#email(
+              type='email', name='email',
+              data-bind='value: email, class: {filled: email}, change: disabledSubmit'
+            )
             label(for='email'): span E-mail
       .group-contact-submit
         fieldset
           legend Je veux être alerté de l'ouverture des inscriptions en ligne et des tarifs par :
           span.choice
-            input#contact-type-mail(type='radio', name='contactType', value='mail', data-bind='checked: contactType')
+            input#contact-type-mail(
+              type='radio', name='contactType', value='mail',
+              data-bind='checked: contactType, change: disabledSubmit'
+            )
             label(for='contact-type-mail'): span Mail
           span.choice
-            input#contact-type-phone(type='radio', name='contactType', value='phone', data-bind='checked: contactType')
+            input#contact-type-phone(
+              type='radio', name='contactType', value='phone',
+              data-bind='checked: contactType, change: disabledSubmit'
+            )
             label(for='contact-type-phone'): span Téléphone
           span.input
-            input#phone(type='phone', name='phone', data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired')
+            input#phone(
+              type='tel', name='phone',
+              data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
+            )
             label(for='phone'): span Numéro
         .submit
           button.inspiration(type='button', data-text='Je me pré-inscris', data-bind='disabled: disabledSubmit')
