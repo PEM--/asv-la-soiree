@@ -50,7 +50,7 @@
 - [ ] Social sharing
   - https://github.com/meteorclub/shareit
 - [X] EULA / CGU
-- [ ] Cookie informations
+- [X] Cookie informations
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
