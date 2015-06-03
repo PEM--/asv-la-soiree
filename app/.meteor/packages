@@ -61,6 +61,7 @@ orionjs:relationships
 brightbind:orion-gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
+orionjs:lang-fr
 
 # Others
 dburles:google-maps

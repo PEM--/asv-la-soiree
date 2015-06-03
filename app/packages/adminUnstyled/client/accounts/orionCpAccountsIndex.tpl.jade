@@ -1,16 +1,16 @@
 // orionCpAccountIndex
 +Layout template='orionCpTitle'
-  | Accounts
+  +i18n 'accounts.index.title'
   if userHasPermission 'accounts.invite'
     a(href="{{ pathFor 'accounts.invite' }}"): i.fa.fa-plus
 
 +Layout template='orionCpContentContainer'
   table.table
     thead: tr
-      th Name
-      th Email
-      th Roles
-      th Actions
+      th {{i18n 'accounts.index.tableTitles.name'}}
+      th {{i18n 'accounts.index.tableTitles.email'}}
+      th {{i18n 'accounts.index.tableTitles.roles'}}
+      th {{i18n 'accounts.index.tableTitles.actions'}}
     tbody
       each users
         tr

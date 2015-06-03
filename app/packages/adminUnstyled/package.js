@@ -1,7 +1,7 @@
 Package.describe({
   name: 'orionjs:admin-unstyled',
   summary: 'A simple theme for orion',
-  version: '1.0.0',
+  version: '1.1.0',
   git: 'https://github.com/orionjs/orion'
 });
 
@@ -12,19 +12,17 @@ Package.onUse(function(api) {
     'meteor-platform',
     'coffeescript',
     'mquandalle:jade@0.4.3',
-    'orionjs:core@1.0.0',
-    'iron:layout@1.0.7',
+    'orionjs:core@1.1.0',
+    'iron:layout@1.0.8',
     'aldeed:autoform@5.3.0',
     'aldeed:tabular@1.2.0',
-    'pierreeric:useraccounts-creativepure@0.1.0',
-    'zimme:iron-router-active@1.0.4'
+    'pierreeric:useraccounts-creativepure@0.1.0'
   ]);
 
   api.imply([
     'orionjs:core',
     'iron:layout',
-    'aldeed:autoform',
-    'zimme:iron-router-active'
+    'aldeed:autoform'
   ]);
 
   api.addFiles([
@@ -36,17 +34,19 @@ Package.onUse(function(api) {
     // Layout
     'client/layout/layout.jade',
     'client/layout/layout.coffee',
+    // Sidebar
     'client/sidebar/sidebar.jade',
+    // Login
+    'client/accounts/orionCpLogin.tpl.jade',
+    'client/accounts/orionCpRegisterWithInvitation.tpl.jade',
     // My account
     'client/accounts/orionCpAccountIndex.tpl.jade',
     'client/accounts/orionCpAccountPassword.tpl.jade',
     'client/accounts/orionCpAccountProfile.tpl.jade',
-    'client/accounts/orionCpLogin.tpl.jade',
-    'client/accounts/orionCpRegisterWithInvitation.tpl.jade',
     // All accounts
     'client/accounts/orionCpAccountsIndex.tpl.jade',
-    'client/accounts/orionCpAccountsInvite.tpl.jade',
-    'client/accounts/orionCpAccountsUpdateRoles.tpl.jade',
+    'client/accounts/orionCpAccountsCreate.tpl.jade',
+    'client/accounts/orionCpAccountsUpdate.tpl.jade',
     'client/accounts/profile.coffee',
     // Config
     'client/config/orionCpConfigUpdate.tpl.jade',
@@ -55,10 +55,10 @@ Package.onUse(function(api) {
     'client/dictionnary/orionCpDictionaryUpdate.tpl.jade',
     'client/dictionnary/update.coffee',
     // Collections
-    'client/collections/orionCpCollectionsCreate.tpl.jade',
-    'client/collections/orionCpCollectionsDelete.tpl.jade',
     'client/collections/orionCpCollectionsIndex.tpl.jade',
+    'client/collections/orionCpCollectionsCreate.tpl.jade',
     'client/collections/orionCpCollectionsUpdate.tpl.jade',
+    'client/collections/orionCpCollectionsDelete.tpl.jade',
     'client/collections/collections.coffee',
     // Pages
     // 'client/pages/orionCpPagesCreate.tpl.jade',

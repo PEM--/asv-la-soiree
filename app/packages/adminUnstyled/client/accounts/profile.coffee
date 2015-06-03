@@ -7,11 +7,11 @@ Template.orionCpAccountPassword.onCreated ->
 Template.orionCpAccountProfile.onCreated ->
   orionLog.info 'orionCpAccountProfile created'
 
-Template.orionCpAccountsInvite.onCreated ->
-  orionLog.info 'orionCpAccountsInvite created'
+Template.orionCpAccountsCreate.onCreated ->
+  orionLog.info 'orionCpAccountsCreate created'
 
-Template.orionCpAccountsUpdateRoles.onCreated ->
-  orionLog.info 'orionCpAccountsUpdateRoles created'
+Template.orionCpAccountsUpdate.onCreated ->
+  orionLog.info 'orionCpAccountsUpdate created'
 
 Template.orionCpLogin.onCreated ->
   orionLog.info 'orionCpLogin created'

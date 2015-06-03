@@ -19,8 +19,8 @@ for rxTpl in [
   {name: 'myAccount.profile', layout: 'orionCpAccountProfile'}
 
   {name: 'accounts.index', layout: 'orionCpAccountsIndex'}
-  {name: 'accounts.update.roles', layout: 'orionCpAccountsUpdateRoles'}
-  {name: 'accounts.invite', layout: 'orionCpAccountsInvite'}
+  {name: 'accounts.update', layout: 'orionCpAccountsUpdate'}
+  {name: 'accounts.create', layout: 'orionCpAccountsCreate'}
 
   {name: 'configUpdate', layout: 'orionCpConfigUpdate'}
   {name: 'dictionaryUpdate', layout: 'orionCpDictionaryUpdate'}
