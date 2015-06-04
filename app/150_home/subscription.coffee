@@ -1,6 +1,6 @@
 if Meteor.isClient
   Template.subscription.viewmodel
-    isCookieAccepted: isCookieAccepted
+    isCookieAccepted: -> CookieSingleton.get().isAccepted()
     profile: ''
     name: ''
     forname: ''
@@ -46,11 +46,13 @@ if Meteor.isClient
         phone: @phone()
       appLog.info 'Subscription attempt', obj
 
-      Cookies.set 'AsvLaSoiree',
-        preSubscriptionValue: obj
-        preSubscriptionDate: new Date
-      ,
-        expires: 6*31
+
+      # @TODO Use CookieSingleton
+      # Cookies.set 'AsvLaSoiree',
+      #   preSubscriptionValue: obj
+      #   preSubscriptionDate: new Date
+      # ,
+      #   expires: 6*31
 
 # Subscribers
 @Subscribers = new orion.collection 'subscribers',
@@ -101,8 +103,6 @@ if Meteor.isClient
     type: String
     label: 'N° de téléphone'
     optional: true
-    # min: 10
-    # max: 10
     custom: ->
       regEx = /(0|\\+33|0033)[1-9][0-9]{8}/
       appLog.info 'Custom check', @value.length, @field('contactType').value
@@ -115,9 +115,7 @@ if Meteor.isClient
 # Add the fields for the DB and the admin UI
 SubscribersFullSchema = new SimpleSchema [
   SubscribersSchema
-  {
-    createdAt: orion.attribute 'createdAt'
-  }
+  { createdAt: orion.attribute 'createdAt' }
 ]
 
 Subscribers.attachSchema SubscribersFullSchema
