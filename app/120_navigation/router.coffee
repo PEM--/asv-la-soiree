@@ -4,13 +4,15 @@ if Meteor.isClient
 
   # Get only the slug from an URL
   @slugIt = (url) ->
-    # Remove hash
-    url = (url.split '#')[0]
-    # Check if current URL contains hostname
-    count = url.search __meteor_runtime_config__.ROOT_URL
-    return url if count is -1
-    url.substr __meteor_runtime_config__.ROOT_URL.length - 1
-
+    tokens = url.split '/'
+    while tokens.length isnt 0
+      token = tokens.shift()
+      if (token.search document.domain) isnt -1
+        break
+    # Provided URL was a real slug
+    return url if tokens.length is 0
+    # Provided URL was a full URI
+    '/' + tokens.join '/'
   # Global router function ensuring to get the current slug.
   # When reloading a page or getting a direct acces, the reactive
   # value Router.current().url provides the full URL but when
