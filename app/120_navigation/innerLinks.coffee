@@ -8,25 +8,24 @@
     # Set only the fields required in the Admin UI
     columns: [
       { data: 'title', title: 'Titre' }
+      { data: 'order', title: 'Ordre' }
       { data: 'slug', title: 'Slug' }
     ]
 
 knownSlugs = [
-  '#program'
   '#subscription'
+  '#program'
   '#contact'
-]
-
-defaultTitles = [
-  'Inscription'
-  'Programme'
-  'Contact'
 ]
 
 @InnerLinksSchema = new SimpleSchema
   title:
     type: String
     label: 'Titre'
+  order:
+    type: Number
+    label: 'Ordre d\'affichage'
+    unique: true
   slug:
     type: String
     label: 'Slug'
@@ -36,12 +35,21 @@ InnerLinks.attachSchema InnerLinksSchema
 
 # Create 3 default inner links on the home page
 if Meteor.isServer
+
+  defaultTitles = [
+    'Inscription'
+    'Programme'
+    'Contact'
+  ]
+
+  appLog.info 'Checking inner links'
   try
     for title, idx in defaultTitles
-      if InnerLinks.find(slug: knownSlugs[idx]).count is 0
-        appLog.info 'No links for ', knownSlugs[idx], 'Creating one.'
+      if InnerLinks.find(slug: knownSlugs[idx]).count() is 0
+        appLog.info 'No links for', knownSlugs[idx], '. Creating one.'
         InnerLinks.insert
           title: title
+          order: idx + 1
           slug: knownSlugs[idx]
   catch err
     appLog.error err.reason
