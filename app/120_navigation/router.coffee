@@ -27,6 +27,20 @@ if Meteor.isClient
   # the template rendering is done and a fadeOut when the template
   # is rendered.
   @goNextRoute = (nextRoute) ->
+    # Check if provided route is an inner links
+    if nextRoute.startsWith '#'
+      # If we are already on the landing page, just scroll to the inner link
+      if @getSlug() is '/'
+        ($ "[href='#{nextRoute}']").velocity('scroll', {container: $ mainCntEl})
+        return
+      # If we are not on the landing page, transition to it and set an
+      # automatic scroll after page transitions
+      else
+        innerLink = nextRoute
+        nextRoute = '/'
+        Meteor.setTimeout ->
+          ($ "[href='#{innerLink}']").velocity('scroll', {container: $ mainCntEl})
+        , 600
     nextRoute = slugIt nextRoute
     if nextRoute is getSlug()
       ($ routerEl).velocity('scroll', {container: $ mainCntEl})

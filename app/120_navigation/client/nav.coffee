@@ -38,6 +38,7 @@ Template.navInnerLink.viewmodel (data) ->
   name: -> @page().title
   changeRoute: (e) ->
     e.preventDefault()
+    @parent().menuContentOpened false
     goNextRoute @slug()
 
 # ViewModel for the menu's items on links
@@ -48,4 +49,5 @@ Template.navLink.viewmodel (data) ->
   name: -> @page().title
   changeRoute: (e) ->
     e.preventDefault()
+    @parent().menuContentOpened false
     goNextRoute @slug()
