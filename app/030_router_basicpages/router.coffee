@@ -71,7 +71,10 @@ if Meteor.isServer
 
 # Using server side to start fast render
 Router.configure
-  waitOn: -> [ Meteor.subscribe 'basicpages']
+  waitOn: -> [
+    Meteor.subscribe 'basicpages'
+    Meteor.subscribe 'innerlinks'
+  ]
   layoutTemplate: 'mainLayout'
   loadingTemplate: 'loading'
 

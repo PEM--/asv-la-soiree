@@ -13,6 +13,7 @@
     @menuContentOpened false
     goNextRoute '/'
   hamburger: (e) -> @menuContentOpened not @menuContentOpened()
+  innerLinks: -> InnerLinks.find {}, sort: order: 1
   # @NOTE The pages are requested again for taking use of a reative cursor
   links: -> BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
@@ -20,7 +21,7 @@ Template.nav.onCreated ->
   appLog.info 'Creating main menu'
   # Expose the ViewModel's helpers to Blaze
   @vm = mainMenuModel
-  @vm.addHelper 'links', @
+  @vm.addHelpers ['links', 'innerLinks'], @
   mainMenuModel.reset()
 
 Template.nav.onRendered ->
@@ -29,8 +30,18 @@ Template.nav.onRendered ->
   mainMenuModel.bind @
   mainMenuModel.show() unless getSlug() is '/'
 
-# ViewModel for the menu's items
-Template.navItem.viewmodel (data) ->
+# ViewModel for the menu's items on inner links (links under the home page)
+Template.navInnerLink.viewmodel (data) ->
+  id: data._id
+  page: -> InnerLinks.findOne @id()
+  slug: -> @page().slug
+  name: -> @page().title
+  changeRoute: (e) ->
+    e.preventDefault()
+    goNextRoute @slug()
+
+# ViewModel for the menu's items on links
+Template.navLink.viewmodel (data) ->
   id: data._id
   page: -> BasicPages.findOne @id()
   slug: -> @page().slug
