@@ -1,0 +1,32 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '200_admin/*.import'
+
+.admin
+  form fieldset, .well
+    border-radius roundCorner
+    border 1px solid outlineColor
+    background-color fillBg
+  form fieldset
+    margin-bottom .5em
+    legend
+      font-weight 100
+      color textColor
+    input[type='text']
+      width 100%
+  h2
+    border-top 1px solid outlineColor
+    font-size 1.5em
+  .well
+    padding .5em
+    width calc(100% - 1em)
+    label
+      fontSize()
+      font-weight normal
+    h2
+      color brandDanger
+      font-weight normal
+      font-size 1.2em
+    p
+      fontSize()
