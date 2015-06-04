@@ -30,10 +30,14 @@
 - [X] Replace video on mobiles/tablets with a responsive image
 - [X] Menu for smartphone
 - [X] Main template
-- [ ] Notification de déconnexions du serveur
+- [ ] Pre-subscription
+- [ ] Subscription with payment
+- [ ] Countdown
+- [ ] Subscription with payment
+- [X] Notification de déconnexions du serveur
   - https://github.com/alexreich/meteor-machina
   - https://github.com/francocatena/meteor-status
-- [ ] Notification d'erreurs sur le serveur
+- [X] Notification d'erreurs sur le serveur
 - [ ] Intégration Gmap avec CMS
   - https://github.com/rwatts3/orionjs-maps
 - [X] Upload GridFS
@@ -71,7 +75,7 @@
   - https://atmospherejs.com/gadicohen/sitemaps
 - [ ] Pas sûr : Petite appli mobile
   - https://github.com/rwatts3/orionjs-cordova
-- [ ] Log system
+- [X] Log system
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
