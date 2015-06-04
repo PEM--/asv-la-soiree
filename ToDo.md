@@ -30,10 +30,12 @@
 - [X] Replace video on mobiles/tablets with a responsive image
 - [X] Menu for smartphone
 - [X] Main template
-- [ ] Pre-subscription
+- [X] Pre-subscription
+- [ ] Inner links from the CMS in the menu and the associated routing rules
 - [ ] Subscription with payment
 - [ ] Countdown
 - [ ] Subscription with payment
+- [ ] Get all subscribers as a CSV
 - [X] Notification de déconnexions du serveur
   - https://github.com/alexreich/meteor-machina
   - https://github.com/francocatena/meteor-status
@@ -45,8 +47,7 @@
 - [X] No script
 - [X] Navigateurs trop anciens
 - [X] Dynamic and editable footer
-- [ ] Loading subscription template
-  - https://github.com/pcel/meteor-loading/
+- [X] Loading subscription template
 - [ ] Twitter cards
 - [ ] Open graph
   - https://github.com/yasinuslu/blaze-meta
