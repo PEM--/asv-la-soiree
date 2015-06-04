@@ -70,5 +70,8 @@ section.subscription
             )
             label(for='phone'): span Numéro
         .submit
-          button.inspiration(type='button', data-text='Je me pré-inscris', data-bind='disabled: disabledSubmit')
+          button.inspiration(
+            type='button', data-text='Je me pré-inscris',
+            data-bind='disabled: disabledSubmit, click: subscribe'
+          )
             span Je me pré-inscris

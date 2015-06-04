@@ -7,11 +7,13 @@ if Meteor.isClient
     class CookieInner
       cookieName = 'AsvLaSoiree'
       expiration = 6*31
+      # User has already accepted the cookie
       isAccepted: ->
         cookie = Cookies.getJSON cookieName
         appLog.info 'Current cookie acceptation status', cookie
         return false if cookie is undefined
         return true
+      # User accept the cookie
       accept: ->
         appLog.info 'Setting cookie to accepted'
         cookie = Cookies.getJSON cookieName
@@ -20,6 +22,21 @@ if Meteor.isClient
         else
           cookie.accepted = true
         Cookies.set cookieName, cookie, expiration
+      # User has already presubscribed
+      isPreSubed: ->
+        # Without cookie approuval, user can't have perform presubscription
+        return false unless @isAccepted()
+        cookie = Cookies.getJSON cookieName
+        return cookie.preSubscriptionValue?
+      # User has done a valide presubscription
+      preSubStore: (obj) ->
+        appLog.info 'Store user\'s pre-subscription', obj
+        # Ensure cookie is defined
+        @accept()
+        # Store its value and its presubscription date
+        cookie = Cookies.getJSON cookieName
+        cookie.preSubscriptionValue = obj
+        cookie.preSubscriptionDate = new Date
 
   Template.cookie.onCreated ->
     appLog.info 'Cookie template created'
