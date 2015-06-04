@@ -57,11 +57,18 @@ if Meteor.isClient
   singularName: 'inscrit'
   pluralName: 'inscrits'
   title: 'Inscrits'
+  link: title: 'Inscrits'
   tabular:
     columns: [
       { data: 'name', title: 'Nom' }
       { data: 'forname', title: 'Prénom' }
-      { data: 'createdAt', title: 'Inscrit le' }
+      {
+        data: 'createdAt', title: 'Inscrit le'
+        render: (val, type, doc) ->
+          if val instanceof Date
+            return moment(val).calendar()
+          return 'Jamais inscrit'
+      }
     ]
 
 # Set only the fields required in the UI

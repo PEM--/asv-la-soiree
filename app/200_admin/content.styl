@@ -91,10 +91,27 @@
       width 100%
   // Datatables
   .dataTables_wrapper
-    >.row:nth-child(2)
-      margin 1em 0
-  .dataTables_info
-    color textColor
+    .row
+      margin-bottom .5em
+      width 100%
+    .col-xs-12
+      display inline-block
+      width 98%
+    .col-xs-6
+      display inline-block
+      width 49%
+    .dataTables_info
+      color textColor
+    select
+      border-color textColor
+      color invertedTextColor
+    .dataTables_filter
+      label
+        pointer-events auto
+      input
+        border-radius roundCorner
+        border 1px solid outlineColor
+        color invertedTextColor
   table.dataTable
     p
       margin 0

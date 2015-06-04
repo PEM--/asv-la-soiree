@@ -3,6 +3,7 @@
   singularName: 'page basique'
   pluralName: 'pages basiques'
   title: 'Pages basiques'
+  link: title: 'Pages basiques'
   tabular:
     columns: [
       { data: 'title', title: 'Titre'  }

@@ -65,8 +65,5 @@ orionjs:lang-fr
 
 # Others
 dburles:google-maps
-
-# Translations
-#msgfmt:core
-#msgfmt:extract
-#msgfmt:ui
+momentjs:moment
+rzymek:moment-locale-fr
