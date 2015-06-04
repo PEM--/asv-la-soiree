@@ -15,7 +15,7 @@ i18n.map 'fr',
     schema:
       emails:
         title: 'Emails'
-        address: 'Addresse'
+        address: 'Adresse'
         verified: 'Vérifié'
       password:
         title: 'Mot de passe'
@@ -24,7 +24,7 @@ i18n.map 'fr',
       profile: name: 'Nom'
     index:
       title: 'Comptes'
-      actions: edit: 'Editer'
+      actions: edit: 'Éditer'
       tableTitles:
         name: 'Nom'
         email: 'Email'
@@ -37,11 +37,11 @@ i18n.map 'fr',
         profile: title: 'Profil'
         roles:
           title: 'Rôles'
-          selectRoles: 'Selectionner les rôles de l\'utilisateur'
+          selectRoles: 'Sélectionner les rôles de l\'utilisateur'
         changePassword: title: 'Changer le mot de passe'
         deleteUser:
           title: 'Attention danger'
-          advice: 'Effacer des utiliseurs peut occasionner des problèmes sur les données.'
+          advice: 'Effacer des utilisateurs peut occasionner des problèmes sur les données.'
           button: 'Effacer utilisateur'
     myAccount: title: 'Mon compte'
     create:
@@ -70,7 +70,7 @@ i18n.map 'fr',
     update: title: 'Mettre à jour {$1}'
     delete:
       title: 'Effacer {$1}'
-      confirmQuestion: 'Etes-vous sûr de vouloir effacer ce {$1} ?'
+      confirmQuestion: 'Êtes-vous sûr de vouloir effacer ce {$1} ?'
     common:
       defaultPluralName: 'objets'
       defaultSingularName: 'objet'
@@ -83,7 +83,7 @@ i18n.map 'fr',
   pages:
     schema:
       title: 'Titre'
-      url: 'Url'
+      url: 'URL'
     index: title: 'Pages'
     create:
       title: 'Créer une page'
@@ -91,11 +91,11 @@ i18n.map 'fr',
     update: title: 'Mettre à jour une page'
     delete:
       title: 'Effacer une page'
-      confirmQuestion: 'Etes-vous sûr de vouloir effacer cette page ?'
+      confirmQuestion: 'Êtes-vous sûr de vouloir effacer cette page ?'
   attributes:
     users:
-      pluralName: 'utiliseurs'
-      singularName: 'utiliseur'
+      pluralName: 'utilisateurs'
+      singularName: 'utilisateur'
     file:
       choose: 'Choisir un fichier'
       noFile: 'Pas de fichier'

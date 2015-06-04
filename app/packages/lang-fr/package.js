@@ -1,7 +1,7 @@
 Package.describe({
   name: 'orionjs:lang-fr',
   version: '1.1.0',
-  summary: 'Orion - Fnglish language',
+  summary: 'Orion - French language',
   git: 'https://github.com/orionjs/orion',
   documentation: 'README.md'
 });
