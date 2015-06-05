@@ -1,4 +1,4 @@
-Additional actions
+## Additional list
 - [ ] Remove video and set a black background.
 - [ ] Countdown (but where?).
 - [ ] Text modification on the drive.
@@ -8,7 +8,7 @@ Additional actions
 - [ ] Accompagnant -> Specific field with a select/option : Employeur / Conjoint / Labos / Autre
 - [ ] Footer changes : changement de logos ==> comité d'organisation (APFORM, AFVAC (il y aura ASSAV également mais  ils n'ont pas encore de logo) // Partenaires (Logos labos, GIPSA, SNVEL = dans cet ordre)
 
-----
+## Original list
 - [X] Favicon
 - [X] CMS
 - [X] French localization :warning: Must wait validation
@@ -23,7 +23,6 @@ Additional actions
 - [X] Limitations with the security and the rate limiting
   - https://github.com/matteodem/meteor-easy-security
 - [X] Video background
-- [ ] Upload d'image
   - https://github.com/brightbind/orion-gridFS
 - [X] Preloading de la video
 - http://desandro.github.io/imagesloaded/
@@ -42,16 +41,15 @@ Additional actions
 - [X] Menu for smartphone
 - [X] Main template
 - [X] Pre-subscription
-- [ ] Inner links from the CMS in the menu and the associated routing rules
-- [ ] Subscription with payment
+- [X] Inner links from the CMS in the menu and the associated routing rules
 - [ ] Countdown
-- [ ] Subscription with payment
 - [ ] Get all subscribers as a CSV
-- [X] Notification de déconnexions du serveur
+- [X] Disconnection notification from the serveur
   - https://github.com/alexreich/meteor-machina
   - https://github.com/francocatena/meteor-status
-- [X] Notification d'erreurs sur le serveur
-- [ ] Intégration Gmap avec CMS
+- [X] Error notification from the serveur.
+- [X] Gmap theming
+- [ ] Gmap integrated with CMS + Access informations
   - https://github.com/rwatts3/orionjs-maps
 - [X] Upload GridFS
 - [X] Not found template
@@ -64,6 +62,7 @@ Additional actions
   - https://github.com/yasinuslu/blaze-meta
   - https://github.com/lookback/meteor-seo/
 - [ ] Social sharing
+- [ ] Subscription with payment
   - https://github.com/meteorclub/shareit
 - [X] EULA / CGU
 - [X] Cookie informations
@@ -74,25 +73,24 @@ Additional actions
 - [ ] G+ links
 - [ ] Mail chimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
-- [ ] One-click actions for GMail
-  - https://developers.google.com/gmail/markup/reference/one-click-action
 - [ ] Mangopay
   - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
   - https://github.com/jeremyhodges/flaming-bear
 - [ ] CSV extract
-- [X] Sécurité : browser policy
-- [ ] Pas sûr : Intégration PhantomJS (SEO statique)
-- [X] robot.txt
-- [X] Sitemap automatisée dans le CMS
+- [X] Sécurity : browser policy
+- [X] Sécurity : Anti DDOS like
+- [X] Initial data loading (fast rendering)
+- [X] Automatic robot.txt
+- [X] Automatic sitemap in the CMS
   - https://atmospherejs.com/gadicohen/sitemaps
-- [ ] Pas sûr : Petite appli mobile
-  - https://github.com/rwatts3/orionjs-cordova
 - [X] Log system
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
-- [ ] Fix GridFS issue on Orion's module.
+- [ ] Bonus: Fix GridFS issue on Orion's module.
+- [ ] Bonus: Image upload
+- [ ] Bonus: PhantomJS integration.
 - [ ] Bonus: Accelerate routing
   - https://github.com/meteorhacks/subs-manager
 - [ ] Bonus: Check presence of online users
@@ -112,6 +110,10 @@ Additional actions
 - [ ] Bonus: Séparation front / backoffice : 2 serveurs connectés par DDP
 - [ ] Bonus: Tests automatisés et gestion CdP automatisée
   - https://atmospherejs.com/xolvio/cucumber
+- [ ] Bonus : One-click actions for GMail
+  - https://developers.google.com/gmail/markup/reference/one-click-action
+- [ ] Bonus : Android and iOS app
+  - https://github.com/rwatts3/orionjs-cordova
 
 ## Tutorial
 Orion is based on:
