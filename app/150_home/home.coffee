@@ -69,8 +69,8 @@ if Meteor.isClient
     Session.set 'debug', if Session.get 'IS_MOBILE' then 'mobile' else 'desktop'
     unless Session.get 'IS_MOBILE'
       # Start video
-      video = @find 'video'
-      video.play()
+      # video = @find 'video'
+      # video.play()
       # Start scrolling container
       ScrollerSingleton.get().start()
     # Set reactive height
@@ -110,10 +110,10 @@ if Meteor.isClient
           handler: (direction) ->
             if direction is 'down'
               ScrollerSingleton.get().stop()
-              video.pause()
+              #video.pause()
             else
               ScrollerSingleton.get().start()
-              video.play()
+              #video.play()
         context: $mainCntEl[0]
       # Waypoint subscription content that triggers entrance animation
       new Waypoint

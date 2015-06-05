@@ -1,5 +1,5 @@
 ## Additional list
-- [ ] Remove video and set a black background.
+- [X] Remove video and set a black background.
 - [ ] Countdown (but where?).
 - [ ] Text modification on the drive.
 - [ ] Event photo + new text instead of access informations.
