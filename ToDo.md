@@ -25,13 +25,13 @@
 - [X] Video background
   - https://github.com/brightbind/orion-gridFS
 - [X] Preloading de la video
-- http://desandro.github.io/imagesloaded/
-- https://github.com/iamkevingreen/imagesloaded
-- [ ] FTS sur le back office
-  - http://www.okgrow.com/posts/2015/04/27/guide-to-full-text-search-in-meteor/
-  - https://github.com/loongmxbt/orion-lfs
-  - http://mediaelementjs.com/
-  - https://github.com/delgermurun/meteor-mediaelement
+  - ~~http://desandro.github.io/imagesloaded/~~
+  - ~~https://github.com/iamkevingreen/imagesloaded~~
+- [X] FTS sur le back office
+  - ~~http://www.okgrow.com/posts/2015/04/27/guide-to-full-text-search-in-meteor/~~
+  - ~~https://github.com/loongmxbt/orion-lfs~~
+  - ~~http://mediaelementjs.com/~~
+  - ~~https://github.com/delgermurun/meteor-mediaelement~~
 - [X] Parallax effect
   - https://github.com/frabrunelle/meteor-fittext
   - https://github.com/gwendall/meteor-template-animations
@@ -42,9 +42,8 @@
 - [X] Main template
 - [X] Pre-subscription
 - [X] Inner links from the CMS in the menu and the associated routing rules
-- [ ] Countdown
 - [ ] Get all subscribers as a CSV
-- [X] Disconnection notification from the serveur
+- [X] Disconnection notification from server
   - https://github.com/alexreich/meteor-machina
   - https://github.com/francocatena/meteor-status
 - [X] Error notification from the serveur.
@@ -117,6 +116,7 @@
 
 ## Tutorial
 Orion is based on:
+
 - [ReactiveTemplates](https://github.com/nicolaslopezj/reactive-templates): A base template that you can inherit from.
 - [Options](https://github.com/nicolaslopezj/options): Reactive options for apps.
 - [Roles](https://github.com/nicolaslopezj/roles): Roles that applies to actions and collections.
