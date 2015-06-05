@@ -11,7 +11,7 @@
 ## Original list
 - [X] Favicon
 - [X] CMS
-- [X] French localization :warning: Must wait validation
+- [X] French localization for the CMS
 - [X] Animated routing
 - [X] Router progress
 - [X] Preloading spinner
