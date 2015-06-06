@@ -2,6 +2,8 @@ class @AppCtrl extends RouteController
   layoutTemplate = 'mainLayout'
   loadingTemplate = 'loading'
   onBeforeAction: ->
+    @render 'nav', {to: 'nav'}
+    @render 'footer', {to: 'footer'}
     @next()
   waitOn: -> [
     Meteor.subscribe 'innerlinks'
@@ -18,20 +20,10 @@ Meteor.startup ->
     for page in pages
       do (page=page, pages=pages) =>
         appLog.info 'Adding page', page.slug
-        @route page.slug,
-          data: -> pages
-          action: ->
-            @render 'nav', {to: 'nav'}
-            @render 'basicPage', data: -> page
-            @render 'footer', {to: 'footer'}
+        @route page.slug, -> @render 'basicPage', data: -> page
     # Creating static routes
     appLog.info 'Adding home page'
-    @route '/',
-      data: -> pages
-      action: ->
-        @render 'nav', {to: 'nav'}
-        @render 'home'
-        @render 'footer', {to: 'footer'}
+    @route '/', action: -> @render 'home'
   # Common server and client config
   globalConfig =
     layoutTemplate: 'mainLayout'

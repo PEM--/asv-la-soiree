@@ -16,7 +16,8 @@ if Meteor.isClient
     hamburger: (e) -> @menuContentOpened not @menuContentOpened()
     innerLinks: -> InnerLinks.find {}, sort: order: 1
     # @NOTE The pages are requested again for taking use of a reative cursor
-    links: -> BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
+    links: ->
+      BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
 
   Template.nav.onCreated ->
     appLog.info 'Creating main menu'
