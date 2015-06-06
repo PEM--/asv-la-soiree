@@ -81,7 +81,8 @@
 - [ ] Custom route controller : prevents data from being fetched before
   router is started.
 - [ ] Initial data loading (fast rendering :
-  fetch data within initial HTML container : one payload)  
+  fetch data within initial HTML container : one payload)
+- [ ] Use router state for designing templates.
 - [X] Custom initial payload with HTML minification and JS minification.
 - [X] Automatic robot.txt
 - [X] Automatic sitemap in the CMS
