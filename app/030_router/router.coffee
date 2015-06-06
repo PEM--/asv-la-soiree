@@ -1,4 +1,4 @@
-class @AppCtrl extends RouteController
+class AppCtrl extends RouteController
   layoutTemplate = 'mainLayout'
   loadingTemplate = 'loading'
   onBeforeAction: ->
@@ -18,12 +18,14 @@ Meteor.startup ->
     pages = BasicPages.find().fetch()
     # Creating dynamic routes
     for page in pages
-      do (page=page, pages=pages) =>
+      do (page=page) =>
         appLog.info 'Adding page', page.slug
         @route page.slug, -> @render 'basicPage', data: -> page
     # Creating static routes
     appLog.info 'Adding home page'
     @route '/', action: -> @render 'home'
+    appLog.info 'Adding not found route'
+    @route '/:not_found', action: -> @render 'notFound'
   # Common server and client config
   globalConfig =
     layoutTemplate: 'mainLayout'
@@ -42,7 +44,6 @@ Meteor.startup ->
         @start()
     Router.configure _.extend globalConfig, autoStart: false
     Router.declareClientRoutes()
-
     # Get only the slug from an URL
     @slugIt = (url) ->
       tokens = url.split '/'
@@ -103,23 +104,21 @@ Meteor.startup ->
         Meteor.setTimeout (-> ($ routerEl).css 'opacity', 1), 64
       , 300
 
+  # Set dynamic routes depending on pages created in Orion
+  # appLog.info 'Starting subscription and routing'
+  Meteor.subscribe 'basicpages', ->
+    BasicPages.find().observeChanges
+      added: (id, fields) ->
+        if Router.routes[fields.slug] is undefined
+          appLog.info 'Route added', fields.slug
+          Router.route fields.slug, -> @render 'basicPage',
+            data: ->
+              slug: fields.slug
+              title: fields.title
+              body: fields.body
+        else
+          appLog.info 'Route already exists', fields.slug
+
 # @TODO Set in the Router client side
 @mainCntEl = '.main-container[data-role=\'layout\']'
 @routerEl = "#{mainCntEl}>.router-container"
-
-# Set dynamic routes depending on pages created in Orion
-# @TODO Need big rework
-# appLog.info 'Starting subscription and routing'
-# Meteor.subscribe 'basicpages', ->
-#   BasicPages.find().observeChanges
-#     added: (id, fields) ->
-#       if Router.routes[fields.slug] is undefined
-#         appLog.info 'Route added', fields.slug, fields.title
-#         Router.route fields.slug, ->
-#           @render 'nav', to: 'nav', data: ->
-#             BasicPages.find {$or: [{display: 1}, {display: 2}]}, sort: order: 1
-#           @render 'basicPage', data: -> BasicPages.findOne id
-#           @render 'footer', to: 'footer', data: ->
-#             BasicPages.find {$or: [{display: 2}, {display: 3}]}, sort: order: 1
-#       else
-#         appLog.info 'Route already exists', fields.slug
