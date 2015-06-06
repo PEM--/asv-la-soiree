@@ -15,9 +15,7 @@ Template.orionCpCollectionsIndex.events
     rowData = dataTable.row(event.currentTarget).data()
     if rowData
       if rowData.canShowUpdate()
-        # @NOTE Weird pb Router.path, removed for direct access
-        # path = collection.updatePath rowData
-        path = "#{collection.indexPath()}/#{rowData._id}"
+        path = collection.updatePath rowData
         Router.go path
 
 Template.orionCpCollectionsIndex.helpers
