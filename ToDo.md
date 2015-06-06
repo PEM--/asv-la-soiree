@@ -78,7 +78,11 @@
 - [ ] CSV extract
 - [X] Sécurity : browser policy
 - [X] Sécurity : Anti DDOS like
-- [X] Initial data loading (fast rendering)
+- [ ] Custom route controller : prevents data from being fetched before
+  router is started.
+- [ ] Initial data loading (fast rendering :
+  fetch data within initial HTML container : one payload)  
+- [X] Custom initial payload with HTML minification and JS minification.
 - [X] Automatic robot.txt
 - [X] Automatic sitemap in the CMS
   - https://atmospherejs.com/gadicohen/sitemaps
