@@ -58,7 +58,7 @@ if Meteor.isClient
     goInnerLink: (e) ->
       e.preventDefault()
       ($ "a[href='#{e.target.hash}']").velocity 'scroll',
-        container: $ mainCntEl
+        container: $ Router.mainCntEl
         offset: (-> -30 - mainMenuModel.height())()
 
   Template.home.onCreated -> appLog.info 'Creating home screen'

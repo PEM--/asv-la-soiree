@@ -2,10 +2,13 @@
 class AppCtrl extends RouteController
   layoutTemplate = 'mainLayout'
   loadingTemplate = 'loading'
+  #onRun: -> appLog.warn 'onRun', @
   onBeforeAction: ->
+    #appLog.warn 'onBeforeAction'
     @render 'nav', {to: 'nav'}
     @render 'footer', {to: 'footer'}
     @next()
+  #onStop: -> appLog.warn 'onStop'
   waitOn: -> [
     Meteor.subscribe 'innerlinks'
     Meteor.subscribe 'basicpages'
@@ -91,7 +94,7 @@ if Meteor.isClient
       return
     ($ Router.routerEl).css 'opacity', 0
     # Transition when fade out animation is done
-    Meteor.setTimeout =>
+    Meteor.setTimeout ->
       appLog.info 'Going slug', nextRoute
       mainMenuModel.reset()
       unless nextRoute is '/'
@@ -103,7 +106,7 @@ if Meteor.isClient
       # Activate route
       Router.go nextRoute
       # Fade in the new content with at least 2 cycles on the RAF
-      Meteor.setTimeout (=> ($ Router.routerEl).css 'opacity', 1), 64
+      Meteor.setTimeout (-> ($ Router.routerEl).css 'opacity', 1), 64
     , 300
 
 # Start the router
