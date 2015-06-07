@@ -11,17 +11,6 @@ appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
 
 if Meteor.isClient
-  mainEl = 'main'
-  headerEl = "header>section"
-
-  arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
-  programCntEl = "#{mainEl}>section:nth-child(1)"
-  prezEl = "#{programCntEl}>article:nth-child(1)"
-  progEl = "#{programCntEl}>article:nth-child(2)"
-  subEl = "#{mainEl}>section:nth-child(2)>article"
-  contactEl = "#{mainEl}>section:nth-child(3)>article"
-  mapEl = "#{mainEl}>section.map>.map-container"
-
   class ScrollerSingleton
     instance = null
     logoEl = '.logo-resizer>.svg-logo-container'
@@ -57,7 +46,7 @@ if Meteor.isClient
   Template.home.onCreated ->
     @rxMainHeight = new ReactiveVar
     ($ window).on 'resize', _.debounce =>
-      @rxMainHeight.set ($ mainEl).height()
+      @rxMainHeight.set ($ Router.mainCntEl).height()
     , if Session.get 'IS_MOBILE' then 256 else 1024
 
   changeMenuColor = (direction, isInverted) ->
@@ -96,31 +85,38 @@ if Meteor.isClient
         ScrollerSingleton.get().resizing() unless Session.get 'IS_MOBILE'
         # Recreates waypoints
         Waypoint.destroyAll()
+      # Get all DOM elements of interest for the Waypoints
       $mainCntEl = $ Router.mainCntEl
       $headerEl = @$ 'header>section'
       winHeight = ($ window).height()
+      $arrowEl = $headerEl.find '.arrow-down-centered'
+      $prezEl = @$ 'section:nth-child(1)>article:nth-child(1)'
+      $progEl = @$ 'section:nth-child(1)>article:nth-child(2)'
+      $subEl = @$ 'section:nth-child(2)>article'
+      $contactEl = @$ 'section:nth-child(3)>article'
+      $mapEl = @$ 'section.map>.map-container'
       # Waypoint on the arrow and trigger menu visibility
       new Waypoint
-        element: ($ arrowEl)[0]
+        element: $arrowEl[0]
         handler: (direction) ->
           if direction is 'down'
             homeModel.arrowOpacity 0
             homeModel.teaserOpacity 0
             mainMenuModel.show()
-            ($ prezEl).velocity('stop').velocity 'transition.slideLeftIn'
-            ($ progEl).velocity('stop').velocity 'transition.slideRightIn'
+            $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
+            $progEl.velocity('stop').velocity 'transition.slideRightIn'
           else
             homeModel.arrowOpacity 1
             homeModel.teaserOpacity 1
             mainMenuModel.hide()
-            ($ prezEl).velocity('stop').velocity 'reverse'
-            ($ progEl).velocity('stop').velocity 'reverse'
+            $prezEl.velocity('stop').velocity 'reverse'
+            $progEl.velocity('stop').velocity 'reverse'
         offset: $headerEl.height()*.7
         context: $mainCntEl[0]
       # Waypoint for stopping the video and the Scroller
       unless Session.get 'IS_MOBILE'
         new Waypoint
-          element: ($ arrowEl)[0]
+          element: $arrowEl[0]
           handler: (direction) ->
             if direction is 'down'
               ScrollerSingleton.get().stop()
@@ -131,52 +127,52 @@ if Meteor.isClient
         context: $mainCntEl[0]
       # Waypoint subscription content that triggers entrance animation
       new Waypoint
-        element: ($ subEl)[0]
+        element: $subEl[0]
         handler: (direction) ->
           if direction is 'down'
-            ($ subEl).velocity('stop').velocity 'transition.slideUpIn'
+            $subEl.velocity('stop').velocity 'transition.slideUpIn'
           else
-            ($ subEl).velocity('stop').velocity 'reverse'
+            $subEl.velocity('stop').velocity 'reverse'
         # Animations starts at 10% visibility of the content
-        offset: winHeight - ($ subEl).height()*0.1
+        offset: winHeight - $subEl.height()*0.1
         context: $mainCntEl[0]
       # Waypoint subscription content menu color change
       new Waypoint
-        element: ($ subEl)[0]
+        element: $subEl[0]
         handler: (direction) -> changeMenuColor direction, true
         offset: mainMenuModel.height()
         context: $mainCntEl[0]
       # Waypoint contact content that triggers entrance animation
       new Waypoint
-        element: ($ contactEl)[0]
+        element: $contactEl[0]
         handler: (direction) ->
           if direction is 'down'
-            ($ contactEl).velocity('stop').velocity 'transition.slideUpIn'
+            $contactEl.velocity('stop').velocity 'transition.slideUpIn'
           else
-            ($ contactEl).velocity('stop').velocity 'reverse'
+            $contactEl.velocity('stop').velocity 'reverse'
         # Animations starts at 10% visibility of the content
-        offset: winHeight - ($ contactEl).height()*0.1
+        offset: winHeight - $contactEl.height()*0.1
         context: $mainCntEl[0]
       # Waypoint subscription content menu color change
       new Waypoint
-        element: ($ contactEl)[0]
+        element: $contactEl[0]
         handler: (direction) -> changeMenuColor direction, false
         offset: mainMenuModel.height()
         context: $mainCntEl[0]
       # Waypoint mapEl content that triggers entrance animation
       new Waypoint
-        element: ($ mapEl)[0]
+        element: $mapEl[0]
         handler: (direction) ->
           if direction is 'down'
-            ($ mapEl).velocity('stop').velocity 'transition.slideUpIn'
+            $mapEl.velocity('stop').velocity 'transition.slideUpIn'
           else
-            ($ mapEl).velocity('stop').velocity 'reverse'
+            $mapEl.velocity('stop').velocity 'reverse'
         # Animations starts at 10% visibility of the content
-        offset: winHeight - ($ mapEl).height()*0.1
+        offset: winHeight - $mapEl.height()*0.1
         context: $mainCntEl[0]
       # Waypoint map content menu color change
       new Waypoint
-        element: ($ mapEl)[0]
+        element: $mapEl[0]
         handler: (direction) -> changeMenuColor direction, true
         offset: mainMenuModel.height()
         context: $mainCntEl[0]
