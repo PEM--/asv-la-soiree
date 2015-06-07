@@ -30,6 +30,8 @@ raix:handlebar-helpers
 mquandalle:bower
 manuel:viewmodel
 meteorhacks:zones
+meteorhacks:kadira
+meteorhacks:kadira-profiler
 
 # CSS & effects
 pierreeric:creativepure

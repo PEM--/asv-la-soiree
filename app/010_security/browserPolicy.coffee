@@ -41,6 +41,8 @@ if Meteor.isServer
     'browser-update.org'
     # Mix Panel analytics
     'cdn.mxpnl.com'
+    # Kadira
+    '*.kadira.io'
   ]
     for protocol in ['http', 'https']
       porigin = "#{protocol}://#{origin}"

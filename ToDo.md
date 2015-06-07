@@ -19,7 +19,7 @@
 - [X] Reordering des scripts, links, ... dans le client/startup.coffee
 - [X] Create default users with Meteor.settings
 - [X] Create default informations at server start: title, description, ...
-- [X] Sécurité : problème de browser-policy sur l'administration du CMS
+- [X] Security : problem on browser-policy in the CMS admin
 - [X] Limitations with the security and the rate limiting
   - https://github.com/matteodem/meteor-easy-security
 - [X] Video background
@@ -75,9 +75,11 @@
 - [ ] Mangopay
   - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
   - https://github.com/jeremyhodges/flaming-bear
+- [ ] Mail chimp
 - [ ] CSV extract
-- [X] Sécurity : browser policy
-- [X] Sécurity : Anti DDOS like
+- [X] Monitoring: Kadira
+- [X] Security : browser policy
+- [X] Security : Anti DDOS like
 - [ ] Custom route controller : prevents data from being fetched before
   router is started.
 - [ ] Initial data loading (fast rendering :
@@ -92,6 +94,7 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
+- [ ] Bonus: Add usefull links in the admin: Google analytics, Kadira
 - [ ] Bonus: Fix GridFS issue on Orion's module.
 - [ ] Bonus: Image upload
 - [ ] Bonus: PhantomJS integration.
