@@ -30,7 +30,6 @@ globalConfig =
   layoutTemplate: 'mainLayout'
   loadingTemplate: 'loading'
   fastRender: true
-  controller: AppCtrl
 Router.plugin 'dataNotFound', notFoundTemplate: 'notFound'
 Router.plugin 'loading', loadingTemplate: 'loading'
 # Specific server configuration
@@ -51,7 +50,7 @@ Router.declareRoutes = ->
         @render 'basicPage', data: -> page
   # Creating static routes
   appLog.info 'Adding not found route'
-  @route '/:not_found', action: -> @render 'notFound'
+  @route '/:not_found', controller: AppCtrl, action: -> @render 'notFound'
 # Specific methods and values for the client
 if Meteor.isClient
   Router.mainCntEl = '.main-container[data-role=\'layout\']'
