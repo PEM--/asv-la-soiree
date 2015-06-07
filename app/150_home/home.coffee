@@ -35,9 +35,6 @@ if Meteor.isClient
     class Scroller
       constructor: ->
         @scrollPos = 0
-      sizeAndPos: ->
-        @posEndAnimLogo = @$header.height()
-        @logoTop = @$logo.offset().top
       start: ->
         @$mainCntEl = $ Router.mainCntEl
         @$header = $ headerEl
@@ -45,6 +42,9 @@ if Meteor.isClient
         @$logo = $ logoEl
         @sizeAndPos()
         @$mainCntEl.on 'scroll', => @event()
+      sizeAndPos: ->
+        @posEndAnimLogo = @$header.height()
+        @logoTop = @$logo.offset().top
       event: ->
         @scrollPos = @$mainCntEl.scrollTop()
         trans = (@scrollPos-@posStartAnimLogo) * .8
@@ -58,10 +58,6 @@ if Meteor.isClient
         @event()
       stop: ->
         @$mainCntEl?.off 'scroll'
-
-
-  Template.home.transition = ->
-    with: 'fade'
 
   Template.home.onCreated ->
     @rxMainHeight = new ReactiveVar

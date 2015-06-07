@@ -8,18 +8,18 @@ class @BasicPageController extends AppCtrl
   onBeforeAction: ->
     appLog.warn 'BasicPageController: onBeforeAction'
     @next()
-  onAfterAction: -> appLog.warn 'BasicPageController: onAfterAction'
+  onAfterAction: ->
+    appLog.warn 'BasicPageController: onAfterAction'
   onStop: ->
     appLog.warn 'BasicPageController: onStop'
+    @$mainCntEl.scrollTop 0
 
 if Meteor.isClient
-  Template.basicPage.transition = ->
-    appLog.error 'Momentum?'
-    with: 'fade'
-
   Template.basicPage.onCreated ->
-    appLog.error 'basicPage recreated'
-    appLog.info 'Basic page created for', @data.slug, @data.title
+    appLog.info 'Basic page created for', @data.slug
 
   Template.basicPage.onRendered ->
     appLog.info 'Basic page rendered'
+
+  Template.basicPage.helpers
+    transition: -> (from, to, element) -> 'myFade'

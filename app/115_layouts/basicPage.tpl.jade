@@ -1,5 +1,5 @@
-main: section: article
-  +momentum plugin='fade'
-    h1= title
-  +momentum plugin='fade'
-    | {{{body}}}
+main: section
+  article
+    +momentum plugin='myFade'
+      h1 {{title}}
+      | {{{body}}}

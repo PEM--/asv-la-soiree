@@ -4,6 +4,6 @@ Meteor.startup ->
   if Session.get('IS_MOBILE')
     log.disableAll()
   else
-    log.setLevel 'error'
+    log.setLevel 'info'
   @appLog = log
   log.log = log.info
