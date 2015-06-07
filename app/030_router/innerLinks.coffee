@@ -13,9 +13,9 @@
     ]
 
 knownSlugs = [
-  '#subscription'
-  '#program'
-  '#contact'
+  '/#subscription'
+  '/#program'
+  '/#contact'
 ]
 
 @InnerLinksSchema = new SimpleSchema

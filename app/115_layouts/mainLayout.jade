@@ -7,6 +7,7 @@ template(name='mainLayout')
   .main-container(data-role='layout')    
     +yield 'nav'
     .router-container
-      +yield
+      +momentum plugin='iron-router' tansition=transition
+        +yield
     footer
       +yield 'footer'

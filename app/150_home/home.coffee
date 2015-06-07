@@ -1,5 +1,23 @@
+class HomeController extends AppCtrl
+  onRun: -> appLog.warn 'HomeController: onRun', @
+  onRerun: ->
+    appLog.warn 'HomeController: onReRun', @
+    mainMenuModel.hide()
+    @next()
+  onBeforeAction: ->
+    appLog.warn 'HomeController: onBeforeAction'
+    @next()
+  onAfterAction: -> appLog.warn 'HomeController: onAfterAction'
+  onStop: ->
+    appLog.warn 'HomeController: onStop'
+    Waypoint.destroyAll()
+    ScrollerSingleton.get().stop()
+
+appLog.info 'Adding home page'
+Router.route '/', controller: HomeController, action: -> @render 'home'
+
 if Meteor.isClient
-  @mainEl = "#{Router.routerEl}>main"
+  @mainEl = ".main-container[data-role=\'layout\']>.router-container>main"
   @headerEl = "#{Router.routerEl}>header>section"
   @logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
   @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
@@ -10,7 +28,7 @@ if Meteor.isClient
   @contactEl = "#{mainEl}>section:nth-child(3)>article"
   @mapEl = "#{mainEl}>section.map>.map-container"
 
-  class @ScrollerSingleton
+  class ScrollerSingleton
     instance = null
     @get: ->
       instance ?= new Scroller
@@ -40,6 +58,10 @@ if Meteor.isClient
         @event()
       stop: ->
         @$mainCntEl?.off 'scroll'
+
+
+  Template.home.transition = ->
+    with: 'fade'
 
   Template.home.onCreated ->
     @rxMainHeight = new ReactiveVar

@@ -37,6 +37,8 @@ meteorhacks:kadira-profiler
 pierreeric:creativepure
 fortawesome:fontawesome
 velocityjs:velocityjs
+percolate:momentum
+percolate:momentum-iron-router
 
 # Routing
 iron:router

@@ -94,6 +94,9 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
+- [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs
+  - https://github.com/adamschwartz/log
+  - https://github.com/artemyarulin/loglevel-serverSend
 - [ ] Bonus: Add usefull links in the admin: Google analytics, Kadira
 - [ ] Bonus: Fix GridFS issue on Orion's module.
 - [ ] Bonus: Image upload

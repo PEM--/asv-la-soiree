@@ -53,7 +53,7 @@ if Meteor.isClient
   Template.cookie.events
     'click a': (e, t) ->
       e.preventDefault()
-      goNextRoute e.target.href
+      Router.go e.target.href
     'click button': (e, t) ->
       CookieSingleton.get().accept()
       # Remove cookie notification

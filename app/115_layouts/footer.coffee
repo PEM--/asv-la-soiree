@@ -17,4 +17,4 @@ if Meteor.isClient
     name: -> @page().title
     changeRoute: (e) ->
       e.preventDefault()
-      Router.goNextRoute @slug()
+      Router.go @slug()
