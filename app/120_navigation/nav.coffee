@@ -12,7 +12,7 @@ if Meteor.isClient
       else (@templateInstance.$ 'nav').height()
     goHome: ->
       @menuContentOpened false
-      goNextRoute '/'
+      Router.goNextRoute '/'
     hamburger: (e) -> @menuContentOpened not @menuContentOpened()
     innerLinks: -> InnerLinks.find {}, sort: order: 1
     # @NOTE The pages are requested again for taking use of a reative cursor
@@ -30,7 +30,7 @@ if Meteor.isClient
     appLog.info 'Rendering main menu'
     # Bind ViewModel to template
     mainMenuModel.bind @
-    mainMenuModel.show() unless getSlug() is '/'
+    mainMenuModel.show() unless Router.getSlug() is '/'
 
   # ViewModel for the menu's items on inner links (links under the home page)
   Template.navInnerLink.viewmodel (data) ->
@@ -41,7 +41,7 @@ if Meteor.isClient
     changeRoute: (e) ->
       e.preventDefault()
       @parent().menuContentOpened false
-      goNextRoute @slug()
+      Router.goNextRoute @slug()
 
   # ViewModel for the menu's items on links
   Template.navLink.viewmodel (data) ->
@@ -52,4 +52,4 @@ if Meteor.isClient
     changeRoute: (e) ->
       e.preventDefault()
       @parent().menuContentOpened false
-      goNextRoute @slug()
+      Router.goNextRoute @slug()

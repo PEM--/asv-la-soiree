@@ -17,5 +17,4 @@ if Meteor.isClient
     name: -> @page().title
     changeRoute: (e) ->
       e.preventDefault()
-      goNextRoute @slug()
-    #activeRoute: -> if @slug() is getSlug() then 'active' else ''
+      Router.goNextRoute @slug()

@@ -1,6 +1,6 @@
 if Meteor.isClient
-  @mainEl = "#{routerEl}>main"
-  @headerEl = "#{routerEl}>header>section"
+  @mainEl = "#{Router.routerEl}>main"
+  @headerEl = "#{Router.routerEl}>header>section"
   @logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
   @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
   @programCntEl = "#{mainEl}>section:nth-child(1)"
@@ -21,7 +21,7 @@ if Meteor.isClient
         @posEndAnimLogo = @$header.height()
         @logoTop = @$logo.offset().top
       start: ->
-        @$mainCntEl = $ mainCntEl
+        @$mainCntEl = $ Router.mainCntEl
         @$header = $ headerEl
         @posStartAnimLogo = 0
         @$logo = $ logoEl
@@ -74,7 +74,7 @@ if Meteor.isClient
       # Start scrolling container
       ScrollerSingleton.get().start()
     # Set reactive height
-    @rxMainHeight.set ($ mainCntEl).height()
+    @rxMainHeight.set ($ Router.mainCntEl).height()
     @autorun (computation) =>
       # Use reactivity to handle resizing
       mainHeight = @rxMainHeight.get()
@@ -83,7 +83,7 @@ if Meteor.isClient
         ScrollerSingleton.get().resizing() unless Session.get 'IS_MOBILE'
         # Recreates waypoints
         Waypoint.destroyAll()
-      $mainCntEl = $ mainCntEl
+      $mainCntEl = $ Router.mainCntEl
       winHeight = ($ window).height()
       # Waypoint on the arrow and trigger menu visibility
       new Waypoint
