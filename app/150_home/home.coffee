@@ -1,15 +1,9 @@
 class HomeController extends AppCtrl
-  onRun: -> appLog.warn 'HomeController: onRun', @
   onRerun: ->
-    appLog.warn 'HomeController: onReRun', @
     mainMenuModel.hide()
+    @$mainCntEl.scrollTop 0
     @next()
-  onBeforeAction: ->
-    appLog.warn 'HomeController: onBeforeAction'
-    @next()
-  onAfterAction: -> appLog.warn 'HomeController: onAfterAction'
   onStop: ->
-    appLog.warn 'HomeController: onStop'
     Waypoint.destroyAll()
     ScrollerSingleton.get().stop()
 
@@ -17,19 +11,20 @@ appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
 
 if Meteor.isClient
-  @mainEl = ".main-container[data-role=\'layout\']>.router-container>main"
-  @headerEl = "#{Router.routerEl}>header>section"
-  @logoEl = "#{headerEl}>.center-all>.logo-resizer>.svg-logo-container"
-  @arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
-  @programCntEl = "#{mainEl}>section:nth-child(1)"
-  @prezEl = "#{programCntEl}>article:nth-child(1)"
-  @progEl = "#{programCntEl}>article:nth-child(2)"
-  @subEl = "#{mainEl}>section:nth-child(2)>article"
-  @contactEl = "#{mainEl}>section:nth-child(3)>article"
-  @mapEl = "#{mainEl}>section.map>.map-container"
+  mainEl = 'main'
+  headerEl = "header>section"
+
+  arrowEl = "#{headerEl}>.arrow-down-container>.arrow-down-centered"
+  programCntEl = "#{mainEl}>section:nth-child(1)"
+  prezEl = "#{programCntEl}>article:nth-child(1)"
+  progEl = "#{programCntEl}>article:nth-child(2)"
+  subEl = "#{mainEl}>section:nth-child(2)>article"
+  contactEl = "#{mainEl}>section:nth-child(3)>article"
+  mapEl = "#{mainEl}>section.map>.map-container"
 
   class ScrollerSingleton
     instance = null
+    logoEl = '.logo-resizer>.svg-logo-container'
     @get: ->
       instance ?= new Scroller
     class Scroller
@@ -37,9 +32,9 @@ if Meteor.isClient
         @scrollPos = 0
       start: ->
         @$mainCntEl = $ Router.mainCntEl
-        @$header = $ headerEl
+        @$header = @$mainCntEl.find 'header>section'
         @posStartAnimLogo = 0
-        @$logo = $ logoEl
+        @$logo = @$header.find logoEl
         @sizeAndPos()
         @$mainCntEl.on 'scroll', => @event()
       sizeAndPos: ->
@@ -102,6 +97,7 @@ if Meteor.isClient
         # Recreates waypoints
         Waypoint.destroyAll()
       $mainCntEl = $ Router.mainCntEl
+      $headerEl = @$ 'header>section'
       winHeight = ($ window).height()
       # Waypoint on the arrow and trigger menu visibility
       new Waypoint
@@ -119,7 +115,7 @@ if Meteor.isClient
             mainMenuModel.hide()
             ($ prezEl).velocity('stop').velocity 'reverse'
             ($ progEl).velocity('stop').velocity 'reverse'
-        offset: ($ headerEl).height()*.7
+        offset: $headerEl.height()*.7
         context: $mainCntEl[0]
       # Waypoint for stopping the video and the Scroller
       unless Session.get 'IS_MOBILE'

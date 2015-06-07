@@ -2,23 +2,17 @@
 class @AppCtrl extends RouteController
   layoutTemplate = 'mainLayout'
   loadingTemplate = 'loading'
-  onRun: -> appLog.warn 'AppCtrl: onRun', @
   onRerun: ->
-    appLog.warn 'AppCtrl: onReRun', @
     @$mainCntEl = $ Router.mainCntEl
     @$routerEl = @$mainCntEl.find Router.routerEl
     @next()
   onBeforeAction: ->
-    appLog.warn 'AppCtrl: onBeforeAction'
     # Render nav and footer before letting children controller do their
     #  won actions
     @render 'nav', {to: 'nav'}
     @render 'footer', {to: 'footer'}
     @next()
-  onAfterAction: ->
-    appLog.warn 'AppCtrl: onAfterAction'
   onStop: ->
-    appLog.warn 'AppCtrl: onStop'
     mainMenuModel.menuContentOpened false
   waitOn: -> [
     Meteor.subscribe 'innerlinks'

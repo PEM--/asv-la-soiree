@@ -1,18 +1,11 @@
 class @BasicPageController extends AppCtrl
-  onRun: -> appLog.warn 'BasicPageController: onRun', @
   onRerun: ->
-    appLog.warn 'BasicPageController: onReRun', @
     mainMenuModel.white false
     mainMenuModel.show()
-    @next()
-  onBeforeAction: ->
-    appLog.warn 'BasicPageController: onBeforeAction'
-    @next()
-  onAfterAction: ->
-    appLog.warn 'BasicPageController: onAfterAction'
-  onStop: ->
-    appLog.warn 'BasicPageController: onStop'
     @$mainCntEl.scrollTop 0
+    @next()
+  # onStop: ->
+  #   appLog.warn 'BasicPageController: onStop: Pas de scroll'
 
 if Meteor.isClient
   Template.basicPage.onCreated ->
