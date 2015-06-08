@@ -96,6 +96,7 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
+- [ ] Bonus: Fix momentum issues on inner template animations
 - [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs
   - https://github.com/adamschwartz/log
   - https://github.com/artemyarulin/loglevel-serverSend
