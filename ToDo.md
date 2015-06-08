@@ -41,7 +41,7 @@
 - [X] Menu for smartphone
 - [X] Main template
 - [X] Pre-subscription
-- [ ] Contact
+- [X] Contact
 - [ ] Popup on pre-subscription
 - [X] Inner links from the CMS in the menu and the associated routing rules
 - [ ] Get all subscribers as a CSV

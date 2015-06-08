@@ -79,6 +79,61 @@
               opacity .5
               + label
                 opacity .5
+          &:nth-child(2)
+            padding .8em 0 .5em .5em .5em
+            // Access
+            >div:nth-child(1)
+              border 2px solid brandColor
+              border-radius roundCorner
+              background bgColor
+              color invertedTextColor
+              padding 2em
+              border 3px solid brandColor
+              border-radius roundCorner
+              h2, address, p
+                color brandColor
+                margin 0
+                padding 0
+              h2, address
+                text-align center
+                font-size 1.2em
+              address
+                margin-bottom .8em
+                address:nth-child(2)
+                  font-weight normal
+              p
+                font-size 1em
+            // Opening date
+            >div:nth-child(2)
+              margin-top 1em
+              background brandColor
+              padding .3em 0
+              h2
+                margin 0
+                color bgColor
+                text-transform uppercase
+                font-size 1.1em
+                text-align center
+            // Send button
+            >.submit
+              button
+                background transparent
+                border none
+                color bgColor
+                font-weight bold
+                text-transform uppercase
+                margin 0 0 1em 0
+                padding 1.5em 1em 0 0
+                border-bottom 2px solid transparent
+                transition border-color defaultTransitionValue
+                &::after
+                  content '>>'
+                  relative top left .8em
+                &:hover
+                  border-bottom 2px solid bgColor
+                &.disabled
+                  opacity .5
+                  pointer-events none
         textarea
           margin-top 1em
           font-size 12px
@@ -88,6 +143,16 @@
           border-radius roundCorner
           background-color bgColor
           color brandColor
+          font-weight normal
+          &::-webkit-input-placeholder
+            font-weight normal
+            color @color
+          &::-moz-placeholder
+            font-weight normal
+            color @color
+          &:-ms-input-placeholder
+            font-weight normal
+            color @color
     .access-location-picture
       display block
       relative top left

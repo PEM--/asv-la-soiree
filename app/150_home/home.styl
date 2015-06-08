@@ -183,10 +183,12 @@
           flex-shrink 0
           min-width maxSize*0.3
           flex-basis @min-width
+        // Presentation
         article:nth-child(1)
           margin-left 0
           margin-right .5em
           padding-left 0
+        // Program
         article:nth-child(2)
           >div
             margin-right 0
@@ -194,6 +196,7 @@
           >div:nth-child(1)
             padding 2em
             border 3px solid brandColor
+            border-radius roundCorner
             background bgColor
             h1, h2, p, time,
               color brandColor
@@ -220,6 +223,7 @@
                 margin-left 2.5em
               p
                 margin 0 0 0 5.7em
+          // Opening date
           >div:nth-child(2)
             margin-top 1em
             background brandColor
@@ -230,6 +234,7 @@
               text-transform uppercase
               font-size 1.1em
               text-align center
+          // Arrow
           >div:nth-child(3)
             margin-top 1em
             display inline-block
