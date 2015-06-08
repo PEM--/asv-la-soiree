@@ -55,7 +55,6 @@ if Meteor.isClient
       @start()
   Router.oldGo = Router.go
   Router.go = ->
-    console.log 'New go', arguments
     # Classic Router.go function
     Router.oldGo arguments[0]
     # Handle fragment URL if provided

@@ -131,43 +131,45 @@
               display flex
               flex-wrap nowrap
               justify-content space-between
-              span.choice
+              .choice-and-option
                 flex-grow 0
                 flex-shrink 0
-                size 100px 125px
-                text-align center
                 display block
                 relative top left
-                >label
-                  absolute top left
+                size 100px 145px
+                span.choice
+                  size 100px 125px
+                  text-align center
                   display block
-                  size 100px
-                  border 2px solid brandColor
-                  color brandColor
-                  border-radius @width
-                  transition background-color defaultTransitionValue
-                  >span
+                  relative top left
+                  >label
+                    absolute top left
                     display block
-                    width 100%
-                    font-size 10px
-                    line-height 1.1*@font-size
-                    text-transform uppercase
-                  &::before, &::after
-                    content ''
-                    display block
+                    size 100px
+                    border 2px solid brandColor
+                    color brandColor
+                    border-radius @width
                     transition background-color defaultTransitionValue
-                  &::before
-                    absolute bottom -22px left 41px
-                  &::after
-                    absolute bottom -18px left 45px
-                &:nth-child(1) label >span
+                    >span
+                      display block
+                      width 100%
+                      font-size 10px
+                      line-height 1.1*@font-size
+                      text-transform uppercase
+                    &::before, &::after
+                      content ''
+                      display block
+                      transition background-color defaultTransitionValue
+                    &::before
+                      absolute bottom -22px left 41px
+                    &::after
+                      absolute bottom -18px left 45px
+                  >input:checked + label
+                    background lighten(brandColor, 80%)
+                &:nth-of-type(1) span.choice label >span
                   margin-top 32px
-                &:nth-child(2) label >span
+                &:nth-of-type(2) span.choice label >span, &:nth-of-type(3) span.choice label >span
                   margin-top 40px
-                &:nth-child(3) label >span
-                  margin-top 40px
-                >input:checked + label
-                  background lighten(brandColor, 80%)
             // Button for contact profile
             .input-contact
               margin-top 1em
