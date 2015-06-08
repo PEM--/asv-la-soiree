@@ -1,5 +1,6 @@
 class HomeController extends AppCtrl
   onRerun: ->
+    appLog.info 'URL', @, Router.current().url
     mainMenuModel.hide()
     @$mainCntEl.scrollTop 0
     @next()
