@@ -1,12 +1,29 @@
-class HomeController extends AppCtrl
+class @HomeController extends AppCtrl
   onRerun: ->
-    appLog.info 'URL', @, Router.current().url
-    mainMenuModel.hide()
-    @$mainCntEl.scrollTop 0
+    if @ready()
+      mainMenuModel.hide()
     @next()
+  onAfterAction: ->
+    if @ready()
+      Meteor.setTimeout ->
+        HomeController.scrollToFragment()
+      , 300
   onStop: ->
     Waypoint.destroyAll()
     ScrollerSingleton.get().stop()
+  # Public static method
+  @scrollToFragment = ->
+    $mainCntEl = $ Router.mainCntEl
+    # Check for URL fragment
+    URL = document.baseURI
+    if (URL.search '#') is -1
+      $mainCntEl.scrollTop 0
+    else
+      fragment = (URL.split '#')[1]
+      t = ($ "[href='##{fragment}']:not([data-bound=true])").velocity 'scroll',
+        container: $mainCntEl
+        duration: 1000
+        easing: 'ease-in-out'
 
 appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
@@ -60,11 +77,11 @@ if Meteor.isClient
     teaserOpacity: 1
     goInnerLink: (e) ->
       e.preventDefault()
-      ($ "a[href='#{e.target.hash}']").velocity 'scroll',
-        container: $ Router.mainCntEl
-        offset: (-> -30 - mainMenuModel.height())()
+      window.location = e.currentTarget.href
+      HomeController.scrollToFragment()
 
-  Template.home.onCreated -> appLog.info 'Creating home screen'
+  Template.home.onCreated ->
+    appLog.info 'Creating home screen'
   Template.home.onRendered ->
     appLog.info 'Rendering home screen'
     mainMenuModel.hide()
@@ -87,7 +104,7 @@ if Meteor.isClient
         # Recreates waypoints
         Waypoint.destroyAll()
       # Get all DOM elements of interest for the Waypoints
-      $mainCntEl = $ Router.mainCntEl
+      $mainCntEl = Iron.controller().$mainCntEl
       $headerEl = @$ 'header>section'
       winHeight = ($ window).height()
       $arrowEl = $headerEl.find '.arrow-down-centered'
