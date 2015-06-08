@@ -2,6 +2,12 @@ if Meteor.isClient
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     profile: ''
+    enabledAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
+    enabledAttendant: -> @attendantDisabled not (@profile() is 'attendant')
+    asvPromoDisabled: true
+    attendant: ''
+    attendantDisabled: true
+    attendantTypes: -> SubscribersSchema.getAllowedValuesForKey 'attendant'
     name: ''
     forname: ''
     email: ''
@@ -21,7 +27,7 @@ if Meteor.isClient
       try
         check obj, SubscribersSchema
       catch error
-        text = ((error.message).split 'Match error: ')[1]
+        text = (error.message.split 'Match error: ')[1]
         # Reformat error message if necessary
         appLog.info 'Subscription not filled: ',text
         @setErrorText text
@@ -103,15 +109,23 @@ if Meteor.isServer
     type: String
     label: 'Profil'
     allowedValues: ['asv_graduate', 'asv_serving', 'attendant']
-  asv_promo:
+  asvPromo:
     type: String
     label: 'N° de promo'
     max: 128
     optional: true
+    custom: ->
+      if @field('profile').value is 'asv_graduate'
+        if @value.length is 0
+          return 'required'
   attendant:
     type: String
     optional: true
     allowedValues: ['Employeur', 'Conjoint', 'Labos', 'Autre']
+    custom: ->
+      if @field('profile').value is 'attendant'
+        if @value.length is 0
+          return 'required'
   name:
     type: String
     label: 'Nom'

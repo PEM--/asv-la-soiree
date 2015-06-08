@@ -15,14 +15,15 @@ section.subscription
             span.choice
               input#profile-graduate(
                 type='radio', name='profile', value='asv_graduate',
-                data-bind='checked: profile, change: disabledSubmit'
+                data-bind='checked: profile, change: disabledSubmit, change: enabledAsvPromo'
               )
               label(for='profile-graduate'): span ASV diplômé<br>en 2014<br>ou 2015
             span.input
-              input#asv_promo(
-                type='text', name='asv_promo'
+              input#asvPromo(
+                type='text', name='asvPromo'
+                data-bind='disabled: asvPromoDisabled'
               )
-              label(for='asv_promo'): span N° de promo
+              label(for='asvPromo'): span N° de promo
           .choice-and-option
             span.choice
               input#profile-serving(
@@ -34,14 +35,12 @@ section.subscription
             span.choice
               input#profile-attendant(
                 type='radio', name='profile', value='attendant',
-                data-bind='checked: profile, change: disabledSubmit'
+                data-bind='checked: profile, change: disabledSubmit, change: enabledAttendant'
               )
               label(for='profile-attendant'): span Accompagnant
-            select
-              option Employeur
-              option Conjoint
-              option Labos
-              option Autre
+            select(
+              data-bind='disabled: attendantDisabled, options: attendantTypes, value: attendant'
+            )
         .input-contact
           span.input
             input#name(
