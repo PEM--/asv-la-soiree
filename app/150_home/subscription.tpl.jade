@@ -21,7 +21,7 @@ section.subscription
             span.input
               input#asvPromo(
                 type='text', name='asvPromo'
-                data-bind='disabled: asvPromoDisabled'
+                data-bind='disabled: asvPromoDisabled, value: asvPromo, class: {filled: asvPromo}, change: disabledSubmit'
               )
               label(for='asvPromo'): span N° de promo
           .choice-and-option
@@ -39,7 +39,7 @@ section.subscription
               )
               label(for='profile-attendant'): span Accompagnant
             select(
-              data-bind='disabled: attendantDisabled, options: attendantTypes, value: attendant'
+              data-bind='disabled: attendantDisabled, options: attendantTypes, value: attendant, change: disabledSubmit'
             )
         .input-contact
           span.input

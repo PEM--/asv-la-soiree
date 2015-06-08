@@ -2,11 +2,12 @@ if Meteor.isClient
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     profile: ''
-    enabledAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
-    enabledAttendant: -> @attendantDisabled not (@profile() is 'attendant')
+    asvPromo: ''
     asvPromoDisabled: true
+    enabledAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
     attendant: ''
     attendantDisabled: true
+    enabledAttendant: -> @attendantDisabled not (@profile() is 'attendant')
     attendantTypes: -> SubscribersSchema.getAllowedValuesForKey 'attendant'
     name: ''
     forname: ''
@@ -18,6 +19,8 @@ if Meteor.isClient
     disabledSubmit: ->
       obj =
         profile: @profile()
+        asvPromo: @asvPromo()
+        attendant: @attendant()
         name: @name()
         forname: @forname()
         email: @email()
@@ -49,6 +52,8 @@ if Meteor.isClient
     subscribe: (e) ->
       obj =
         profile: @profile()
+        asvPromo: @asvPromo()
+        attendant: @attendant()
         name: @name()
         forname: @forname()
         email: @email()
@@ -103,6 +108,10 @@ if Meteor.isServer
       }
     ]
 
+SimpleSchema.messages
+  asvPromoInvalid: 'N° de promo requis ou invalide'
+  attendantInvalid: 'Type d\'accompagnant invalide'
+
 # Set only the fields required in the UI
 @SubscribersSchema = new SimpleSchema
   profile:
@@ -115,17 +124,22 @@ if Meteor.isServer
     max: 128
     optional: true
     custom: ->
-      if @field('profile').value is 'asv_graduate'
-        if @value.length is 0
-          return 'required'
+      console.log 'N° de promo valide?'
+      if (@field('profile').value is 'asv_graduate') and (@value.length is 0)
+        console.log 'N° de promo invalide'
+        return 'asvPromoInvalid'
+      return null
   attendant:
     type: String
+    label: 'Accompagnant'
     optional: true
     allowedValues: ['Employeur', 'Conjoint', 'Labos', 'Autre']
     custom: ->
-      if @field('profile').value is 'attendant'
-        if @value.length is 0
-          return 'required'
+      console.log 'Allowed values', @definition.allowedValues, @value
+      if (@field('profile').value is 'attendant') and
+          (@value not in @definition.allowedValues)
+        return 'attendantInvalid'
+      return null
   name:
     type: String
     label: 'Nom'
@@ -157,6 +171,7 @@ if Meteor.isServer
           return 'required'
         unless @value.match /(0|\\+33|0033)[1-9][0-9]{8}/
           return 'minNumber'
+      return null
 
 # Add the fields for the DB and the admin UI
 SubscribersFullSchema = new SimpleSchema [
