@@ -1,0 +1,21 @@
+@import 'nib'
+@import 'jeet'
+@import '020_colorsTheme/*.import'
+
+.main-container .router-container main
+  section.contact
+    padding-bottom 0
+    .access-location-picture
+      display block
+      relative top left
+      size 100% 114px
+      background url('img/la-plateforme-small.jpg') blackBg no-repeat center
+      background-size cover
+      +above('medium')
+        height 286px
+        background url('img/la-plateforme-medium.jpg') blackBg no-repeat center
+        background-size cover
+      +above('desktop')
+        height 332px
+        background url('img/la-plateforme.jpg') blackBg no-repeat center
+        background-size cover
