@@ -5,7 +5,7 @@ if Meteor.isClient
     asvPromo: ''
     asvPromoDisabled: true
     enabledAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
-    attendant: ''
+    attendant: 'Choisissez :'
     attendantDisabled: true
     enabledAttendant: -> @attendantDisabled not (@profile() is 'attendant')
     attendantTypes: -> SubscribersSchema.getAllowedValuesForKey 'attendant'
@@ -124,20 +124,19 @@ SimpleSchema.messages
     max: 128
     optional: true
     custom: ->
-      console.log 'N° de promo valide?'
-      if (@field('profile').value is 'asv_graduate') and (@value.length is 0)
-        console.log 'N° de promo invalide'
+      if (@field('profile').value is 'asv_graduate') and (
+        (@value.length is 0) or (@value.length > 128))
         return 'asvPromoInvalid'
       return null
   attendant:
     type: String
     label: 'Accompagnant'
     optional: true
-    allowedValues: ['Employeur', 'Conjoint', 'Labos', 'Autre']
+    allowedValues: ['Choisissez :', 'Employeur', 'Conjoint', 'Labos', 'Autre']
     custom: ->
       console.log 'Allowed values', @definition.allowedValues, @value
       if (@field('profile').value is 'attendant') and
-          (@value not in @definition.allowedValues)
+          (@value not in @definition.allowedValues.slice 1)
         return 'attendantInvalid'
       return null
   name:
