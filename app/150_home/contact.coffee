@@ -34,31 +34,25 @@ if Meteor.isClient
       #   else text
       @errorText text
     sendMessage: (e) ->
-    #   obj =
-    #     profile: @profile()
-    #     asvPromo: @asvPromo()
-    #     attendant: @attendant()
-    #     name: @name()
-    #     forname: @forname()
-    #     email: @email()
-    #     contactType: @contactType()
-    #     phone: @phone()
-    #   appLog.info 'Subscription attempt', obj
-    #   unless Match.test obj, SubscribersSchema
-    #     appLog.warn 'Subscription failed, match is incorrect'
-    #     @setErrorText 'Veuillez vérifier vos informations'
-    #   else
-    #     Meteor.call 'askContact', obj, (error, result) =>
-    #       # Display an error message and do not store the presubscription cookie
-    #       if error and error.error isnt 'askContact.already'
-    #         appLog.warn 'Subscription failed', error.reason, error
-    #         return @setErrorText error.reason
-    #       if error?.error is 'askContact.already'
-    #         appLog.warn 'Subscription already done'
-    #         sAlert.warning error.reason
-    #       # Store the subscription so that it cannot be done twice
-    #       CookieSingleton.get().preSubStore obj
-
+      obj =
+        name: @name()
+        email: @email()
+        message: @message()
+      appLog.info 'Ask contact attempt', obj
+      unless Match.test obj, ContactsSchema
+        appLog.warn 'Contact failed, match is incorrect'
+        @setErrorText 'Veuillez vérifier vos informations'
+      else
+        Meteor.call 'askContact', obj, (error, result) =>
+          # Display an error message and do not store the contact cookie
+          if error and error.error isnt 'askContact.already'
+            appLog.warn 'askContact failed', error.reason, error
+            return @setErrorText error.reason
+          if error?.error is 'askContact.already'
+            appLog.warn 'Contact already done'
+            sAlert.warning error.reason
+          # Store the contact so that it cannot be done twice
+          CookieSingleton.get().askContact obj
 
 if Meteor.isServer
   Meteor.methods
@@ -95,10 +89,6 @@ if Meteor.isServer
       }
     ]
 
-# ContactsSchema.messages
-#   asvPromoInvalid: 'N° de promo requis ou invalide'
-#   attendantInvalid: 'Type d\'accompagnant invalide'
-
 # Set only the fields required in the UI
 @ContactsSchema = new SimpleSchema
   name:
@@ -115,7 +105,7 @@ if Meteor.isServer
     max: 256
   message:
     type: String
-    min: 10
+    min: 60
     max: 1024
 
 # Add the fields for the DB and the admin UI

@@ -49,8 +49,8 @@
             margin-bottom 4*@font-size
             line-height 1.2*@font-size
             ::selection
-              color brandColor
-              background lighten(brandColor, 90%)
+              color bgColor
+              background brandColor
             >input
               absolute top left
               width 100%
@@ -126,15 +126,17 @@
                 margin 0 0 1em 0
                 padding 1.5em 1em 0 0
                 border-bottom 2px solid transparent
-                transition border-color defaultTransitionValue
+                transition border-color defaultTransitionValue, opacity defaultTransitionValue
                 &::after
                   content '>>'
                   relative top left .8em
                 &:hover
                   border-bottom 2px solid bgColor
-                &.disabled
+                &:disabled
                   opacity .5
                   pointer-events none
+                  font-style italic
+                  font-weight lighter
         textarea
           margin-top 1em
           font-size 12px
@@ -144,16 +146,20 @@
           border-radius roundCorner
           background-color bgColor
           color brandColor
-          font-weight normal
+          font-weight bold
           &::-webkit-input-placeholder
-            font-weight normal
+            font-weight bold
             color @color
           &::-moz-placeholder
-            font-weight normal
+            font-weight bold
             color @color
           &:-ms-input-placeholder
-            font-weight normal
+            font-weight bold
             color @color
+          ::selection
+            color bgColor
+            background brandColor
+
   section.access-location-picture
     display block
     relative top left

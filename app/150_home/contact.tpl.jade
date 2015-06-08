@@ -12,13 +12,13 @@ section.contact
         span.input
           input#name(
             type='text', name='name'
-            data-bind='value: name, change: disabledSubmit'
+            data-bind='value: name, class: {filled: name}, change: disabledSubmit'
           )
           label(for='name'): span Nom
         span.input
           input#email(
             type='email', name='email'
-            data-bind='value: email, change: disabledSubmit'
+            data-bind='value: email, class: {filled: email}, change: disabledSubmit'
           )
           label(for='email'): span E-mail
         textarea(

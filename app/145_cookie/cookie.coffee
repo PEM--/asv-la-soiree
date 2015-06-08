@@ -28,7 +28,7 @@ if Meteor.isClient
         return false unless @isAccepted()
         cookie = Cookies.getJSON cookieName
         return cookie.preSubscriptionValue?
-      # User has done a valide presubscription
+      # User has done a valid presubscription
       preSubStore: (obj) ->
         appLog.info 'Store user\'s pre-subscription', obj
         # Ensure cookie is defined
@@ -37,6 +37,15 @@ if Meteor.isClient
         cookie = Cookies.getJSON cookieName
         cookie.preSubscriptionValue = obj
         cookie.preSubscriptionDate = new Date
+      # User has done a valid contact request
+      askContact: (obj) ->
+        appLog.info 'Store user\'s contact request', obj
+        # Ensure cookie is defined
+        @accept()
+        # Store its value and its contact date
+        cookie = Cookies.getJSON cookieName
+        cookie.contactRequest = obj
+        cookie.contactRequestDate = new Date
 
   Template.cookie.onCreated ->
     appLog.info 'Cookie template created'
