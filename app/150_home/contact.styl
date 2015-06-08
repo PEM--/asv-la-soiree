@@ -1,6 +1,7 @@
 @import 'nib'
 @import 'jeet'
 @import '020_colorsTheme/*.import'
+@import s(basePath, input)
 
 .main-container .router-container main
   section.contact
@@ -21,7 +22,72 @@
           font-family BaronNeue
           color bgColor
           text-align center
-
+      p.error
+        background bgColor
+        border-radius 1em
+        center(760px)
+      form
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        margin 0
+        padding 0
+        fieldset
+          flex-grow 1
+          flex-shrink 1
+          flex-basis 49%
+          margin 0
+          border none
+          padding 0 .5em
+          min-width 320px
+          cpInput(bgColor, brandColor, brandColor)
+          >span.input
+            width 100%
+            max-width 100%
+            font-size 12px
+            margin-top @font-size
+            margin-bottom 4*@font-size
+            line-height 1.2*@font-size
+            ::selection
+              color brandColor
+              background lighten(brandColor, 90%)
+            >input
+              absolute top left
+              width 100%
+              padding .8*@font-size
+              border-radius roundCorner
+              font-size @font-size
+              transition opacity defaultTransitionValue
+            >label
+              pointer-events none
+              padding 0 @font-size
+              transition opacity defaultTransitionValue
+              >span
+                pointer-events none
+                padding 0
+                absolute top (0.8*@font-size) left @font-size
+                width auto
+                color brandColor
+                transition transform defaultTransitionValue, color defaultTransitionValue
+            >input:focus, >input.filled
+              + label
+                span
+                  transform translate3d(-@font-size, (-2.3*@font-size), 0)
+                  color bgColor
+            >input:disabled
+              pointer-events none
+              opacity .5
+              + label
+                opacity .5
+        textarea
+          margin-top 1em
+          font-size 12px
+          width 100%
+          line-height 1.2*@font-size
+          border 1px solid bgColor
+          border-radius roundCorner
+          background-color bgColor
+          color brandColor
     .access-location-picture
       display block
       relative top left

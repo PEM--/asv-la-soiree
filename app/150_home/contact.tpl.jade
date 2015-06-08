@@ -13,14 +13,14 @@ section.contact
         span.input
           input#email(type='email', name='email')
           label(for='email'): span E-mail
-        textarea(name='request',  form='contact-form') Votre demande
-    .submit
-      button(type='submit') Envoyez      
-    div
-      div
-        h2 Accès
-        p Informations indisponibles.
-      div
-        h2 Ouverture des inscriptions le 1er juillet 2015
-      .access-location-picture
+        textarea(name='request',  form='contact-form', placeholder='Votre demande', rows='5')
+      fieldset
+        div
+          h2 Accès
+          p Informations indisponibles.
+        div
+          h2 Ouverture des inscriptions le 1er juillet 2015
+        .submit
+          button(type='submit') Envoyez
+    .access-location-picture
         
