@@ -36,7 +36,7 @@
           background brandColor
           absolute bottom 4px left 4px
     // Base class for input text/email/phone
-    fieldset, .input-contact
+    fieldset, .input-contact, .choice-and-option
       cpInput(brandColor, bgColor, brandColor)
       >span.input
         width 100%
@@ -136,7 +136,7 @@
                 flex-shrink 0
                 display block
                 relative top left
-                size 100px 145px
+                size 100px 170px
                 span.choice
                   size 100px 125px
                   text-align center
@@ -166,6 +166,8 @@
                       absolute bottom -18px left 45px
                   >input:checked + label
                     background lighten(brandColor, 80%)
+                select
+                  margin-top 20px
                 &:nth-of-type(1) span.choice label >span
                   margin-top 32px
                 &:nth-of-type(2) span.choice label >span, &:nth-of-type(3) span.choice label >span

@@ -74,7 +74,7 @@ if Meteor.isServer
       catch error
         appLog.warn error, typeof error
         if ((JSON.stringify error).search 'duplicate') isnt -1
-          throw new Meteor.Error 'presubscribe.already', 'Vous êtes déjà inscrit'
+          throw new Meteor.Error 'presubscribe.already','Vous êtes déjà inscrit'
         else
           throw new Meteor.Error 'presubscribe', 'Internal server error'
 
@@ -103,6 +103,15 @@ if Meteor.isServer
     type: String
     label: 'Profil'
     allowedValues: ['asv_graduate', 'asv_serving', 'attendant']
+  asv_promo:
+    type: String
+    label: 'N° de promo'
+    max: 128
+    optional: true
+  attendant:
+    type: String
+    optional: true
+    allowedValues: ['Employeur', 'Conjoint', 'Labos', 'Autre']
   name:
     type: String
     label: 'Nom'

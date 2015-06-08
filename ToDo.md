@@ -4,8 +4,8 @@
 - [ ] Text modification on the drive.
 - [X] Event photo.
 - [X] ASV EN POSTE -> ASV
-- [ ] ASV diplomé -> Specific field for promo number (Which format?)
-- [ ] Accompagnant -> Specific field with a select/option : Employeur / Conjoint / Labos / Autre
+- [X] ASV diplomé -> Specific field for promo number (Which format?)
+- [X] Accompagnant -> Specific field with a select/option : Employeur / Conjoint / Labos / Autre
 - [ ] Footer changes : changement de logos ==> comité d'organisation (APFORM, AFVAC (il y aura ASSAV également mais  ils n'ont pas encore de logo) // Partenaires (Logos labos, GIPSA, SNVEL = dans cet ordre)
 
 ## Original list

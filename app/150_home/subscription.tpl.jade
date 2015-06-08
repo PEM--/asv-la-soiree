@@ -18,6 +18,11 @@ section.subscription
                 data-bind='checked: profile, change: disabledSubmit'
               )
               label(for='profile-graduate'): span ASV diplômé<br>en 2014<br>ou 2015
+            span.input
+              input#asv_promo(
+                type='text', name='asv_promo'
+              )
+              label(for='asv_promo'): span N° de promo
           .choice-and-option
             span.choice
               input#profile-serving(
