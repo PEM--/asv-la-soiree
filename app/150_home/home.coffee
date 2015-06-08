@@ -17,18 +17,21 @@ class @HomeController extends AppCtrl
     URL = document.baseURI
     unless (URL.search '#') is -1
       fragment = (URL.split '#')[1]
-      HomeController.scrollTo "[href='##{fragment}']:not([data-bound=true])"
+      HomeController.scrollTo "[href='##{fragment}']:not([data-bound=true])",
+        mainMenuModel.height()
   @scrollToTop = ->
-    HomeController.scrollTo 'header'
+    HomeController.scrollTo 'header', 0
   @$mainCntEl = null
-  @scrollTo = (el) ->
+  @scrollTo = (el, offset) ->
     HomeController.$mainCntEl = $ Router.mainCntEl \
       if HomeController.$mainCntEl is null
     $el = HomeController.$mainCntEl.find el
     $el.velocity 'scroll',
       container: HomeController.$mainCntEl
-      duration: 1000
-      easing: 'ease-in-out'
+      duration: 600
+      easing: 'ease'
+      offset: -20 - offset
+      mobileHA: false
 
 appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
