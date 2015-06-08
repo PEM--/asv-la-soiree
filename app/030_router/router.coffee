@@ -53,6 +53,21 @@ if Meteor.isClient
     Meteor.subscribe 'basicpages', =>
       Router.declareRoutes()
       @start()
+  Router.oldGo = Router.go
+  Router.go = ->
+    console.log 'New go', arguments
+    # Classic Router.go function
+    Router.oldGo arguments[0]
+    # Handle fragment URL if provided
+    unless (arguments[0].search '#') is -1
+      Meteor.setTimeout ->
+        HomeController.scrollToFragment()
+      , 300
+    # Handle scroll to top
+    if arguments[0].endsWith '/'
+      Meteor.setTimeout ->
+        HomeController.scrollToTop()
+      , 300
 
 # Start the router
 Meteor.startup ->

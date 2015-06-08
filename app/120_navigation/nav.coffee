@@ -7,7 +7,6 @@ if Meteor.isClient
     show: ->  @opacity 1
     hide: -> @opacity 0
     height: ->
-      # TODO Fix this hideous hack
       if @templateInstance is undefined then 52 \
       else (@templateInstance.$ 'nav').height()
     goHome: ->

@@ -11,19 +11,24 @@ class @HomeController extends AppCtrl
   onStop: ->
     Waypoint.destroyAll()
     ScrollerSingleton.get().stop()
-  # Public static method
+  # Public static methods and members
   @scrollToFragment = ->
-    $mainCntEl = $ Router.mainCntEl
     # Check for URL fragment
     URL = document.baseURI
-    if (URL.search '#') is -1
-      $mainCntEl.scrollTop 0
-    else
+    unless (URL.search '#') is -1
       fragment = (URL.split '#')[1]
-      t = ($ "[href='##{fragment}']:not([data-bound=true])").velocity 'scroll',
-        container: $mainCntEl
-        duration: 1000
-        easing: 'ease-in-out'
+      HomeController.scrollTo "[href='##{fragment}']:not([data-bound=true])"
+  @scrollToTop = ->
+    HomeController.scrollTo 'header'
+  @$mainCntEl = null
+  @scrollTo = (el) ->
+    HomeController.$mainCntEl = $ Router.mainCntEl \
+      if HomeController.$mainCntEl is null
+    $el = HomeController.$mainCntEl.find el
+    $el.velocity 'scroll',
+      container: HomeController.$mainCntEl
+      duration: 1000
+      easing: 'ease-in-out'
 
 appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
