@@ -2,7 +2,7 @@
 - [X] Remove video and set a black background.
 - [ ] Countdown (but where?).
 - [ ] Text modification on the drive.
-- [ ] Event photo + new text instead of access informations.
+- [X] Event photo.
 - [X] ASV EN POSTE -> ASV
 - [ ] ASV diplomé -> Specific field for promo number (Which format?)
 - [ ] Accompagnant -> Specific field with a select/option : Employeur / Conjoint / Labos / Autre
