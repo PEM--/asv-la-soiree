@@ -154,17 +154,18 @@
           &:-ms-input-placeholder
             font-weight normal
             color @color
-    .access-location-picture
-      display block
-      relative top left
-      size 100% 114px
-      background url('img/la-plateforme-small.jpg') blackBg no-repeat center
+  session.access-location-picture
+    background dblackBg
+    display block
+    relative top left
+    size 100% 114px
+    background url('img/la-plateforme-small.jpg') blackBg no-repeat center
+    background-size cover
+    +above('medium')
+      height 286px
+      background url('img/la-plateforme-medium.jpg') blackBg no-repeat center
       background-size cover
-      +above('medium')
-        height 286px
-        background url('img/la-plateforme-medium.jpg') blackBg no-repeat center
-        background-size cover
-      +above('desktop')
-        height 332px
-        background url('img/la-plateforme.jpg') blackBg no-repeat center
-        background-size cover
+    +above('desktop')
+      height 332px
+      background url('img/la-plateforme.jpg') blackBg no-repeat center
+      background-size cover

@@ -23,7 +23,7 @@ section.contact
           label(for='email'): span E-mail
         textarea(
           name='message',  form='contact-form', placeholder='Votre demande', rows='10'
-          data-bind='value: message, disabled: disabledSubmit'
+          data-bind='value: message, change: disabledSubmit'
         )
       fieldset
         div
@@ -34,6 +34,9 @@ section.contact
         div
           h2 Ouverture des inscriptions le 1er juillet 2015
         .submit
-          button(type='submit') Envoyez
-    .access-location-picture
+          button(
+            type='button',
+            data-bind='disabled: disabledSubmit, cilck: sendMessage'
+          ) Envoyez
+session.access-location-picture
         

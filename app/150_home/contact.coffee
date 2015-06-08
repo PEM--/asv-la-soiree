@@ -33,7 +33,7 @@ if Meteor.isClient
       #     'Nous n\'étions pas prêts. Pourriez-vous ré-essayer plus tard ?'
       #   else text
       @errorText text
-    # subscribe: (e) ->
+    sendMessage: (e) ->
     #   obj =
     #     profile: @profile()
     #     asvPromo: @asvPromo()
