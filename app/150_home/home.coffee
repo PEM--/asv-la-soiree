@@ -147,7 +147,7 @@ if Meteor.isClient
             else
               ScrollerSingleton.get().start()
               #video.play()
-        context: $mainCntEl[0]
+          context: $mainCntEl[0]
       # Waypoint subscription content that triggers entrance animation
       new Waypoint
         element: $subEl[0]

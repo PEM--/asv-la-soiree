@@ -5,5 +5,6 @@ Meteor.startup ->
     log.disableAll()
   else
     log.setLevel 'info'
+    #log.setLevel 'error'
   @appLog = log
   log.log = log.info
