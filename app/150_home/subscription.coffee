@@ -74,7 +74,7 @@ if Meteor.isClient
           if error and error.error isnt 'presubscribe.already'
             appLog.warn 'Subscription failed', error.reason, error
             return @setErrorText error.reason
-          if error?.error is 'presubscribe.already'
+          if error and error.error is 'presubscribe.already'
             appLog.warn 'Subscription already done'
             sAlert.warning error.reason
           # Store the subscription so that it cannot be done twice

@@ -1,12 +1,13 @@
 if Meteor.isClient
+  Template.contact.onRendered ->
+    unless CookieSingleton.get().isAccepted()
+      @viewmodel.isContactPrevented false
+    else
+      @viewmodel.isContactPrevented CookieSingleton.get().isContacted()
+
   Template.contact.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
-    isContactPrevented: ->
-      Tracker.autorun ->
-        unless CookieSingleton.get().isAccepted()
-          return false
-        CookieSingleton.get().isContacted()
-      return false
+    isContactPrevented: false
     isErrorDisplayed: ->
       if (@name().length is 0) and (@email().length is 0) and
           (@message().length is 0)
@@ -59,13 +60,13 @@ if Meteor.isClient
           if error and error.error isnt 'askContact.already'
             appLog.warn 'askContact failed', error.reason, error
             return @setErrorText error.reason
-          if error?.error is 'askContact.already'
+          if error and error.error is 'askContact.already'
             appLog.warn 'Contact already done'
             sAlert.warning error.reason
           # Store the contact so that it cannot be done twice
           CookieSingleton.get().askContact obj
           @reset()
-
+          @isContactPrevented true
 
 if Meteor.isServer
   Meteor.methods
