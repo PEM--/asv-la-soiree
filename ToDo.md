@@ -1,3 +1,11 @@
+## New list
+- [ ] ASV diplômé 2014-2015 ==> ASV Diplômé GIPSA 2014 - 2015
+- [ ] ASV ==> ASV / Auxiliaire vétérinaire
+- [ ] Accompagnants ==> Autres / Et mettre dans les filtres (Vétérinaire, Accompagnant, Labos, Autres)
+- [ ] Préciser "nom de jeune fille"
+- [ ] Better emphasis on 'tooltips' when filling forms
+- [ ] Entréé => Billeterie
+
 ## Additional list
 - [X] Remove video and set a black background.
 - [ ] Countdown (but where?).
