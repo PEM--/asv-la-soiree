@@ -107,6 +107,7 @@ if Meteor.isServer
     type: String
     min: 60
     max: 1024
+    autoform: type: 'textarea'
 
 # Add the fields for the DB and the admin UI
 ContactsFullSchema = new SimpleSchema [
