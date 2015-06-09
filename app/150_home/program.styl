@@ -1,0 +1,65 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+
+.main-container
+  .router-container
+    main[data-role='home']
+      section:first-child
+        article:nth-child(2)
+          >div
+            margin-right 0
+            margin-left .5em
+          >div:nth-child(1)
+            padding 2em
+            border 3px solid brandColor
+            border-radius roundCorner
+            background bgColor
+            h1, h2, p, time,
+              color brandColor
+            h1
+              text-align center
+            ul
+              reset-list()
+              margin-top 1em
+              li
+                margin-bottom 2em
+              h2, time
+                display inline
+                font-size 1.2em
+              time
+                font-weight bold
+                display inline-block
+                width 2em
+                &::after
+                  margin-left .5em
+                  content '//'
+                  width 1em
+              h2
+                font-weight normal
+                margin-left 2.5em
+              p
+                margin 0 0 0 5.7em
+          // Opening date
+          >div:nth-child(2)
+            margin-top 1em
+            background brandColor
+            padding .3em 0
+            h2
+              margin 0
+              color bgColor
+              text-transform uppercase
+              font-size 1.1em
+              text-align center
+          // Arrow
+          >div:nth-child(3)
+            margin-top 1em
+            display inline-block
+            size 100% 30%
+            .arrow-down-centered
+              margin auto auto
+              width 12.5%
+              max-width 40px
+              .svg-logo-container
+                arrowDownLogo(100%)

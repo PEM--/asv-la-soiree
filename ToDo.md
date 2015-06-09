@@ -1,7 +1,7 @@
 ## Additional list
 - [X] Remove video and set a black background.
 - [ ] Countdown (but where?).
-- [ ] Text modification on the drive.
+- [X] Text modification on the drive.
 - [X] Event photo.
 - [X] ASV EN POSTE -> ASV
 - [X] ASV diplomé -> Specific field for promo number (Which format?)
@@ -82,11 +82,10 @@
 - [X] Monitoring: Kadira
 - [X] Security : browser policy
 - [X] Security : Anti DDOS like
-- [ ] Custom route controller : prevents data from being fetched before
+- [X] Custom route controller : prevents data from being fetched before
   router is started.
-- [ ] Initial data loading (fast rendering :
+- [X] Initial data loading (fast rendering :
   fetch data within initial HTML container : one payload)
-- [ ] Use router state for designing templates.
 - [X] Custom initial payload with HTML minification and JS minification.
 - [X] Automatic robot.txt
 - [X] Automatic sitemap in the CMS
@@ -101,6 +100,7 @@
   - https://github.com/adamschwartz/log
   - https://github.com/artemyarulin/loglevel-serverSend
 - [ ] Bonus: Add usefull links in the admin: Google analytics, Kadira
+- [ ] Bonus: Use router state for designing templates.
 - [ ] Bonus: Fix GridFS issue on Orion's module.
 - [ ] Bonus: Image upload
 - [ ] Bonus: PhantomJS integration.
