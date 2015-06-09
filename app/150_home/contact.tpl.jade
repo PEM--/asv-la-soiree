@@ -5,10 +5,12 @@ section.contact
     .cookieMask(data-bind='unless: isCookieAccepted')
       p Contact impossible, veuillez accepter les cookies.
     p.error(
-      data-bind='text: errorText'
+      data-bind='text: errorText, if: isErrorDisplayed'
     )
     form#contact-form
       fieldset
+        .alreadyContacted(data-bind='if: isContactPrevented')
+          p Merci pour votre message.<br>Nous revenons vers vous au plus tôt.
         span.input
           input#name(
             type='text', name='name'

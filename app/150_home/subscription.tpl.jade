@@ -6,7 +6,9 @@ section.subscription
   article.form
     .cookieMask(data-bind='unless: isCookieAccepted')
       p Inscription impossible, veuillez accepter les cookies.
-    p.error: span.shake(data-bind='text: errorText')
+    p.error(
+      data-bind='text: errorText, if: isErrorDisplayed'
+    )
     form
       fieldset
         legend Votre profil

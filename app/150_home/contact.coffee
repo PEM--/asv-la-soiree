@@ -1,6 +1,17 @@
 if Meteor.isClient
   Template.contact.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
+    isContactPrevented: ->
+      Tracker.autorun ->
+        unless CookieSingleton.get().isAccepted()
+          return false
+        CookieSingleton.get().isContacted()
+      return false
+    isErrorDisplayed: ->
+      if (@name().length is 0) and (@email().length is 0) and
+          (@message().length is 0)
+        return false
+      return true
     errorText: ''
     name: ''
     email: ''
@@ -53,6 +64,8 @@ if Meteor.isClient
             sAlert.warning error.reason
           # Store the contact so that it cannot be done twice
           CookieSingleton.get().askContact obj
+          @reset()
+
 
 if Meteor.isServer
   Meteor.methods

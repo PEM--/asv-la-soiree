@@ -8,7 +8,7 @@
     padding-bottom 0
     article.form
       relative top left
-      .cookieMask
+      .cookieMask, .alreadyContacted
         absolute top left
         size 100%
         background rgba(blackBg, .8)
@@ -25,17 +25,18 @@
       p.error
         background bgColor
         border-radius 1em
-        center(760px)
+        margin -2em 0 0 0
       form
         display flex
         flex-wrap wrap
         justify-content space-between
-        margin 0
+        margin 3em 0 0 0
         padding 0
         fieldset
           flex-grow 1
           flex-shrink 1
           flex-basis 49%
+          relative top left
           margin 0
           border none
           padding 0 .5em

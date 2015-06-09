@@ -46,6 +46,16 @@ if Meteor.isClient
         cookie = Cookies.getJSON cookieName
         cookie.contactRequest = obj
         cookie.contactRequestDate = new Date
+      # User has already done a contact request
+      isContacted: (obj) ->
+        cookie = Cookies.getJSON cookieName
+        if cookie?.contactRequestDate?
+          appLog.info 'Contact already done'
+          return true
+        appLog.info 'Contact not done'
+        return false
+
+
 
   Template.cookie.onCreated ->
     appLog.info 'Cookie template created'
