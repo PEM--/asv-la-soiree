@@ -9,6 +9,11 @@ section.subscription
     p.error(
       data-bind='text: errorText, if: isErrorDisplayed'
     )
+    .alreadyPresubscribed(data-bind='if: isPresubscribed')
+      div
+        p Merci pour votre pré-inscription.
+        p Vous serez averti par mail ou par SMS 1 jour avant l'ouverture des entrées.
+        p À très bientôt
     form
       fieldset
         legend Votre profil

@@ -1,6 +1,7 @@
 if Meteor.isClient
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
+    isPresubscribed: true
     isErrorDisplayed: ->
       unless (@profile().length isnt 0) or (@name().length isnt 0) or
           (@forname().length isnt 0) or (@email().length isnt 0)

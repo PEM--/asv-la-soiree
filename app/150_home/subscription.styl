@@ -95,6 +95,7 @@
           font-weight bold
       article.form
         relative top left
+        // Cookie mask
         .cookieMask
           absolute top left
           size 100%
@@ -110,6 +111,32 @@
             font-family BaronNeue
             color brandColor
             text-align center
+        // Subscription mask
+        .alreadyPresubscribed
+          absolute top left
+          size 100%
+          background rgba(bgColor, .8)
+          z-index 2500
+          animation fadeIn defaultTransitionValue
+          pointer-events none
+          div
+            absolute top 50% left 50%
+            center(600px)
+            width 100%
+            transform translate3d(-50%, -50%, 0)
+            padding 2em
+            border 3px solid brandColor
+            border-radius roundCorner
+            background darkgray
+            p
+              text-align center
+              font-weight bold
+              font-size 1.6em
+              font-family $helvetica
+              text-transform uppercase
+              color bgColor
+            p:last-of-type
+              margin-bottom 0
         p.error
           margin -2em 0 0 0
         form
