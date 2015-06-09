@@ -1,9 +1,6 @@
 if Meteor.isClient
   Template.contact.onRendered ->
-    unless CookieSingleton.get().isAccepted()
-      @viewmodel.isContactPrevented false
-    else
-      @viewmodel.isContactPrevented CookieSingleton.get().isContacted()
+    @viewmodel.isContactPrevented CookieSingleton.get().isContacted()
 
   Template.contact.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
@@ -65,6 +62,7 @@ if Meteor.isClient
             sAlert.warning error.reason
           # Store the contact so that it cannot be done twice
           CookieSingleton.get().askContact obj
+          # Reset the form and mask contact
           @reset()
           @isContactPrevented true
 

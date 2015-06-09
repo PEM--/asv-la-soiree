@@ -41,7 +41,7 @@
 - [X] Menu for smartphone
 - [X] Main template
 - [X] Pre-subscription
-- [ ] Popup on pre-subscription
+- [X] Popup on pre-subscription
 - [X] Contact
 - [X] Popup on contact
 - [X] Inner links from the CMS in the menu and the associated routing rules

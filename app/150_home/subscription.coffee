@@ -1,4 +1,7 @@
 if Meteor.isClient
+  Template.subscription.onRendered ->
+    @viewmodel.isPresubscribed CookieSingleton.get().isPreSubed()
+
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     isPresubscribed: true
@@ -80,6 +83,9 @@ if Meteor.isClient
             sAlert.warning error.reason
           # Store the subscription so that it cannot be done twice
           CookieSingleton.get().preSubStore obj
+          # Reset the form and mask pre-subscription
+          @reset()
+          @isPresubscribed true
 
 if Meteor.isServer
   Meteor.methods

@@ -38,6 +38,11 @@ if Meteor.isClient
         cookie.preSubscriptionValue = obj
         cookie.preSubscriptionDate = new Date
         Cookies.set cookieName, cookie, expiration
+      # User has already done a contact request
+      isContacted: ->
+        return false unless @isAccepted()
+        cookie = Cookies.getJSON cookieName
+        return cookie.contactRequestDate?
       # User has done a valid contact request
       askContact: (obj) ->
         appLog.info 'Store user\'s contact request', obj
@@ -48,14 +53,6 @@ if Meteor.isClient
         cookie.contactRequest = obj
         cookie.contactRequestDate = new Date
         Cookies.set cookieName, cookie, expiration
-      # User has already done a contact request
-      isContacted: (obj) ->
-        cookie = Cookies.getJSON cookieName
-        if cookie?.contactRequestDate?
-          appLog.info 'Contact already done'
-          return true
-        appLog.info 'Contact not done'
-        return false
 
   Template.cookie.onCreated ->
     appLog.info 'Cookie template created'
