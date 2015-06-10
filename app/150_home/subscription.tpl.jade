@@ -12,7 +12,7 @@ section.subscription
     .alreadyPresubscribed(data-bind='if: isPresubscribed')
       div
         p Merci pour votre pré-inscription.
-        p Vous serez averti par mail ou par SMS 1 jour avant l'ouverture des entrées.
+        p Vous serez averti par mail ou par SMS 1 jour avant l'ouverture de la billeterie.
         p À très bientôt
     form
       fieldset
@@ -24,7 +24,7 @@ section.subscription
                 type='radio', name='profile', value='asv_graduate',
                 data-bind='checked: profile, change: disabledSubmit, change: enabledAsvPromo'
               )
-              label(for='profile-graduate'): span ASV diplômé<br>en 2014<br>ou 2015
+              label(for='profile-graduate'): span ASV Diplômé<br>GIPSA<br>en 2014<br>ou 2015
             span.input
               input#asvPromo(
                 type='text', name='asvPromo'
@@ -37,7 +37,7 @@ section.subscription
                 type='radio', name='profile', value='asv_serving',
                 data-bind='checked: profile, change: disabledSubmit'
               )
-              label(for='profile-serving'): span ASV
+              label(for='profile-serving'): span ASV<br>Auxiliare<br>Vétérinaire
           .choice-and-option
             span.choice
               input#profile-attendant(

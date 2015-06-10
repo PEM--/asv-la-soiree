@@ -1,11 +1,11 @@
 ## New list
-- [ ] Promo number: "VAE-2015" ou "ASV-300" with information
-- [ ] ASV diplômé 2014-2015 ==> ASV Diplômé GIPSA 2014 - 2015
-- [ ] ASV ==> ASV / Auxiliaire vétérinaire
+- [X] Promo number: "VAE-2015" ou "ASV-300" with information
+- [X] ASV diplômé 2014-2015 ==> ASV Diplômé GIPSA 2014 - 2015
+- [X] ASV ==> ASV / Auxiliaire vétérinaire
 - [ ] Accompagnants ==> Autres / Et mettre dans les filtres (Vétérinaire, Accompagnant, Labos, Autres)
 - [ ] Préciser "nom de jeune fille"
-- [ ] Better emphasis on 'tooltips' when filling forms
-- [ ] Entrée => Billeterie
+- [X] Better emphasis on 'tooltips' when filling forms
+- [X] Entrée => Billeterie
 
 ## Additional list
 - [X] Remove video and set a black background.
