@@ -8,6 +8,9 @@
     "SpinKit": "1.0.1",
     "flipclock": "0.7.7"
   },
+  "ignoredDependencies": [
+    "jquery"
+  ],
   "overrides": {
     "waypoints": { "arch": [ "client" ] },
     "loglevel": { "arch": [ "client" ] },
