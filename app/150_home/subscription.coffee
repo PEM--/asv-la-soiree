@@ -121,7 +121,7 @@ if Meteor.isServer
     ]
 
 SimpleSchema.messages
-  asvPromoInvalid: 'N° de promo requis ou invalide'
+  asvPromoInvalid: 'N° de promo requis ou invalide (ex. "VAE-2015" ou "ASV-300")'
   attendantInvalid: 'Type d\'accompagnant invalide'
 
 # Set only the fields required in the UI
@@ -137,7 +137,7 @@ SimpleSchema.messages
     optional: true
     custom: ->
       if (@field('profile').value is 'asv_graduate') and (
-        (@value.length is 0) or (@value.length > 128))
+        (@value.length is 0) or (@value.length < 7) or (@value.length > 8))
         return 'asvPromoInvalid'
       return null
   attendant:
@@ -146,7 +146,6 @@ SimpleSchema.messages
     optional: true
     allowedValues: ['Choisissez :', 'Employeur', 'Conjoint', 'Labos', 'Autre']
     custom: ->
-      console.log 'Allowed values', @definition.allowedValues, @value
       if (@field('profile').value is 'attendant') and
           (@value not in @definition.allowedValues.slice 1)
         return 'attendantInvalid'
