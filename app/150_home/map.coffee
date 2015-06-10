@@ -9,9 +9,14 @@ if Meteor.isClient
       marker = new google.maps.Marker
         position: map.options.center
         map: map.instance
+        # Animate the marker with a bounce effect
         animation: google.maps.Animation.BOUNCE
         title: 'La Plateforme'
-      # Animate the marker with a bounce effect
+        icon:
+          url: 'icons/pin.svg'
+          size: new google.maps.Size 40, 55
+          origin: new google.maps.Point 0, 0
+          anchor: new google.maps.Point 20, 55
 
   Template.map.helpers
     mapOptions: ->
