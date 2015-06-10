@@ -109,6 +109,8 @@
 - [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs
   - https://github.com/adamschwartz/log
   - https://github.com/artemyarulin/loglevel-serverSend
+- [ ] Bonus: Static maps:
+  - https://developers.google.com/maps/documentation/staticmaps/
 - [ ] Bonus: Add usefull links in the admin: Google analytics, Kadira
 - [ ] Bonus: Use router state for designing templates.
 - [ ] Bonus: Fix GridFS issue on Orion's module.

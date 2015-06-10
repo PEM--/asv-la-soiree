@@ -4,12 +4,20 @@ if Meteor.isClient
 
   Template.map.onCreated ->
     GoogleMaps.ready 'map', (map) ->
-      console.log 'Maps ready'
+      # Add a marker at the middle of the map which is already
+      #  centered on the event.
+      marker = new google.maps.Marker
+        position: map.options.center
+        map: map.instance
+        animation: google.maps.Animation.BOUNCE
+        title: 'La Plateforme'
+      # Animate the marker with a bounce effect
 
   Template.map.helpers
     mapOptions: ->
       if GoogleMaps.loaded()
-        center: new google.maps.LatLng 45.76404, 4.83566
+        # Longitude and lattitude are extracted from 'More infos' on Google map
+        center: new google.maps.LatLng 45.761959, 4.840410
         zoom: 14
         panControl: false
         zoomControl: false
