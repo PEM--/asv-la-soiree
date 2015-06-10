@@ -9,7 +9,7 @@
 
 ## Additional list
 - [X] Remove video and set a black background.
-- [ ] Countdown (but where?).
+- [X] Countdown (but where?).
 - [X] Text modification on the drive.
 - [X] Event photo.
 - [X] ASV EN POSTE -> ASV

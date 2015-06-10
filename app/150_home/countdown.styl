@@ -1,0 +1,58 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+@import s(basePath, animate)
+
+.main-container .router-container header section .center-all .teaser
+  .flip-container
+    width 320px
+    margin 0 auto
+    // Create a new context for overlapping video
+    z-index 1
+    transform translateZ(0)
+    .flip-clock-divider
+      height 50px
+      .flip-clock-label
+        font-family $helvetica
+        font-weight 100
+        text-transform lowercase
+        top inherit
+        right inherit
+        absolute bottom left
+        color white
+      &.days
+        .flip-clock-label
+          left 27px
+      &.hours
+        .flip-clock-label
+          left 29px
+      &.minutes
+        .flip-clock-label
+          left 28px
+      &.seconds
+        .flip-clock-label
+          left 20px
+    // Double dots between values
+    .flip-clock-dot
+      background white
+      size 4px
+      left 7px
+      &.top
+        top 15px
+      &.bottom
+        bottom 23px
+    // General behavior
+    ul
+      margin 1px
+      size 15px 35px
+      font-size 20px
+      font-weight 300
+      li
+        line-height 33px
+        // Displayed digits
+        a div div.inn
+          border 1px solid rgba(white, 10%)
+          color white
+          background linear-gradient(top, lighten(black, 10%) 0%, black 100%)
+          font-size 20px
