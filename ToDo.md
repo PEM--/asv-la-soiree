@@ -2,8 +2,8 @@
 - [X] Promo number: "VAE-2015" ou "ASV-300" with information
 - [X] ASV diplômé 2014-2015 ==> ASV Diplômé GIPSA 2014 - 2015
 - [X] ASV ==> ASV / Auxiliaire vétérinaire
-- [ ] Accompagnants ==> Autres / Et mettre dans les filtres (Vétérinaire, Accompagnant, Labos, Autres)
-- [ ] Préciser "nom de jeune fille"
+- [X] Accompagnants ==> Autres / Et mettre dans les filtres (Vétérinaire, Accompagnant, Labos, Autres)
+- [X] Préciser "nom de jeune fille"
 - [X] Better emphasis on 'tooltips' when filling forms
 - [X] Entrée => Billeterie
 

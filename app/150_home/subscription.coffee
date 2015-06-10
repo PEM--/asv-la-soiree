@@ -142,9 +142,15 @@ SimpleSchema.messages
       return null
   attendant:
     type: String
-    label: 'Accompagnant'
+    label: 'Autres'
     optional: true
-    allowedValues: ['Choisissez :', 'Employeur', 'Conjoint', 'Labos', 'Autre']
+    allowedValues: [
+      'Choisissez :'
+      'Vétérinaire'
+      'Accompagnant'
+      'Labos'
+      'Autres'
+    ]
     custom: ->
       if (@field('profile').value is 'attendant') and
           (@value not in @definition.allowedValues.slice 1)
