@@ -37,7 +37,7 @@ appLog.info 'Adding home page'
 Router.route '/', controller: HomeController, action: -> @render 'home'
 
 if Meteor.isClient
-  class ScrollerSingleton
+  class @ScrollerSingleton
     instance = null
     logoEl = '.logo-resizer>.svg-logo-container'
     @get: ->
@@ -51,7 +51,8 @@ if Meteor.isClient
         @posStartAnimLogo = 0
         @$logo = @$header.find logoEl
         @sizeAndPos()
-        @$mainCntEl.on 'scroll', => @event()
+        # Scroll events are namespaced for avoiding collision with Waypoints
+        @$mainCntEl.on 'scroll.scroller', => @event()
       sizeAndPos: ->
         @posEndAnimLogo = @$header.height()
         @logoTop = @$logo.offset().top
@@ -67,7 +68,7 @@ if Meteor.isClient
         @sizeAndPos()
         @event()
       stop: ->
-        @$mainCntEl?.off 'scroll'
+        @$mainCntEl?.off 'scroll.scroller'
 
   Template.home.onCreated ->
     @rxMainHeight = new ReactiveVar
@@ -122,83 +123,75 @@ if Meteor.isClient
       $contactEl = @$ 'section:nth-child(3)>article'
       $mapEl = @$ 'section.map>.map-container'
       # Waypoint on the arrow and trigger menu visibility
-      new Waypoint
-        element: $arrowEl[0]
-        handler: (direction) ->
-          if direction is 'down'
-            homeModel.arrowOpacity 0
-            homeModel.teaserOpacity 0
-            mainMenuModel.show()
-            $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
-            $progEl.velocity('stop').velocity 'transition.slideRightIn'
-          else
-            homeModel.arrowOpacity 1
-            homeModel.teaserOpacity 1
-            mainMenuModel.hide()
-            $prezEl.velocity('stop').velocity 'reverse'
-            $progEl.velocity('stop').velocity 'reverse'
+      $arrowEl.waypoint (direction) ->
+        if direction is 'down'
+          homeModel.arrowOpacity 0
+          homeModel.teaserOpacity 0
+          mainMenuModel.show()
+          $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
+          $progEl.velocity('stop').velocity 'transition.slideRightIn'
+        else
+          homeModel.arrowOpacity 1
+          homeModel.teaserOpacity 1
+          mainMenuModel.hide()
+          $prezEl.velocity('stop').velocity 'reverse'
+          $progEl.velocity('stop').velocity 'reverse'
+      ,
         offset: $headerEl.height()*.7
-        context: $mainCntEl[0]
+        context: Router.mainCntEl
       # Waypoint for stopping the video and the Scroller
       unless Session.get 'IS_MOBILE'
-        new Waypoint
-          element: $arrowEl[0]
-          handler: (direction) ->
-            if direction is 'down'
-              ScrollerSingleton.get().stop()
-              #video.pause()
-            else
-              ScrollerSingleton.get().start()
-              #video.play()
-          context: $mainCntEl[0]
-      # Waypoint subscription content that triggers entrance animation
-      new Waypoint
-        element: $subEl[0]
-        handler: (direction) ->
+        $prezEl.waypoint (direction) ->
           if direction is 'down'
-            $subEl.velocity('stop').velocity 'transition.slideUpIn'
+            ScrollerSingleton.get().stop()
+            #video.pause()
           else
-            $subEl.velocity('stop').velocity 'reverse'
+            ScrollerSingleton.get().start()
+            #video.play()
+        ,
+          context: Router.mainCntEl
+      # Waypoint subscription content that triggers entrance animation
+      $subEl.waypoint (direction) ->
+        if direction is 'down'
+          $subEl.velocity('stop').velocity 'transition.slideUpIn'
+        else
+          $subEl.velocity('stop').velocity 'reverse'
+      ,
         # Animations starts at 10% visibility of the content
         offset: winHeight - $subEl.height()*0.1
-        context: $mainCntEl[0]
+        context: $mainCntEl
       # Waypoint subscription content menu color change
-      new Waypoint
-        element: $subEl[0]
-        handler: (direction) -> changeMenuColor direction, true
+      $subEl.waypoint (direction) -> changeMenuColor direction, true
+      ,
         offset: mainMenuModel.height()
-        context: $mainCntEl[0]
+        context: $mainCntEl
       # Waypoint contact content that triggers entrance animation
-      new Waypoint
-        element: $contactEl[0]
-        handler: (direction) ->
-          if direction is 'down'
-            $contactEl.velocity('stop').velocity 'transition.slideUpIn'
-          else
-            $contactEl.velocity('stop').velocity 'reverse'
+      $contactEl.waypoint (direction) ->
+        if direction is 'down'
+          $contactEl.velocity('stop').velocity 'transition.slideUpIn'
+        else
+          $contactEl.velocity('stop').velocity 'reverse'
+      ,
         # Animations starts at 10% visibility of the content
         offset: winHeight - $contactEl.height()*0.1
-        context: $mainCntEl[0]
+        context: $mainCntEl
       # Waypoint subscription content menu color change
-      new Waypoint
-        element: $contactEl[0]
-        handler: (direction) -> changeMenuColor direction, false
+      $contactEl.waypoint (direction) -> changeMenuColor direction, false
+      ,
         offset: mainMenuModel.height()
-        context: $mainCntEl[0]
+        context: $mainCntEl
       # Waypoint mapEl content that triggers entrance animation
-      new Waypoint
-        element: $mapEl[0]
-        handler: (direction) ->
-          if direction is 'down'
-            $mapEl.velocity('stop').velocity 'transition.slideUpIn'
-          else
-            $mapEl.velocity('stop').velocity 'reverse'
+      $mapEl.waypoint (direction) ->
+        if direction is 'down'
+          $mapEl.velocity('stop').velocity 'transition.slideUpIn'
+        else
+          $mapEl.velocity('stop').velocity 'reverse'
+      ,
         # Animations starts at 10% visibility of the content
         offset: winHeight - $mapEl.height()*0.1
-        context: $mainCntEl[0]
+        context: $mainCntEl
       # Waypoint map content menu color change
-      new Waypoint
-        element: $mapEl[0]
-        handler: (direction) -> changeMenuColor direction, true
+      $mapEl.waypoint (direction) -> changeMenuColor direction, true
+      ,
         offset: mainMenuModel.height()
-        context: $mainCntEl[0]
+        context: $mainCntEl

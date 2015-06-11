@@ -12,7 +12,13 @@
     "jquery"
   ],
   "overrides": {
-    "waypoints": { "arch": [ "client" ] },
+    "waypoints": {
+      "arch": [ "client" ],
+      "main": [
+        "lib/jquery.waypoints.js",
+        "lib/shortcuts/sticky.js"
+      ]
+    },
     "loglevel": { "arch": [ "client" ] },
     "js-cookie": { "arch": [ "client" ] },
     "flipclock": { "arch": [ "client" ] }

@@ -21,17 +21,17 @@ matteodem:easy-security
 # Development helpers
 # Development helpers: Must be removed in production
 audit-argument-checks
-manuel:viewmodel-explorer
-msavin:mongol
-msavin:jetsetter
+#manuel:viewmodel-explorer
+#msavin:mongol
+#msavin:jetsetter
 # Development helpers: OK for production
 underscorestring:underscore.string
 raix:handlebar-helpers
 mquandalle:bower
 manuel:viewmodel
-meteorhacks:zones
+#meteorhacks:zones
 meteorhacks:kadira
-meteorhacks:kadira-profiler
+#meteorhacks:kadira-profiler
 
 # CSS & effects
 pierreeric:creativepure

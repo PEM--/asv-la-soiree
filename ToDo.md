@@ -60,8 +60,7 @@
   - https://github.com/francocatena/meteor-status
 - [X] Error notification from the serveur.
 - [X] Gmap theming
-- [ ] Gmap integrated with CMS + Access informations
-  - https://github.com/rwatts3/orionjs-maps
+- [X] Animated marker on Gmap
 - [X] Upload GridFS
 - [X] Not found template
 - [X] No script
@@ -105,6 +104,8 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
+- [ ] Gmap integrated with CMS + Access informations
+  - https://github.com/rwatts3/orionjs-maps
 - [ ] Bonus: Fix momentum issues on inner template animations
 - [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs
   - https://github.com/adamschwartz/log
