@@ -138,7 +138,7 @@ if Meteor.isClient
           $progEl.velocity('stop').velocity 'reverse'
       ,
         offset: $headerEl.height()*.7
-        context: Router.mainCntEl
+        context: $mainCntEl
       # Waypoint for stopping the video and the Scroller
       unless Session.get 'IS_MOBILE'
         $prezEl.waypoint (direction) ->
@@ -149,7 +149,7 @@ if Meteor.isClient
             ScrollerSingleton.get().start()
             #video.play()
         ,
-          context: Router.mainCntEl
+          context: $mainCntEl
       # Waypoint subscription content that triggers entrance animation
       $subEl.waypoint (direction) ->
         if direction is 'down'
@@ -161,7 +161,8 @@ if Meteor.isClient
         offset: winHeight - $subEl.height()*0.1
         context: $mainCntEl
       # Waypoint subscription content menu color change
-      $subEl.waypoint (direction) -> changeMenuColor direction, true
+      $subEl.waypoint (direction) ->
+        changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
@@ -176,7 +177,8 @@ if Meteor.isClient
         offset: winHeight - $contactEl.height()*0.1
         context: $mainCntEl
       # Waypoint subscription content menu color change
-      $contactEl.waypoint (direction) -> changeMenuColor direction, false
+      $contactEl.waypoint (direction) ->
+        changeMenuColor direction, false
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
@@ -191,7 +193,8 @@ if Meteor.isClient
         offset: winHeight - $mapEl.height()*0.1
         context: $mainCntEl
       # Waypoint map content menu color change
-      $mapEl.waypoint (direction) -> changeMenuColor direction, true
+      $mapEl.waypoint (direction) ->
+        changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
