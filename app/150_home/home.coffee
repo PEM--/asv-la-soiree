@@ -1,13 +1,11 @@
 class @HomeController extends AppCtrl
   onRerun: ->
-    if @ready()
-      mainMenuModel.hide()
+    mainMenuModel.hide() if @ready()
     @next()
   onAfterAction: ->
     if @ready()
-      Meteor.setTimeout ->
-        HomeController.scrollToFragment()
-      , 300
+      HomeController.$mainCntEl = $ Router.mainCntEl
+      Meteor.setTimeout (-> HomeController.scrollToFragment()), 300
   onStop: ->
     Waypoint.destroyAll()
     ScrollerSingleton.get().stop()
@@ -17,20 +15,18 @@ class @HomeController extends AppCtrl
     URL = document.baseURI
     unless (URL.search '#') is -1
       fragment = (URL.split '#')[1]
-      HomeController.scrollTo "[href='##{fragment}']:not([data-bound=true])",
-        mainMenuModel.height()
+      HomeController.scrollTo \
+        (HomeController.$mainCntEl.find "section.#{fragment}"),
+        -(mainMenuModel.height() - 1)
   @scrollToTop = ->
-    HomeController.scrollTo 'header', 0
+    HomeController.scrollTo (HomeController.$mainCntEl.find 'header'), 0
   @$mainCntEl = null
-  @scrollTo = (el, offset) ->
-    HomeController.$mainCntEl = $ Router.mainCntEl \
-      if HomeController.$mainCntEl is null
-    $el = HomeController.$mainCntEl.find el
+  @scrollTo = ($el, offset) ->
     $el.velocity 'scroll',
       container: HomeController.$mainCntEl
       duration: 600
       easing: 'ease'
-      offset: -20 - offset
+      offset: offset
       mobileHA: false
 
 appLog.info 'Adding home page'
@@ -117,11 +113,15 @@ if Meteor.isClient
       $headerEl = @$ 'header>section'
       winHeight = ($ window).height()
       $arrowEl = $headerEl.find '.arrow-down-centered'
-      $prezEl = @$ 'section:nth-child(1)>article:nth-child(1)'
-      $progEl = @$ 'section:nth-child(1)>article:nth-child(2)'
-      $subEl = @$ 'section:nth-child(2)>article'
-      $contactEl = @$ 'section:nth-child(3)>article'
-      $mapEl = @$ 'section.map>.map-container'
+      $sectionPrezEl = @$ 'section:nth-child(1)'
+      $prezEl = $sectionPrezEl.find 'article:nth-child(1)'
+      $progEl = $sectionPrezEl.find 'article:nth-child(2)'
+      $sectionSubEl = @$ 'section:nth-child(2)'
+      $subEl = $sectionSubEl.find 'article'
+      $sectionContactEl = @$ 'section:nth-child(3)'
+      $contactEl = $sectionContactEl.find 'article'
+      $sectionMapEl = @$ 'section.map'
+      $mapEl = $sectionMapEl.find '.map-container'
       # Waypoint on the arrow and trigger menu visibility
       $arrowEl.waypoint (direction) ->
         if direction is 'down'
@@ -141,7 +141,7 @@ if Meteor.isClient
         context: $mainCntEl
       # Waypoint for stopping the video and the Scroller
       unless Session.get 'IS_MOBILE'
-        $prezEl.waypoint (direction) ->
+        $sectionPrezEl.waypoint (direction) ->
           if direction is 'down'
             ScrollerSingleton.get().stop()
             #video.pause()
@@ -151,49 +151,49 @@ if Meteor.isClient
         ,
           context: $mainCntEl
       # Waypoint subscription content that triggers entrance animation
-      $subEl.waypoint (direction) ->
+      $sectionSubEl.waypoint (direction) ->
         if direction is 'down'
           $subEl.velocity('stop').velocity 'transition.slideUpIn'
         else
           $subEl.velocity('stop').velocity 'reverse'
       ,
         # Animations starts at 10% visibility of the content
-        offset: winHeight - $subEl.height()*0.1
+        offset: winHeight - $sectionSubEl.height()*0.1
         context: $mainCntEl
       # Waypoint subscription content menu color change
-      $subEl.waypoint (direction) ->
+      $sectionSubEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
       # Waypoint contact content that triggers entrance animation
-      $contactEl.waypoint (direction) ->
+      $sectionContactEl.waypoint (direction) ->
         if direction is 'down'
           $contactEl.velocity('stop').velocity 'transition.slideUpIn'
         else
           $contactEl.velocity('stop').velocity 'reverse'
       ,
         # Animations starts at 10% visibility of the content
-        offset: winHeight - $contactEl.height()*0.1
+        offset: winHeight - $sectionContactEl.height()*0.1
         context: $mainCntEl
       # Waypoint subscription content menu color change
-      $contactEl.waypoint (direction) ->
+      $sectionContactEl.waypoint (direction) ->
         changeMenuColor direction, false
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
       # Waypoint mapEl content that triggers entrance animation
-      $mapEl.waypoint (direction) ->
+      $sectionMapEl.waypoint (direction) ->
         if direction is 'down'
           $mapEl.velocity('stop').velocity 'transition.slideUpIn'
         else
           $mapEl.velocity('stop').velocity 'reverse'
       ,
         # Animations starts at 10% visibility of the content
-        offset: winHeight - $mapEl.height()*0.1
+        offset: winHeight - $sectionMapEl.height()*0.1
         context: $mainCntEl
       # Waypoint map content menu color change
-      $mapEl.waypoint (direction) ->
+      $sectionMapEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()

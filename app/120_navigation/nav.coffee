@@ -6,9 +6,7 @@ if Meteor.isClient
     opacity: 0
     show: ->  @opacity 1
     hide: -> @opacity 0
-    height: ->
-      if @templateInstance is undefined then 52 \
-      else (@templateInstance.$ 'nav').height()
+    height: 52
     goHome: ->
       @menuContentOpened false
       Router.go '/'
