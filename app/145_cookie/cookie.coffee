@@ -60,7 +60,9 @@ if Meteor.isClient
   Template.cookie.onRendered ->
     unless CookieSingleton.get().isAccepted()
       Meteor.setTimeout =>
-        @$('.cookie').velocity 'transition.bounceDownIn'
+        effect = if IS_MOBILE then 'transition.bounceDownIn' \
+          else 'transition.fadeIn'
+        @$('.cookie').velocity effect
       , 600
 
   Template.cookie.helpers
@@ -73,6 +75,8 @@ if Meteor.isClient
     'click button': (e, t) ->
       CookieSingleton.get().accept()
       # Remove cookie notification
+      effect = if IS_MOBILE then 'transition.bounceUpOut' \
+        else 'transition.fadeOut'
       t.$('.cookie').velocity 'transition.bounceUpOut'
       # Remove all cookie masks
       $masks = ($ '.cookieMask')

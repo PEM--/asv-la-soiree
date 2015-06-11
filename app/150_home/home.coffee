@@ -8,7 +8,7 @@ class @HomeController extends AppCtrl
       Meteor.setTimeout (-> HomeController.scrollToFragment()), 300
   onStop: ->
     Waypoint.destroyAll()
-    ScrollerSingleton.get().stop()
+    ScrollerSingleton.get().stop() unless IS_MOBILE
   # Public static methods and members
   @scrollToFragment = ->
     # Check for URL fragment
@@ -130,18 +130,18 @@ if Meteor.isClient
         $progEl.css 'opacity', 1
       $arrowEl.waypoint (direction) ->
         if direction is 'down'
-          homeModel.arrowOpacity 0
-          homeModel.teaserOpacity 0
           mainMenuModel.show()
           unless IS_MOBILE
+            homeModel.arrowOpacity 0
+            homeModel.teaserOpacity 0
             $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
             $progEl.velocity('stop').velocity 'transition.slideRightIn'
           ClockSingleton.get().stop()
         else
-          homeModel.arrowOpacity 1
-          homeModel.teaserOpacity 1
           mainMenuModel.hide()
           unless IS_MOBILE
+            homeModel.arrowOpacity 1
+            homeModel.teaserOpacity 1
             $prezEl.velocity('stop').velocity 'reverse'
             $progEl.velocity('stop').velocity 'reverse'
           ClockSingleton.get().start()

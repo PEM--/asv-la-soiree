@@ -18,6 +18,10 @@ if Meteor.isServer
   # Allow origin for Meteor hosting
   for protocol in ['http', 'https', 'ws', 'wss']
     BrowserPolicy.content.allowConnectOrigin "#{protocol}://*.meteor.com"
+  # For remote debugging
+  #for protocol in ['http', 'https', 'ws', 'wss']
+  #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000"
+  #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000/sockjs/info"
   # Allow external CSS
   for origin in ['fonts.googleapis']
     for protocol in ['http', 'https']
@@ -40,7 +44,7 @@ if Meteor.isServer
     # Browser update warning
     'browser-update.org'
     # Mix Panel analytics
-    'cdn.mxpnl.com'
+    #'cdn.mxpnl.com'
     # Kadira
     '*.kadira.io'
   ]
