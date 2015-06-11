@@ -182,14 +182,12 @@ if Meteor.isClient
         # Animations starts at 10% visibility of the content
         offset: winHeight - $sectionContactEl.height()*0.1
         context: $mainCntEl
-        continuous: false
       # Waypoint subscription content menu color change
       $sectionContactEl.waypoint (direction) ->
         changeMenuColor direction, false
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
-        continuous: false
       # Waypoint mapEl content that triggers entrance animation
       $sectionMapEl.waypoint (direction) ->
         if direction is 'down'
@@ -200,11 +198,9 @@ if Meteor.isClient
         # Animations starts at 10% visibility of the content
         offset: winHeight - $sectionMapEl.height()*0.1
         context: $mainCntEl
-        continuous: false
       # Waypoint map content menu color change
       $sectionMapEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
-        continuous: false
