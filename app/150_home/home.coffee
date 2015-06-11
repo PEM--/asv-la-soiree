@@ -125,20 +125,25 @@ if Meteor.isClient
       $sectionMapEl = @$ 'section.map'
       $mapEl = $sectionMapEl.find '.map-container'
       # Waypoint on the arrow and trigger menu visibility
+      if IS_MOBILE
+        $prezEl.css 'opacity', 1
+        $progEl.css 'opacity', 1
       $arrowEl.waypoint (direction) ->
         if direction is 'down'
           homeModel.arrowOpacity 0
           homeModel.teaserOpacity 0
           mainMenuModel.show()
-          $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
-          $progEl.velocity('stop').velocity 'transition.slideRightIn'
+          unless IS_MOBILE
+            $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
+            $progEl.velocity('stop').velocity 'transition.slideRightIn'
           ClockSingleton.get().stop()
         else
           homeModel.arrowOpacity 1
           homeModel.teaserOpacity 1
           mainMenuModel.hide()
-          $prezEl.velocity('stop').velocity 'reverse'
-          $progEl.velocity('stop').velocity 'reverse'
+          unless IS_MOBILE
+            $prezEl.velocity('stop').velocity 'reverse'
+            $progEl.velocity('stop').velocity 'reverse'
           ClockSingleton.get().start()
       ,
         offset: $headerEl.height()*.7
@@ -155,16 +160,19 @@ if Meteor.isClient
         ,
           context: $mainCntEl
       # Waypoint subscription content that triggers entrance animation
-      $sectionSubEl.waypoint (direction) ->
-        if direction is 'down'
-          $subEl.velocity('stop').velocity 'transition.slideUpIn'
-        else
-          $subEl.velocity('stop').velocity 'reverse'
-      ,
-        # Animations starts at 10% visibility of the content
-        offset: winHeight - $sectionSubEl.height()*0.1
-        context: $mainCntEl
-        continuous: false
+      if IS_MOBILE
+        $subEl.css 'opacity', 1
+      else
+        $sectionSubEl.waypoint (direction) ->
+          if direction is 'down'
+            $subEl.velocity('stop').velocity 'transition.slideUpIn'
+          else
+            $subEl.velocity('stop').velocity 'reverse'
+        ,
+          # Animations starts at 10% visibility of the content
+          offset: winHeight - $sectionSubEl.height()*0.1
+          context: $mainCntEl
+          continuous: false
       # Waypoint subscription content menu color change
       $sectionSubEl.waypoint (direction) ->
         changeMenuColor direction, true
@@ -173,15 +181,18 @@ if Meteor.isClient
         context: $mainCntEl
         continuous: false
       # Waypoint contact content that triggers entrance animation
-      $sectionContactEl.waypoint (direction) ->
-        if direction is 'down'
-          $contactEl.velocity('stop').velocity 'transition.slideUpIn'
-        else
-          $contactEl.velocity('stop').velocity 'reverse'
-      ,
-        # Animations starts at 10% visibility of the content
-        offset: winHeight - $sectionContactEl.height()*0.1
-        context: $mainCntEl
+      if IS_MOBILE
+        $contactEl.css 'opacity', 1
+      else
+        $sectionContactEl.waypoint (direction) ->
+          if direction is 'down'
+            $contactEl.velocity('stop').velocity 'transition.slideUpIn'
+          else
+            $contactEl.velocity('stop').velocity 'reverse'
+        ,
+          # Animations starts at 10% visibility of the content
+          offset: winHeight - $sectionContactEl.height()*0.1
+          context: $mainCntEl
       # Waypoint subscription content menu color change
       $sectionContactEl.waypoint (direction) ->
         changeMenuColor direction, false
@@ -189,15 +200,18 @@ if Meteor.isClient
         offset: mainMenuModel.height()
         context: $mainCntEl
       # Waypoint mapEl content that triggers entrance animation
-      $sectionMapEl.waypoint (direction) ->
-        if direction is 'down'
-          $mapEl.velocity('stop').velocity 'transition.slideUpIn'
-        else
-          $mapEl.velocity('stop').velocity 'reverse'
-      ,
-        # Animations starts at 10% visibility of the content
-        offset: winHeight - $sectionMapEl.height()*0.1
-        context: $mainCntEl
+      if IS_MOBILE
+        $mapEl.css 'opacity', 1
+      else
+        $sectionMapEl.waypoint (direction) ->
+          if direction is 'down'
+            $mapEl.velocity('stop').velocity 'transition.slideUpIn'
+          else
+            $mapEl.velocity('stop').velocity 'reverse'
+        ,
+          # Animations starts at 10% visibility of the content
+          offset: winHeight - $sectionMapEl.height()*0.1
+          context: $mainCntEl
       # Waypoint map content menu color change
       $sectionMapEl.waypoint (direction) ->
         changeMenuColor direction, true
