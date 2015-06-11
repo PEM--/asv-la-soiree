@@ -36,14 +36,14 @@ if Meteor.isClient
   class @ScrollerSingleton
     instance = null
     logoEl = '.logo-resizer>.svg-logo-container'
-    @get: ->
-      instance ?= new Scroller
+    @get: -> instance
+    @instanciate: ($mainCntEl, tpl) -> instance = new Scroller $mainCntEl, tpl
     class Scroller
-      constructor: ->
+      constructor: (@$mainCntEl, @tpl) ->
         @scrollPos = 0
       start: ->
-        @$mainCntEl = $ Router.mainCntEl
-        @$header = @$mainCntEl.find 'header>section'
+        appLog.info 'Scroller started'
+        @$header = @tpl.$ 'header>section'
         @posStartAnimLogo = 0
         @$logo = @$header.find logoEl
         @sizeAndPos()
@@ -64,13 +64,15 @@ if Meteor.isClient
         @sizeAndPos()
         @event()
       stop: ->
+        appLog.info 'Scroller stopped'
         @$mainCntEl?.off 'scroll.scroller'
 
   Template.home.onCreated ->
+    appLog.info 'Creating home screen'
     @rxMainHeight = new ReactiveVar
     ($ window).on 'resize', _.debounce =>
       @rxMainHeight.set ($ Router.mainCntEl).height()
-    , if Session.get 'IS_MOBILE' then 256 else 1024
+    , if IS_MOBILE then 256 else 1024
 
   changeMenuColor = (direction, isInverted) ->
     whiten = direction is 'up'
@@ -85,40 +87,40 @@ if Meteor.isClient
       window.location = e.currentTarget.href
       HomeController.scrollToFragment()
 
-  Template.home.onCreated ->
-    appLog.info 'Creating home screen'
   Template.home.onRendered ->
     appLog.info 'Rendering home screen'
     mainMenuModel.hide()
     homeModel.bind @
-    Session.set 'debug', if Session.get 'IS_MOBILE' then 'mobile' else 'desktop'
-    unless Session.get 'IS_MOBILE'
+    Session.set 'debug', if IS_MOBILE then 'mobile' else 'desktop'
+    # Set reactive height
+    $mainCntEl = Iron.controller().$mainCntEl
+    @rxMainHeight.set $mainCntEl.height()
+    unless IS_MOBILE
       # Start video
       # video = @find 'video'
       # video.play()
       # Start scrolling container
+      scrolInst = ScrollerSingleton.instanciate $mainCntEl, @
       ScrollerSingleton.get().start()
-    # Set reactive height
-    @rxMainHeight.set ($ Router.mainCntEl).height()
+    ClockSingleton.get().start()
     @autorun (computation) =>
       # Use reactivity to handle resizing
       mainHeight = @rxMainHeight.get()
       # Handle resizing on Scroller except on the first instanciation
       unless computation.firstRun
-        ScrollerSingleton.get().resizing() unless Session.get 'IS_MOBILE'
+        ScrollerSingleton.get().resizing() unless IS_MOBILE
         # Recreates waypoints
         Waypoint.destroyAll()
       # Get all DOM elements of interest for the Waypoints
-      $mainCntEl = Iron.controller().$mainCntEl
       $headerEl = @$ 'header>section'
       winHeight = ($ window).height()
       $arrowEl = $headerEl.find '.arrow-down-centered'
-      $sectionPrezEl = @$ 'section:nth-child(1)'
+      $sectionPrezEl = @$ 'section.program'
       $prezEl = $sectionPrezEl.find 'article:nth-child(1)'
       $progEl = $sectionPrezEl.find 'article:nth-child(2)'
-      $sectionSubEl = @$ 'section:nth-child(2)'
+      $sectionSubEl = @$ 'section.subscription'
       $subEl = $sectionSubEl.find 'article'
-      $sectionContactEl = @$ 'section:nth-child(3)'
+      $sectionContactEl = @$ 'section.contact'
       $contactEl = $sectionContactEl.find 'article'
       $sectionMapEl = @$ 'section.map'
       $mapEl = $sectionMapEl.find '.map-container'
@@ -130,17 +132,19 @@ if Meteor.isClient
           mainMenuModel.show()
           $prezEl.velocity('stop').velocity 'transition.slideLeftIn'
           $progEl.velocity('stop').velocity 'transition.slideRightIn'
+          ClockSingleton.get().stop()
         else
           homeModel.arrowOpacity 1
           homeModel.teaserOpacity 1
           mainMenuModel.hide()
           $prezEl.velocity('stop').velocity 'reverse'
           $progEl.velocity('stop').velocity 'reverse'
+          ClockSingleton.get().start()
       ,
         offset: $headerEl.height()*.7
         context: $mainCntEl
       # Waypoint for stopping the video and the Scroller
-      unless Session.get 'IS_MOBILE'
+      unless IS_MOBILE
         $sectionPrezEl.waypoint (direction) ->
           if direction is 'down'
             ScrollerSingleton.get().stop()
@@ -160,12 +164,14 @@ if Meteor.isClient
         # Animations starts at 10% visibility of the content
         offset: winHeight - $sectionSubEl.height()*0.1
         context: $mainCntEl
+        continuous: false
       # Waypoint subscription content menu color change
       $sectionSubEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
+        continuous: false
       # Waypoint contact content that triggers entrance animation
       $sectionContactEl.waypoint (direction) ->
         if direction is 'down'
@@ -176,12 +182,14 @@ if Meteor.isClient
         # Animations starts at 10% visibility of the content
         offset: winHeight - $sectionContactEl.height()*0.1
         context: $mainCntEl
+        continuous: false
       # Waypoint subscription content menu color change
       $sectionContactEl.waypoint (direction) ->
         changeMenuColor direction, false
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
+        continuous: false
       # Waypoint mapEl content that triggers entrance animation
       $sectionMapEl.waypoint (direction) ->
         if direction is 'down'
@@ -192,9 +200,11 @@ if Meteor.isClient
         # Animations starts at 10% visibility of the content
         offset: winHeight - $sectionMapEl.height()*0.1
         context: $mainCntEl
+        continuous: false
       # Waypoint map content menu color change
       $sectionMapEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
+        continuous: false
