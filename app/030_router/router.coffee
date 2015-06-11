@@ -63,7 +63,7 @@ if Meteor.isClient
         HomeController.scrollToFragment()
       , 300
     # Handle scroll to top
-    if arguments[0].endsWith '/'
+    if s.endsWith arguments[0], '/'
       Meteor.setTimeout ->
         HomeController.scrollToTop()
       , 300
