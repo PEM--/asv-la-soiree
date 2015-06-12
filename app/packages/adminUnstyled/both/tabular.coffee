@@ -4,7 +4,6 @@ orion.collections.onCreated ->
   return unless _.has @, 'tabular'
   Tracker.autorun ->
     currentLang = i18n.getLanguage()
-    appLog.info 'Current language', currentLang
     tabularOptions = _.extend
       name: "tabular_#{self.name}"
       collection: self
@@ -31,4 +30,3 @@ orion.collections.onCreated ->
         column.title = column.langTitle()
       column
     self.tabularTable = new Tabular.Table tabularOptions
-    console.log 'Tabular', self.tabularTable, tabularOptions
