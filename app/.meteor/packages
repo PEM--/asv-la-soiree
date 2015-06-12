@@ -54,18 +54,17 @@ gadicohen:robots-txt
 
 # CMS
 aldeed:autoform
+pierreeric:orion-lang-fr
 orionjs:core
 orionjs:config
 orionjs:froala
 #orionjs:quill
-#orionjs:lang-fr
 orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
 brightbind:orion-gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
-pierreeric:orion-lang-fr
 
 # Others
 dburles:google-maps
