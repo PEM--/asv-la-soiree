@@ -27,15 +27,28 @@ if Meteor.isClient
         path = collection.updatePath rowData
         Router.go path
     'click button.import-csv': (e, t) ->
-      # @TODO Missing subscribe
-      data = Subscribers.find({},{name: 1, forname: 1, _id: 0}).fetch()
-      # Create the header
-      csv = (_.keys data[0]).join ';'
-      for sub, idx in data
-        csv += '\n' + (_.values sub).join ';'
-      # Automatic download of the CSV as a Blob file
-      blobDownload csv, 'subscribers.csv', 'text/csv'
+      # Prevent further actions
+      (t.$ 'button.import-csv').addClass 'disabled'
+      subscription = Meteor.subscribe 'allSubscribers',
+        onReady: ->
+          data = Subscribers.find({},{name: 1, forname: 1, _id: 0}).fetch()
+          # Create the header
+          csv = (_.keys data[0]).join ';'
+          for sub, idx in data
+            csv += '\n' + (_.values sub).join ';'
+          # Automatic download of the CSV as a Blob file
+          blobDownload csv, 'subscribers.csv', 'text/csv'
+          # Allow further extracts
+          ($ 'button.import-csv').removeClass 'disabled'
+        onError: (err) ->
+          sAlert.warning 'Récupération des inscrits impossible'
+          appLog.warn 'CSV subscription failed', err
+          # Allow further extracts
+          ($ 'button.import-csv').removeClass 'disabled'
 
   Template.subscribersIndex.helpers
     showTable: ->
       Template.instance().subscribersIndex_showTable.get()
+
+if Meteor.isServer
+  Meteor.publish 'allSubscribers', -> Subscribers.find()
