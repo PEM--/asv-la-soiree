@@ -56,7 +56,7 @@ if Meteor.isClient
   Router.oldGo = Router.go
   Router.go = ->
     # Classic Router.go function
-    Router.oldGo arguments[0]
+    Router.oldGo arguments[0], arguments[1]
     # Handle fragment URL if provided
     unless (arguments[0].search '#') is -1
       Meteor.setTimeout ->
