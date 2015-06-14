@@ -1,5 +1,4 @@
-ReactiveTemplates.set 'collections.subscribers.index', \
-  'subscribersIndex'
+ReactiveTemplates.set 'collections.subscribers.index', 'subscribersIndex'
 
 if Meteor.isClient
   Template.subscribersIndex.onCreated ->
@@ -21,7 +20,6 @@ if Meteor.isClient
   Template.subscribersIndex.events
     'click tr': (e, t) ->
       return unless $(event.target).is 'td'
-      console.log 'template', t
       collection = Template.currentData().collection
       dataTable = $(e.target).closest('table').DataTable()
       rowData = dataTable.row(e.currentTarget).data()
@@ -29,7 +27,14 @@ if Meteor.isClient
         path = collection.updatePath rowData
         Router.go path
     'click button.import-csv': (e, t) ->
-      console.log 'Importing CSV', e, t
+      # @TODO Missing subscribe
+      data = Subscribers.find({},{name: 1, forname: 1, _id: 0}).fetch()
+      # Create the header
+      csv = (_.keys data[0]).join ';'
+      for sub, idx in data
+        csv += '\n' + (_.values sub).join ';'
+      # Automatic download of the CSV as a Blob file
+      blobDownload csv, 'subscribers.csv', 'text/csv'
 
   Template.subscribersIndex.helpers
     showTable: ->

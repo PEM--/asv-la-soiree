@@ -54,7 +54,7 @@
 - [X] Contact
 - [X] Popup on contact
 - [X] Inner links from the CMS in the menu and the associated routing rules
-- [ ] Get all subscribers as a CSV
+- [X] Get all subscribers as a CSV
 - [X] Disconnection notification from server
   - https://github.com/alexreich/meteor-machina
   - https://github.com/francocatena/meteor-status
