@@ -2,19 +2,15 @@ ReactiveTemplates.set 'collections.subscribers.index', 'subscribersIndex'
 
 if Meteor.isClient
   Template.subscribersIndex.onCreated ->
-    orionLog.info 'subscribersIndex created'
-
-  Template.subscribersIndex.onCreated ->
+    appLog.info 'subscribersIndex created'
     @subscribersIndex_showTable = new ReactiveVar
     @subscribersIndex_showTable.set false
 
   Template.subscribersIndex.onRendered ->
     @autorun =>
       Template.currentData()
-      #Session.set 'subscribersIndex_showTable', false
       @subscribersIndex_showTable.set false
       Meteor.defer =>
-        #Session.set 'subscribersIndex_showTable', true
         @subscribersIndex_showTable.set true
 
   Template.subscribersIndex.events
