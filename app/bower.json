@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "waypoints": "3.1.1",
-    "loglevel": "1.3.0",
+    "loglevel": "1.3.1",
     "js-cookie": "2.0.0-beta.1",
     "SpinKit": "1.0.1",
-    "flipclock": "0.7.7"
+    "flipclock": "0.7.7",
+    "card": "1.0.2"
   },
   "ignoredDependencies": [
     "jquery"
@@ -21,6 +22,7 @@
     },
     "loglevel": { "arch": [ "client" ] },
     "js-cookie": { "arch": [ "client" ] },
-    "flipclock": { "arch": [ "client" ] }
+    "flipclock": { "arch": [ "client" ] },
+    "card": { "arch": [ "client" ] }
   }
 }
