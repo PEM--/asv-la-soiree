@@ -1,3 +1,10 @@
+## Production issues
+- [ ] Sitemap on localhost (see deployment: use production.json).
+- [ ] iPhone6+: Safari bug on Flexbox (reproducible on Safari desktop).
+- [ ] Kadia.io: Surveillance needs to be separated from tests.
+- [ ] Documents procedure on production deployments.
+- [ ] Protect ports (direct NodeJS access, direct Mongo access).
+
 ## New list
 - [X] Promo number: "VAE-2015" ou "ASV-300" with information
 - [X] ASV diplômé 2014-2015 ==> ASV Diplômé GIPSA 2014 - 2015

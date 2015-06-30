@@ -1,3 +1,3 @@
 #!/bin/bash
-export METEOR_SETTINGS=$(cat /app/settings.json)
+export METEOR_SETTINGS=$(cat /app/production.json)
 node main.js
