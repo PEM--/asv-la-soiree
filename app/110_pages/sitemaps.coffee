@@ -34,17 +34,18 @@ if Meteor.isServer
       'Page or dictionary change detected. Recreating sitemap.'
     pages = pagesCursor.fetch()
     entries = _.map pages, (page) ->
-      page: page.slug
+      page: Meteor.settings.proxy.url + '/' + page.slug
       lastmod: page.createdAt
-    entries.push page: '/', lastmod: orion.dictionary.get 'site.lastModified'
+    entries.push
+      page: Meteor.settings.proxy.url + '/'
+      lastmod: orion.dictionary.get 'site.lastModified'
     sitemaps.add '/sitemap.xml', -> entries
   # Create an initial sitemap
   pagesCursor = BasicPages.find {}, sort: createAd: -1
   return appLog.warn 'No page found' if pagesCursor.count() is 0
   updateSitemapOnPage pagesCursor, true
   # Observe change on page in case new links are inserted, removed or modified.
-  pagesCursor.observe (changes) ->
-    updateSitemapOnPage pagesCursor
+  pagesCursor.observe (changes) -> updateSitemapOnPage pagesCursor
   # Observe changes on the dictionary in case the date for forcing
   #  a new sitemap has changed.
   dictionaryCursor = orion.dictionary.find()
