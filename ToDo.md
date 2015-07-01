@@ -1,9 +1,8 @@
 ## Production issues
-- [ ] Sitemap on localhost (see deployment: use production.json).
+- [X] Sitemap on localhost (see deployment: use production.json).
 - [ ] iPhone6+: Safari bug on Flexbox (reproducible on Safari desktop).
-- [ ] Kadira.io: Surveillance needs to be separated from tests.
-- [ ] Documents procedure on production deployments.
-- [ ] Protect ports (direct NodeJS access, direct Mongo access).
+- [X] Kadira.io: Surveillance needs to be separated from tests.
+- [X] Protect ports (direct NodeJS access, direct Mongo access).
 
 ## New list
 - [X] Promo number: "VAE-2015" ou "ASV-300" with information

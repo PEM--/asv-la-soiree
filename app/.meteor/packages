@@ -66,6 +66,9 @@ brightbind:orion-gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 
+# Payment
+patrickml:braintree
+
 # Others
 dburles:google-maps
 momentjs:moment
