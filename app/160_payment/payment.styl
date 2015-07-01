@@ -14,15 +14,39 @@
     box-sizing border-box
     background white
     overflow hidden
-    h1, h2, h3, h4, h5, h6, p, label
+    h1, h2, h3, h4, h5, h6, p, label, input
       font-family $helvetica
       color black
+    // Remove site wide selection
+    h1, h2, h3, h4, h5, h6, p, label, input, div
+      &::selection
+        background-color yellow
+        color black
     article
       flex-grow 1
       flex-shrink 0
       center(maxSize)
       width 100%
       box-sizing border-box
+      form
+        background red
+        center(400px)
+        box-sizing border-box
+        // input
+        //   input color blue
+        margin-top 1em
+        input, button
+          margin 0
+          font-size 14px
+          display inline-block
+          box-sizing border-box
+        input[name='number'], input[name='name']
+          width 49%
+        input[name='expiry'], input[name='cvc']
+          width 24%
+        button
+          button green
+          width 49%
     footer
       flex-grow 0
       flex-shrink 0

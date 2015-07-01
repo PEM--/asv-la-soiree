@@ -39,6 +39,7 @@ fortawesome:fontawesome
 velocityjs:velocityjs
 percolate:momentum
 percolate:momentum-iron-router
+gadicohen:reactive-window
 
 # Routing
 iron:router

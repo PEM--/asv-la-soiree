@@ -1,14 +1,16 @@
 main(data-role='payment')
   article
     h1 Paiement
+    .invoice
+      p= paiementInformations
     .card-form
       .card-wrapper
-      form
-        input(type='text', name='number')
-        input(type='text', name='first-name')
-        input(type='text', name='last-name')
-        input(type='text', name='expiry')
-        input(type='text', name='cvc')
+      form(autocomplete='off')
+        input(type='text', placeholder='N° de carte', name='number', autocomplete='off',novalidate)
+        input(type='text', placeholder='Nom complet', name='name', autocomplete='off',novalidate)
+        input(type='text', placeholder='MM/YY', name='expiry', autocomplete='off',novalidate)
+        input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
+        button(type='submit') Valider
   footer
     .svg-logo-container
       +braintreeLogo
