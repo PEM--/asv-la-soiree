@@ -1,6 +1,6 @@
 ## Production issues
 - [X] Sitemap on localhost (see deployment: use production.json).
-- [ ] iPhone6+: Safari bug on Flexbox (reproducible on Safari desktop).
+- [X] iPhone6+: Safari bug on Flexbox (reproducible on Safari desktop).
 - [X] Kadira.io: Surveillance needs to be separated from tests.
 - [X] Protect ports (direct NodeJS access, direct Mongo access).
 

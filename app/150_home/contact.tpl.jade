@@ -8,7 +8,7 @@ section.contact
       data-bind='text: errorText, if: isErrorDisplayed'
     )
     form#contact-form
-      fieldset
+      fieldset.contact
         .alreadyContacted(data-bind='if: isContactPrevented')
           p Merci pour votre message.<br>Nous revenons vers vous au plus tôt.
         span.input
@@ -27,7 +27,7 @@ section.contact
           name='message',  form='contact-form', placeholder='Votre demande', rows='10'
           data-bind='value: message, change: disabledSubmit'
         )
-      fieldset
+      fieldset.info-submit
         div
           h2
             address LA PLATEFORME

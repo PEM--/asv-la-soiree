@@ -30,22 +30,14 @@
         background bgColor
         margin -2em 0 0 0
       form
-        display flex
-        flex-wrap wrap
-        justify-content space-between
         margin 3em 0 0 0
         padding 0
-        max-width 100%
+        width 100%
         fieldset
-          flex-grow 1
-          flex-shrink 1
-          flex-basis 45%
-          -webkit-flex-basis 45%
           margin 0
-          padding 0 .5em
-          width 100%
-          min-width maxSize*.3
+          padding 0
           border none
+          width 100%
           cpInput(bgColor, brandColor, brandColor)
           >span.input
             width 100%
@@ -91,7 +83,7 @@
             margin-top 1em
             font-size 12px
             line-height 1.2*@font-size
-            border 1px solid bgColor
+            border none
             border-radius roundCorner
             background-color bgColor
             color brandColor
@@ -108,7 +100,7 @@
             ::selection
               color bgColor
               background brandColor
-          &:nth-child(2)
+          &.info-submit
             padding .8em 0 .5em .5em .5em
             // Access
             >div:nth-child(1)
@@ -171,4 +163,16 @@
       background url('img/la-plateforme.jpg') blackBg no-repeat center
       background-size cover
 
-//@media only screen and (min-width 801px)
+// Avoid buggy flexbox and min-width on Safari by using a media query
+@media only screen and (min-width 576px)
+  section.contact
+    article.form
+      form#contact-form
+        display flex
+        flex-wrap nowrap
+        justify-content space-between
+        fieldset.contact
+          width 49%
+          margin-right 1em
+        fieldset.info-submit
+          width 49%
