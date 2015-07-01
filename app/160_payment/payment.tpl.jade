@@ -1,6 +1,14 @@
 main(data-role='payment')
   article
     h1 Paiement
+    .card-form
+      .card-wrapper
+      form
+        input(type='text', name='number')
+        input(type='text', name='first-name')
+        input(type='text', name='last-name')
+        input(type='text', name='expiry')
+        input(type='text', name='cvc')
   footer
     .svg-logo-container
       +braintreeLogo
