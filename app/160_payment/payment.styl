@@ -1,0 +1,23 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+
+main[data-role='payment']
+  display flex
+  flex-direction column
+  size 100% 100vh
+  min-height 100vh
+  background white
+  h1, h2, h3, h4, h5, h6, p, label
+    font-family $helvetica
+    color black
+  article
+    //background yellow
+    background white
+    center(maxSize)
+  footer
+    //background green
+    background white
+    .svg-logo-container
+      braintreeLogo(20%)

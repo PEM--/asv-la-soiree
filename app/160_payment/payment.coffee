@@ -1,5 +1,5 @@
-class @PaymentController extends AppCtrl
-  layoutTemplate = null
+class @PaymentController extends RouteController
+
 
 appLog.info 'Adding payment page'
 Router.route '/payment',
