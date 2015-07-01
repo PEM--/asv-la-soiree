@@ -81,13 +81,8 @@
     section.subscription
       article.header
         width 100%
-        h1, h2, p
+        h1, p
           text-align center
-        h2
-          text-transform uppercase
-          color brandColor
-          font-size 1.2em
-          margin-bottom 0
         p:not(.error)
           margin-top 0
           text-transform uppercase
@@ -147,12 +142,10 @@
           padding 0
           >fieldset, .group-contact-submit
             flex-grow 1
-            flex-shrink 1
-            flex-basis 49%
+            flex-shrink 0
             margin 0
             padding 0 .5em
-            min-width 320px
-            //width 100%
+            min-width maxSize*.3
           >fieldset, .group-contact-submit fieldset
             border none
             .input-profil

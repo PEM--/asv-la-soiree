@@ -35,15 +35,17 @@
         justify-content space-between
         margin 3em 0 0 0
         padding 0
+        max-width 100%
         fieldset
           flex-grow 1
           flex-shrink 1
-          flex-basis 49%
-          relative top left
+          flex-basis 45%
+          -webkit-flex-basis 45%
           margin 0
-          border none
           padding 0 .5em
-          min-width 320px
+          width 100%
+          min-width maxSize*.3
+          border none
           cpInput(bgColor, brandColor, brandColor)
           >span.input
             width 100%
@@ -63,14 +65,15 @@
               font-size @font-size
               transition opacity defaultTransitionValue
             >label
+              width 100%
               pointer-events none
               padding 0 @font-size
               transition opacity defaultTransitionValue
               >span
+                width 100%
                 pointer-events none
                 padding 0
                 absolute top (0.8*@font-size) left @font-size
-                width auto
                 color brandColor
                 transition transform defaultTransitionValue, color defaultTransitionValue
             >input:focus, >input.filled
@@ -83,6 +86,28 @@
               opacity .5
               + label
                 opacity .5
+          textarea
+            width 100%
+            margin-top 1em
+            font-size 12px
+            line-height 1.2*@font-size
+            border 1px solid bgColor
+            border-radius roundCorner
+            background-color bgColor
+            color brandColor
+            font-weight bold
+            &::-webkit-input-placeholder
+              font-weight bold
+              color @color
+            &::-moz-placeholder
+              font-weight bold
+              color @color
+            &:-ms-input-placeholder
+              font-weight bold
+              color @color
+            ::selection
+              color bgColor
+              background brandColor
           &:nth-child(2)
             padding .8em 0 .5em .5em .5em
             // Access
@@ -108,17 +133,6 @@
                   font-weight normal
               p
                 font-size 1em
-            // Opening date
-            >div:nth-child(2)
-              margin-top 1em
-              background brandColor
-              padding .3em 0
-              h2
-                margin 0
-                color bgColor
-                text-transform uppercase
-                font-size 1.1em
-                text-align center
             // Send button
             >.submit
               button
@@ -141,29 +155,7 @@
                   pointer-events none
                   font-style italic
                   font-weight lighter
-        textarea
-          margin-top 1em
-          font-size 12px
-          width 100%
-          line-height 1.2*@font-size
-          border 1px solid bgColor
-          border-radius roundCorner
-          background-color bgColor
-          color brandColor
-          font-weight bold
-          &::-webkit-input-placeholder
-            font-weight bold
-            color @color
-          &::-moz-placeholder
-            font-weight bold
-            color @color
-          &:-ms-input-placeholder
-            font-weight bold
-            color @color
-          ::selection
-            color bgColor
-            background brandColor
-
+  // Picture of La Plateforme
   section.access-location-picture
     display block
     relative top left
@@ -178,3 +170,5 @@
       height 332px
       background url('img/la-plateforme.jpg') blackBg no-repeat center
       background-size cover
+
+//@media only screen and (min-width 801px)

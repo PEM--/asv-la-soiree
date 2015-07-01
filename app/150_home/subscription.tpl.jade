@@ -1,8 +1,7 @@
 section.subscription
   article.header
     a(href='#subscription'): h1 Inscription en ligne
-    h2 Les inscriptions à la soirée ASV du congrés 2015 ne sont pas encore ouvertes.
-    p Pour réserver votre entrée, remplissez le formulaire ci-dessous.
+    p Pour vous inscrire, remplissez le formulaire ci-dessous.
   article.form
     .cookieMask(data-bind='unless: isCookieAccepted')
       p Inscription impossible, veuillez accepter les cookies.
@@ -11,8 +10,7 @@ section.subscription
     )
     .alreadyPresubscribed(data-bind='if: isPresubscribed')
       div
-        p Merci pour votre pré-inscription.
-        p Vous serez averti par mail ou par SMS 1 jour avant l'ouverture de la billeterie.
+        p Merci pour votre inscription.
         p À très bientôt
     form
       fieldset
@@ -90,7 +88,7 @@ section.subscription
             label(for='phone'): span Numéro
         .submit
           button.inspiration(
-            type='button', data-text='Je me pré-inscris',
+            type='button', data-text='Je m\'inscris',
             data-bind='disabled: disabledSubmit, click: subscribe'
           )
-            span Je me pré-inscris
+            span Je m'inscris
