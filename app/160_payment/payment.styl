@@ -3,21 +3,33 @@
 @import 'typographic'
 @import '020_colorsTheme/*.import'
 
-main[data-role='payment']
-  display flex
-  flex-direction column
-  size 100% 100vh
-  min-height 100vh
-  background white
-  h1, h2, h3, h4, h5, h6, p, label
-    font-family $helvetica
-    color black
-  article
-    //background yellow
+.main-container .router-container
+  main[data-role='payment']
+    display flex
+    flex-direction column
+    flex-wrap nowrap
+    size 100% 100vh
+    min-height 100vh
+    margin 0
+    box-sizing border-box
     background white
-    center(maxSize)
-  footer
-    //background green
-    background white
-    .svg-logo-container
-      braintreeLogo(20%)
+    overflow hidden
+    h1, h2, h3, h4, h5, h6, p, label
+      font-family $helvetica
+      color black
+    article
+      flex-grow 1
+      flex-shrink 0
+      center(maxSize)
+      width 100%
+      box-sizing border-box
+    footer
+      flex-grow 0
+      flex-shrink 0
+      center(maxSize)
+      width 100%
+      box-sizing border-box
+      border-top 1px solid black
+      .svg-logo-container
+        margin 1em 0
+        braintreeLogo(15%)
