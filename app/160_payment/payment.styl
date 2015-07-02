@@ -29,14 +29,11 @@
       width 100%
       box-sizing border-box
       form
-        background red
         center(400px)
         box-sizing border-box
-        // input
-        //   input color blue
         margin-top 1em
         input, button
-          margin 0
+          margin 2px 0 0 0
           font-size 14px
           display inline-block
           box-sizing border-box
@@ -44,6 +41,8 @@
           width 49%
         input[name='expiry'], input[name='cvc']
           width 24%
+        input::focus
+          border-color lightblue
         button
           button green
           width 49%

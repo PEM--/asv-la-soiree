@@ -7,7 +7,8 @@
     "js-cookie": "2.0.2",
     "SpinKit": "1.0.1",
     "flipclock": "0.7.7",
-    "card": "1.0.2"
+    "card": "1.0.2",
+    "mobile-detect": "1.2.0"
   },
   "ignoredDependencies": [
     "jquery"
@@ -23,6 +24,7 @@
     "loglevel": { "arch": [ "client" ] },
     "js-cookie": { "arch": [ "client" ] },
     "flipclock": { "arch": [ "client" ] },
-    "card": { "arch": [ "client" ] }
+    "card": { "arch": [ "client" ] },
+    "mobile-detect": { "arch": [ "client" ] }
   }
 }

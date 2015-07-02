@@ -1,4 +1,5 @@
 ## Production issues
+- [X] Chrome 43.0.2357.130: false mobile detection.
 - [X] Sitemap on localhost (see deployment: use production.json).
 - [X] iPhone6+: Safari bug on Flexbox (reproducible on Safari desktop).
 - [X] Kadira.io: Surveillance needs to be separated from tests.
