@@ -2,7 +2,7 @@ main(data-role='payment')
   article
     h1 Paiement
     .invoice
-      p= paiementInformations
+      p(data-bind='text: paiementInformations')
     .card-form
       .card-wrapper
       form(autocomplete='off')
