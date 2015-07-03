@@ -32,3 +32,15 @@ if Meteor.isClient
       "ASV, LA SOIREE                          \n" +
       "Tarif accompagnant                50,00€\n\n" +
       "----------------------------------------"
+
+if Meteor.isServer
+  appLog.info 'Connecting server to Braintree'
+  try
+    @BrainTreeConnect = BrainTreeConnect
+      environment: Braintree.Environment.Sandbox
+      merchantId: Meteor.settings.braintree.merchantId
+      publicKey:  Meteor.settings.braintree.publicKey
+      privateKey: Meteor.settings.braintree.privateKey
+      # return BrainTreeConnect.customer.create(config);
+  catch error
+    throw new Meteor.Error 1001, error.message
