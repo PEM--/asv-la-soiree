@@ -46,15 +46,17 @@
           flex-grow 0
           relative top left
           border 1px solid darkgray
-          fontSize = 10px
-          padding (fontSize/2)
-          width (41*fontSize)
+          fontWidth = 10px
+          fontHeight = 15px
+          padding (fontWidth/2)
+          width (41*fontWidth)
           min-width @width
           max-width @width
+          text-align center
           pre
-            width (40*fontSize)
+            width (40*fontWidth)
             font-family $courier
-            font-size fontSize
+            font-size fontHeight
         // Form and card
         .card-form
           flex-grow 1

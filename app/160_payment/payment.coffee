@@ -27,6 +27,8 @@ if Meteor.isClient
     # - Tarifs autres (accompagnant, véto…) = 50 €
     paiementInformations:
       #0123456789012345678901234567890123456789
-      "          FACTURE (FACTICE)\n" +
-      "          -----------------\n\n" +
-      "ASV, LA SOIREE                    20,00€\n"
+      "          FACTURE (FACTICE)             \n" +
+      "----------------------------------------\n\n" +
+      "ASV, LA SOIREE                          \n" +
+      "Tarif accompagnant                50,00€\n\n" +
+      "----------------------------------------"
