@@ -13,39 +13,74 @@
     margin 0
     box-sizing border-box
     background white
-    overflow hidden
-    h1, h2, h3, h4, h5, h6, p, label, input
+    overflow-x hidden
+    h1, h2, h3, h4, h5, h6, p, label, input, pre
       font-family $helvetica
       color black
     // Remove site wide selection
-    h1, h2, h3, h4, h5, h6, p, label, input, div
+    h1, h2, h3, h4, h5, h6, p, label, input, div, pre
       &::selection
         background-color yellow
         color black
+    // Main screen informations
     article
       flex-grow 1
       flex-shrink 0
       center(maxSize)
       width 100%
       box-sizing border-box
-      form
-        center(400px)
-        box-sizing border-box
-        margin-top 1em
-        input, button
-          margin 2px 0 0 0
-          font-size 14px
+      // Layout for invoice, card and form
+      .invoice-card-form
+        display flex
+        flex-wrap wrap
+        flex-direction row
+        justify-content space-between
+        align-items center
+        align-content center
+        .invoice, .card-form
+          flex-shrink 0
           display inline-block
-          box-sizing border-box
-        input[name='number'], input[name='name']
+          margin-top 1em
+        // Invoice
+        .invoice
+          flex-grow 0
+          relative top left
+          border 1px solid darkgray
+          fontSize = 10px
+          padding (fontSize/2)
+          width (41*fontSize)
+          min-width @width
+          max-width @width
+          pre
+            width (40*fontSize)
+            font-family $courier
+            font-size fontSize
+        // Form and card
+        .card-form
+          flex-grow 1
+          relative top right
           width 49%
-        input[name='expiry'], input[name='cvc']
-          width 24%
-        input::focus
-          border-color lightblue
-        button
-          button green
-          width 49%
+          form
+            center(400px)
+            box-sizing border-box
+            margin-top 1em
+            input, button
+              margin 2px 0 0 0
+              font-size 14px
+              display inline-block
+              box-sizing border-box
+            input[name='number'], input[name='name']
+              width 49%
+            input[name='expiry'], input[name='cvc']
+              width 24%
+            input
+              border 1px solid darkgray
+              &:focus
+                border-color lightblue
+            button
+              button green
+              width 49%
+    // Braintree logo
     footer
       flex-grow 0
       flex-shrink 0
