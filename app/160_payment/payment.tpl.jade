@@ -1,17 +1,21 @@
 main(data-role='payment')
   article
-    h1 Paiement
-    .invoice-card-form
-      .invoice
-        pre(data-bind='text: paiementInformations')
-      .card-form
-        .card-wrapper
-        form(autocomplete='off')
-          input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
-          input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
-          input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
-          input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
-          button(type='submit') Valider
+    .cookieError(data-bind='hidden: isCorrectCookie')
+      h1 Informations d'inscription indisponibles
+      p Vous allez être redirigé vers le formulaire d'inscription.
+    .cookieOK(data-bind='visible: isCorrectCookie')
+      h1 Paiement
+      .invoice-card-form
+        .invoice
+          pre(data-bind='text: paiementInformations')
+        .card-form
+          .card-wrapper
+          form(autocomplete='off')
+            input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
+            input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
+            input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
+            input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
+            button(type='submit') Valider
   footer
     .svg-logo-container
       +braintreeLogo

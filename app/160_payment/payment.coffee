@@ -8,6 +8,13 @@ Router.route '/payment',
 if Meteor.isClient
   Template.payment.onCreated ->
     appLog.info 'Creating payment screen'
+    # Check if pre-subscription has been done
+    unless CookieSingleton.get().isPreSubed()
+      # Automatically go to subscription screen if no information found
+      sAlert.error 'Nous n\'avons pas retrouvé votre inscription.'
+      # Meteor.setTimeout ->
+      #   Router.go '/#subscription'
+      # , 2000
   Template.payment.onRendered ->
     console.log @
     # Card size is adjusted depending on width
@@ -22,6 +29,7 @@ if Meteor.isClient
         validDate: 'date\nvalidité'
         monthYear: 'mm/aa'
   Template.payment.viewmodel
+    isCorrectCookie: -> CookieSingleton.get().isPreSubed()
     # - ASV diplômée 2014-2015 = 20 €
     # - ASV en formation congrès = 35 €
     # - Tarifs autres (accompagnant, véto…) = 50 €
@@ -30,8 +38,9 @@ if Meteor.isClient
       "          FACTURE (FACTICE)             \n" +
       "----------------------------------------\n\n" +
       "ASV, LA SOIREE                          \n" +
-      "Tarif accompagnant                50,00€\n\n" +
+      "Tarif autres                      50,00€\n\n" +
       "----------------------------------------"
+
 
 if Meteor.isServer
   appLog.info 'Connecting server to Braintree'
