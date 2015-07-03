@@ -172,14 +172,12 @@ if Meteor.isClient
           # Animations starts at 10% visibility of the content
           offset: winHeight - $sectionSubEl.height()*0.1
           context: $mainCntEl
-          continuous: false
       # Waypoint subscription content menu color change
       $sectionSubEl.waypoint (direction) ->
         changeMenuColor direction, true
       ,
         offset: mainMenuModel.height()
         context: $mainCntEl
-        continuous: false
       # Waypoint contact content that triggers entrance animation
       if IS_MOBILE
         $contactEl.css 'opacity', 1

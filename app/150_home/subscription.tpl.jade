@@ -67,7 +67,7 @@ section.subscription
             label(for='email'): span E-mail
       .group-contact-submit
         fieldset
-          legend Je veux être alerté de l'ouverture des inscriptions en ligne et des tarifs par :
+          legend Je veux être contacté de la validation de mon inscription par :
           span.choice
             input#contact-type-mail(
               type='radio', name='contactType', value='mail',
@@ -86,6 +86,11 @@ section.subscription
               data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
             )
             label(for='phone'): span Numéro
+          h3 Tarifs
+          ul
+            li ASV diplômé GIPSA en 2014 ou 2015 : <span class='amount'>20,00€</span>
+            li ASV Auxiliaire Vétérinaire : <span class='amount'>35,00€</span>
+            li Autres (accompagnant, vétérinaire, ...) : <span class='amount'>50,00€</span>
         .submit
           button.inspiration(
             type='button', data-text='Je m\'inscris',
