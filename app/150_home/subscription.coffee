@@ -86,6 +86,8 @@ if Meteor.isClient
           # Reset the form and mask pre-subscription
           @reset()
           @isPresubscribed true
+          # Go to payment screen
+          Router.go 'payment'
 
 if Meteor.isServer
   Meteor.methods
