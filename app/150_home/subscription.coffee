@@ -191,10 +191,30 @@ SimpleSchema.messages
           return 'minNumber'
       return null
 
+# Set fields for payment validation
+@PaymentsSchema = new SimpleSchema
+  paymentStatus:
+    type: Boolean
+    defaultValue: false
+    label: 'Statut du paiement'
+  paymentTransactionId:
+    type: String
+    optional: true
+    label: 'Identifiant de transaction de paiement'
+  amount:
+    type: Number
+    defaultValue: 0
+    label: 'Montant du paiement'
+  subscriptionValidated:
+    type: Boolean
+    defaultValue: false
+    label: 'Inscription validée'
+
 # Add the fields for the DB and the admin UI
 SubscribersFullSchema = new SimpleSchema [
   SubscribersSchema
   { createdAt: orion.attribute 'createdAt' }
+  PaymentsSchema
 ]
 
 Subscribers.attachSchema SubscribersFullSchema
