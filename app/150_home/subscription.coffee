@@ -123,7 +123,7 @@ if Meteor.isServer
     ]
 
 SimpleSchema.messages
-  asvPromoInvalid: 'N° de promo requis ou invalide (ex. "VAE-2015" ou "ASV-300")'
+  asvPromoInvalid:'N° de promo requis ou invalide (ex. "VAE-2015" ou "ASV-300")'
   attendantInvalid: 'Type d\'accompagnant invalide'
 
 # Set only the fields required in the UI

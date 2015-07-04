@@ -5,43 +5,45 @@ if Meteor.isClient
     @get: ->
       instance ?= new CookieInner
     class CookieInner
-      cookieName = 'AsvLaSoiree'
-      expiration = 6*31
+      COOKIE_NAME = 'AsvLaSoiree'
+      COOKIE_EXPIRATION = 6*31
       # User has already accepted the cookie
       isAccepted: ->
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         appLog.info 'Current cookie acceptation status', cookie
         return false if cookie is undefined
         return true
       # User accept the cookie
       accept: ->
         appLog.info 'Setting cookie to accepted'
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         if cookie is undefined
           cookie = accepted: true
         else
           cookie.accepted = true
-        Cookies.set cookieName, cookie, expiration
+        Cookies.set COOKIE_NAME, cookie, COOKIE_EXPIRATION
       # User has already presubscribed
       isPreSubed: ->
         # Without cookie approuval, user can't have perform presubscription
         return false unless @isAccepted()
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         return cookie.preSubscriptionValue?
+      # Simple accessor to all cookie content
+      content: -> Cookies.getJSON COOKIE_NAME
       # User has done a valid presubscription
       preSubStore: (obj) ->
         appLog.info 'Store user\'s pre-subscription', obj
         # Ensure cookie is defined
         @accept()
         # Store its value and its presubscription date
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         cookie.preSubscriptionValue = obj
         cookie.preSubscriptionDate = new Date
-        Cookies.set cookieName, cookie, expiration
+        Cookies.set COOKIE_NAME, cookie, COOKIE_EXPIRATION
       # User has already done a contact request
       isContacted: ->
         return false unless @isAccepted()
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         return cookie.contactRequestDate?
       # User has done a valid contact request
       askContact: (obj) ->
@@ -49,10 +51,10 @@ if Meteor.isClient
         # Ensure cookie is defined
         @accept()
         # Store its value and its contact date
-        cookie = Cookies.getJSON cookieName
+        cookie = Cookies.getJSON COOKIE_NAME
         cookie.contactRequest = obj
         cookie.contactRequestDate = new Date
-        Cookies.set cookieName, cookie, expiration
+        Cookies.set COOKIE_NAME, cookie, COOKIE_EXPIRATION
 
   Template.cookie.onCreated ->
     appLog.info 'Cookie template created'

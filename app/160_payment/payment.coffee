@@ -12,11 +12,10 @@ if Meteor.isClient
     unless CookieSingleton.get().isPreSubed()
       # Automatically go to subscription screen if no information found
       sAlert.error 'Nous n\'avons pas retrouvé votre inscription.'
-      # Meteor.setTimeout ->
-      #   Router.go '/#subscription'
-      # , 2000
+      Meteor.setTimeout ->
+        Router.go '/#subscription'
+      , 3000
   Template.payment.onRendered ->
-    console.log @
     # Card size is adjusted depending on width
     viewportSize = Math.min rwindow.$width(), rwindow.$height()
     cardWidth = if viewportSize < 400 then 200 else 300
@@ -33,14 +32,22 @@ if Meteor.isClient
     # - ASV diplômée 2014-2015 = 20 €
     # - ASV en formation congrès = 35 €
     # - Tarifs autres (accompagnant, véto…) = 50 €
-    paiementInformations:
+    paiementInformations: ->
+      cookieContent = CookieSingleton.get().content()
+      PRICING_TABLE =
+        asv_graduate: amount: 20, tag: 'Tarif ASV GIPSA'
+        asv_serving: amount: 35, tag: 'Tarif ASV, Auxiliaire vétérinaire'
+        attendant: amount: 50, tag: 'Tarif accompagnant'
+      pricing = PRICING_TABLE[cookieContent.preSubscriptionValue.profile]
       #0123456789012345678901234567890123456789
-      "          FACTURE (FACTICE)             \n" +
-      "----------------------------------------\n\n" +
-      "ASV, LA SOIREE                          \n" +
-      "Tarif autres                      50,00€\n\n" +
-      "----------------------------------------"
-
+      dashLine = s.repeat '-', 40
+      '          FACTURE (FACTICE)             \n' +
+      dashLine + s.repeat('\n', 2) +
+      'ASV, LA SOIREE                          \n' +
+      s.rpad(pricing.tag, 34, ' ') +
+        numeral(pricing.amount).format('0,0.00$') +
+        s.repeat('\n', 2) +
+      dashLine
 
 if Meteor.isServer
   appLog.info 'Connecting server to Braintree'
