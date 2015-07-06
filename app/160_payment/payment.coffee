@@ -49,6 +49,16 @@ if Meteor.isClient
         s.repeat('\n', 2) +
       dashLine
 
+# Test cards
+# - visa: 4111111111111111
+# - mastercard: 5555555555554444
+# - maestro: 6759649826438453
+# - amex: 378282246310005
+# - discover: 6011111111111117
+# - visaelectron: 4917300800000000
+# - dinersclub: 30569309025904
+# - unionpay: 6271136264806203568
+# - jcb: 3530111333300000
 if Meteor.isServer
   appLog.info 'Connecting server to Braintree'
   try
