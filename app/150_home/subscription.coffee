@@ -25,7 +25,7 @@ if Meteor.isClient
     phone: ''
     errorText: ''
     phoneRequired: -> @contactType() isnt 'phone'
-    priceOpacity: -> if @profile() is '' then 1 else 1
+    priceOpacity: -> if @profile() is '' then 0 else 1
     priceTag: ->
       return '' if @profile() is ''
       PRICING_TABLE[@profile()].tag + ' : ' +
@@ -126,6 +126,9 @@ if Meteor.isServer
           if val instanceof Date
             return moment(val).calendar()
           return 'Jamais inscrit'
+      }
+      {
+        data: 'paymentTransactionId', title: 'N° de paiement'
       }
     ]
 

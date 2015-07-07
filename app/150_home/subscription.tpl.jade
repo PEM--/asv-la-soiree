@@ -86,7 +86,7 @@ section.subscription
               data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
             )
             label(for='phone'): span Numéro
-          .priceTag(data-bind='style: opacity: priceOpacity')
+          .priceTag(data-bind='style: { opacity: priceOpacity }')
             h3 Tarifs
             p(data-bind='html: priceTag')
         .submit
