@@ -25,6 +25,13 @@ if Meteor.isClient
     phone: ''
     errorText: ''
     phoneRequired: -> @contactType() isnt 'phone'
+    priceOpacity: -> if @profile() is '' then 1 else 1
+    priceTag: ->
+      return '' if @profile() is ''
+      PRICING_TABLE[@profile()].tag + ' : ' +
+        '<span class=\'amount\'>' +
+          numeral(PRICING_TABLE[@profile()].amount).format('0,0.00$') +
+        '</span>'
     disabledSubmit: ->
       obj =
         profile: @profile()
@@ -209,6 +216,12 @@ SimpleSchema.messages
     type: Boolean
     defaultValue: false
     label: 'Inscription validée'
+
+ASV_PRICING_TABLE = amount: 35, tag: 'Tarif ASV'
+@PRICING_TABLE =
+  asv_graduate: ASV_PRICING_TABLE
+  asv_serving: ASV_PRICING_TABLE
+  attendant: amount: 45, tag: 'Tarif accompagnant'
 
 # Add the fields for the DB and the admin UI
 SubscribersFullSchema = new SimpleSchema [

@@ -35,7 +35,7 @@ section.subscription
                 type='radio', name='profile', value='asv_serving',
                 data-bind='checked: profile, change: disabledSubmit'
               )
-              label(for='profile-serving'): span ASV<br>Auxiliare<br>Vétérinaire
+              label(for='profile-serving'): span ASV<br>Auxiliaire<br>Vétérinaire
           .choice-and-option
             span.choice
               input#profile-attendant(
@@ -86,11 +86,9 @@ section.subscription
               data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
             )
             label(for='phone'): span Numéro
-          h3 Tarifs
-          ul
-            li ASV diplômé GIPSA en 2014 ou 2015 : <span class='amount'>20,00€</span>
-            li ASV Auxiliaire Vétérinaire : <span class='amount'>35,00€</span>
-            li Autres (accompagnant, vétérinaire, ...) : <span class='amount'>50,00€</span>
+          .priceTag(data-bind='style: opacity: priceOpacity')
+            h3 Tarifs
+            p(data-bind='html: priceTag')
         .submit
           button.inspiration(
             type='button', data-text='Je m\'inscris',

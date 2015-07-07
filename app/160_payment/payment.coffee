@@ -29,15 +29,10 @@ if Meteor.isClient
         monthYear: 'mm/aa'
   Template.payment.viewmodel
     isCorrectCookie: -> CookieSingleton.get().isPreSubed()
-    # - ASV diplômée 2014-2015 = 20 €
-    # - ASV en formation congrès = 35 €
-    # - Tarifs autres (accompagnant, véto…) = 50 €
+    # - ASV  35 €
+    # - Autres 45 €
     paiementInformations: ->
       cookieContent = CookieSingleton.get().content()
-      PRICING_TABLE =
-        asv_graduate: amount: 20, tag: 'Tarif ASV GIPSA'
-        asv_serving: amount: 35, tag: 'Tarif ASV, Auxiliaire vétérinaire'
-        attendant: amount: 50, tag: 'Tarif accompagnant'
       pricing = PRICING_TABLE[cookieContent.preSubscriptionValue.profile]
       #0123456789012345678901234567890123456789
       dashLine = s.repeat '-', 40
