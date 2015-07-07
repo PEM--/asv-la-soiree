@@ -66,20 +66,19 @@ if Meteor.isClient
           @reset()
           @isContactPrevented true
 
-if Meteor.isServer
-  Meteor.methods
-    askContact: (obj) ->
-      check obj, ContactsSchema
-      try
-        Contacts.insert _.extend obj, createdAt: new Date
-        appLog.info 'Inserted new contact demand', obj
-      catch error
-        appLog.warn error, typeof error
-        if ((JSON.stringify error).search 'duplicate') isnt -1
-          throw new Meteor.Error 'askContact.already',
-            'Vous avez déjà requis une demande de contact'
-        else
-          throw new Meteor.Error 'askContact', 'Internal server error'
+Meteor.methods
+  askContact: (obj) ->
+    check obj, ContactsSchema
+    try
+      Contacts.insert _.extend obj, createdAt: new Date
+      appLog.info 'Inserted new contact demand', obj
+    catch error
+      appLog.warn error, typeof error
+      if ((JSON.stringify error).search 'duplicate') isnt -1
+        throw new Meteor.Error 'askContact.already',
+          'Vous avez déjà requis une demande de contact'
+      else
+        throw new Meteor.Error 'askContact', 'Internal server error'
 
 # Contacts
 @Contacts = new orion.collection 'contacts',

@@ -96,19 +96,18 @@ if Meteor.isClient
           # Go to payment screen
           Router.go 'payment'
 
-if Meteor.isServer
-  Meteor.methods
-    presubscribe: (obj) ->
-      check obj, SubscribersSchema
-      try
-        Subscribers.insert _.extend obj, createdAt: new Date
-        appLog.info 'Inserted new subscriber', obj
-      catch error
-        appLog.warn error, typeof error
-        if ((JSON.stringify error).search 'duplicate') isnt -1
-          throw new Meteor.Error 'presubscribe.already','Vous êtes déjà inscrit'
-        else
-          throw new Meteor.Error 'presubscribe', 'Internal server error'
+Meteor.methods
+  presubscribe: (obj) ->
+    check obj, SubscribersSchema
+    try
+      Subscribers.insert _.extend obj, createdAt: new Date
+      appLog.info 'Inserted new subscriber', obj
+    catch error
+      appLog.warn error, typeof error
+      if ((JSON.stringify error).search 'duplicate') isnt -1
+        throw new Meteor.Error 'presubscribe.already','Vous êtes déjà inscrit'
+      else
+        throw new Meteor.Error 'presubscribe', 'Internal server error'
 
 # Subscribers
 @Subscribers = new orion.collection 'subscribers',
