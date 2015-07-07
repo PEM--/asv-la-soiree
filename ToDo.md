@@ -1,3 +1,13 @@
+## Review 06/06/2015
+- [X] Nouvelle structure de tarifs :
+  - ASV : 35,00 €
+  - Accompagnants : 45,00 €
+- [X] Typo dans le formulaire de souscription (Auxiliare -> Auxiliaire).
+- [X] Tarifs avec apparition en fonction du profil sélectionné.
+- [X] Les flèches doivent être cliquables (accès rapide à la section suivante).
+- [ ] Boutons de partage social.
+- [ ] Paiement par chèque.
+
 ## Production issues
 - [X] Chrome 43.0.2357.130: false mobile detection.
 - [X] Sitemap on localhost (see deployment: use production.json).
@@ -90,7 +100,7 @@
 - [ ] G+ links
 - [ ] Mail chimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
-- [ ] Mangopay
+- [ ] Braintree
   - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
   - https://github.com/jeremyhodges/flaming-bear
 - [ ] Mail chimp
@@ -111,7 +121,7 @@
 - [ ] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
-- [ ] Gmap integrated with CMS + Access informations
+- [ ] Bonus: Gmap integrated with CMS + Access informations
   - https://github.com/rwatts3/orionjs-maps
 - [ ] Bonus: Fix momentum issues on inner template animations
 - [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs

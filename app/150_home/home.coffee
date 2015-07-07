@@ -86,6 +86,7 @@ if Meteor.isClient
       e.preventDefault()
       window.location = e.currentTarget.href
       HomeController.scrollToFragment()
+    goProgram: -> Router.go '/#program'
 
   Template.home.onRendered ->
     appLog.info 'Rendering home screen'

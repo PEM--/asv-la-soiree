@@ -19,7 +19,7 @@ header
         .flip-container
           +countdown
     .arrow-down-container
-      .arrow-down-centered(data-bind='style: {opacity: arrowOpacity}')
+      .arrow-down-centered(data-bind='style: {opacity: arrowOpacity}, click: goProgram')
         .svg-logo-container
           +arrowDownLogo
 main(data-role='home')
