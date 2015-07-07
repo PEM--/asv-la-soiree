@@ -127,9 +127,7 @@ if Meteor.isServer
             return moment(val).calendar()
           return 'Jamais inscrit'
       }
-      {
-        data: 'paymentTransactionId', title: 'N° de paiement'
-      }
+      { data: 'paymentTransactionId', title: 'N° de paiement' }
     ]
 
 SimpleSchema.messages
@@ -207,6 +205,10 @@ SimpleSchema.messages
     type: Boolean
     defaultValue: false
     label: 'Statut du paiement'
+  paymentType:
+    type: String
+    allowedValues: ['card', 'check']
+    label: 'Type de paiement'
   paymentTransactionId:
     type: String
     optional: true
