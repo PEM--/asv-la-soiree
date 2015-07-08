@@ -1,4 +1,5 @@
-settings.json
+development.json
+test.json
 production.json
 node_modules
 app/public/img
