@@ -35,7 +35,6 @@ if Meteor.isServer
         vous acceptez l'utilisation des cookies pour vous \
         proposer des services et offres adaptés."
   _.extend headValues, seoHeadValues()
-  console.log seoHeadValues()
   # There's only one item in the dictionnary which serves
   #  as an object containing all properties for the site.
   dicId = (orion.dictionary.findOne())._id
@@ -47,4 +46,4 @@ if Meteor.isServer
         'google-ua': Meteor.settings.public.ga.id
     , (err) ->
       return appLog.error "Dictionnary update failed: #{err}" if err
-      appLog.info 'Default site description created or updated'
+      appLog.info 'Default site analytics created or updated'

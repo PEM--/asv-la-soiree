@@ -39,14 +39,16 @@ if Meteor.isServer
 
 
   @seoHeadValues = ->
-    res =
-      site:
-        title: 'ASV, la soirée'
-        description: 'Une super soirée pour le congrès des ASV, \
-          les auxiliaires vétérinaires.'
-        lastModified: new Date()
-      social:
-        twitter:
-          site: '@apform'
-          creator: '@PEM___'
+    res = {}
+    for key in [
+      'site.title'
+      'site.description'
+      'social.twitter.site'
+      'social.twitter.creator'
+    ]
+      res[key] = if (orion.dictionary.get key) is ''
+        Meteor.settings.dictionary[key]
+      else
+        orion.dictionary.get key
+    res.lastModified = new Date
     res
