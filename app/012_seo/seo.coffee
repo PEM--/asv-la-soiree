@@ -13,7 +13,7 @@ orion.dictionary.addDefinition 'twitter.site', 'social',
 orion.dictionary.addDefinition 'twitter.creator', 'social',
   type: String, label: 'Compte Twitter de l\'auteur'
 orion.dictionary.addDefinition 'gplus.publisher', 'social',
-  type: String, label: 'Compte G+ du l\'éditeur'
+  type: String, label: 'Compte G+ de l\'éditeur'
 orion.dictionary.addDefinition 'gplus.author', 'social',
   type: String, label: 'Compte G+ de l\'auteur'
 
