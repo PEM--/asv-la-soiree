@@ -12,6 +12,28 @@ orion.dictionary.addDefinition 'twitter.site', 'social',
   type: String, label: 'Compte Twitter du site'
 orion.dictionary.addDefinition 'twitter.creator', 'social',
   type: String, label: 'Compte Twitter de l\'auteur'
+# Rich snippet event
+rsEvent = ->
+  '{' +
+    '"@context": "http://schema.org",' +
+    '"@type": "Event",' +
+    "\"name\": \"#{orion.dictionary.get 'site.title'}\"," +
+    '"startDate" : "2015-11-27T18:00:00.000Z",' +
+    "\"url\" : \"#{Meteor.settings.proxy.url}\"," +
+    "\"image\": \"#{Meteor.settings.proxy.url}/favicon-96x96.png\"," +
+    '"location" : {' +
+      '"@type" : "Place",' +
+      '"name" : "La Plateforme",' +
+      '"address" : "4, quai Victor Augagneur - 69003 Lyon"' +
+    '},' +
+    '"offers": {' +
+      '"@type": "AggregateOffer",' +
+      "\"lowPrice\": \"#{PRICING_TABLE.asv_graduate.amount}\"," +
+      "\"highPrice\": \"#{PRICING_TABLE.attendant.amount}\"," +
+      '"priceCurrency": "EUR",' +
+      "\"url\": \"#{Meteor.settings.proxy.url}/#subscription\"" +
+    '}' +
+  '}'
 
 if Meteor.isServer
   @seoHeadValues = ->
@@ -63,6 +85,10 @@ if Meteor.isServer
       'data-bind=\'value: description, attr: { content: description }\'/>' +
     '<meta property=\'og:image\' ' +
       "content='#{Meteor.settings.proxy.url}/img/twitter-card.jpg' />" +
+    # Rich snippets
+    '<script type="application/ld+json" data-bind=\'text: rsEvent\'>' +
+      rsEvent() +
+    '</script>' +
     # @TODO Finalize SEO on G+
     '<link rel=\'publisher\' ' +
       'href=\'https://plus.google.com/105839099099011364699\'>' +
@@ -93,16 +119,12 @@ if Meteor.isClient
           appLog.info 'SEO reactive information are set on the <head>.'
           @SeoViewModel = new ViewModel
             title: -> orion.dictionary.get 'site.title'
-            description: ->
-              orion.dictionary.get 'site.description'
-            twitterSite: ->
-              orion.dictionary.get 'social.twitter.site'
-            twitterCreator: ->
-              orion.dictionary.get 'social.twitter.creator'
+            description: -> orion.dictionary.get 'site.description'
+            twitterSite: -> orion.dictionary.get 'social.twitter.site'
+            twitterCreator: -> orion.dictionary.get 'social.twitter.creator'
+            rsEvent: -> rsEvent()
           @SeoViewModel.bind $head
         else
+          # Note that the reactivity in the viewmodel changes the automatically
+          #  the information. There's no need for additional calls.
           appLog.info 'Dictionary updated, changing SEO values.'
-          SeoViewModel.title orion.dictionary.get 'site.title'
-          SeoViewModel.description orion.dictionary.get 'site.description'
-          SeoViewModel.twitterSite orion.dictionary.get 'social.twitter.site'
-          SeoViewModel.twitterCreator orion.dictionary.get 'social.twitter.creator'

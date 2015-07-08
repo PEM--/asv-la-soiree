@@ -91,8 +91,8 @@
 - [X] Navigateurs trop anciens
 - [X] Dynamic and editable footer
 - [X] Loading subscription template
-- [ ] Twitter cards
-- [ ] Open graph
+- [X] Twitter cards
+- [X] Open graph
   - https://github.com/yasinuslu/blaze-meta
   - https://github.com/lookback/meteor-seo/
 - [ ] Social sharing
@@ -103,7 +103,7 @@
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
-- [ ] Rich snippets
+- [X] Rich snippets
 - [ ] G+ links
 - [ ] Mail chimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
