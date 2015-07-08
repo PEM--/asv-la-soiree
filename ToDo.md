@@ -5,7 +5,7 @@
 - [X] Typo dans le formulaire de souscription (Auxiliare -> Auxiliaire).
 - [X] Tarifs avec apparition en fonction du profil sélectionné.
 - [X] Les flèches doivent être cliquables (accès rapide à la section suivante).
-- [ ] SEO par Twitter card (type 'Summary').
+- [ ] SEO par Twitter card (type 'summary_large_image').
 - [ ] SEO par OpenGraph (FaceBook + contenu Twitter card).
 - [ ] SEO par Google+
 - [ ] Boutons de partage social: Twitter, Facebook, G+.

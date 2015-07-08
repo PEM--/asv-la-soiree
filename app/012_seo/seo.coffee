@@ -39,7 +39,7 @@ if Meteor.isServer
       'data-bind=\'value: description, attr: { content: description }\'>' +
     # Twitter card
     # Note that twitter card uses some of the OpenGraph values for its content.
-    '<meta name=\'twitter:card\' content=\'summary\' />' +
+    '<meta name=\'twitter:card\' content=\'summary_large_image\' />' +
     '<meta name=\"twitter:site\" ' +
       "content='#{orion.dictionary.get 'social.twitter.site'}' " +
       'data-bind=\'value: twitterSite, attr: { content: twitterSite }\'/>' +
@@ -47,7 +47,19 @@ if Meteor.isServer
       "content='#{orion.dictionary.get 'social.twitter.creator'}' " +
       'data-bind=\'value: twitterCreator, attr: { content: twitterCreator }\'' +
     '/>' +
-    
+    # Open graph
+    '<meta property=\'og:url\' ' +
+      "content='#{Meteor.settings.proxy.url}' />" +
+    '<meta property=\'og:title\' ' +
+      "content='#{orion.dictionary.get 'site.title'}' " +
+      'data-bind=\'value: title, attr: { content: title }\'/>' +
+    '<meta property=\'og:description\' ' +
+      "content='#{orion.dictionary.get 'site.description'}' " +
+      'data-bind=\'value: description, attr: { content: description }\'/>' +
+    '<meta property=\'og:image\' ' +
+      "content='#{Meteor.settings.proxy.url}/img/twitter-card.jpg' />" +
+
+
 
     # @TODO Finalize SEO on G+
     '<link rel=\'publisher\' ' +
