@@ -14,30 +14,6 @@ orion.dictionary.addDefinition 'twitter.creator', 'social',
   type: String, label: 'Compte Twitter de l\'auteur'
 
 if Meteor.isServer
-  @htmlHeadInjectedContent = ->
-    # Title and description: Basic SEO values
-    "<title data-bind='html: title'>#{orion.dictionary.get 'site.title'}" +
-      '</title>' +
-    '<meta name=\'description\' ' +
-      "content='#{orion.dictionary.get 'site.description'}' " +
-      'data-bind=\'value: description, attr: { content: description }\'>' +
-    # Twitter card
-    # Note that twitter card uses some of the OpenGraph values for its content.
-    '<meta name="twitter:card" content="summary" />' +
-    '<meta name="twitter:site" content="' +
-      orion.dictionary.get 'social.twitter.site'
-    '" />' +
-    '<meta name="twitter:creator" content="' +
-      orion.dictionary.get 'social.twitter.creator'
-    '" />' +
-
-    # @TODO Finalize SEO on G+
-    '<link rel=\'publisher\' ' +
-      'href=\'https://plus.google.com/105839099099011364699\'>' +
-    '<link rel=\'author\' ' +
-      'href=\'https://plus.google.com/+PierreEricMarchandet\'>'
-
-
   @seoHeadValues = ->
     res = {}
     for key in [
@@ -53,3 +29,67 @@ if Meteor.isServer
         orionDictKey
     res.lastModified = new Date
     res
+
+  @htmlHeadInjectedContent = ->
+    # Title and description: Basic SEO values
+    "<title data-bind='html: title'>#{orion.dictionary.get 'site.title'}" +
+      '</title>' +
+    '<meta name=\'description\' ' +
+      "content='#{orion.dictionary.get 'site.description'}' " +
+      'data-bind=\'value: description, attr: { content: description }\'>' +
+    # Twitter card
+    # Note that twitter card uses some of the OpenGraph values for its content.
+    '<meta name=\'twitter:card\' content=\'summary\' />' +
+    '<meta name=\"twitter:site\" ' +
+      "content='#{orion.dictionary.get 'social.twitter.site'}' " +
+      'data-bind=\'value: twitterSite, attr: { content: twitterSite }\'/>' +
+    '<meta name=\'twitter:creator\' ' +
+      "content='#{orion.dictionary.get 'social.twitter.creator'}' " +
+      'data-bind=\'value: twitterCreator, attr: { content: twitterCreator }\'' +
+    '/>' +
+    
+
+    # @TODO Finalize SEO on G+
+    '<link rel=\'publisher\' ' +
+      'href=\'https://plus.google.com/105839099099011364699\'>' +
+    '<link rel=\'author\' ' +
+      'href=\'https://plus.google.com/+PierreEricMarchandet\'>'
+
+
+if Meteor.isClient
+  Meteor.startup ->
+    # Inject lang in the html tag
+    ($ 'html').attr 'lang', 'fr'
+    # Create all meta informations for SEO
+    $head = $ 'head'
+    # Ensure that the SEO ViewModel is never instantiated twice
+    @SeoViewModel = null
+    # Wait for Orion's dictionary to get ready
+    Tracker.autorun =>
+      isDictReady = not not orion.dictionary.findOne()
+      unless isDictReady
+        # This case shouldn't exist, logs it if it happens
+        appLog.warn 'Orion\'s dictionary isn\'t ready yet'
+        return
+      appLog.info 'Orion\'s dictionnary is ready. \
+        Start real time modification of SEO values.'
+      # Wait for jQuery to stabilyze
+      Meteor.defer =>
+        # Create or update reactive SEO data structure
+        if SeoViewModel is null
+          appLog.info 'SEO reactive information are set on the <head>.'
+          @SeoViewModel = new ViewModel
+            title: -> orion.dictionary.get 'site.title'
+            description: ->
+              orion.dictionary.get 'site.description'
+            twitterSite: ->
+              orion.dictionary.get 'social.twitter.site'
+            twitterCreator: ->
+              orion.dictionary.get 'social.twitter.creator'
+          @SeoViewModel.bind $head
+        else
+          appLog.info 'Dictionary updated, changing SEO values.'
+          SeoViewModel.title orion.dictionary.get 'site.title'
+          SeoViewModel.description orion.dictionary.get 'site.description'
+          SeoViewModel.twitterSite orion.dictionary.get 'social.twitter.site'
+          SeoViewModel.twitterCreator orion.dictionary.get 'social.twitter.creator'

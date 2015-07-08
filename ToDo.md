@@ -5,8 +5,15 @@
 - [X] Typo dans le formulaire de souscription (Auxiliare -> Auxiliaire).
 - [X] Tarifs avec apparition en fonction du profil sélectionné.
 - [X] Les flèches doivent être cliquables (accès rapide à la section suivante).
-- [ ] Boutons de partage social.
+- [ ] SEO par Twitter card (type 'Summary').
+- [ ] SEO par OpenGraph (FaceBook + contenu Twitter card).
+- [ ] SEO par Google+
+- [ ] Boutons de partage social: Twitter, Facebook, G+.
+- [ ] Boutons de like: Facebook, G+.
+- [ ] Liens vers Youtube.
 - [ ] Paiement par chèque.
+- [ ] Paiement par CB (Braintree).
+- [ ] Mailchimp et envoi automatique lors du paiement.
 
 ## Production issues
 - [X] Chrome 43.0.2357.130: false mobile detection.
