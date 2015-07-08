@@ -35,6 +35,7 @@ if Meteor.isServer
         vous acceptez l'utilisation des cookies pour vous \
         proposer des services et offres adaptés."
   _.extend headValues, seoHeadValues()
+  _.extend headValues, socialValues()
   # There's only one item in the dictionnary which serves
   #  as an object containing all properties for the site.
   dicId = (orion.dictionary.findOne())._id
