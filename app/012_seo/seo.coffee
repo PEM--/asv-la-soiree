@@ -50,7 +50,12 @@ if Meteor.isServer
     # Open graph
     '<meta property=\'og:url\' ' +
       "content='#{Meteor.settings.proxy.url}' />" +
+    '<meta property=\'og:type\' content=\'website\' />' +
+    '<meta property=\'og:locale\' content=\'fr_FR\' />' +
     '<meta property=\'og:title\' ' +
+      "content='#{orion.dictionary.get 'site.title'}' " +
+      'data-bind=\'value: title, attr: { content: title }\'/>' +
+    '<meta property=\'og:site_name\' ' +
       "content='#{orion.dictionary.get 'site.title'}' " +
       'data-bind=\'value: title, attr: { content: title }\'/>' +
     '<meta property=\'og:description\' ' +
@@ -58,15 +63,11 @@ if Meteor.isServer
       'data-bind=\'value: description, attr: { content: description }\'/>' +
     '<meta property=\'og:image\' ' +
       "content='#{Meteor.settings.proxy.url}/img/twitter-card.jpg' />" +
-
-
-
     # @TODO Finalize SEO on G+
     '<link rel=\'publisher\' ' +
       'href=\'https://plus.google.com/105839099099011364699\'>' +
     '<link rel=\'author\' ' +
       'href=\'https://plus.google.com/+PierreEricMarchandet\'>'
-
 
 if Meteor.isClient
   Meteor.startup ->
