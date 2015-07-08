@@ -30,17 +30,10 @@ if Meteor.isServer
       # - Site description from Orion's dictionary with ViewModel bindings
       # - Tell Google that it's an heavy JS app
       '<meta charset="utf-8">' +
-      "<title data-bind='html: title'>#{orion.dictionary.get 'site.title'}" +
-        '</title>' +
-      '<meta name=\'description\' ' +
-        "content='#{orion.dictionary.get 'site.description'}' " +
-        'data-bind=\'value: description, attr: { content: description }\'>' +
+      # Inform bots that the content is dynamically generated
       '<meta name="fragment" content="!">' +
-      # @TODO Finalize SEO on G+
-      '<link rel=\'publisher\' ' +
-        'href=\'https://plus.google.com/105839099099011364699\'>' +
-      '<link rel=\'author\' ' +
-        'href=\'https://plus.google.com/+PierreEricMarchandet\'>' +
+      # SEO values
+      htmlHeadInjectedContent() +
       # Force the initial scale for Android and iOS as our spinner may be
       #  distorted by their default viewport values.
       '<meta name="viewport" content="width=device-width,maximum-scale=1,' +
