@@ -46,9 +46,10 @@ if Meteor.isServer
       'social.twitter.site'
       'social.twitter.creator'
     ]
-      res[key] = if (orion.dictionary.get key) is ''
-        Meteor.settings.dictionary[key]
+      orionDictKey = orion.dictionary.get key
+      res[key] = if orionDictKey is ''
+        eval "Meteor.settings.dictionary.#{key}"
       else
-        orion.dictionary.get key
+        orionDictKey
     res.lastModified = new Date
     res
