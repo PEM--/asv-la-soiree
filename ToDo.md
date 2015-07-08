@@ -6,7 +6,7 @@
 - [X] Tarifs avec apparition en fonction du profil sélectionné.
 - [X] Les flèches doivent être cliquables (accès rapide à la section suivante).
 - [X] SEO par Twitter card (type 'summary_large_image').
-- [ ] SEO par OpenGraph (FaceBook + contenu Twitter card).
+- [X] SEO par OpenGraph (FaceBook + contenu Twitter card).
 - [ ] SEO par Google+
 - [ ] Boutons de partage social: Twitter, Facebook, G+.
 - [ ] Boutons de like: Facebook, G+.
