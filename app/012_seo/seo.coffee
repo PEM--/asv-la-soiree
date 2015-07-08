@@ -12,6 +12,11 @@ orion.dictionary.addDefinition 'twitter.site', 'social',
   type: String, label: 'Compte Twitter du site'
 orion.dictionary.addDefinition 'twitter.creator', 'social',
   type: String, label: 'Compte Twitter de l\'auteur'
+orion.dictionary.addDefinition 'gplus.publisher', 'social',
+  type: String, label: 'Compte G+ du l\'éditeur'
+orion.dictionary.addDefinition 'gplus.author', 'social',
+  type: String, label: 'Compte G+ de l\'auteur'
+
 # Rich snippet event
 rsEvent = ->
   '{' +
@@ -43,6 +48,8 @@ if Meteor.isServer
       'site.description'
       'social.twitter.site'
       'social.twitter.creator'
+      'social.gplus.publisher'
+      'social.gplus.author'
     ]
       orionDictKey = orion.dictionary.get key
       res[key] = if orionDictKey is ''
@@ -89,11 +96,13 @@ if Meteor.isServer
     '<script type="application/ld+json" data-bind=\'text: rsEvent\'>' +
       rsEvent() +
     '</script>' +
-    # @TODO Finalize SEO on G+
+    # G+
     '<link rel=\'publisher\' ' +
-      'href=\'https://plus.google.com/105839099099011364699\'>' +
+      "href='#{orion.dictionary.get 'social.gplus.publisher'}' " +
+      'data-bind=\'value: gplusPublisher, attr: { href: gplusPublisher }\'>' +
     '<link rel=\'author\' ' +
-      'href=\'https://plus.google.com/+PierreEricMarchandet\'>'
+      "href='#{orion.dictionary.get 'social.gplus.author'}' " +
+      'data-bind=\'value: gplusAuthor, attr: { href: gplusAuthor }\'>'
 
 if Meteor.isClient
   Meteor.startup ->
@@ -123,6 +132,8 @@ if Meteor.isClient
             twitterSite: -> orion.dictionary.get 'social.twitter.site'
             twitterCreator: -> orion.dictionary.get 'social.twitter.creator'
             rsEvent: -> rsEvent()
+            gplusPublisher: -> orion.dictionary.get 'social.gplus.publisher'
+            gplusAuthor: -> orion.dictionary.get 'social.gplus.author'
           @SeoViewModel.bind $head
         else
           # Note that the reactivity in the viewmodel changes the automatically

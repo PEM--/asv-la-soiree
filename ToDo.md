@@ -7,7 +7,8 @@
 - [X] Les flèches doivent être cliquables (accès rapide à la section suivante).
 - [X] SEO par Twitter card (type 'summary_large_image').
 - [X] SEO par OpenGraph (FaceBook + contenu Twitter card).
-- [ ] SEO par Google+
+- [X] SEO par Google+
+- [X] SEO par rich snippets
 - [ ] Boutons de partage social: Twitter, Facebook, G+.
 - [ ] Boutons de like: Facebook, G+.
 - [ ] Liens vers Youtube.
@@ -91,10 +92,6 @@
 - [X] Navigateurs trop anciens
 - [X] Dynamic and editable footer
 - [X] Loading subscription template
-- [X] Twitter cards
-- [X] Open graph
-  - https://github.com/yasinuslu/blaze-meta
-  - https://github.com/lookback/meteor-seo/
 - [ ] Social sharing
 - [ ] Subscription with payment
   - https://github.com/meteorclub/shareit
@@ -103,8 +100,6 @@
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
-- [X] Rich snippets
-- [ ] G+ links
 - [ ] Mail chimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
 - [ ] Braintree
