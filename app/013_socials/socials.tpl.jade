@@ -6,7 +6,7 @@ ul.share-buttons
     )
       i.fa.fa-facebook-square.fa-2x
   li
-    a.tweeter(
+    a.twitter(
       href='https://twitter.com/intent/tweet?source=http%3A%2F%2Fasv-la-soiree.com&text=La%20soir%C3%A9e%20ASV:%20http%3A%2F%2Fasv-la-soiree.com&via=apform',
       target='_blank', title='Tweet',
       onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"
@@ -19,3 +19,11 @@ ul.share-buttons
       onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"
     )
       i.fa.fa-google-plus-square.fa-2x
+  if youtube
+    li
+      a.youtube(
+        href='https://plus.google.com/share?url=http%3A%2F%2Fasv-la-soiree.com',
+        target='_blank', title='Voir notre chaîne',
+        onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"
+      )
+        i.fa.fa-youtube-square.fa-2x
