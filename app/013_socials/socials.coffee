@@ -31,7 +31,7 @@ if Meteor.isClient
       TWITTER_URL + '?source=' + (encodeURIComponent siteUrl) +
         '&text=' + (encodeURIComponent msg) +
         '&via=' + orion.dictionary.get('social.twitter.site').substr(1)
-    gplusUrl: ->
+    gplusURL: ->
       GPLUS_URL = 'https://plus.google.com/share'
       siteUrl = Meteor.settings.public.proxy.url
       GPLUS_URL + '?url=' + encodeURIComponent siteUrl
