@@ -27,16 +27,17 @@ if Meteor.isServer
 # https://www.youtube.com/channel/UCJeNxRQgeyg92tRlBXpnvLg
 if Meteor.isClient
   Template.socials.viewmodel
-    faceBookUrl: ->
-      FB_URL = 'https://www.facebook.com/sharer/sharer.php'
-      siteUrl = Meteor.settings.proxy.url
-      msg = orion.dictionary.get 'social.facebook.message'
-      FB_URL + '?u=' + (encodeURIComponent siteUrl) +
-        '&t=' + (encodeURIComponent msg)
-    shareOnFaceBook: ->
-      window.open @faceBookUrl()
-      false
-    youtubeURL: orion.dictionary.get 'social.youtube.url'
+    # faceBookUrl: ->
+    #   FB_URL = 'https://www.facebook.com/sharer/sharer.php'
+    #   siteUrl = Meteor.settings.proxy.url
+    #   msg = orion.dictionary.get 'social.facebook.message'
+    #   FB_URL + '?u=' + (encodeURIComponent siteUrl) +
+    #     '&t=' + (encodeURIComponent msg)
+    # shareOnFaceBook: ->
+    #   window.open @faceBookUrl()
+    #   false
+    youtubeURL: -> orion.dictionary.get 'social.youtube.url'
     goYoutube: (e) ->
       e.preventDefault()
       window.open @youtubeURL()
+  , ['youtubeURL', 'goYoutube']
