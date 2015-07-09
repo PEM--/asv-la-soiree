@@ -35,9 +35,6 @@
           border-radius @width
           background brandColor
           absolute bottom 4px left 4px
-    // Base class for classical checkbox
-    // fieldset
-    //   cpCheckbox(bgColor, brandSuccess, brandDanger, brandColor)
     // Base class for input text/email/phone
     fieldset, .input-contact, .choice-and-option
       cpInput(brandColor, bgColor, brandColor)
@@ -81,6 +78,39 @@
             opacity .5
     input:checked + label::after
       background bgColor
+    // Base class for classical checkbox
+    fieldset
+      span.checkbox
+        [type="checkbox"]:not(:checked), [type="checkbox"]:checked
+          position absolute
+          left -9999px
+        [type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label
+          max-width 300px
+          position relative
+          padding-left 25px
+          cursor pointer
+        [type="checkbox"]:not(:checked) + label:before, [type="checkbox"]:checked + label:before
+          content ''
+          absolute top .2em left
+          size 1.2em
+          border 1px solid brandColor
+          border-radius roundCorner
+        [type="checkbox"]:not(:checked) + label:after, [type="checkbox"]:checked + label:after
+          content '\f00c'
+          absolute top left .1em
+          font-family FontAwesome
+          font-size 1em
+          color brandColor
+          background-color transparent
+          transition opacity defaultTransitionValue, transform defaultTransitionValue
+        // Not checked
+        [type="checkbox"]:not(:checked) + label:after
+          opacity 0
+          transform scale(0)
+        // Checked
+        [type="checkbox"]:checked + label:after
+          opacity 1
+          transform scale(1)
     section.subscription
       article.header
         width 100%
@@ -248,7 +278,7 @@
                 font-family $courier
             // Subscription button
             button
-              margin 1.8em auto 0 auto
+              margin 1em auto
               text-transform uppercase
               line-height 2.8em
               border 2px solid brandColor
