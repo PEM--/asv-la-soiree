@@ -11,7 +11,7 @@
 - [X] SEO par rich snippets
 - [X] Boutons de partage social: Twitter, Facebook, G+.
 - [X] Liens vers Youtube.
-- [ ] Optin pour la newsletter.
+- [X] Optin pour la newsletter.
 - [ ] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Mailchimp et envoi automatique lors du paiement.
