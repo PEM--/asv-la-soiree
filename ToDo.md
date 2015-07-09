@@ -9,9 +9,9 @@
 - [X] SEO par OpenGraph (FaceBook + contenu Twitter card).
 - [X] SEO par Google+
 - [X] SEO par rich snippets
-- [ ] Boutons de partage social: Twitter, Facebook, G+.
-- [ ] Boutons de like: Facebook, G+.
-- [ ] Liens vers Youtube.
+- [X] Boutons de partage social: Twitter, Facebook, G+.
+- [X] Liens vers Youtube.
+- [ ] Optin pour la newsletter.
 - [ ] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Mailchimp et envoi automatique lors du paiement.

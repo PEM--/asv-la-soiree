@@ -1,0 +1,34 @@
+@import 'nib'
+@import 'jeet'
+@import 'typographic'
+@import '020_colorsTheme/*.import'
+
+shareButtons()
+  ul.share-buttons
+    inline-list 1em
+    margin auto
+  .facebook
+    color #3B5998
+  .twitter
+    color #2DAAF5
+  .gplus
+    color #D73D32
+  .youtube
+    color #F60000
+
+// Specific for the footer
+.main-container footer section article:nth-child(3)
+  shareButtons()
+
+// Specific for subscription
+.main-container .router-container section.subscription article.form .alreadyPresubscribed div
+  shareButtons()
+  ul.share-buttons
+    margin-top 1em
+    background-color white
+    border-radius 1em
+    relative top left 50%
+    width auto
+    display inline-block
+    padding .5em 2em
+    transform translate3d(-50%,0,0)

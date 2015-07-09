@@ -2,7 +2,7 @@ ul.share-buttons
   li
     a.facebook(
       target='_blank', title='Partager sur Facebook',
-      data-bind=''
+      data-bind='attr: {href: faceBookUrl}, click: shareOnFaceBook'
     )
       i.fa.fa-facebook-square.fa-2x
   li
@@ -22,8 +22,8 @@ ul.share-buttons
   if youtube
     li
       a.youtube(
-        href='https://plus.google.com/share?url=http%3A%2F%2Fasv-la-soiree.com',
-        target='_blank', title='Voir notre chaîne',
-        onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"
+        href=''
+        target='_blank', title='Voir notre chaîne'
+        data-bind='click: goYoutube, value: attr: youtubeURL, {href: value}'
       )
         i.fa.fa-youtube-square.fa-2x

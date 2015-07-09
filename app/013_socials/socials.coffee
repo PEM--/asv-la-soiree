@@ -30,9 +30,13 @@ if Meteor.isClient
     faceBookUrl: ->
       FB_URL = 'https://www.facebook.com/sharer/sharer.php'
       siteUrl = Meteor.settings.proxy.url
-      msg = orion.dictionary.get 'facebook.message'
+      msg = orion.dictionary.get 'social.facebook.message'
       FB_URL + '?u=' + (encodeURIComponent siteUrl) +
         '&t=' + (encodeURIComponent msg)
     shareOnFaceBook: ->
       window.open @faceBookUrl()
-      return false
+      false
+    youtubeURL: orion.dictionary.get 'social.youtube.url'
+    goYoutube: (e) ->
+      e.preventDefault()
+      window.open @youtubeURL()
