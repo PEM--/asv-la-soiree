@@ -23,6 +23,7 @@ if Meteor.isClient
     email: ''
     contactType: 'mail'
     phone: ''
+    newsletter: false
     errorText: ''
     phoneRequired: -> @contactType() isnt 'phone'
     priceOpacity: -> if @profile() is '' then 0 else 1
@@ -42,6 +43,7 @@ if Meteor.isClient
         email: @email()
         contactType: @contactType()
         phone: @phone()
+        newsletter: @newsletter()
       appLog.info 'Subscription values: ', obj
       try
         check obj, SubscribersSchema
@@ -75,6 +77,7 @@ if Meteor.isClient
         email: @email()
         contactType: @contactType()
         phone: @phone()
+        newsletter: @newsletter()
       appLog.info 'Subscription attempt', obj
       unless Match.test obj, SubscribersSchema
         appLog.warn 'Subscription failed, match is incorrect'
@@ -202,6 +205,9 @@ SimpleSchema.messages
         unless @value.match /(0|\\+33|0033)[1-9][0-9]{8}/
           return 'minNumber'
       return null
+  newsletter:
+    type: Boolean
+    defaultValue: false
 
 # Set fields for payment validation
 @PaymentsSchema = new SimpleSchema

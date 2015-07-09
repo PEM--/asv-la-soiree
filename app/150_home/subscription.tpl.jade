@@ -87,6 +87,12 @@ section.subscription
               data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
             )
             label(for='phone'): span Numéro
+          span.checkbox
+            label(for='newsletter') Je souhaite m'inscrire à la liste de diffusion "ASV la Soirée" afin de recevoir toutes les informations relatives à l'événement.
+            input#newsletter(
+              type='checkbox', name='newsletter',
+              data-bind='checked: newsletter'
+            )
           .priceTag(data-bind='style: { opacity: priceOpacity }')
             h3 Tarifs
             p(data-bind='html: priceTag')

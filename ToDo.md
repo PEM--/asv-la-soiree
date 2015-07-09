@@ -12,6 +12,7 @@
 - [X] Boutons de partage social: Twitter, Facebook, G+.
 - [X] Liens vers Youtube.
 - [X] Optin pour la newsletter.
+- [ ] Page de conditions générales des ventes.
 - [ ] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Mailchimp et envoi automatique lors du paiement.
