@@ -29,8 +29,10 @@ if Meteor.isClient
   Template.socials.viewmodel
     faceBookUrl: ->
       FB_URL = 'https://www.facebook.com/sharer/sharer.php'
+      siteUrl = Meteor.settings.proxy.url
+      msg = orion.dictionary.get 'facebook.message'
+      FB_URL + '?u=' + (encodeURIComponent siteUrl) +
+        '&t=' + (encodeURIComponent msg)
     shareOnFaceBook: ->
       window.open @faceBookUrl()
       return false
-
-      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;
