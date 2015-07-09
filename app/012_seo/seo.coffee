@@ -24,8 +24,8 @@ rsEvent = ->
     '"@type": "Event",' +
     "\"name\": \"#{orion.dictionary.get 'site.title'}\"," +
     '"startDate" : "2015-11-27T18:00:00.000Z",' +
-    "\"url\" : \"#{Meteor.settings.proxy.url}\"," +
-    "\"image\": \"#{Meteor.settings.proxy.url}/favicon-96x96.png\"," +
+    "\"url\" : \"#{Meteor.settings.public.proxy.url}\"," +
+    "\"image\": \"#{Meteor.settings.public.proxy.url}/favicon-96x96.png\"," +
     '"location" : {' +
       '"@type" : "Place",' +
       '"name" : "La Plateforme",' +
@@ -36,7 +36,7 @@ rsEvent = ->
       "\"lowPrice\": \"#{PRICING_TABLE.asv_graduate.amount}\"," +
       "\"highPrice\": \"#{PRICING_TABLE.attendant.amount}\"," +
       '"priceCurrency": "EUR",' +
-      "\"url\": \"#{Meteor.settings.proxy.url}/#subscription\"" +
+      "\"url\": \"#{Meteor.settings.public.proxy.url}/#subscription\"" +
     '}' +
   '}'
 
@@ -78,7 +78,7 @@ if Meteor.isServer
     '/>' +
     # Open graph
     '<meta property=\'og:url\' ' +
-      "content='#{Meteor.settings.proxy.url}' />" +
+      "content='#{Meteor.settings.public.proxy.url}' />" +
     '<meta property=\'og:type\' content=\'website\' />' +
     '<meta property=\'og:locale\' content=\'fr_FR\' />' +
     '<meta property=\'og:title\' ' +
@@ -91,7 +91,7 @@ if Meteor.isServer
       "content='#{orion.dictionary.get 'site.description'}' " +
       'data-bind=\'value: description, attr: { content: description }\'/>' +
     '<meta property=\'og:image\' ' +
-      "content='#{Meteor.settings.proxy.url}/img/twitter-card.jpg' />" +
+      "content='#{Meteor.settings.public.proxy.url}/img/twitter-card.jpg' />" +
     # Rich snippets
     '<script type="application/ld+json" data-bind=\'text: rsEvent\'>' +
       rsEvent() +

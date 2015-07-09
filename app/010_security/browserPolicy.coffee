@@ -11,10 +11,10 @@ if Meteor.isServer
   # Only allow necessary protocols
   rootUrl = __meteor_runtime_config__.ROOT_URL
   appLog.info 'Current URL', rootUrl
-  appLog.info 'Settings', Meteor.settings.proxy.url
-  BrowserPolicy.content.allowConnectOrigin Meteor.settings.proxy.url
+  appLog.info 'Settings', Meteor.settings.public.proxy.url
+  BrowserPolicy.content.allowConnectOrigin Meteor.settings.public.proxy.url
   BrowserPolicy.content.allowConnectOrigin \
-    (Meteor.settings.proxy.url.replace 'http', 'ws')
+    (Meteor.settings.public.proxy.url.replace 'http', 'ws')
   # Allow origin for Meteor hosting
   for protocol in ['http', 'https', 'ws', 'wss']
     BrowserPolicy.content.allowConnectOrigin "#{protocol}://*.meteor.com"

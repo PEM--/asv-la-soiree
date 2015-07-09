@@ -34,10 +34,10 @@ if Meteor.isServer
       'Page or dictionary change detected. Recreating sitemap.'
     pages = pagesCursor.fetch()
     entries = _.map pages, (page) ->
-      page: Meteor.settings.proxy.url + '/' + page.slug
+      page: Meteor.settings.public.proxy.url + '/' + page.slug
       lastmod: page.createdAt
     entries.push
-      page: Meteor.settings.proxy.url + '/'
+      page: Meteor.settings.public.proxy.url + '/'
       lastmod: orion.dictionary.get 'site.lastModified'
     sitemaps.add '/sitemap.xml', -> entries
   # Create an initial sitemap

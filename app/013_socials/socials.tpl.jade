@@ -1,13 +1,13 @@
 ul.share-buttons
   li
     a.facebook(
-      target='_blank', title='Partager sur Facebook',
-      data-bind='attr: {href: faceBookUrl}, click: shareOnFaceBook'
+      href='', target='_blank', title='Partager sur Facebook',
+      data-bind='attr: {href: faceBookUrl}'
     )
       i.fa.fa-facebook-square.fa-2x
   li
     a.twitter(
-      href='https://twitter.com/intent/tweet?source=http%3A%2F%2Fasv-la-soiree.com&text=La%20soir%C3%A9e%20ASV:%20http%3A%2F%2Fasv-la-soiree.com&via=apform',
+      href='',
       target='_blank', title='Tweet',
       onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"
     )
@@ -22,8 +22,7 @@ ul.share-buttons
   if youtube
     li
       a.youtube(
-        href=''
-        target='_blank', title='Voir notre chaîne'
-        data-bind='click: goYoutube, attr: {href: youtubeURL}'
+        href='', target='_blank', title='Voir notre chaîne',
+        data-bind='attr: {href: youtubeURL}'
       )
         i.fa.fa-youtube-square.fa-2x

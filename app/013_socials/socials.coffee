@@ -1,8 +1,6 @@
 # Social messages
 orion.dictionary.addDefinition 'twitter.message', 'social',
   type: String, label: 'Message par défaut pour Twitter'
-orion.dictionary.addDefinition 'facebook.message', 'social',
-  type: String, label: 'Message par défaut pour FaceBook'
 orion.dictionary.addDefinition 'gplus.message', 'social',
   type: String, label: 'Message par défaut pour Google+'
 orion.dictionary.addDefinition 'youtube.url', 'social',
@@ -13,7 +11,6 @@ if Meteor.isServer
     res = {}
     for key in [
       'social.twitter.message'
-      'social.facebook.message'
       'social.gplus.message'
       'social.youtube.url'
     ]
@@ -24,20 +21,11 @@ if Meteor.isServer
         orionDictKey
     res
 
-# https://www.youtube.com/channel/UCJeNxRQgeyg92tRlBXpnvLg
 if Meteor.isClient
   Template.socials.viewmodel
-    # faceBookUrl: ->
-    #   FB_URL = 'https://www.facebook.com/sharer/sharer.php'
-    #   siteUrl = Meteor.settings.proxy.url
-    #   msg = orion.dictionary.get 'social.facebook.message'
-    #   FB_URL + '?u=' + (encodeURIComponent siteUrl) +
-    #     '&t=' + (encodeURIComponent msg)
-    # shareOnFaceBook: ->
-    #   window.open @faceBookUrl()
-    #   false
+    faceBookUrl: ->
+      FB_URL = 'https://www.facebook.com/sharer/sharer.php'
+      siteUrl = Meteor.settings.public.proxy.url
+      FB_URL + '?u=' + encodeURIComponent siteUrl
+      # https://twitter.com/intent/tweet?source=http%3A%2F%2Fasv-la-soiree.com&text=La%20soir%C3%A9e%20ASV:%20http%3A%2F%2Fasv-la-soiree.com&via=apform
     youtubeURL: -> orion.dictionary.get 'social.youtube.url'
-    goYoutube: (e) ->
-      e.preventDefault()
-      window.open @youtubeURL()
-  , ['youtubeURL', 'goYoutube']
