@@ -12,17 +12,17 @@ main(data-role='payment')
           p Veuillez sélectionner un moyen de paiement :
           p
             span.choice
-              input#check(
+              input#payment-type-check(
                 type='radio', name='paymentType', value='check',
                 data-bind='checked: paymentType'
               )
-              label(for='check'): span Chèque
+              label(for='payment-type-check'): span Chèque
             span.choice
-              input#check(
+              input#payment-type-card(
                 type='radio', name='paymentType', value='card',
                 data-bind='checked: paymentType'
               )
-              label(for='card'): span Carte bleue
+              label(for='payment-type-card'): span Carte bleue
           .check-form
             form.check(autocomplete='off')
               p Nous vous remercions de votre demande d'inscription à ASV La Soirée 2015 !

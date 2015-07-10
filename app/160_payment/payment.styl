@@ -54,13 +54,14 @@
           margin-top 1em
         // Invoice
         .invoice
-          flex-grow 0
+          flex-grow 1
           relative top left
-          border 1px solid darkgray
           fontWidth = 10px
           fontHeight = 15px
+          margin (fontWidth/2)
+          border 1px solid darkgray
           padding (fontWidth/2)
-          width (41*fontWidth)
+          width (42*fontWidth)
           min-width @width
           max-width @width
           text-align center
@@ -74,6 +75,7 @@
           flex-grow 1
           relative top right
           width 49%
+          padding .5em
           span.choice
             size 49% 14px
             display inline-block
@@ -82,12 +84,18 @@
               absolute top left 20px
               font-size 14px
               width calc(49% - 20px)
+              &::before, &::after
+                background darkgray
+                transition background-color defaultTransitionValue, border-color defaultTransitionValue
               &::before
-                background-color red
                 absolute top 6px left -20px
+                border 1px solid darkgray
               &::after
-                background-color yellow
                 absolute top 10px left -16px
+            input:checked + label::before
+              border 1px solid black
+            input:checked + label::after
+              background #019000
           // Separator
           .check-form, .card-form
             margin-top 1em
