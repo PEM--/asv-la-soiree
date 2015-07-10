@@ -1,4 +1,15 @@
-## Review 06/06/2015
+## Review 10/07/2015
+- [ ] Mise à jour des packages et dépendances.
+- [ ] Revue des impacts sur la structure du CMS.
+- [ ] Contact impossible depuis mise à jour des packages.
+- [ ] Select/options sans labels.
+- [ ] Page de conditions générales des ventes.
+- [ ] Paiement par chèque.
+- [ ] Paiement par CB (Braintree).
+- [ ] Mailchimp et envoi automatique lors du paiement.
+- [ ] Problème de vérification du certificat SSL dans le DNS.
+
+## Review 06/07/2015
 - [X] Nouvelle structure de tarifs :
   - ASV : 35,00 €
   - Accompagnants : 45,00 €
@@ -12,10 +23,6 @@
 - [X] Boutons de partage social: Twitter, Facebook, G+.
 - [X] Liens vers Youtube.
 - [X] Optin pour la newsletter.
-- [ ] Page de conditions générales des ventes.
-- [ ] Paiement par chèque.
-- [ ] Paiement par CB (Braintree).
-- [ ] Mailchimp et envoi automatique lors du paiement.
 
 ## Production issues
 - [X] Chrome 43.0.2357.130: false mobile detection.
@@ -93,7 +100,7 @@
 - [X] Navigateurs trop anciens
 - [X] Dynamic and editable footer
 - [X] Loading subscription template
-- [ ] Social sharing
+- [X] Social sharing
 - [ ] Subscription with payment
   - https://github.com/meteorclub/shareit
 - [X] EULA / CGU
@@ -101,13 +108,9 @@
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
-- [ ] Mail chimp
+- [ ] Mandrill by Mailchimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
-- [ ] Braintree
-  - Queuing jobs: https://github.com/vsivsi/meteor-job-collection/
-  - https://github.com/jeremyhodges/flaming-bear
-- [ ] Mail chimp
-- [ ] CSV extract
+- [X] CSV extract
 - [X] Monitoring: Kadira
 - [X] Security : browser policy
 - [X] Security : Anti DDOS like

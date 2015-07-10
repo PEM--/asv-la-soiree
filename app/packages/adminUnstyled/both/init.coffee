@@ -6,11 +6,12 @@ for option in ['homePath', 'siteName']
   Options.init option
 # Reactive templates
 ReactiveTemplates.request 'tabs', 'orionCpTabs'
+ReactiveTemplates.request 'adminSidebar'
 for rxTpl in [
   {name: 'layout', layout: 'orionCpLayout'}
   {name: 'outAdminLayout', layout: 'orionCpOutAdminLayout'}
 
-  {name: 'links', layout: 'orionCpSidebar'}
+  {name: 'adminSidebar', layout: 'orionCpSidebar'}
   {name: 'login', layout: 'orionCpLogin'}
   {name: 'registerWithInvitation', layout: 'orionCpRegisterWithInvitation'}
 
