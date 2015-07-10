@@ -27,10 +27,18 @@ if Meteor.isClient
       messages:
         validDate: 'date\nvalidité'
         monthYear: 'mm/aa'
+  # Test cards
+  # - visa: 4111111111111111
+  # - mastercard: 5555555555554444
+  # - maestro: 6759649826438453
+  # - amex: 378282246310005
+  # - discover: 6011111111111117
+  # - visaelectron: 4917300800000000
+  # - dinersclub: 30569309025904
+  # - unionpay: 6271136264806203568
+  # - jcb: 3530111333300000
   Template.payment.viewmodel
     isCorrectCookie: -> CookieSingleton.get().isPreSubed()
-    # - ASV  35 €
-    # - Autres 45 €
     paiementInformations: ->
       cookieContent = CookieSingleton.get().content()
       pricing = PRICING_TABLE[cookieContent.preSubscriptionValue.profile]
@@ -43,17 +51,9 @@ if Meteor.isClient
         numeral(pricing.amount).format('0,0.00$') +
         s.repeat('\n', 2) +
       dashLine
+    paymentType: ''
+    goBraintree: -> window.open 'https://braintreepayments.com'
 
-# Test cards
-# - visa: 4111111111111111
-# - mastercard: 5555555555554444
-# - maestro: 6759649826438453
-# - amex: 378282246310005
-# - discover: 6011111111111117
-# - visaelectron: 4917300800000000
-# - dinersclub: 30569309025904
-# - unionpay: 6271136264806203568
-# - jcb: 3530111333300000
 if Meteor.isServer
   appLog.info 'Connecting server to Braintree'
   try

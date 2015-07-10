@@ -5,17 +5,44 @@ main(data-role='payment')
       p Vous allez être redirigé vers le formulaire d'inscription.
     .cookieOK(data-bind='visible: isCorrectCookie')
       h1 Paiement
-      .invoice-card-form
+      .invoice-payment-form
         .invoice
           pre(data-bind='text: paiementInformations')
-        .card-form
-          .card-wrapper
-          form(autocomplete='off')
-            input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
-            input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
-            input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
-            input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
-            button(type='submit') Valider
+        .payment-form
+          p Veuillez sélectionner un moyen de paiement :
+          p
+            span.choice
+              input#check(
+                type='radio', name='paymentType', value='check',
+                data-bind='checked: paymentType'
+              )
+              label(for='check'): span Chèque
+            span.choice
+              input#check(
+                type='radio', name='paymentType', value='card',
+                data-bind='checked: paymentType'
+              )
+              label(for='card'): span Carte bleue
+          .check-form
+            form.check(autocomplete='off')
+              p Nous vous remercions de votre demande d'inscription à ASV La Soirée 2015 !
+              p Vous avez choisi de régler votre participation par chèque, veuillez trouver ci-après les coordonnées postales d'envoi de votre règlement;
+              p
+                b APFORM<br>
+                | À destination d'ASV la Soirée<br>
+                | Miniparc de l'Anjoly - 6 voie d'Angleterre<br>
+                | 13127 VITROLLES
+              p La validité de votre inscription s'effectuera sous réserve de bonne réception et encaissement (sous 10 jours) de votre chèque.
+              p Un email de confirmation d'inscription vous sera envoyé après toute les étapes mentionnées précédemment remplies.
+              button(type='submit') Valider
+          .card-form
+            .card-wrapper
+            form.card(autocomplete='off')
+              input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
+              input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
+              input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
+              input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
+              button(type='submit') Valider
   footer
-    .svg-logo-container
+    .svg-logo-container(data-bind='click: goBraintree')
       +braintreeLogo

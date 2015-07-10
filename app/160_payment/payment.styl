@@ -18,7 +18,7 @@
       font-family $helvetica
       color black
     // Remove site wide selection
-    h1, h2, h3, h4, h5, h6, p, label, input, div, pre
+    h1, h2, h3, h4, h5, h6, p, label, input, div, pre, b, span
       &::selection
         background-color yellow
         color black
@@ -41,14 +41,14 @@
         p
           font-size 2em
       // Layout for invoice, card and form
-      .invoice-card-form
+      .invoice-payment-form
         display flex
         flex-wrap wrap
         flex-direction row
         justify-content space-between
         align-items center
         align-content center
-        .invoice, .card-form
+        .invoice, .payment-form
           flex-shrink 0
           display inline-block
           margin-top 1em
@@ -69,31 +69,56 @@
             width (40*fontWidth)
             font-family $courier
             font-size fontHeight
-        // Form and card
-        .card-form
+        // Payment selector
+        .payment-form
           flex-grow 1
           relative top right
           width 49%
-          form
-            center(400px)
-            box-sizing border-box
-            margin-top 1em
-            input, button
-              margin 2px 0 0 0
+          span.choice
+            size 49% 14px
+            display inline-block
+            relative top left
+            label
+              absolute top left 20px
               font-size 14px
-              display inline-block
+              width calc(49% - 20px)
+              &::before
+                background-color red
+                absolute top 6px left -20px
+              &::after
+                background-color yellow
+                absolute top 10px left -16px
+          // Separator
+          .check-form, .card-form
+            margin-top 1em
+            border-top 1px solid gray
+            padding-top 1em
+          // Check and form
+          .check-form
+
+          // Card and form
+          .card-form
+            form
+              center(400px)
               box-sizing border-box
-            input[name='number'], input[name='name']
-              width 49%
-            input[name='expiry'], input[name='cvc']
-              width 24%
-            input
-              border 1px solid darkgray
-              &:focus
-                border-color lightblue
-            button
-              button green
-              width 49%
+              margin-top 1em
+              input, button
+                margin 2px 0 0 0
+                font-size 14px
+                display inline-block
+                box-sizing border-box
+              input[name='number'], input[name='name']
+                width 49%
+              input[name='expiry'], input[name='cvc']
+                width 24%
+              input
+                border 1px solid darkgray
+                &:focus
+                  border-color lightblue
+          // Validate payment button
+          button
+            button green
+            width 49%
     // Braintree logo
     footer
       flex-grow 0
@@ -103,5 +128,6 @@
       box-sizing border-box
       border-top 1px solid black
       .svg-logo-container
+        cursor pointer
         margin 1em 0
         braintreeLogo(15%)

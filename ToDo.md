@@ -3,10 +3,10 @@
 - [X] Revue des impacts sur la structure du CMS.
 - [X] Contact impossible depuis mise à jour des packages.
 - [X] Page de conditions générales des ventes + corrections adresses CGU & Cookie.
-- [ ] Paiement par chèque.
+- [X] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Mandrill par Mailchimp pour envoi automatique lors du paiement.
-- [ ] Problème de vérification du certificat SSL dans le DNS.
+- [ ] Problème de vérification du certificat SSL sur les DNS OVH.
 - [ ] Bonus : Select/options sans labels.
 
 ## Review 06/07/2015
