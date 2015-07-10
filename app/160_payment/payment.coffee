@@ -52,6 +52,11 @@ if Meteor.isClient
         s.repeat('\n', 2) +
       dashLine
     paymentType: ''
+    isPaymentTypeCheck: -> @paymentType() is 'check'
+    isPaymentTypeCard: -> @paymentType() is 'card'
+    validateCheck: (e) ->
+      e.preventDefault()
+      Router.go '/#subscription'
     goBraintree: -> window.open 'https://braintreepayments.com'
 
 if Meteor.isServer

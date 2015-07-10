@@ -2,6 +2,7 @@
 @import 'jeet'
 @import 'typographic'
 @import '020_colorsTheme/*.import'
+@import s(basePath, animate)
 
 .main-container .router-container
   main[data-role='payment']
@@ -46,8 +47,8 @@
         flex-wrap wrap
         flex-direction row
         justify-content space-between
-        align-items center
-        align-content center
+        align-items flex-start
+        align-content flex-start
         .invoice, .payment-form
           flex-shrink 0
           display inline-block
@@ -58,7 +59,7 @@
           relative top left
           fontWidth = 10px
           fontHeight = 15px
-          margin (fontWidth/2)
+          margin fontWidth fontWidth/2
           border 1px solid darkgray
           padding (fontWidth/2)
           width (42*fontWidth)
@@ -75,15 +76,16 @@
           flex-grow 1
           relative top right
           width 49%
-          padding .5em
+          margin-top 0
+          padding 0 .5em .5em .5em
           span.choice
-            size 49% 14px
+            size 30em 14px
             display inline-block
             relative top left
             label
               absolute top left 20px
               font-size 14px
-              width calc(49% - 20px)
+              width calc(30em - 20px)
               &::before, &::after
                 background darkgray
                 transition background-color defaultTransitionValue, border-color defaultTransitionValue
@@ -103,7 +105,11 @@
             padding-top 1em
           // Check and form
           .check-form
-
+            p
+              line-height 1.2em
+              margin-bottom .8em
+            p.text-center
+              text-align center
           // Card and form
           .card-form
             form

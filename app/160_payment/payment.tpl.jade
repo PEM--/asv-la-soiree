@@ -23,21 +23,21 @@ main(data-role='payment')
                 data-bind='checked: paymentType'
               )
               label(for='payment-type-card'): span Carte bleue
-          .check-form
-            form.check(autocomplete='off')
+          .check-form(data-bind='visible: isPaymentTypeCheck')
+            form.check(autocomplete='off').fadeIn
               p Nous vous remercions de votre demande d'inscription à ASV La Soirée 2015 !
               p Vous avez choisi de régler votre participation par chèque, veuillez trouver ci-après les coordonnées postales d'envoi de votre règlement;
-              p
+              p.text-center
                 b APFORM<br>
                 | À destination d'ASV la Soirée<br>
                 | Miniparc de l'Anjoly - 6 voie d'Angleterre<br>
                 | 13127 VITROLLES
               p La validité de votre inscription s'effectuera sous réserve de bonne réception et encaissement (sous 10 jours) de votre chèque.
               p Un email de confirmation d'inscription vous sera envoyé après toute les étapes mentionnées précédemment remplies.
-              button(type='submit') Valider
-          .card-form
-            .card-wrapper
-            form.card(autocomplete='off')
+              p.text-center: button(type='submit', data-bind='click: validateCheck') Valider
+          .card-form(data-bind='visible: isPaymentTypeCard')
+            .card-wrapper.fadeIn
+            form.card(autocomplete='off').fadeIn
               input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
               input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
               input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
