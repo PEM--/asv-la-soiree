@@ -1,9 +1,9 @@
 // orionCpPagesUpdate
 +Layout template='orionCpTitle'
-	| Update page
+	| {{i18n 'pages.update.title'}}
 +Layout template='orionCpContentContainer'
 	if getSchema
 		+quickForm collection='orion.pages.collection' schema=getSchema doc=this id='orionPagesUpdateForm' type='update' buttonContent=false
-		a.cancel-btn(href="{{ pathFor 'pages.index' }}") Cancel
-		a.delete-btn(href="{{ pathFor 'pages.delete' }}") Delete
-		a.save-btn Save
+		a.cancel-btn(href="{{ pathFor 'pages.index' }}") {{i18n 'global.cancel'}}
+		a.delete-btn(href="{{ pathFor 'pages.delete' }}") {{i18n 'global.delete'}}
+		a.save-btn {{i18n 'global.save'}}

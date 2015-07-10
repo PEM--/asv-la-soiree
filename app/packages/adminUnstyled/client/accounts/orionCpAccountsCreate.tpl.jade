@@ -10,7 +10,7 @@
     a.user-btn-action(href="{{ pathFor 'accounts.index' }}") {{i18n 'global.back'}}
     button.btn-invite-another {{i18n 'accounts.invite.inviteOther'}}
   else
-    form.invite
+    form.create
       span.choice
         input#createInvitation(type='radio', name='createMethod', value='invitation', checked)
         label(for='createInvitation') {{i18n 'accounts.create.createInvitation'}}
@@ -25,6 +25,7 @@
       p {{i18n 'accounts.create.email'}}
         if createWithInvitation
           | {{i18n 'global.optional'}}
+      input(type='email')
       unless createWithInvitation
         p
           | {{i18n 'accounts.schema.profile.name'}}

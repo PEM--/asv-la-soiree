@@ -1,6 +1,6 @@
 ## Review 10/07/2015
-- [ ] Mise à jour des packages et dépendances.
-- [ ] Revue des impacts sur la structure du CMS.
+- [X] Mise à jour des packages et dépendances.
+- [X] Revue des impacts sur la structure du CMS.
 - [ ] Contact impossible depuis mise à jour des packages.
 - [ ] Select/options sans labels.
 - [ ] Page de conditions générales des ventes.

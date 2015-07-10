@@ -8,5 +8,5 @@ Template.orionCpDictionaryUpdate.helpers
       title: category
       onClick: -> Session.set 'dictionaryUpdateCurrentCategory', category
       class: ->
-        if Session.get('dictionaryUpdateCurrentCategory') == category \
+        if Session.get('dictionaryUpdateCurrentCategory') is category \
           then 'btn-default disabled' else 'btn-primary'

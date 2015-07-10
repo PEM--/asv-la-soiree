@@ -1,11 +1,11 @@
-// orionCpAccountIndex
+// orionCpAccountsIndex
 +Layout template='orionCpTitle'
   | {{i18n 'accounts.index.title'}}
-  if userHasPermission 'accounts.create'
+  if userHasPermission 'accounts.showCreate'
     a(href="{{ pathFor 'accounts.create' }}"): i.fa.fa-plus
 
 +Layout template='orionCpContentContainer'
-  table.table
+  table
     thead: tr
       th {{i18n 'accounts.index.tableTitles.name'}}
       th {{i18n 'accounts.index.tableTitles.email'}}

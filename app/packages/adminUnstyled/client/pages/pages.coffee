@@ -15,4 +15,4 @@ Template.orionCpPagesIndex.events
     return unless $(event.target).is('td')
     dataTable = $(event.target).closest('table').DataTable()
     rowData = dataTable.row(event.currentTarget).data()
-    Router.go 'pages.update', rowData if rowData
+    (Router.go 'pages.update', rowData) if rowData

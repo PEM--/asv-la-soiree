@@ -11,5 +11,20 @@ template(name='orionCpSidebar')
 
 template(name='orionCpSidebarLink')
   // orionCpSidebarLink
-  li(class="{{ isActiveRoute regex=activeRouteRegex }}")
-    a(href="{{ pathFor routeName }}")= title
+  if childs
+    li
+      if routeName
+        a.collaps-link-right(data-target='#admin-links-{{identifier}}', data-toggle='collapse')
+          span.caret
+        a(href='{{pathFor routeName}}')= title
+      else
+        a(data-target='#admin-links-{{identifier}}', data-toggle='collapse')= title
+          span.caret
+    .collapse(id='#admin-links-{{identifier}}')
+      ul.child-links
+        each childs
+          +orionCpSidebarLink
+  else
+    li(class='{{isActiveRoute regex=activeRouteRegex}}')
+      a(href='{{pathFor routeName}}')= title
+        

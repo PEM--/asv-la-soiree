@@ -1,7 +1,7 @@
 Package.describe({
   name: 'orionjs:admin-unstyled',
   summary: 'A simple theme for orion',
-  version: '1.1.0',
+  version: '1.2.0',
   git: 'https://github.com/orionjs/orion'
 });
 
@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'meteor-platform',
     'coffeescript',
     'mquandalle:jade@0.4.3',
-    'orionjs:core@1.1.0',
+    'orionjs:core@1.2.0',
     'iron:layout@1.0.8',
     'aldeed:autoform@5.3.0',
     'aldeed:tabular@1.2.0',
@@ -36,6 +36,7 @@ Package.onUse(function(api) {
     'client/layout/layout.coffee',
     // Sidebar
     'client/sidebar/sidebar.jade',
+    'client/sidebar/sidebar.coffee',
     // Login
     'client/accounts/orionCpLogin.tpl.jade',
     'client/accounts/orionCpRegisterWithInvitation.tpl.jade',
@@ -56,10 +57,13 @@ Package.onUse(function(api) {
     'client/dictionnary/update.coffee',
     // Collections
     'client/collections/orionCpCollectionsIndex.tpl.jade',
+    'client/collections/orionCpCollectionsIndex.coffee',
     'client/collections/orionCpCollectionsCreate.tpl.jade',
+    'client/collections/orionCpCollectionsCreate.coffee',
     'client/collections/orionCpCollectionsUpdate.tpl.jade',
+    'client/collections/orionCpCollectionsUpdate.coffee',
     'client/collections/orionCpCollectionsDelete.tpl.jade',
-    'client/collections/collections.coffee',
+    'client/collections/orionCpCollectionsDelete.coffee',
     // Pages
     // 'client/pages/orionCpPagesCreate.tpl.jade',
     // 'client/pages/orionCpPagesDelete.tpl.jade',

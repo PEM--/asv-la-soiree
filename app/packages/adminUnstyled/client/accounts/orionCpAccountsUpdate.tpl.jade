@@ -20,7 +20,7 @@
             input(type='checkbox', role=this, checked, id=this)
           else
             input(type='checkbox', role=this, id=this)
-          label(for=this)= this
+          label(for=this): span.role(data-attr=this)= this
       button {{ i18n 'global.save' }}
    h2 {{ i18n 'accounts.update.sections.changePassword.title' }}
    div.well
