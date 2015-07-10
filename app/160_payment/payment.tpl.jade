@@ -26,14 +26,14 @@ main(data-role='payment')
           .check-form(data-bind='visible: isPaymentTypeCheck')
             form.check(autocomplete='off').fadeIn
               p Nous vous remercions de votre demande d'inscription à ASV La Soirée 2015 !
-              p Vous avez choisi de régler votre participation par chèque, veuillez trouver ci-après les coordonnées postales d'envoi de votre règlement;
+              p Vous avez choisi de régler votre participation par chèque, veuillez trouver ci-après les coordonnées postales d'envoi de votre règlement :
               p.text-center
                 b APFORM<br>
                 | À destination d'ASV la Soirée<br>
                 | Miniparc de l'Anjoly - 6 voie d'Angleterre<br>
                 | 13127 VITROLLES
               p La validité de votre inscription s'effectuera sous réserve de bonne réception et encaissement (sous 10 jours) de votre chèque.
-              p Un email de confirmation d'inscription vous sera envoyé après toute les étapes mentionnées précédemment remplies.
+              p Un email de confirmation d'inscription vous sera envoyé lorsque toutes les étapes mentionnées précédemment seront remplies.
               p.text-center: button(type='submit', data-bind='click: validateCheck') Valider
           .card-form(data-bind='visible: isPaymentTypeCard')
             .card-wrapper.fadeIn
