@@ -1,13 +1,13 @@
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
 - [X] Revue des impacts sur la structure du CMS.
-- [ ] Contact impossible depuis mise à jour des packages.
-- [ ] Select/options sans labels.
-- [ ] Page de conditions générales des ventes.
+- [X] Contact impossible depuis mise à jour des packages.
+- [X] Page de conditions générales des ventes + corrections adresses CGU & Cookie.
 - [ ] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
-- [ ] Mailchimp et envoi automatique lors du paiement.
+- [ ] Mandrill par Mailchimp pour envoi automatique lors du paiement.
 - [ ] Problème de vérification du certificat SSL dans le DNS.
+- [ ] Bonus : Select/options sans labels.
 
 ## Review 06/07/2015
 - [X] Nouvelle structure de tarifs :
