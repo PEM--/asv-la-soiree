@@ -3,7 +3,8 @@
 - [X] Revue des impacts sur la structure du CMS.
 - [X] Contact impossible depuis mise à jour des packages.
 - [X] Page de conditions générales des ventes + corrections adresses CGU & Cookie.
-- [X] Paiement par chèque.
+- [X] Correction sur les boutons de partage social dans le formulaire d'inscription : pas de curseur permettant à l'utilisateur de savoir qu'il s'agit d'un bouton.
+- [/] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Mandrill par Mailchimp pour envoi automatique lors du paiement.
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
