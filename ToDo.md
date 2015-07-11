@@ -5,6 +5,7 @@
 - [X] Page de conditions générales des ventes + corrections adresses CGU & Cookie.
 - [X] Correction sur les boutons de partage social dans le formulaire d'inscription : pas de curseur permettant à l'utilisateur de savoir qu'il s'agit d'un bouton.
 - [ ] Mandrill par Mailchimp pour envoi automatique lors du paiement.
+- [ ] CGV en PDF.
 - [/] Paiement par chèque.
 - [ ] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
