@@ -5,6 +5,18 @@ Router.route '/payment',
   controller: PaymentController
   action: -> @render 'payment'
 
+Meteor.methods
+  checkPayment: (obj) ->
+    check obj, SubscribersSchema
+    try
+      appLog.info 'Payment by check for subscriber', obj
+      throw new Meteor.Error 'payment',
+        'Erreur interne, veuillez ré-essayer plus tard'
+    catch error
+      appLog.warn error, typeof error
+      throw new Meteor.Error 'payment',
+        'Erreur interne, veuillez ré-essayer plus tard'
+
 if Meteor.isClient
   Template.payment.onCreated ->
     appLog.info 'Creating payment screen'
@@ -56,7 +68,14 @@ if Meteor.isClient
     isPaymentTypeCard: -> @paymentType() is 'card'
     validateCheck: (e) ->
       e.preventDefault()
-      Router.go '/#subscription'
+      obj = CookieSingleton.get().content()
+      Meteor.call 'checkPayment', obj.preSubscriptionValue, (error, result) ->
+        # Display an error message
+        if error
+          appLog.warn 'Set check payment failed', error.reason, error
+          return sAlert.error error.reason
+        # Go back to subscription screen
+        Router.go '/#subscription'
     goBraintree: -> window.open 'https://braintreepayments.com'
 
 if Meteor.isServer
