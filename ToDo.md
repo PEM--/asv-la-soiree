@@ -103,14 +103,14 @@
 - [X] Dynamic and editable footer
 - [X] Loading subscription template
 - [X] Social sharing
-- [ ] Subscription with payment
+- [/] Subscription with payment
   - https://github.com/meteorclub/shareit
 - [X] EULA / CGU
 - [X] Cookie informations
 - [X] Google universal analytics
   - ~~https://atmospherejs.com/reywood/iron-router-ga~~
   - ~~https://atmospherejs.com/okgrow/analytics~~
-- [ ] Mandrill by Mailchimp
+- [X] Mandrill by Mailchimp
   - https://www.youtube.com/watch?v=ahvJkaoc7Gk
 - [X] CSV extract
 - [X] Monitoring: Kadira
@@ -126,7 +126,7 @@
   - https://atmospherejs.com/gadicohen/sitemaps
 - [X] Log system
 - [X] Isolation of logs in Orion (app's log vs server vs Orion)
-- [ ] Email template
+- [X] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
 - [ ] Bonus: Gmap integrated with CMS + Access informations

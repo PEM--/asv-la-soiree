@@ -55,3 +55,26 @@ if Meteor.isServer
   if changed
     appLog.info 'Creating or updating Mandrill configuration'
     orion.config.collection.update config._id, $set: config
+  Meteor.startup ->
+    appLog.info 'Connecting to Mandrill'
+    Meteor.Mandrill.config
+      username: orion.config.get 'MANDRILL_SMTP_USERNAME'
+      key: orion.config.get 'MANDRILL_API_KEY'
+  ###*
+   * Send a templated and transactional email via Mandrill.
+   * @param  {String} order_id Unique order ID.
+   * @param  {String} email    Email of the recipient.
+   * @param  {String} fullname Fullname of the recipient.
+   * @param  {String} price    A formatted price for the invitation.
+   * @param  {String} tag      A description of the price.
+  ###
+  @sendTransactionEmail = (order_id, email, fullname, price, tag) ->
+    Meteor.Mandrill.sendTemplate
+      template_name: orion.config.get 'MANDRILL_TEMPLATE_SLUG'
+      template_content: [
+        { name: 'order_id', content: order_id }
+        { name: 'fullname', content: fullname }
+        { name: 'price', content: price }
+        { name: 'tag', content: tag }
+      ]
+      message: to: [ { email: email } ]
