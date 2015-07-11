@@ -1,38 +1,57 @@
-# Mandrill account in the CMS secret informations
-orion.config.add 'MANDRILL_HOST', 'mandrill',
-  type: String
-  label: 'Adresse du serveur d\'envoi de mail (MANDRILL_HOST)'
-orion.config.add 'MANDRILL_PORT', 'mandrill',
-  type: Number
-  label: 'Port du serveur d\'envoi de mail (MANDRILL_PORT)'
-orion.config.add 'MANDRILL_SMTP_USERNAME', 'mandrill',
-  type: String
-  label: 'Email du détenteur du compte (MANDRILL_SMTP_USERNAME)'
-orion.config.add 'MANDRILL_API_KEY', 'mandrill',
-  type: String
-  label: 'Identifiant de l\'application (MANDRILL_API_KEY)'
+MANDRILL_CONFS = [
+  {
+    key: 'host', type: String
+    label: 'Adresse du serveur d\'envoi de mail'
+  }
+  {
+    key: 'port', type: Number
+    label: 'Port du serveur d\'envoi de mail'
+  }
+  {
+    key: 'smtp_username', type: String
+    label: 'Email du détenteur du compte'
+  }
+  {
+    key: 'api_key', type: String
+    label: 'Identifiant de l\'application'
+  }
+  {
+    key: 'sender_email', type: String
+    label: 'Email de réponse'
+  }
+  {
+    key: 'sender_name', type: String
+    label: 'Nom de l\'auteur de l\'email de réponse'
+  }
+  {
+    key: 'template_slug', type: String
+    label: 'Slug du template d\'email'
+  }
+  {
+    key: 'template_slug', type: String
+    label: 'Slug du template d\'email'
+  }
+  {
+    key: 'email_subject', type: String
+    label: 'Sujet de l\'email'
+  }
+]
 
-# Create default values for the Mandrill configuration
 if Meteor.isServer
   config = orion.config.collection.findOne()
   changed = false
-  unless config.MANDRILL_HOST?
-    config.MANDRILL_HOST = Meteor.settings.mandrill.host
-    changed = true
-  unless config.MANDRILL_PORT?
-    config.MANDRILL_PORT = Meteor.settings.mandrill.port
-    changed = true
-  unless config.MANDRILL_SMTP_USERNAME?
-    config.MANDRILL_SMTP_USERNAME = Meteor.settings.mandrill.smtp_username
-    changed = true
-  unless config.MANDRILL_API_KEY?
-    config.MANDRILL_API_KEY = Meteor.settings.mandrill.api_key
-    changed = true
+for conf in MANDRILL_CONFS
+  # Mandrill account in the CMS secret informations
+  confKey = "MANDRILL_#{conf.key.toUpperCase()}"
+  orion.config.add confKey, 'mandrill',
+    type: conf.type
+    label: "#{conf.label} (MANDRILL_#{confKey})"
+  # Create default values for the Mandrill configuration
+  if Meteor.isServer
+    unless config[confKey]?
+      config[confKey] = Meteor.settings.mandrill[conf.key]
+      changed = true
+if Meteor.isServer
   if changed
     appLog.info 'Creating or updating Mandrill configuration'
-    orion.config.collection.update config._id,
-      $set:
-        MANDRILL_HOST: config.MANDRILL_HOST
-        MANDRILL_PORT: config.MANDRILL_PORT
-        MANDRILL_SMTP_USERNAME: config.MANDRILL_SMTP_USERNAME
-        MANDRILL_API_KEY: config.MANDRILL_API_KEY
+    orion.config.collection.update config._id, $set: config
