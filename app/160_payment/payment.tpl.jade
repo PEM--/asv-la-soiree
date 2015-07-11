@@ -34,7 +34,9 @@ main(data-role='payment')
                 | 13127 VITROLLES
               p La validité de votre inscription s'effectuera sous réserve de bonne réception et encaissement (sous 10 jours) de votre chèque.
               p Un email de confirmation d'inscription vous sera envoyé lorsque toutes les étapes mentionnées précédemment seront remplies.
-              p.text-center: button(type='submit', data-bind='click: validateCheck') Valider
+              p.text-center: button(
+                type='submit', data-bind='click: validateCheck, disabled: validateCheckDisabled'
+              ) Valider
           .card-form(data-bind='visible: isPaymentTypeCard')
             .card-wrapper.fadeIn
             form.card(autocomplete='off').fadeIn

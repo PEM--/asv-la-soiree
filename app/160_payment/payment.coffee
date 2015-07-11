@@ -5,18 +5,6 @@ Router.route '/payment',
   controller: PaymentController
   action: -> @render 'payment'
 
-Meteor.methods
-  checkPayment: (obj) ->
-    check obj, SubscribersSchema
-    try
-      appLog.info 'Payment by check for subscriber', obj
-      throw new Meteor.Error 'payment',
-        'Erreur interne, veuillez ré-essayer plus tard'
-    catch error
-      appLog.warn error, typeof error
-      throw new Meteor.Error 'payment',
-        'Erreur interne, veuillez ré-essayer plus tard'
-
 if Meteor.isClient
   Template.payment.onCreated ->
     appLog.info 'Creating payment screen'
@@ -66,17 +54,23 @@ if Meteor.isClient
     paymentType: ''
     isPaymentTypeCheck: -> @paymentType() is 'check'
     isPaymentTypeCard: -> @paymentType() is 'card'
+    validateCheckDisabled: false
     validateCheck: (e) ->
       e.preventDefault()
+      @validateCheckDisabled true
       obj = CookieSingleton.get().content()
-      Meteor.call 'checkPayment', obj.preSubscriptionValue, (error, result) ->
+      Meteor.call 'checkPayment', obj.preSubscriptionValue, (error, result) =>
         # Display an error message
         if error
           appLog.warn 'Set check payment failed', error.reason, error
+          Meteor.setTimeout =>
+            @validateCheckDisabled false
+          , 5000
           return sAlert.error error.reason
         # Go back to subscription screen
         Router.go '/#subscription'
     goBraintree: -> window.open 'https://braintreepayments.com'
+  , 'validateCheck'
 
 if Meteor.isServer
   appLog.info 'Connecting server to Braintree'
@@ -89,3 +83,17 @@ if Meteor.isServer
       # return BrainTreeConnect.customer.create(config);
   catch error
     throw new Meteor.Error 1001, error.message
+  Meteor.methods
+    checkPayment: (obj) ->
+      check obj, SubscribersSchema
+      appLog.info 'Payment by check for subscriber', obj
+      sub = Subscribers.findOne email: obj.email
+      unless sub?
+        throw new Meteor.Error 'payment',
+          'Vos données sont corrompues. Effacer vos cookies et ré-essayer'
+      try
+        Subscribers.update sub._id, $set: paymentType: 'check'
+      catch error
+        appLog.warn error, typeof error
+        throw new Meteor.Error 'payment',
+          'Erreur interne, veuillez ré-essayer plus tard'
