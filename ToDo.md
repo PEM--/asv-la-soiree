@@ -6,7 +6,7 @@
 - [X] Correction sur les boutons de partage social dans le formulaire d'inscription : pas de curseur permettant à l'utilisateur de savoir qu'il s'agit d'un bouton.
 - [X] Mandrill par Mailchimp pour envoi automatique lors du paiement.
 - [ ] CGV en PDF.
-- [/] Paiement par chèque.
+- [X] Paiement par chèque.
 - [/] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
 - [ ] Bonus : Select/options sans labels.
@@ -165,12 +165,3 @@
   - https://developers.google.com/gmail/markup/reference/one-click-action
 - [ ] Bonus : Android and iOS app
   - https://github.com/rwatts3/orionjs-cordova
-
-## Tutorial
-Orion is based on:
-
-- [ReactiveTemplates](https://github.com/nicolaslopezj/reactive-templates): A base template that you can inherit from.
-- [Options](https://github.com/nicolaslopezj/options): Reactive options for apps.
-- [Roles](https://github.com/nicolaslopezj/roles): Roles that applies to actions and collections.
-- [Iron router](https://github.com/iron-meteor/iron-router): A router that allow subscription to collection based on routes and layouts. A direct link to the [documentation and guide](https://github.com/iron-meteor/iron-router/blob/devel/Guide.md).
-- [Iron router active](https://github.com/zimme/meteor-iron-router-active): Helpers on routes.
