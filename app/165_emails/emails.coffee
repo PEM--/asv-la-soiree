@@ -78,3 +78,13 @@ if Meteor.isServer
         { name: 'tag', content: tag }
       ]
       message: to: [ { email: email } ]
+  # Observe changes on payment information for sending emails
+  Subscribers.find().observeChanges
+    'changed': (id, fields) ->
+      if fields.paymentStatus? and fields.paymentStatus is true
+        sub = Subscribers.findOne id
+        pricing = PRICING_TABLE[sub.profile]
+        sendTransactionEmail sub._id, sub.email,
+          "#{sub.forname} #{sub.name}",
+          numeral(pricing.amount).format('0,0.00$'),
+          pricing.tag
