@@ -13,8 +13,10 @@ if Meteor.isServer
   # Allow origin for Meteor hosting
   for protocol in ['http', 'https', 'ws', 'wss']
     url = Meteor.settings.public.proxy.url
-    url.replace 'http', protocol
-    BrowserPolicy.content.allowConnectOrigin url.replace 'http', protocol
+    replacement = if s.contains url, 'meteor' \
+      then "#{protocol}://ddp-*-" else "#{protocol}://"
+    url = url.replace 'http://', replacement
+    BrowserPolicy.content.allowConnectOrigin url
   # For remote debugging for protocol in ['http', 'https', 'ws', 'wss']
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000"
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000/sockjs/info"
