@@ -9,7 +9,7 @@
 - [X] Paiement par chèque.
 - [/] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
-- [ ] Bonus : Select/options sans labels.
+- [X] Bonus : Select/options sans labels.
 
 ## Review 06/07/2015
 - [X] Nouvelle structure de tarifs :

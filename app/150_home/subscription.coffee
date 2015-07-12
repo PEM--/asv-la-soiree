@@ -142,13 +142,13 @@ SimpleSchema.messages
     type: String
     label: 'Profil'
     allowedValues: ['asv_graduate', 'asv_serving', 'attendant']
-    # autoform:
-    #   type: 'select'
-    #   otions: -> [
-    #     {value: 'asv_graduate', label: 'ASV Diplômé GIPSA en 2014 ou 2015'}
-    #     {value: 'asv_serving', label: 'ASV Auxiliaire Vétérinaire'}
-    #     {value: 'attendant', label: 'Autres (accompagnants, vétos, ...)'}
-    #   ]
+    autoform:
+      type: 'select'
+      options: -> [
+        {value: 'asv_graduate', label: 'ASV Diplômé GIPSA en 2014 ou 2015'}
+        {value: 'asv_serving', label: 'ASV Auxiliaire Vétérinaire'}
+        {value: 'attendant', label: 'Autres (accompagnants, vétos, ...)'}
+      ]
   asvPromo:
     type: String
     label: 'N° de promo'
@@ -223,12 +223,12 @@ SimpleSchema.messages
     type: String
     defaultValue: 'card'
     allowedValues: ['card', 'check']
-    # autoform:
-    #   type: 'select'
-    #   otions: -> [
-    #     {value: 'card', label: 'Carte bancaire'}
-    #     {value: 'check', label: 'Chèque' }
-    #   ]
+    autoform:
+      type: 'select'
+      options: -> [
+        {value: 'card', label: 'Carte bancaire'}
+        {value: 'check', label: 'Chèque' }
+      ]
     label: 'Type de paiement'
   paymentTransactionId:
     type: String
