@@ -133,6 +133,9 @@
           button
             button green
             width 49%
+            transition background-color defaultTransitionValue
+            &:hover
+              background-color darken(green, 25%)
             &:disabled
               button-disabled()
     // Braintree logo

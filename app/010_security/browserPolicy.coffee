@@ -9,16 +9,12 @@ if Meteor.isServer
   # BrowserPolicy.content.disallowInlineScripts()
   BrowserPolicy.content.disallowConnect()
   # Only allow necessary protocols
-  rootUrl = __meteor_runtime_config__.ROOT_URL
-  appLog.info 'Current URL', rootUrl
   appLog.info 'Settings', Meteor.settings.public.proxy.url
-  BrowserPolicy.content.allowConnectOrigin Meteor.settings.public.proxy.url
-  BrowserPolicy.content.allowConnectOrigin \
-    (Meteor.settings.public.proxy.url.replace 'http', 'ws')
   # Allow origin for Meteor hosting
   for protocol in ['http', 'https', 'ws', 'wss']
-    BrowserPolicy.content.allowConnectOrigin "#{protocol}://*.meteor.com"
-    BrowserPolicy.content.allowConnectOrigin "#{protocol}://*.asv-la-soiree.com"
+    url = Meteor.settings.public.proxy.url
+    url.replace 'http', protocol
+    BrowserPolicy.content.allowConnectOrigin url.replace 'http', protocol
   # For remote debugging for protocol in ['http', 'https', 'ws', 'wss']
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000"
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000/sockjs/info"

@@ -9,6 +9,8 @@
 - [X] Paiement par chèque.
 - [/] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
+- [X] Correction du le lien de l'interface d'administration.
+- [X] Meilleure sécurité pour les BrowserPolicy.
 - [X] Bonus : Select/options sans labels.
 
 ## Review 06/07/2015

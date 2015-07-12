@@ -14,7 +14,7 @@ Options.set 'defaultRoles', ['public']
 # Set siteName
 Options.set 'siteName', orion.dictionary.get 'site.title'
 # Set homePath
-Options.set 'homePath', __meteor_runtime_config__.ROOT_URL
+Options.set 'homePath', Meteor.settings.public.proxy.url
 Options.arrayPush 'defaultRoles', 'public'
 Options.set 'profileSchema',
   picture: orion.attribute 'file',
