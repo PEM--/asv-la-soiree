@@ -77,6 +77,7 @@ if Meteor.isClient
     checkCard: ->
       console.log @
       @validateCardDisabled true
+      console.log "|#{@number()}|"
       # Check card number
       if @number().length > 19
         return @errorText 'Votre n° de carte est trop long.'
