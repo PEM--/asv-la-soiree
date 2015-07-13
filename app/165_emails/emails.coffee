@@ -83,7 +83,7 @@ if Meteor.isServer
           {
             type: 'application/pdf'
             name: 'Conditions générales de ventes.pdf'
-            content: CgvPdf.outputSync().toString 'base64'
+            content: CgvPdf
           }
         ]
   # Observe changes on payment information for sending emails

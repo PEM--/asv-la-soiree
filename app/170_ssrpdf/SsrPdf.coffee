@@ -321,12 +321,15 @@ if Meteor.isServer
   @CgvPdf = null
 
   @updateCgv = (page) ->
-    global.CgvPdf = pdf = new PdfRenderer
+    pdf = new PdfRenderer
     pdf.h1 page.title
     dom = (domino.createWindow page.body).document
     for idx in [0...dom.body.children.length]
       node = dom.body.childNodes[idx]
       pdf[node.tagName.toLowerCase()]? s.stripTags node.innerHTML
+    buffer = pdf.outputSync()
+    global.CgvPdf = buffer.toString 'base64'
+
 
   appLog.info 'Setting up CGV PDF'
   # Create the initial CGV as PDF

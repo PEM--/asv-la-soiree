@@ -11,6 +11,7 @@
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
 - [X] Correction du le lien de l'interface d'administration.
 - [X] Meilleure sécurité pour les BrowserPolicy.
+- [ ] Clôture des inscriptions.
 - [X] Bonus : Select/options sans labels.
 - [ ] Bonus : CSV avec des valeurs en français.
 - [ ] Bonus : CSV avec retrait des valeurs par défaut.
