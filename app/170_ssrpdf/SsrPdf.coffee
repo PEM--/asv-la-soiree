@@ -317,17 +317,16 @@ if Meteor.isServer
         # Call provided callback
         callback()
 
-  jsdom = Meteor.npmRequire 'jsdom'
+  domino = Meteor.npmRequire 'domino'
   @CgvPdf = null
 
   @updateCgv = (page) ->
     global.CgvPdf = pdf = new PdfRenderer
     pdf.h1 page.title
-    dom = jsdom.jsdom page.body
+    dom = (domino.createWindow page.body).document
     for idx in [0...dom.body.children.length]
       node = dom.body.childNodes[idx]
       pdf[node.tagName.toLowerCase()]? s.stripTags node.innerHTML
-    dom.close()
 
   appLog.info 'Setting up CGV PDF'
   # Create the initial CGV as PDF
