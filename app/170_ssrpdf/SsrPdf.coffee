@@ -21,7 +21,7 @@ if Meteor.isServer
     constructor: (options) ->
       # Create the initial PDF document
       super options
-      @stream = @pipe blobStream()
+      # @stream = @pipe blobStream()
       # @waitList = new Iron.WaitList
       @assets = {}
     ###*
@@ -296,5 +296,8 @@ if Meteor.isServer
         saveAs @stream.toBlob('application/pdf'), s.slugify filename
         # Call provided callback
         callback()
-  # Meteor.npmRequire 'coffee-script/register'
-  # @PdfDocument = Meteor.npmRequire 'pdf.js'
+
+  @updateCgv = ->
+    cgvObj = BasicPages.findOne slug: 'cgv'
+    pdf = new PdfRenderer
+    pdf.h1 cgvObj.title
