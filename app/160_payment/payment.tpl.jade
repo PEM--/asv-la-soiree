@@ -43,16 +43,19 @@ main(data-role='payment')
               p.error(data-bind='text: errorText')
               input(
                 type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus,
-                data-bind='change: checkCard'
+                data-bind='value: number, change: checkCard'
               )
               input(
-                type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate
+                type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate,
+                data-bind='value: name, change: checkCard'
               )
               input(
-                type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate
+                type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate,
+                data-bind='value: expiry, change: checkCard'
               )
               input(
-                type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate
+                type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate,
+                data-bind='value: cvc, change: checkCard'
               )
               button(
                 type='submit',

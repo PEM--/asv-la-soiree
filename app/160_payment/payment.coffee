@@ -69,9 +69,14 @@ if Meteor.isClient
           return sAlert.error error.reason
         # Go back to subscription screen
         Router.go '/#subscription'
-    errorText: ''
-    checkCard: =>
-      @errorText 'Entrez le n° de votre carte.'
+    errorText: 'Entrez vos informations de paiements'
+    number: ''
+    name: ''
+    expiry: ''
+    cvc: ''
+    checkCard: ->
+      console.log 'Setting text', @
+      #@errorText 'Entrez le n° de votre carte.'
     validateCardDisabled: true
     validateCard: (e) ->
       e.preventDefault()
