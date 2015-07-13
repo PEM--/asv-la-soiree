@@ -22,21 +22,21 @@ if Meteor.isClient
     # Create card for displaying user's entries
     @card = new Card
       width: cardWidth
-      form: 'form'
+      form: 'form.card'
       container: '.card-wrapper'
       messages:
         validDate: 'date\nvalidité'
         monthYear: 'mm/aa'
   # Test cards
-  # - visa: 4111111111111111
-  # - mastercard: 5555555555554444
-  # - maestro: 6759649826438453
-  # - amex: 378282246310005
-  # - discover: 6011111111111117
+  # - visa:         4111111111111111
+  # - mastercard:   5555555555554444
+  # - maestro:      6759649826438453
+  # - amex:         378282246310005
+  # - discover:     6011111111111117
   # - visaelectron: 4917300800000000
-  # - dinersclub: 30569309025904
-  # - unionpay: 6271136264806203568
-  # - jcb: 3530111333300000
+  # - dinersclub:   30569309025904
+  # - unionpay:     6271136264806203568
+  # - jcb:          3530111333300000
   Template.payment.viewmodel
     isCorrectCookie: -> CookieSingleton.get().isPreSubed()
     paiementInformations: ->
@@ -75,8 +75,25 @@ if Meteor.isClient
     expiry: ''
     cvc: ''
     checkCard: ->
-      console.log 'Setting text', @
-      #@errorText 'Entrez le n° de votre carte.'
+      console.log @
+      @validateCardDisabled true
+      # Check card number
+      if @number().length > 19
+        return @errorText 'Votre n° de carte est trop long.'
+      if @number().length < 14
+        return @errorText 'Votre n° de carte est incomplet.'
+      if _.isNaN s.toNumber @number()
+        return @errorText 'Votre n° de carte ne peut contenir des lettres.'
+      # Check name
+      if @name().length < 2
+        return @errorText 'Entrez le nom inscrit sur votre carte.'
+      # Check expiry
+      if @expiry().length < 2
+        return @errorText 'Entrez le nom inscrit sur votre carte.'
+      # All informations seem OK, allow payment validation
+      @validateCardDisabled false
+
+
     validateCardDisabled: true
     validateCard: (e) ->
       e.preventDefault()
