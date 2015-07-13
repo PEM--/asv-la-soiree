@@ -329,5 +329,4 @@ if Meteor.isServer
     global.windowDom = dom = jsdom.jsdom cgvObj.body
     for idx in [0...dom.body.children.length]
       node = dom.body.childNodes[idx]
-      console.log 'Node', node.tagName.toLowerCase(), ': ',
-        s.stripTags node.innerHTML
+      pdf[node.tagName.toLowerCase()]? s.stripTags node.innerHTML
