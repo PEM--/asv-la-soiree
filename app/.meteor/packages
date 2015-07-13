@@ -67,9 +67,9 @@ brightbind:orion-gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill
-
-# Payment
 patrickml:braintree
+meteorhacks:npm
+pascoual:pdfkit
 
 # Others
 dburles:google-maps
@@ -78,3 +78,4 @@ rzymek:moment-locale-fr
 numeral:numeral
 juliancwirko:s-alert
 juliancwirko:s-alert-jelly
+npm-container

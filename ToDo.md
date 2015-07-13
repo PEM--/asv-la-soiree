@@ -12,6 +12,9 @@
 - [X] Correction du le lien de l'interface d'administration.
 - [X] Meilleure sécurité pour les BrowserPolicy.
 - [X] Bonus : Select/options sans labels.
+- [ ] Bonus : CSV avec des valeurs en français.
+- [ ] Bonus : CSV avec retrait des valeurs par défaut.
+- [ ] Bonus : SSR pour SEO naturel plus important.
 
 ## Review 06/07/2015
 - [X] Nouvelle structure de tarifs :
