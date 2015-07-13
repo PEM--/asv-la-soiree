@@ -5,7 +5,7 @@
 - [X] Page de conditions générales des ventes + corrections adresses CGU & Cookie.
 - [X] Correction sur les boutons de partage social dans le formulaire d'inscription : pas de curseur permettant à l'utilisateur de savoir qu'il s'agit d'un bouton.
 - [X] Mandrill par Mailchimp pour envoi automatique lors du paiement.
-- [/] CGV en PDF.
+- [X] CGV en PDF.
 - [X] Paiement par chèque.
 - [/] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
@@ -147,8 +147,6 @@
 - [ ] Bonus: Fix GridFS issue on Orion's module.
 - [ ] Bonus: Image upload
 - [ ] Bonus: PhantomJS integration.
-- [ ] Bonus: Accelerate routing
-  - https://github.com/meteorhacks/subs-manager
 - [ ] Bonus: Check presence of online users
   - https://github.com/dburles/meteor-presence
 - [ ] Bonus: Get avatar on connected users

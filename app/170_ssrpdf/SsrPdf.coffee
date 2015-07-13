@@ -1,5 +1,4 @@
 if Meteor.isServer
-  appLog.info 'Setting up PDF'
   ###*
    * # PdfRenderer: A custom PDF renderer.
    *
@@ -320,13 +319,23 @@ if Meteor.isServer
 
   jsdom = Meteor.npmRequire 'jsdom'
   @CgvPdf = null
-  @windowDom = null
 
-  @updateCgv = ->
-    cgvObj = BasicPages.findOne slug: 'cgv'
+  @updateCgv = (page) ->
     global.CgvPdf = pdf = new PdfRenderer
-    pdf.h1 cgvObj.title
-    global.windowDom = dom = jsdom.jsdom cgvObj.body
+    pdf.h1 page.title
+    dom = jsdom.jsdom page.body
     for idx in [0...dom.body.children.length]
       node = dom.body.childNodes[idx]
       pdf[node.tagName.toLowerCase()]? s.stripTags node.innerHTML
+    dom.close()
+
+  appLog.info 'Setting up CGV PDF'
+  # Create the initial CGV as PDF
+  updateCgv BasicPages.findOne slug: 'cgv'
+  # Update CGV PDF when the BasicPage changes
+  BasicPages.find().observeChanges
+    'changed': (id, fields) ->
+      page = BasicPages.findOne id
+      if page.slug is 'cgv'
+        updateCgv page
+        appLog.info 'CGV PDF updated'
