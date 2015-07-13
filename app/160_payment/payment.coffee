@@ -69,20 +69,60 @@ if Meteor.isClient
           return sAlert.error error.reason
         # Go back to subscription screen
         Router.go '/#subscription'
+    errorText: ''
+    checkCard: =>
+      @errorText 'Entrez le n° de votre carte.'
+    validateCardDisabled: true
+    validateCard: (e) ->
+      e.preventDefault()
     goBraintree: -> window.open 'https://braintreepayments.com'
-  , 'validateCheck'
+  , ['validateCheck', 'checkCard', 'validateCard']
 
+BRAINTREE_CONFS = [
+  {
+    key: 'merchantId', type: String
+    label: 'Identifiant du marchand'
+  }
+  {
+    key: 'publicKey', type: String
+    label: 'Clef publique'
+  }
+  {
+    key: 'privateKey', type: String
+    label: 'Clef privée'
+  }
+]
+
+# Create configuration for Braintree (available in Orion's configuration)
 if Meteor.isServer
-  appLog.info 'Connecting server to Braintree'
-  try
-    @BrainTreeConnect = BrainTreeConnect
-      environment: Braintree.Environment.Sandbox
-      merchantId: Meteor.settings.braintree.merchantId
-      publicKey:  Meteor.settings.braintree.publicKey
-      privateKey: Meteor.settings.braintree.privateKey
-      # return BrainTreeConnect.customer.create(config);
-  catch error
-    throw new Meteor.Error 1001, error.message
+  config = orion.config.collection.findOne()
+  changed = false
+for conf in BRAINTREE_CONFS
+  # Braintree account in the CMS secret informations
+  confKey = "BRAINTREE_#{conf.key.toUpperCase()}"
+  orion.config.add confKey, 'braintree',
+    type: conf.type
+    label: "#{conf.label} (#{confKey})"
+  # Create default values for the Mandrill configuration
+  if Meteor.isServer
+    unless config[confKey]?
+      config[confKey] = Meteor.settings.braintree[conf.key]
+      changed = true
+if Meteor.isServer
+  if changed
+    appLog.info 'Creating or updating Braintree configuration'
+    orion.config.collection.update config._id, $set: config
+  Meteor.startup ->
+    appLog.info 'Connecting server to Braintree'
+    try
+      @BrainTreeConnect = BrainTreeConnect
+        environment: Braintree.Environment.Sandbox
+        merchantId: Meteor.settings.braintree.merchantId
+        publicKey:  Meteor.settings.braintree.publicKey
+        privateKey: Meteor.settings.braintree.privateKey
+        # return BrainTreeConnect.customer.create(config);
+    catch error
+      throw new Meteor.Error 1001, error.message
   Meteor.methods
     checkPayment: (obj) ->
       check obj, SubscribersSchema

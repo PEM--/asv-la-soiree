@@ -40,11 +40,24 @@ main(data-role='payment')
           .card-form(data-bind='visible: isPaymentTypeCard')
             .card-wrapper.fadeIn
             form.card(autocomplete='off').fadeIn
-              input(type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus)
-              input(type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate)
-              input(type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate)
-              input(type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate)
-              button(type='submit') Valider
+              p.error(data-bind='text: errorText')
+              input(
+                type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus,
+                data-bind='change: checkCard'
+              )
+              input(
+                type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate
+              )
+              input(
+                type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate
+              )
+              input(
+                type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate
+              )
+              button(
+                type='submit',
+                data-bind='click: validateCard, disabled: validateCardDisabled'
+              ) Valider
   footer
     .svg-logo-container(data-bind='click: goBraintree')
       +braintreeLogo
