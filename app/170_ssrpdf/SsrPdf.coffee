@@ -55,7 +55,7 @@ if Meteor.isServer
      * Reactive ready state on the Iron.WaitList of assets.
      * @return {Boolean} true if all assets are downloaded, false otherwise.
     ###
-    ready: -> @waitList.ready()
+    #ready: -> @waitList.ready()
     ###*
      * Insert a title.
      * @param  {String} text Text of the title.
@@ -297,7 +297,9 @@ if Meteor.isServer
         # Call provided callback
         callback()
 
+  @CgvPdf = null
+
   @updateCgv = ->
     cgvObj = BasicPages.findOne slug: 'cgv'
-    pdf = new PdfRenderer
+    global.CgvPdf = pdf = new PdfRenderer
     pdf.h1 cgvObj.title

@@ -77,7 +77,15 @@ if Meteor.isServer
         { name: 'price', content: price }
         { name: 'tag', content: tag }
       ]
-      message: to: [ { email: email } ]
+      message:
+        to: [ { email: email } ]
+        attachments: [
+          {
+            type: 'application/pdf'
+            name: 'Conditions générales de ventes.pdf'
+            content: CgvPdf.outputSync().toString 'base64'
+          }
+        ]
   # Observe changes on payment information for sending emails
   Subscribers.find().observeChanges
     'changed': (id, fields) ->
