@@ -11,7 +11,10 @@ if Meteor.isServer
     FONT_SIZE = 10
     H1_SIZE = FONT_SIZE*2
     H2_SIZE = Math.floor FONT_SIZE*1.5
-    H3_SIZE = Math.floor FONT_SIZE*1.2
+    H3_SIZE = Math.floor FONT_SIZE*1.4
+    H4_SIZE = Math.floor FONT_SIZE*1.3
+    H5_SIZE = Math.floor FONT_SIZE*1.2
+    H6_SIZE = Math.floor FONT_SIZE*1.1
     BOLD_SIZE = Math.floor FONT_SIZE*1.1
     SMALL_MARGIN = .3
     ###*
@@ -57,23 +60,41 @@ if Meteor.isServer
     ###
     #ready: -> @waitList.ready()
     ###*
-     * Insert a title.
+     * Insert a H1 title.
      * @param  {String} text Text of the title.
      * @return {Object} this.
     ###
     h1: (text) -> @fontSize(H1_SIZE).text text
     ###*
-     * Insert a sub-title.
+     * Insert a H2 title.
      * @param  {String} text Text of the title.
      * @return {Object} this.
     ###
     h2: (text) -> @fontSize(H2_SIZE).moveDown(SMALL_MARGIN).text text
     ###*
-     * Insert a sub-sub-title.
+     * Insert a H3 title.
      * @param  {String} text Text of the title.
      * @return {Object} this.
     ###
     h3: (text) -> @fontSize(H3_SIZE).moveDown(SMALL_MARGIN).text text
+    ###*
+     * Insert a H4 title.
+     * @param  {String} text Text of the title.
+     * @return {Object} this.
+    ###
+    h4: (text) -> @fontSize(H4_SIZE).moveDown(SMALL_MARGIN).text text
+    ###*
+     * Insert a H5 title.
+     * @param  {String} text Text of the title.
+     * @return {Object} this.
+    ###
+    h5: (text) -> @fontSize(H5_SIZE).moveDown(SMALL_MARGIN).text text
+    ###*
+     * Insert a H6 title.
+     * @param  {String} text Text of the title.
+     * @return {Object} this.
+    ###
+    h6: (text) -> @fontSize(H6_SIZE).moveDown(SMALL_MARGIN).text text
     ###*
      * Insert a paragraph.
      * @param  {String} text Text of the paragraph.
@@ -297,9 +318,16 @@ if Meteor.isServer
         # Call provided callback
         callback()
 
+  jsdom = Meteor.npmRequire 'jsdom'
   @CgvPdf = null
+  @windowDom = null
 
   @updateCgv = ->
     cgvObj = BasicPages.findOne slug: 'cgv'
     global.CgvPdf = pdf = new PdfRenderer
     pdf.h1 cgvObj.title
+    global.windowDom = dom = jsdom.jsdom cgvObj.body
+    for idx in [0...dom.body.children.length]
+      node = dom.body.childNodes[idx]
+      console.log 'Node', node.tagName.toLowerCase(), ': ',
+        s.stripTags node.innerHTML
