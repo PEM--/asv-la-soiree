@@ -95,12 +95,18 @@ if Meteor.isClient
         return @errorText 'Entrez la date d\'expiration de votre carte.'
       [strMonth, strYear] = @expiry().split ' / '
       month = s.toNumber strMonth
-      if strYear.length isnt 2 or ( _.isNaN year) or year < 1 or year > 12
+      if (strMonth.length isnt 2) or ( _.isNaN month) or
+          (month < 1) or (month > 12)
         return @errorText 'Le mois d\'expiration est inconsistant.'
+      if (_.isUndefined strYear) or (strYear.length isnt 2)
+        return @errorText 'L\'année d\'expiration est inconsistante.'
       year = s.toNumber strYear
       currentYear = moment(new Date).year() - 2000
-      if strYear.length isnt 2 or ( _.isNaN year) or year < currentYear
-        return @errorText 'L\'année d\'expiration est inconsistant.'
+      if (_.isNaN year) or (year < currentYear)
+        return @errorText 'L\'année d\'expiration est inconsistante.'
+      # CVC
+      if (@cvc().length isnt 3) or (_.isNaN s.toNumber @cvc())
+        return @errorText 'Le cryptogramme doit comporter 3 digits.'
       # All informations seem OK, allow payment validation
       @errorText ''
       @validateCardDisabled false
