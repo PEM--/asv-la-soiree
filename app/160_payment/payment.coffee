@@ -77,24 +77,33 @@ if Meteor.isClient
     checkCard: ->
       console.log @
       @validateCardDisabled true
-      console.log "|#{@number()}|"
       # Check card number
       if @number().length > 19
         return @errorText 'Votre n° de carte est trop long.'
       if @number().length < 14
         return @errorText 'Votre n° de carte est incomplet.'
-      if _.isNaN s.toNumber @number()
-        return @errorText 'Votre n° de carte ne peut contenir des lettres.'
+      strNumber = @number()
+      if _.isNaN s.toNumber s.replaceAll strNumber, ' ', ''
+        return @errorText 'Votre n° de carte ne peut contenir de lettres.'
       # Check name
       if @name().length < 2
         return @errorText 'Entrez le nom inscrit sur votre carte.'
+      if @name().length > 26
+        return @errorText 'Entrez uniquement le nom inscrit sur votre carte.'
       # Check expiry
-      if @expiry().length < 2
-        return @errorText 'Entrez le nom inscrit sur votre carte.'
+      if @expiry().length isnt 7
+        return @errorText 'Entrez la date d\'expiration de votre carte.'
+      [strMonth, strYear] = @expiry().split ' / '
+      month = s.toNumber strMonth
+      if strYear.length isnt 2 or ( _.isNaN year) or year < 1 or year > 12
+        return @errorText 'Le mois d\'expiration est inconsistant.'
+      year = s.toNumber strYear
+      currentYear = moment(new Date).year() - 2000
+      if strYear.length isnt 2 or ( _.isNaN year) or year < currentYear
+        return @errorText 'L\'année d\'expiration est inconsistant.'
       # All informations seem OK, allow payment validation
+      @errorText ''
       @validateCardDisabled false
-
-
     validateCardDisabled: true
     validateCard: (e) ->
       e.preventDefault()
