@@ -75,46 +75,82 @@ if Meteor.isClient
     expiry: ''
     cvc: ''
     checkCard: ->
-      console.log @
       @validateCardDisabled true
       # Check card number
-      if @number().length > 19
-        return @errorText 'Votre n° de carte est trop long.'
-      if @number().length < 14
-        return @errorText 'Votre n° de carte est incomplet.'
-      strNumber = @number()
-      if _.isNaN s.toNumber s.replaceAll strNumber, ' ', ''
-        return @errorText 'Votre n° de carte ne peut contenir de lettres.'
+      res = checkCardNumber @number()
+      return (@errorText res) unless res is ''
       # Check name
-      if @name().length < 2
-        return @errorText 'Entrez le nom inscrit sur votre carte.'
-      if @name().length > 26
-        return @errorText 'Entrez uniquement le nom inscrit sur votre carte.'
+      res = checkCardName @name()
+      return (@errorText res) unless res is ''
       # Check expiry
-      if @expiry().length isnt 7
-        return @errorText 'Entrez la date d\'expiration de votre carte.'
-      [strMonth, strYear] = @expiry().split ' / '
-      month = s.toNumber strMonth
-      if (strMonth.length isnt 2) or ( _.isNaN month) or
-          (month < 1) or (month > 12)
-        return @errorText 'Le mois d\'expiration est inconsistant.'
-      if (_.isUndefined strYear) or (strYear.length isnt 2)
-        return @errorText 'L\'année d\'expiration est inconsistante.'
-      year = s.toNumber strYear
-      currentYear = moment(new Date).year() - 2000
-      if (_.isNaN year) or (year < currentYear)
-        return @errorText 'L\'année d\'expiration est inconsistante.'
+      res = checkCardExpiry @expiry()
+      return (@errorText res) unless res is ''
       # CVC
-      if (@cvc().length isnt 3) or (_.isNaN s.toNumber @cvc())
-        return @errorText 'Le cryptogramme doit comporter 3 digits.'
+      res = checkCardCvc @cvc()
+      return (@errorText res) unless res is ''
       # All informations seem OK, allow payment validation
       @errorText ''
       @validateCardDisabled false
     validateCardDisabled: true
     validateCard: (e) ->
       e.preventDefault()
+      @validateCardDisabled true
+      client = CookieSingleton.get().content().preSubscriptionValue
+      card =
+        number: @number()
+        name: @name()
+        expiry: @expiry()
+        cvc: @cvc()
+      Meteor.call 'clientToken', client, card, (error, result) =>
+        # Display an error message
+        if error
+          appLog.warn 'Set check payment failed', error.reason, error
+          Meteor.setTimeout =>
+            @validateCheckDisabled false
+          , 5000
+          return sAlert.error error.reason
+        console.log 'Token: ', result
+
     goBraintree: -> window.open 'https://braintreepayments.com'
   , ['validateCheck', 'checkCard', 'validateCard']
+
+checkCardNumber = (str) ->
+  if str.length > 19
+    return 'Votre n° de carte est trop long.'
+  if str.length < 14
+    return 'Votre n° de carte est incomplet.'
+  if _.isNaN s.toNumber s.replaceAll str, ' ', ''
+    return 'Votre n° de carte ne peut contenir de lettres.'
+  return ''
+
+checkCardName = (str) ->
+  if str.length < 2
+    return 'Entrez le nom inscrit sur votre carte.'
+  if str.length > 26
+    return 'Entrez uniquement le nom inscrit sur votre carte.'
+  return ''
+
+checkCardExpiry = (str) ->
+  if str.length isnt 7
+    return 'Entrez la date d\'expiration de votre carte.'
+  [strMonth, strYear] = str.split ' / '
+  month = s.toNumber strMonth
+  if (strMonth.length isnt 2) or ( _.isNaN month) or
+      (month < 1) or (month > 12)
+    return 'Le mois d\'expiration est inconsistant.'
+  if (_.isUndefined strYear) or (strYear.length isnt 2)
+    return 'L\'année d\'expiration est inconsistante.'
+  year = s.toNumber strYear
+  currentYear = moment(new Date).year() - 2000
+  if (_.isNaN year) or (year < currentYear)
+    return 'L\'année d\'expiration est inconsistante.'
+  return ''
+
+checkCardCvc = (str) ->
+  if ((str.length isnt 3) and (str.length isnt 4)) or
+      (_.isNaN s.toNumber str)
+    return 'Le cryptogramme doit comporter 3 ou 4 chiffres.'
+  return ''
 
 BRAINTREE_CONFS = [
   {
@@ -175,3 +211,39 @@ if Meteor.isServer
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',
           'Erreur interne, veuillez ré-essayer plus tard'
+    clientToken: (client, card) ->
+      # Check transimtted data consistency
+      check client, SubscribersSchema
+      check card, Object
+      if (card.number is undefined) or (card.name is undefined) or
+          (card.expiry is undefined) or (card.cvc is undefined) or
+          (not _.isString card.number) or (not _.isString card.name) or
+          (not _.isString card.expiry) or (not _.isString card.cvc)
+        throw new Meteor.Error 'payment',
+          'Vos informations de paiement ne sont pas consistantes.'
+      res = checkCardNumber card.name
+      throw new Meteor.Error 'payment', res unless res is ''
+      res = checkCardName card.number
+      throw new Meteor.Error 'payment', res unless res is ''
+      res = checkCardExpiry card.expiry
+      throw new Meteor.Error 'payment', res unless res is ''
+      res = checkCardCvc card.cvc
+      throw new Meteor.Error 'payment', res unless res is ''
+      appLog.info 'Creating token for payment by card for subscriber', client
+      # Create a Braintree customer
+      braintreeCustomer =
+        firstName: client.forname
+        lastName: client.name
+        email: client.email
+        countryCodeAlpha2: 'FR'
+        cardholderName: '???'
+      # Treat optional informations
+      unless client.phone is ''
+        _.extend braintreeCustomer, phone: client.phone
+
+      BrainTreeConnect.customer.create braintreeCustomer
+      , (err, result) ->
+        return {
+          titi: 'toto'
+          tutu: 200
+        }
