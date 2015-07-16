@@ -28,15 +28,26 @@ if Meteor.isClient
         validDate: 'date\nvalidité'
         monthYear: 'mm/aa'
   # Test cards
-  # - visa:         4111111111111111
-  # - mastercard:   5555555555554444
-  # - maestro:      6759649826438453
-  # - amex:         378282246310005
-  # - discover:     6011111111111117
-  # - visaelectron: 4917300800000000
-  # - dinersclub:   30569309025904
-  # - unionpay:     6271136264806203568
-  # - jcb:          3530111333300000
+  # - amex:
+  #   - 378282246310005
+  #   - 371449635398431
+  # - discover:
+  #   - 6011111111111117
+  # - jcb:
+  #   - 3530111333300000
+  # - maestro:
+  #   - 6304000000000000
+  # - mastercard:
+  #   - 5555555555554444
+  # - visa:
+  #   - 4111111111111111
+  #   - 4005519200000004
+  #   - 4009348888881881
+  #   - 4012000033330026
+  #   - 4012000077777777
+  #   - 4012888888881881
+  #   - 4217651111111119
+  #   - 4500600000000061
   Template.payment.viewmodel
     isCorrectCookie: -> CookieSingleton.get().isPreSubed()
     paiementInformations: ->
@@ -101,7 +112,7 @@ if Meteor.isClient
         name: @name()
         expiry: @expiry()
         cvc: @cvc()
-      Meteor.call 'clientToken', client, card, (error, result) =>
+      Meteor.call 'clientToken', client, (error, result) =>
         # Display an error message
         if error
           appLog.warn 'Set check payment failed', error.reason, error
@@ -189,8 +200,10 @@ if Meteor.isServer
   Meteor.startup ->
     appLog.info 'Connecting server to Braintree'
     try
+      envType = if Meteor.settings.braintree.accountType is 'sandbox' then \
+        Braintree.Environment.Sandbox else Braintree.Environment.Production
       @BrainTreeConnect = BrainTreeConnect
-        environment: Braintree.Environment.Sandbox
+        environment: envType
         merchantId: Meteor.settings.braintree.merchantId
         publicKey:  Meteor.settings.braintree.publicKey
         privateKey: Meteor.settings.braintree.privateKey
@@ -211,39 +224,42 @@ if Meteor.isServer
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',
           'Erreur interne, veuillez ré-essayer plus tard'
-    clientToken: (client, card) ->
+    clientToken: (client) ->
       # Check transimtted data consistency
       check client, SubscribersSchema
-      check card, Object
-      if (card.number is undefined) or (card.name is undefined) or
-          (card.expiry is undefined) or (card.cvc is undefined) or
-          (not _.isString card.number) or (not _.isString card.name) or
-          (not _.isString card.expiry) or (not _.isString card.cvc)
-        throw new Meteor.Error 'payment',
-          'Vos informations de paiement ne sont pas consistantes.'
-      res = checkCardNumber card.name
-      throw new Meteor.Error 'payment', res unless res is ''
-      res = checkCardName card.number
-      throw new Meteor.Error 'payment', res unless res is ''
-      res = checkCardExpiry card.expiry
-      throw new Meteor.Error 'payment', res unless res is ''
-      res = checkCardCvc card.cvc
-      throw new Meteor.Error 'payment', res unless res is ''
+      # check card, Object
+      # if (card.number is undefined) or (card.name is undefined) or
+      #     (card.expiry is undefined) or (card.cvc is undefined) or
+      #     (not _.isString card.number) or (not _.isString card.name) or
+      #     (not _.isString card.expiry) or (not _.isString card.cvc)
+      #   throw new Meteor.Error 'payment',
+      #     'Vos informations de paiement ne sont pas consistantes.'
+      # res = checkCardNumber card.number
+      # throw new Meteor.Error 'payment', res unless res is ''
+      # res = checkCardName card.name
+      # throw new Meteor.Error 'payment', res unless res is ''
+      # res = checkCardExpiry card.expiry
+      # throw new Meteor.Error 'payment', res unless res is ''
+      # res = checkCardCvc card.cvc
+      # throw new Meteor.Error 'payment', res unless res is ''
       appLog.info 'Creating token for payment by card for subscriber', client
       # Create a Braintree customer
       braintreeCustomer =
         firstName: client.forname
         lastName: client.name
         email: client.email
-        countryCodeAlpha2: 'FR'
-        cardholderName: '???'
+        billing:
+          countryCodeAlpha2: 'FR'
+        # creditCard:
+        #   number: s.replaceAll(card.number, ' ', '')
+        #   cardholderName: card.name
+        #   expirationDate: s.replaceAll(card.expiry, ' ', '')
+        #   cvv: card.cvc
+        #   verifyCard: true
       # Treat optional informations
       unless client.phone is ''
         _.extend braintreeCustomer, phone: client.phone
-
       BrainTreeConnect.customer.create braintreeCustomer
       , (err, result) ->
-        return {
-          titi: 'toto'
-          tutu: 200
-        }
+        throw new Meteor.Error 'payment', ''
+        return result

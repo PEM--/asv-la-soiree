@@ -1,3 +1,12 @@
+## Review 15/07/2015
+- [ ] Créer un numéro d'inscription plus friendly (incrémental à partir de 100).
+- [ ] Afficher le numéro d'inscription sur l'écran du chèque.
+- [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
+- [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher
+- [X] Mettre plus en avant la sélection de moyen de paiement.
+- [ ] Intégrer un encodeur ASCII127.
+- [ ] Export vers SAGE GESCOM 100 au format TXT (ASCII127).
+
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
 - [X] Revue des impacts sur la structure du CMS.
