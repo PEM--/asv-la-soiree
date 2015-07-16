@@ -24,10 +24,9 @@ if Meteor.isClient
       width: cardWidth
       form: 'form.card'
       container: '.card-wrapper'
-      formatting: false
       messages:
-        validDate: 'date\nvalidité'
-        monthYear: 'mm/yy'
+        validDate: 'Date de\nvalidité'
+        monthYear: 'Mois / Année'
       values:
         number: '•••• •••• •••• ••••'
         name: 'NOM COMPLET'
@@ -90,11 +89,19 @@ if Meteor.isClient
     # Debug values
     # number: '378282246310005'
     # name: 'PEM'
-    # expiry: '12/15'
+    # expiry: '12 / 15'
     # cvc: '123'
     number: ''
     name: ''
     expiry: ''
+    changeExpiry: ->
+      console.log "changeExpiry: |#{@expiry()}|"
+      # Circumvent autofill issue
+      str = @expiry()
+      if s.contains str, ' / '
+        @expiry "#{str.split(' / ')[0]}/"
+      # Check if card is properly filled
+      @checkCard()
     cvc: ''
     checkCard: ->
       @validateCardDisabled true
@@ -134,7 +141,7 @@ if Meteor.isClient
         console.log 'Token: ', result
 
     goBraintree: -> window.open 'https://braintreepayments.com'
-  , ['validateCheck', 'checkCard', 'validateCard']
+  , ['validateCheck', 'checkCard', 'changeExpiry', 'validateCard']
 
 checkCardNumber = (str) ->
   if str.length > 19

@@ -46,12 +46,12 @@ main(data-role='payment')
                 data-bind='value: number, change: checkCard'
               )
               input(
-                type='text', placeholder='Nom complet', name='name', autocomplete='off', novalidate,
+                type='text', placeholder='NOM COMPLET', name='name', autocomplete='off', novalidate,
                 data-bind='value: name, change: checkCard'
               )
               input(
                 type='text', placeholder='MM/AA', name='expiry', autocomplete='off', novalidate,
-                data-bind='value: expiry, change: checkCard'
+                data-bind='value: expiry, change: changeExpiry'
               )
               input(
                 type='text', placeholder='CVC', name='cvc', autocomplete='off', novalidate,
