@@ -230,6 +230,10 @@ SimpleSchema.messages
         {value: 'check', label: 'Chèque' }
       ]
     label: 'Type de paiement'
+  braintreeCustomerId:
+    type: String
+    optional: true
+    label: 'Identifiant du client sur Braintree'
   paymentCardToken:
     type: String
     optional: true

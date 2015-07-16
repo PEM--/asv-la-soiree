@@ -87,22 +87,21 @@ if Meteor.isClient
         Router.go '/#subscription'
     errorText: 'Entrez vos informations de paiements'
     # Debug values
-    # number: '378282246310005'
-    # name: 'PEM'
-    # expiry: '12 / 15'
-    # cvc: '123'
-    number: ''
-    name: ''
-    expiry: ''
+    number: '378282246310005'
+    name: 'PEM'
+    expiry: '12/15'
+    cvc: '123'
+    # number: ''
+    # name: ''
+    # expiry: ''
+    # cvc: ''
     changeExpiry: ->
-      console.log "changeExpiry: |#{@expiry()}|"
       # Circumvent autofill issue
       str = @expiry()
       if s.contains str, ' / '
         @expiry "#{str.split(' / ')[0]}/"
       # Check if card is properly filled
       @checkCard()
-    cvc: ''
     checkCard: ->
       @validateCardDisabled true
       # Check card number
@@ -212,6 +211,7 @@ for conf in BRAINTREE_CONFS
       config[confKey] = Meteor.settings.braintree[conf.key]
       changed = true
 if Meteor.isServer
+  Future = Npm.require 'fibers/future'
   if changed
     appLog.info 'Creating or updating Braintree configuration'
     orion.config.collection.update config._id, $set: config
@@ -250,12 +250,12 @@ if Meteor.isServer
         unless clientDb?
           throw new Meteor.Error 'payment', "Unknown client: #{client.email}"
         # Check data consistency
+        console.log client, clientDb
         for k, v of client
           if (clientDb[k] is undefined) or (v isnt clientDb[k])
-            throw new Meteor.Error 'payment',
-              "Consistency #{client.email}, #{k}: #{v}, #{clientDb[k]}"
-        console.log client, clientDb
-        throw new Meteor.Error 'payment', "Consistency #{client.email}"
+            unless v is ''
+              throw new Meteor.Error 'payment',
+                "Consistency #{client.email}, #{k}: #{v}, #{clientDb[k]}"
       catch err
         appLog.warn 'Fraud attempt:', err.message
         throw new Meteor.Error 'payment',
@@ -275,14 +275,12 @@ if Meteor.isServer
       # throw new Meteor.Error 'payment', res unless res is ''
       # res = checkCardCvc card.cvc
       # throw new Meteor.Error 'payment', res unless res is ''
-      appLog.info 'Creating token for payment by card for subscriber', client
+      appLog.info 'Creating customer on Braintree', client
       # Create a Braintree customer
       braintreeCustomer =
         firstName: client.forname
         lastName: client.name
         email: client.email
-        billing:
-          countryCodeAlpha2: 'FR'
         # creditCard:
         #   number: s.replaceAll(card.number, ' ', '')
         #   cardholderName: card.name
@@ -292,7 +290,17 @@ if Meteor.isServer
       # Treat optional informations
       unless client.phone is ''
         _.extend braintreeCustomer, phone: client.phone
-      BrainTreeConnect.customer.create braintreeCustomer
-      , (err, result) ->
-        throw new Meteor.Error 'payment', ''
-        return result
+      braintreeCustomer = BrainTreeConnect.customer.create braintreeCustomer
+      appLog.info 'Customer created', braintreeCustomer
+      Subscribers.update clientDb._id,
+        $set: braintreeCustomerId: braintreeCustomer.customer.id
+      # Create token for customer
+      token = BrainTreeConnect.clientToken.generate
+        customerId: braintreeCustomer.customer.id
+      appLog.info 'Token created', token
+      Subscribers.update clientDb._id,
+        $set: paymentCardToken: token.clientToken
+      return {
+        customer: braintreeCustomer
+        token: token
+      }
