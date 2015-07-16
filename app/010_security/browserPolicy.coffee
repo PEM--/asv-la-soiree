@@ -43,7 +43,7 @@ if Meteor.isServer
     # Browser update warning
     'browser-update.org'
     # Braintree
-    'braintreegateway.com'
+    '*.braintreegateway.com'
     # Mix Panel analytics
     #'cdn.mxpnl.com'
     # Kadira

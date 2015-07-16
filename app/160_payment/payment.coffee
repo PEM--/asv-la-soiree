@@ -273,37 +273,16 @@ if Meteor.isServer
             unless v is ''
               throw new Meteor.Error 'payment',
                 "Consistency #{client.email}, #{k}: #{v}, #{clientDb[k]}"
-      catch err
-        appLog.warn 'Fraud attempt:', err.message
+      catch error
+        appLog.warn 'Fraud attempt:', error.message
         throw new Meteor.Error 'payment',
           'Vos informations de paiement ne sont pas consistantes.'
-      # check card, Object
-      # if (card.number is undefined) or (card.name is undefined) or
-      #     (card.expiry is undefined) or (card.cvc is undefined) or
-      #     (not _.isString card.number) or (not _.isString card.name) or
-      #     (not _.isString card.expiry) or (not _.isString card.cvc)
-      #   throw new Meteor.Error 'payment',
-      #     'Vos informations de paiement ne sont pas consistantes.'
-      # res = checkCardNumber card.number
-      # throw new Meteor.Error 'payment', res unless res is ''
-      # res = checkCardName card.name
-      # throw new Meteor.Error 'payment', res unless res is ''
-      # res = checkCardExpiry card.expiry
-      # throw new Meteor.Error 'payment', res unless res is ''
-      # res = checkCardCvc card.cvc
-      # throw new Meteor.Error 'payment', res unless res is ''
       appLog.info 'Creating customer on Braintree', client
       # Create a Braintree customer
       braintreeCustomer =
         firstName: client.forname
         lastName: client.name
         email: client.email
-        # creditCard:
-        #   number: s.replaceAll(card.number, ' ', '')
-        #   cardholderName: card.name
-        #   expirationDate: s.replaceAll(card.expiry, ' ', '')
-        #   cvv: card.cvc
-        #   verifyCard: true
       # Treat optional informations
       unless client.phone is ''
         _.extend braintreeCustomer, phone: client.phone
@@ -321,3 +300,14 @@ if Meteor.isServer
         customer: braintreeCustomer
         token: token
       }
+    cardPayment: (customerId, nonce) ->
+      # Check if client is in the database
+      try
+        check customerId, String
+        check nonce, String
+        clientDb = Subscribers.findOne braintreeCustomerId: customerId
+        throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
+      catch error
+        appLog.warn 'Fraud attempt:', error.message
+        throw new Meteor.Error 'payment',
+          'Vos informations de paiement ne sont pas consistantes.'
