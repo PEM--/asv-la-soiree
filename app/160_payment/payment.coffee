@@ -146,7 +146,8 @@ if Meteor.isClient
           , (error, nonce) ->
             throw new Meteor.Error 'payment', error if error
             appLog.info 'Nonce created: ', nonce
-            Meteor.call 'cardPayment',  nonce, (error, result) ->
+            Meteor.call 'cardPayment', result.customer.customer.id, nonce,
+            (error, result) ->
               throw new Meteor.Error 'payment', error.reason if error
               appLog.info 'Payment done: ', result
               Router.go '/#subscription'

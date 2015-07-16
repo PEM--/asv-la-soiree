@@ -42,6 +42,8 @@ if Meteor.isServer
     '*.gstatic.com'
     # Browser update warning
     'browser-update.org'
+    # Braintree
+    'braintreegateway.com'
     # Mix Panel analytics
     #'cdn.mxpnl.com'
     # Kadira
