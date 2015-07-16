@@ -230,6 +230,10 @@ SimpleSchema.messages
         {value: 'check', label: 'Chèque' }
       ]
     label: 'Type de paiement'
+  paymentCardToken:
+    type: String
+    optional: true
+    label: 'Token de transaction de paiement par carte'
   paymentTransactionId:
     type: String
     optional: true

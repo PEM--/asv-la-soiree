@@ -24,9 +24,15 @@ if Meteor.isClient
       width: cardWidth
       form: 'form.card'
       container: '.card-wrapper'
+      formatting: false
       messages:
         validDate: 'date\nvalidité'
-        monthYear: 'mm/aa'
+        monthYear: 'mm/yy'
+      values:
+        number: '•••• •••• •••• ••••'
+        name: 'NOM COMPLET'
+        expiry: '••/••'
+        cvc: '•••'
   # Test cards
   # - amex:
   #   - 378282246310005
@@ -81,6 +87,11 @@ if Meteor.isClient
         # Go back to subscription screen
         Router.go '/#subscription'
     errorText: 'Entrez vos informations de paiements'
+    # Debug values
+    # number: '378282246310005'
+    # name: 'PEM'
+    # expiry: '12/15'
+    # cvc: '123'
     number: ''
     name: ''
     expiry: ''
@@ -142,9 +153,9 @@ checkCardName = (str) ->
   return ''
 
 checkCardExpiry = (str) ->
-  if str.length isnt 7
+  if str.length isnt 5
     return 'Entrez la date d\'expiration de votre carte.'
-  [strMonth, strYear] = str.split ' / '
+  [strMonth, strYear] = str.split '/'
   month = s.toNumber strMonth
   if (strMonth.length isnt 2) or ( _.isNaN month) or
       (month < 1) or (month > 12)
@@ -207,7 +218,6 @@ if Meteor.isServer
         merchantId: Meteor.settings.braintree.merchantId
         publicKey:  Meteor.settings.braintree.publicKey
         privateKey: Meteor.settings.braintree.privateKey
-        # return BrainTreeConnect.customer.create(config);
     catch error
       throw new Meteor.Error 1001, error.message
   Meteor.methods
@@ -226,7 +236,23 @@ if Meteor.isServer
           'Erreur interne, veuillez ré-essayer plus tard'
     clientToken: (client) ->
       # Check transimtted data consistency
-      check client, SubscribersSchema
+      try
+        check client, SubscribersSchema
+        # Check if client is in the database
+        clientDb = Subscribers.findOne email: client.email
+        unless clientDb?
+          throw new Meteor.Error 'payment', "Unknown client: #{client.email}"
+        # Check data consistency
+        for k, v of client
+          if (clientDb[k] is undefined) or (v isnt clientDb[k])
+            throw new Meteor.Error 'payment',
+              "Consistency #{client.email}, #{k}: #{v}, #{clientDb[k]}"
+        console.log client, clientDb
+        throw new Meteor.Error 'payment', "Consistency #{client.email}"
+      catch err
+        appLog.warn 'Fraud attempt:', err.message
+        throw new Meteor.Error 'payment',
+          'Vos informations de paiement ne sont pas consistantes.'
       # check card, Object
       # if (card.number is undefined) or (card.name is undefined) or
       #     (card.expiry is undefined) or (card.cvc is undefined) or
