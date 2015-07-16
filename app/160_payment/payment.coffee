@@ -129,16 +129,33 @@ if Meteor.isClient
         name: @name()
         expiry: @expiry()
         cvc: @cvc()
-      Meteor.call 'clientToken', client, (error, result) =>
-        # Display an error message
-        if error
-          appLog.warn 'Set check payment failed', error.reason, error
-          Meteor.setTimeout =>
-            @validateCheckDisabled false
-          , 5000
-          return sAlert.error error.reason
-        console.log 'Token: ', result
-
+      try
+        Meteor.call 'clientToken', client, (error, result) =>
+          # Display an error message
+          throw new Meteor.Error 'payment', error.reason if error
+          appLog.info 'Token created: ', result
+          # Creating a customer nonce
+          client = new braintree.api.Client
+            clientToken: result.token.clientToken
+          client.tokenizeCard
+            number: s.replaceAll @number(), ' ', ''
+            cardholderName: @name()
+            expirationDate: @expiry()
+            cvv: @cvc()
+            billingAddress: countryCodeAlpha2: 'FR'
+          , (error, nonce) ->
+            throw new Meteor.Error 'payment', error if error
+            appLog.info 'Nonce created: ', nonce
+            Meteor.call 'cardPayment',  nonce, (error, result) ->
+              throw new Meteor.Error 'payment', error.reason if error
+              appLog.info 'Payment done: ', result
+              Router.go '/#subscription'
+      catch error
+        appLog.warn 'Set check payment failed', error
+        Meteor.setTimeout =>
+          @validateCheckDisabled false
+        , 5000
+        return sAlert.error error.reason
     goBraintree: -> window.open 'https://braintreepayments.com'
   , ['validateCheck', 'checkCard', 'changeExpiry', 'validateCard']
 
@@ -250,7 +267,6 @@ if Meteor.isServer
         unless clientDb?
           throw new Meteor.Error 'payment', "Unknown client: #{client.email}"
         # Check data consistency
-        console.log client, clientDb
         for k, v of client
           if (clientDb[k] is undefined) or (v isnt clientDb[k])
             unless v is ''

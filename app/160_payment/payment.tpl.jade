@@ -39,7 +39,7 @@ main(data-role='payment')
               ) Valider
           .card-form(data-bind='visible: isPaymentTypeCard')
             .card-wrapper.fadeIn
-            form.card(autocomplete='off').fadeIn
+            form.card#braintreeCard(autocomplete='off').fadeIn
               p.error(data-bind='text: errorText')
               input(
                 type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus,
