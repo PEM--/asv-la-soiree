@@ -137,17 +137,18 @@ if Meteor.isClient
           # Creating a customer nonce
           client = new braintree.api.Client
             clientToken: result.token.clientToken
-          client.tokenizeCard
+          tokenParam =
             number: s.replaceAll @number(), ' ', ''
             cardholderName: @name()
             expirationDate: @expiry()
             cvv: @cvc()
             billingAddress: countryCodeAlpha2: 'FR'
-          , (error, nonce) ->
+          console.log 'tokenParam', tokenParam
+          client.tokenizeCard tokenParam, (error, nonce) ->
             throw new Meteor.Error 'payment', error if error
             appLog.info 'Nonce created: ', nonce
-            Meteor.call 'cardPayment', result.customer.customer.id, nonce,
-            (error, result) ->
+            Meteor.call 'cardPayment', result.customer.customer.id, nonce
+            , (error, result) ->
               throw new Meteor.Error 'payment', error.reason if error
               appLog.info 'Payment done: ', result
               Router.go '/#subscription'
@@ -306,8 +307,15 @@ if Meteor.isServer
         check customerId, String
         check nonce, String
         clientDb = Subscribers.findOne braintreeCustomerId: customerId
-        throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
+        unless clientDb?
+          throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
       catch error
         appLog.warn 'Fraud attempt:', error.message
         throw new Meteor.Error 'payment',
           'Vos informations de paiement ne sont pas consistantes.'
+      # Perform the payment
+      result = BrainTreeConnect.transaction.sale
+        amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
+        paymentMethodNonce: nonce
+      appLog.info 'Payment performed', result
+      # @TODO set payment in DB
