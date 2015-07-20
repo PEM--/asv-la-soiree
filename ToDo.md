@@ -25,7 +25,6 @@
 - [ ] Clôture des inscriptions et affichage d'un message sympa.
 - [X] Bonus : Select/options sans labels.
 - [ ] Bonus : CSV avec des valeurs en français.
-- [ ] Bonus : CSV avec retrait des valeurs par défaut.
 - [ ] Bonus : SSR pour SEO naturel plus important.
 
 ## Review 06/07/2015

@@ -309,13 +309,18 @@ if Meteor.isServer
         clientDb = Subscribers.findOne braintreeCustomerId: customerId
         unless clientDb?
           throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
+        # Perform the payment
+        result = BrainTreeConnect.transaction.sale
+          amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
+          paymentMethodNonce: nonce
+        appLog.info 'Payment performed', result
+
+
+
+        # @TODO set payment in DB
+
+
       catch error
         appLog.warn 'Fraud attempt:', error.message
         throw new Meteor.Error 'payment',
           'Vos informations de paiement ne sont pas consistantes.'
-      # Perform the payment
-      result = BrainTreeConnect.transaction.sale
-        amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
-        paymentMethodNonce: nonce
-      appLog.info 'Payment performed', result
-      # @TODO set payment in DB
