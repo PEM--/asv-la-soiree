@@ -5,7 +5,7 @@ section.contact
     .cookieMask(data-bind='unless: isCookieAccepted')
       p Contact impossible, veuillez accepter les cookies.
     p.error(
-      data-bind='text: errorText, if: isErrorDisplayed'
+      data-bind='text: errorText, class: {shown: errorText}'
     )
     form#contact-form
       fieldset.contact

@@ -27,11 +27,6 @@ if Meteor.isClient
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     isPaymentUserValidated: true
-    isErrorDisplayed: ->
-      unless (@profile().length isnt 0) or (@name().length isnt 0) or
-          (@forname().length isnt 0) or (@email().length isnt 0)
-        return false
-      return true
     profile: ''
     asvPromo: ''
     asvPromoDisabled: true

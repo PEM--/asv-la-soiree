@@ -6,7 +6,7 @@ section.subscription
     .cookieMask(data-bind='unless: isCookieAccepted')
       p Inscription impossible, veuillez accepter les cookies.
     p.error(
-      data-bind='text: errorText, if: isErrorDisplayed'
+      data-bind='text: errorText, class: {shown: errorText}'
     )
     .alreadyPaid(data-bind='if: isPaymentUserValidated')
       div

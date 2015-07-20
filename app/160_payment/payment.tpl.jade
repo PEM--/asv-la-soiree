@@ -40,7 +40,7 @@ main(data-role='payment')
           .card-form(data-bind='visible: isPaymentTypeCard')
             .card-wrapper.fadeIn
             form.card#braintreeCard(autocomplete='off').fadeIn
-              p.error(data-bind='text: errorText')
+              p.error(data-bind='text: errorText, class: {shown: errorText}')
               input(
                 type='text', placeholder='N° de carte', name='number', autocomplete='off', novalidate, autofocus,
                 data-bind='value: number, change: checkCard'

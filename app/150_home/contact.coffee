@@ -5,11 +5,6 @@ if Meteor.isClient
   Template.contact.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     isContactPrevented: false
-    isErrorDisplayed: ->
-      if (@name().length is 0) and (@email().length is 0) and
-          (@message().length is 0)
-        return false
-      return true
     errorText: ''
     name: ''
     email: ''

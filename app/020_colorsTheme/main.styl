@@ -47,7 +47,6 @@ p.error
   z-index 2000
   display block
   width 80%
-  animation fadeIn .8s, .5s
   border 1px solid brandWarning
   border-radius 1em
   color brandWarning !important
@@ -55,6 +54,10 @@ p.error
   font-size 120%
   text-align center
   pointer-events none
+  opacity 0
+  transition opacity defaultTransitionValue
+  &.shown
+    opacity 1
 
 ::selection
   color bgColor

@@ -3,12 +3,13 @@
 - [ ] Afficher le numéro d'inscription sur l'écran du chèque.
 - [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
-- [ ] Rattrapage des données courantes pour le champ supplémentaire.
+- [ ] Rattrapage des données courantes pour les champs supplémentaires.
 - [X] Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
 - [X] Anomalie sur l'entrée de la date d'expiration de la carte + traductions.
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [ ] Intégrer un encodeur ASCII127.
 - [ ] Export vers SAGE GESCOM 100 au format TXT (ASCII127).
+- [X] #4 Barre orange restante.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
@@ -146,37 +147,3 @@
 - [X] Email template
  - https://github.com/mquandalle/meteor-jade/issues/138#issuecomment-103689562
 - [X] Language on HTML main tag
-- [ ] Bonus: Gmap integrated with CMS + Access informations
-  - https://github.com/rwatts3/orionjs-maps
-- [ ] Bonus: Fix momentum issues on inner template animations
-- [ ] Bonus: Nicer looks on client side logs, Send logs to server and persist logs
-  - https://github.com/adamschwartz/log
-  - https://github.com/artemyarulin/loglevel-serverSend
-- [ ] Bonus: Static maps:
-  - https://developers.google.com/maps/documentation/staticmaps/
-- [ ] Bonus: Add usefull links in the admin: Google analytics, Kadira
-- [ ] Bonus: Use router state for designing templates.
-- [ ] Bonus: Fix GridFS issue on Orion's module.
-- [ ] Bonus: Image upload
-- [ ] Bonus: PhantomJS integration.
-- [ ] Bonus: Check presence of online users
-  - https://github.com/dburles/meteor-presence
-- [ ] Bonus: Get avatar on connected users
-  - https://github.com/bengott/meteor-avatar
-- [ ] Bonus: Enhancing key combo
-  - https://atmospherejs.com/mousetrap/mousetrap
-- [ ] Bonus: Display avatar in admin's accounts
-- [ ] Bonus: Pagination support
-  - https://github.com/alethes/meteor-pages
-- [ ] Bonus: Lazy loading of resources depending on routes
-  - https://atmospherejs.com/numtel/privatesources
-  - https://github.com/numtel/meteor-component-example
-  - https://github.com/MiroHibler/meteor-preloader
-  - https://atmospherejs.com/numtel/publicsources
-- [ ] Bonus: Séparation front / backoffice : 2 serveurs connectés par DDP
-- [ ] Bonus: Tests automatisés et gestion CdP automatisée
-  - https://atmospherejs.com/xolvio/cucumber
-- [ ] Bonus : One-click actions for GMail
-  - https://developers.google.com/gmail/markup/reference/one-click-action
-- [ ] Bonus : Android and iOS app
-  - https://github.com/rwatts3/orionjs-cordova
