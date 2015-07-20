@@ -75,6 +75,7 @@ if Meteor.isClient
       e.preventDefault()
       @validateCheckDisabled true
       obj = CookieSingleton.get().content()
+      obj.preSubscriptionValue.paymentUserValidated = true
       Meteor.call 'checkPayment', obj.preSubscriptionValue, (error, result) =>
         # Display an error message
         if error
@@ -83,6 +84,8 @@ if Meteor.isClient
             @validateCheckDisabled false
           , 5000
           return sAlert.error error.reason
+        # Set user payment validation in cookie for further sessions
+        CookieSingleton.get().preSubStore obj.preSubscriptionValue
         # Go back to subscription screen
         Router.go '/#subscription'
     errorText: 'Entrez vos informations de paiements'
@@ -255,7 +258,9 @@ if Meteor.isServer
         throw new Meteor.Error 'payment',
           'Vos données sont corrompues. Effacer vos cookies et ré-essayer'
       try
-        Subscribers.update sub._id, $set: paymentType: 'check'
+        Subscribers.update sub._id, $set:
+          paymentType: 'check'
+          paymentUserValidated: true
       catch error
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',
@@ -318,6 +323,11 @@ if Meteor.isServer
 
 
         # @TODO set payment in DB
+
+
+        # Set user payment validation in cookie for further sessions
+        # CookieSingleton.get().preSubStore obj.preSubscriptionValue
+        # Go back to subscription screen
 
 
       catch error

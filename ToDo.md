@@ -4,7 +4,7 @@
 - [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
 - [ ] Rattrapage des données courantes pour le champ supplémentaire.
-- [ ] Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
+- [X] Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
 - [X] Anomalie sur l'entrée de la date d'expiration de la carte + traductions.
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [ ] Intégrer un encodeur ASCII127.

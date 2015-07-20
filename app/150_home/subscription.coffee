@@ -8,8 +8,6 @@ if Meteor.isClient
     @viewmodel.isPaymentUserValidated false
     if cookie.isPreSubed()
       cookieCnt = cookie.content()
-      console.log 'cookieCnt', cookieCnt
-      console.log 'viewmodel', @viewmodel
       @viewmodel.profile cookieCnt.preSubscriptionValue.profile
       if cookieCnt.preSubscriptionValue.asvPromo
         @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo

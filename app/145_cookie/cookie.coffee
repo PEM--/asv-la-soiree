@@ -33,7 +33,7 @@ if Meteor.isClient
         # Without subsciption, user can't have validated the payemnt form.
         return false unless @isPreSubed()
         cookie = Cookies.getJSON COOKIE_NAME
-        return cookie.paymentUserValidated?
+        return cookie.preSubscriptionValue.paymentUserValidated?
       # Simple accessor to all cookie content
       content: -> Cookies.getJSON COOKIE_NAME
       # User has done a valid presubscription
@@ -87,5 +87,5 @@ if Meteor.isClient
         else 'transition.bounceUpOut'
       t.$('.cookie').velocity effect
       # Remove all cookie masks
-      $masks = ($ '.cookieMask')
+      $masks = $ '.cookieMask'
       $masks.velocity 'transition.fadeOut', -> $masks.remove()
