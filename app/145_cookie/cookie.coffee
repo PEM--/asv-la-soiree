@@ -28,6 +28,12 @@ if Meteor.isClient
         return false unless @isAccepted()
         cookie = Cookies.getJSON COOKIE_NAME
         return cookie.preSubscriptionValue?
+      # User has validated his payment
+      isPaymentUserValidated: ->
+        # Without subsciption, user can't have validated the payemnt form.
+        return false unless @isPreSubed()
+        cookie = Cookies.getJSON COOKIE_NAME
+        return cookie.paymentUserValidated?
       # Simple accessor to all cookie content
       content: -> Cookies.getJSON COOKIE_NAME
       # User has done a valid presubscription

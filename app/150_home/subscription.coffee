@@ -1,10 +1,34 @@
 if Meteor.isClient
   Template.subscription.onRendered ->
-    @viewmodel.isPresubscribed CookieSingleton.get().isPreSubed()
+    # Depending on user's state (subscribed but no payment or payment
+    #  validated), fill the initial values of the form.
+    cookie = CookieSingleton.get()
+    if cookie.isPaymentUserValidated()
+      return @viewmodel.isPaymentUserValidated true
+    @viewmodel.isPaymentUserValidated false
+    if cookie.isPreSubed()
+      cookieCnt = cookie.content()
+      console.log 'cookieCnt', cookieCnt
+      console.log 'viewmodel', @viewmodel
+      @viewmodel.profile cookieCnt.preSubscriptionValue.profile
+      if cookieCnt.preSubscriptionValue.asvPromo
+        @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
+        @viewmodel.enabledAsvPromo true
+      if cookieCnt.preSubscriptionValue.attendant?
+        @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
+        @viewmodel.attendantDisabled false
+      @viewmodel.name cookieCnt.preSubscriptionValue.name
+      @viewmodel.forname cookieCnt.preSubscriptionValue.forname
+      @viewmodel.email cookieCnt.preSubscriptionValue.email
+      @viewmodel.contactType cookieCnt.preSubscriptionValue.contactType
+      if cookieCnt.preSubscriptionValue.phone?
+        @viewmodel.phone cookieCnt.preSubscriptionValue.phone
+      if cookieCnt.preSubscriptionValue.newsletter?
+        @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
 
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
-    isPresubscribed: true
+    isPaymentUserValidated: true
     isErrorDisplayed: ->
       unless (@profile().length isnt 0) or (@name().length isnt 0) or
           (@forname().length isnt 0) or (@email().length isnt 0)
@@ -95,7 +119,6 @@ if Meteor.isClient
           CookieSingleton.get().preSubStore obj
           # Reset the form and mask pre-subscription
           @reset()
-          @isPresubscribed true
           # Go to payment screen
           Router.go 'payment'
 
@@ -210,6 +233,11 @@ SimpleSchema.messages
   newsletter:
     type: Boolean
     label: 'Inscrit à la newsletter'
+    optional: true
+    defaultValue: false
+  paymentUserValidated:
+    type: Boolean
+    label: 'Paiement validé par le client'
     optional: true
     defaultValue: false
 

@@ -8,7 +8,7 @@ section.subscription
     p.error(
       data-bind='text: errorText, if: isErrorDisplayed'
     )
-    .alreadyPresubscribed(data-bind='if: isPresubscribed')
+    .alreadyPaid(data-bind='if: isPaymentUserValidated')
       div
         p Merci pour votre inscription.
         p À très bientôt
