@@ -23,7 +23,7 @@
 - [X] Mandrill par Mailchimp pour envoi automatique lors du paiement.
 - [X] CGV en PDF.
 - [X] Paiement par chèque.
-- [/] Paiement par CB (Braintree).
+- [X] Paiement par CB (Braintree).
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
 - [X] Correction du le lien de l'interface d'administration.
 - [X] Meilleure sécurité pour les BrowserPolicy.

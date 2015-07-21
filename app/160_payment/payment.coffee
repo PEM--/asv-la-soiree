@@ -159,11 +159,12 @@ if Meteor.isClient
                 Meteor.setTimeout (=> @validateCardDisabled false), 5000
                 return sAlert.error error.reason
               appLog.info 'Payment done: ', result
-
-              # @TODO Set cookie info
-
-
-              #Router.go '/#subscription'
+              # Set cookie info
+              obj = CookieSingleton.get().content()
+              obj.preSubscriptionValue.paymentUserValidated = true
+              CookieSingleton.get().preSubStore obj.preSubscriptionValue
+              # Go back to subscription screen
+              Router.go '/#subscription'
       catch error
         appLog.warn 'Set card payment failed', error
         Meteor.setTimeout (=> @validateCardDisabled false), 5000
