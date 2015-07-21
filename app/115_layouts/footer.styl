@@ -101,6 +101,10 @@
           width 100%
           display block
           cpLinks(brandColor)
+        // Avoid breakpoints on external links
+        span.nb
+          line-break strict
+          display inline-block
         a, a:visited
           color textColor
           font-size 80%

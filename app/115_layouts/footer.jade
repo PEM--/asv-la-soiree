@@ -27,8 +27,9 @@ template(name='footer')
           each links
             +footerItem
             |  - 
-        a(href='http://apform.fr/', target='_blank') APForm
-        | © 2015
+        span.nobp
+          a(href='http://apform.fr/', target='_blank') APForm
+          | © 2015
 
 template(name='footerItem')
   a.internal(data-bind='value: slug, attr: { href: slug }, click: changeRoute, text: name')

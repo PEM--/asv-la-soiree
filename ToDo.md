@@ -4,7 +4,7 @@
 - [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
 - [ ] Rattrapage des données courantes pour les champs supplémentaires.
-- [X] #1 Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
+- [X] #1, #8 Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
 - [X] Anomalie sur l'entrée de la date d'expiration de la carte + traductions.
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [ ] Intégrer un encodeur ASCII127.
@@ -14,6 +14,8 @@
 - [X] #7 Labels plus lisibles : passage en majuscule.
 - [X] #7 Labels plus lisibles : abandon du passage en majuscule.
 - [X] #9 Paiement par chèque mal inséré en base : mauvais type de paiement et montant non fourni.
+- [X] #10 Mauvaise césure sur les liens du footer.
+- [ ] #11 Facture trop large sur Android.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
