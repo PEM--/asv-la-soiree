@@ -4,13 +4,14 @@
 - [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
 - [ ] Rattrapage des données courantes pour les champs supplémentaires.
-- [X] Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
+- [X] #1 Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
 - [X] Anomalie sur l'entrée de la date d'expiration de la carte + traductions.
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [ ] Intégrer un encodeur ASCII127.
 - [ ] Export vers SAGE GESCOM 100 au format TXT (ASCII127).
 - [X] #4 Barre orange restante.
 - [X] #2 Changement de texte sur le formulaire d'inscription.
+- [ ] #7 Labels plus lisibles.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
