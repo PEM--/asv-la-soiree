@@ -235,7 +235,7 @@ for conf in BRAINTREE_CONFS
   orion.config.add confKey, 'braintree',
     type: conf.type
     label: "#{conf.label} (#{confKey})"
-  # Create default values for the Mandrill configuration
+  # Create default values for the Braintree configuration
   if Meteor.isServer
     unless config[confKey]?
       config[confKey] = Meteor.settings.braintree[conf.key]
@@ -252,9 +252,9 @@ if Meteor.isServer
         Braintree.Environment.Sandbox else Braintree.Environment.Production
       @BrainTreeConnect = BrainTreeConnect
         environment: envType
-        merchantId: Meteor.settings.braintree.merchantId
-        publicKey:  Meteor.settings.braintree.publicKey
-        privateKey: Meteor.settings.braintree.privateKey
+        merchantId: orion.config.get 'BRAINTREE_MERCHANTID'
+        publicKey:  orion.config.get 'BRAINTREE_PUBLICKEY'
+        privateKey: orion.config.get 'BRAINTREE_PRIVATEKEY'
     catch error
       throw new Meteor.Error 1001, error.message
   Meteor.methods
