@@ -267,8 +267,9 @@ if Meteor.isServer
           throw new Meteor.Error 'payment',
             'Vos données sont corrompues. Effacer vos cookies et ré-essayer.'
         Subscribers.update sub._id, $set:
-          paymentType: 'check'
           paymentUserValidated: true
+          paymentType: 'check'
+          amount: PRICING_TABLE[sub.profile].amount
       catch error
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',

@@ -13,6 +13,7 @@
 - [X] #2 Changement de texte sur le formulaire d'inscription.
 - [X] #7 Labels plus lisibles : passage en majuscule.
 - [X] #7 Labels plus lisibles : abandon du passage en majuscule.
+- [X] #9 Paiement par chèque mal inséré en base : mauvais type de paiement et montant non fourni.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
