@@ -4,5 +4,5 @@ EasySecurity.config
   #methods:
   #  createMethod: type: 'rateLimit', ms: 1000 * 10
   #  commentMethod: type: 'throttle', ms: 500
-  #ignoredMethods: ['someOtherMethod']
+  ignoredMethods: ['cardPayment']
   maxQueueLength: 200

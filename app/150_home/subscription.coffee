@@ -258,10 +258,6 @@ SimpleSchema.messages
     type: String
     optional: true
     label: 'Identifiant du client sur Braintree'
-  paymentCardToken:
-    type: String
-    optional: true
-    label: 'Token de transaction de paiement par carte'
   paymentTransactionId:
     type: String
     optional: true

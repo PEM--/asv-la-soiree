@@ -147,19 +147,26 @@ if Meteor.isClient
             expirationDate: @expiry()
             cvv: @cvc()
             billingAddress: countryCodeAlpha2: 'FR'
-          client.tokenizeCard tokenParam, (error, nonce) ->
+          client.tokenizeCard tokenParam, (error, nonce) =>
             throw new Meteor.Error 'payment', error if error
             appLog.info 'Nonce created: ', nonce
             Meteor.call 'cardPayment', result.customer.customer.id, nonce
-            , (error, result) ->
-              throw new Meteor.Error 'payment', error.reason if error
+            , (error, result) =>
+              if error
+                appLog.warn 'Set card payment failed', error
+                @reset()
+                @errorText error.reason
+                Meteor.setTimeout (=> @validateCardDisabled false), 5000
+                return sAlert.error error.reason
               appLog.info 'Payment done: ', result
-              Router.go '/#subscription'
+
+              # @TODO Set cookie info
+
+
+              #Router.go '/#subscription'
       catch error
         appLog.warn 'Set card payment failed', error
-        Meteor.setTimeout =>
-          @validateCardDisabled false
-        , 5000
+        Meteor.setTimeout (=> @validateCardDisabled false), 5000
         return sAlert.error error.reason
     goBraintree: -> window.open 'https://braintreepayments.com'
   , ['validateCheck', 'checkCard', 'changeExpiry', 'validateCard']
@@ -251,20 +258,20 @@ if Meteor.isServer
       throw new Meteor.Error 1001, error.message
   Meteor.methods
     checkPayment: (obj) ->
-      check obj, SubscribersSchema
-      appLog.info 'Payment by check for subscriber', obj
-      sub = Subscribers.findOne email: obj.email
-      unless sub?
-        throw new Meteor.Error 'payment',
-          'Vos données sont corrompues. Effacer vos cookies et ré-essayer'
       try
+        check obj, SubscribersSchema
+        appLog.info 'Payment by check for subscriber', obj
+        sub = Subscribers.findOne email: obj.email
+        unless sub?
+          throw new Meteor.Error 'payment',
+            'Vos données sont corrompues. Effacer vos cookies et ré-essayer.'
         Subscribers.update sub._id, $set:
           paymentType: 'check'
           paymentUserValidated: true
       catch error
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',
-          'Erreur interne, veuillez ré-essayer plus tard'
+          'Vos données sont corrompues. Effacer vos cookies et ré-essayer.'
     clientToken: (client) ->
       # Check transimtted data consistency
       try
@@ -294,14 +301,16 @@ if Meteor.isServer
         _.extend braintreeCustomer, phone: client.phone
       braintreeCustomer = BrainTreeConnect.customer.create braintreeCustomer
       appLog.info 'Customer created', braintreeCustomer
-      Subscribers.update clientDb._id,
-        $set: braintreeCustomerId: braintreeCustomer.customer.id
       # Create token for customer
       token = BrainTreeConnect.clientToken.generate
         customerId: braintreeCustomer.customer.id
       appLog.info 'Token created', token
-      Subscribers.update clientDb._id,
-        $set: paymentCardToken: token.clientToken
+      Subscribers.update clientDb._id, $set:
+        paymentUserValidated: true
+        paymentType: 'card'
+        braintreeCustomerId: braintreeCustomer.customer.id
+        paymentCardToken: token.clientToken
+        amount: PRICING_TABLE[clientDb.profile].amount
       return {
         customer: braintreeCustomer
         token: token
@@ -318,18 +327,10 @@ if Meteor.isServer
         result = BrainTreeConnect.transaction.sale
           amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
           paymentMethodNonce: nonce
-        appLog.info 'Payment performed', result
-
-
-
-        # @TODO set payment in DB
-
-
-        # Set user payment validation in cookie for further sessions
-        # CookieSingleton.get().preSubStore obj.preSubscriptionValue
-        # Go back to subscription screen
-
-
+        appLog.info 'Payment request performed', result
+        throw new Meteor.Error 'payment', result.message unless result.success
+        Subscribers.update clientDb._id, $set: paymentStatus: true
+        return result
       catch error
         appLog.warn 'Fraud attempt:', error.message
         throw new Meteor.Error 'payment',
