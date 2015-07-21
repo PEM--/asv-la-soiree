@@ -156,9 +156,9 @@ if Meteor.isClient
               appLog.info 'Payment done: ', result
               Router.go '/#subscription'
       catch error
-        appLog.warn 'Set check payment failed', error
+        appLog.warn 'Set card payment failed', error
         Meteor.setTimeout =>
-          @validateCheckDisabled false
+          @validateCardDisabled false
         , 5000
         return sAlert.error error.reason
     goBraintree: -> window.open 'https://braintreepayments.com'

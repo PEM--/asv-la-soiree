@@ -11,7 +11,8 @@
 - [ ] Export vers SAGE GESCOM 100 au format TXT (ASCII127).
 - [X] #4 Barre orange restante.
 - [X] #2 Changement de texte sur le formulaire d'inscription.
-- [ ] #7 Labels plus lisibles.
+- [X] #7 Labels plus lisibles : passage en majuscule.
+- [X] #7 Labels plus lisibles : abandon du passage en majuscule.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
