@@ -157,3 +157,24 @@
         cursor pointer
         margin 1em 0
         braintreeLogo(15%)
+
+// Smartphone specific
+@media only screen and (max-width 830px)
+  .main-container .router-container main[data-role='payment'] article
+    .invoice-payment-form
+      width 100%
+      min-width 100%
+      .invoice
+        margin-top 2em
+        margin-bottom 2em
+@media only screen and (max-width 400px)
+  .main-container .router-container main[data-role='payment'] article .invoice-payment-form
+    .invoice
+      width inherit
+      min-width inherit
+      pre
+        width inherit
+        font-size 90%
+@media only screen and (max-width 350px)
+  .main-container .router-container main[data-role='payment'] article .invoice-payment-form .invoice pre
+    font-size 80%
