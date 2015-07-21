@@ -91,14 +91,14 @@ if Meteor.isClient
         Router.go '/#subscription'
     errorText: 'Entrez vos informations de paiements'
     # Debug values
-    number: '378282246310005'
-    name: 'PEM'
-    expiry: '12/15'
-    cvc: '123'
-    # number: ''
-    # name: ''
-    # expiry: ''
-    # cvc: ''
+    # number: '378282246310005'
+    # name: 'PEM'
+    # expiry: '12/15'
+    # cvc: '123'
+    number: ''
+    name: ''
+    expiry: ''
+    cvc: ''
     changeExpiry: ->
       # Circumvent autofill issue
       str = @expiry()
