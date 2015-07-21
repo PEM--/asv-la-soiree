@@ -23,6 +23,9 @@ if Meteor.isClient
         @viewmodel.phone cookieCnt.preSubscriptionValue.phone
       if cookieCnt.preSubscriptionValue.newsletter?
         @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
+    # Avoid error text when screen is created
+    Meteor.defer =>
+      @viewmodel.errorText ''
 
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()

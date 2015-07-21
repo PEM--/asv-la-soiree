@@ -15,6 +15,7 @@ if Meteor.isClient
       Meteor.setTimeout ->
         Router.go '/#subscription'
       , 3000
+
   Template.payment.onRendered ->
     # Card size is adjusted depending on width
     viewportSize = Math.min rwindow.$width(), rwindow.$height()
@@ -146,7 +147,6 @@ if Meteor.isClient
             expirationDate: @expiry()
             cvv: @cvc()
             billingAddress: countryCodeAlpha2: 'FR'
-          console.log 'tokenParam', tokenParam
           client.tokenizeCard tokenParam, (error, nonce) ->
             throw new Meteor.Error 'payment', error if error
             appLog.info 'Nonce created: ', nonce

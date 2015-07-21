@@ -1,6 +1,9 @@
 if Meteor.isClient
   Template.contact.onRendered ->
     @viewmodel.isContactPrevented CookieSingleton.get().isContacted()
+    # Avoid error text when screen is created
+    Meteor.defer =>
+      @viewmodel.errorText ''
 
   Template.contact.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
