@@ -4,25 +4,26 @@ if Meteor.isClient
     #  validated), fill the initial values of the form.
     cookie = CookieSingleton.get()
     if cookie.isPaymentUserValidated()
-      return @viewmodel.isPaymentUserValidated true
-    @viewmodel.isPaymentUserValidated false
-    if cookie.isPreSubed()
-      cookieCnt = cookie.content()
-      @viewmodel.profile cookieCnt.preSubscriptionValue.profile
-      if cookieCnt.preSubscriptionValue.asvPromo
-        @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
-        @viewmodel.enabledAsvPromo true
-      if cookieCnt.preSubscriptionValue.attendant?
-        @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
-        @viewmodel.attendantDisabled false
-      @viewmodel.name cookieCnt.preSubscriptionValue.name
-      @viewmodel.forname cookieCnt.preSubscriptionValue.forname
-      @viewmodel.email cookieCnt.preSubscriptionValue.email
-      @viewmodel.contactType cookieCnt.preSubscriptionValue.contactType
-      if cookieCnt.preSubscriptionValue.phone?
-        @viewmodel.phone cookieCnt.preSubscriptionValue.phone
-      if cookieCnt.preSubscriptionValue.newsletter?
-        @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
+      @viewmodel.isPaymentUserValidated true
+    else
+      @viewmodel.isPaymentUserValidated false
+      if cookie.isPreSubed()
+        cookieCnt = cookie.content()
+        @viewmodel.profile cookieCnt.preSubscriptionValue.profile
+        if cookieCnt.preSubscriptionValue.asvPromo
+          @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
+          @viewmodel.enabledAsvPromo true
+        if cookieCnt.preSubscriptionValue.attendant?
+          @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
+          @viewmodel.attendantDisabled false
+        @viewmodel.name cookieCnt.preSubscriptionValue.name
+        @viewmodel.forname cookieCnt.preSubscriptionValue.forname
+        @viewmodel.email cookieCnt.preSubscriptionValue.email
+        @viewmodel.contactType cookieCnt.preSubscriptionValue.contactType
+        if cookieCnt.preSubscriptionValue.phone?
+          @viewmodel.phone cookieCnt.preSubscriptionValue.phone
+        if cookieCnt.preSubscriptionValue.newsletter?
+          @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
     # Avoid error text when screen is created
     Meteor.defer =>
       @viewmodel.errorText ''

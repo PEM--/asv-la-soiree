@@ -28,7 +28,7 @@ audit-argument-checks
 underscorestring:underscore.string
 raix:handlebar-helpers
 mquandalle:bower
-manuel:viewmodel
+manuel:viewmodel@=1.8.2
 #meteorhacks:zones
 meteorhacks:kadira
 #meteorhacks:kadira-profiler
