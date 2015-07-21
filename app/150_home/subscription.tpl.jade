@@ -68,7 +68,10 @@ section.subscription
             label(for='email'): span E-mail
       .group-contact-submit
         fieldset
-          legend Je veux être contacté de la validation de mon inscription par :
+          legend
+            | Pour l'événement, nous pouvons être amenés à vous contacter.
+            br
+            | Merci d'indiquer vos modes préférés de contact :
           span.choice
             input#contact-type-mail(
               type='radio', name='contactType', value='mail',
