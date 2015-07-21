@@ -329,7 +329,9 @@ if Meteor.isServer
           paymentMethodNonce: nonce
         appLog.info 'Payment request performed', result
         throw new Meteor.Error 'payment', result.message unless result.success
-        Subscribers.update clientDb._id, $set: paymentStatus: true
+        Subscribers.update clientDb._id, $set:
+          paymentStatus: true
+          paymentTransactionId: result.transaction.id
         return result
       catch error
         appLog.warn 'Fraud attempt:', error.message
