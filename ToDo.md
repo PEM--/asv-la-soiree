@@ -15,6 +15,7 @@
 - [X] #9 Paiement par chèque mal inséré en base : mauvais type de paiement et montant non fourni.
 - [X] #10 Mauvaise césure sur les liens du footer.
 - [X] #11 Facture trop large sur Android.
+- [X] Mise à jour des packages: Mandrill, Braintree, SpinKit : Gros impact sur Mandrill.
 - [ ] #12 Créer un numéro d'inscription plus friendly (incrémental à partir de 100).
 
 ## Review 10/07/2015

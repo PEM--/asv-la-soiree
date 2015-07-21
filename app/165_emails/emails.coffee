@@ -34,7 +34,7 @@ if Meteor.isServer
     orion.config.collection.update config._id, $set: config
   Meteor.startup ->
     appLog.info 'Connecting to Mandrill'
-    Meteor.Mandrill.config
+    Mandrill.config
       username: orion.config.get 'MANDRILL_SMTP_USERNAME'
       key: orion.config.get 'MANDRILL_API_KEY'
   ###*
@@ -46,7 +46,7 @@ if Meteor.isServer
    * @param  {String} tag      A description of the price.
   ###
   @sendTransactionEmail = (order_id, email, fullname, price, tag) ->
-    Meteor.Mandrill.sendTemplate
+    Mandrill.messages.sendTemplate
       template_name: orion.config.get 'MANDRILL_TEMPLATE_SLUG'
       template_content: [
         { name: 'order_id', content: order_id }
