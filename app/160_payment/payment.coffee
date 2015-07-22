@@ -71,6 +71,10 @@ if Meteor.isClient
     paymentType: ''
     isPaymentTypeCheck: -> @paymentType() is 'check'
     isPaymentTypeCard: -> @paymentType() is 'card'
+    paymentError = (reason) ->
+      appLog.warn reason
+      Meteor.setTimeout (=> @validateCardDisabled false), 5000
+      sAlert.error error.reason
     validateCheckDisabled: false
     validateCheck: (e) ->
       e.preventDefault()
@@ -79,12 +83,7 @@ if Meteor.isClient
       obj.preSubscriptionValue.paymentUserValidated = true
       Meteor.call 'checkPayment', obj.preSubscriptionValue, (error, result) =>
         # Display an error message
-        if error
-          appLog.warn 'Set check payment failed', error.reason, error
-          Meteor.setTimeout =>
-            @validateCheckDisabled false
-          , 5000
-          return sAlert.error error.reason
+        return @paymentError error.reason if error
         # Set user payment validation in cookie for further sessions
         CookieSingleton.get().preSubStore obj.preSubscriptionValue
         # Go back to subscription screen
@@ -136,7 +135,7 @@ if Meteor.isClient
       try
         Meteor.call 'clientToken', client, (error, result) =>
           # Display an error message
-          throw new Meteor.Error 'payment', error.reason if error
+          return @paymentError error.reason if error
           appLog.info 'Token created: ', result
           # Creating a customer nonce
           client = new braintree.api.Client
@@ -148,16 +147,11 @@ if Meteor.isClient
             cvv: @cvc()
             billingAddress: countryCodeAlpha2: 'FR'
           client.tokenizeCard tokenParam, (error, nonce) =>
-            throw new Meteor.Error 'payment', error if error
+            return @paymentError error if error
             appLog.info 'Nonce created: ', nonce
             Meteor.call 'cardPayment', result.customer.customer.id, nonce
             , (error, result) =>
-              if error
-                appLog.warn 'Set card payment failed', error
-                @reset()
-                @errorText error.reason
-                Meteor.setTimeout (=> @validateCardDisabled false), 5000
-                return sAlert.error error.reason
+              return @paymentError error if error
               appLog.info 'Payment done: ', result
               # Set cookie info
               obj = CookieSingleton.get().content()
@@ -166,9 +160,7 @@ if Meteor.isClient
               # Go back to subscription screen
               Router.go '/#subscription'
       catch error
-        appLog.warn 'Set card payment failed', error
-        Meteor.setTimeout (=> @validateCardDisabled false), 5000
-        return sAlert.error error.reason
+        @paymentError error
     goBraintree: -> window.open 'https://braintreepayments.com'
   , ['validateCheck', 'checkCard', 'changeExpiry', 'validateCard']
 
