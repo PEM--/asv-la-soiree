@@ -240,7 +240,8 @@ if Meteor.isServer
     appLog.info 'Creating or updating Braintree configuration'
     orion.config.collection.update config._id, $set: config
   Meteor.startup ->
-    appLog.info 'Connecting server to Braintree'
+    appLog.info 'Connecting server to Braintree in ',
+      Meteor.settings.braintree.accountType, 'mode'
     try
       envType = if Meteor.settings.braintree.accountType is 'sandbox' then \
         Braintree.Environment.Sandbox else Braintree.Environment.Production
@@ -298,8 +299,6 @@ if Meteor.isServer
         lastName: client.name
         email: client.email
       # Treat optional informations
-      unless client.phone is ''
-        _.extend braintreeCustomer, phone: client.phone
       braintreeCustomer = BrainTreeConnect.customer.create braintreeCustomer
       appLog.info 'Updating DB for Braintree customer', braintreeCustomer
       # Create token for customer
