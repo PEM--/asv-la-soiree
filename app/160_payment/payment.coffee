@@ -71,7 +71,7 @@ if Meteor.isClient
     paymentType: ''
     isPaymentTypeCheck: -> @paymentType() is 'check'
     isPaymentTypeCard: -> @paymentType() is 'card'
-    paymentError = (reason) ->
+    paymentError: (reason) ->
       appLog.warn reason
       Meteor.setTimeout (=> @validateCardDisabled false), 5000
       sAlert.error error.reason
@@ -132,12 +132,14 @@ if Meteor.isClient
         name: @name()
         expiry: @expiry()
         cvc: @cvc()
+      appLog.info 'Creating client and token'
       try
         Meteor.call 'clientToken', client, (error, result) =>
           # Display an error message
-          return @paymentError error.reason if error
-          appLog.info 'Token created: ', result
+          return @paymentError error if error
+          appLog.info 'Client created: ', result
           # Creating a customer nonce
+          appLog.info 'Creating a Braintree token'
           client = new braintree.api.Client
             clientToken: result.token.clientToken
           tokenParam =
@@ -251,6 +253,7 @@ if Meteor.isServer
       throw new Meteor.Error 1001, error.message
   Meteor.methods
     checkPayment: (obj) ->
+      appLog.info 'Payment by check'
       try
         check obj, SubscribersSchema
         appLog.info 'Payment by check for subscriber', obj
@@ -258,19 +261,23 @@ if Meteor.isServer
         unless sub?
           throw new Meteor.Error 'payment',
             'Vos données sont corrompues. Effacer vos cookies et ré-essayer.'
+        appLog.info 'Updating DB for payment by check'
         Subscribers.update sub._id, $set:
           paymentUserValidated: true
           paymentType: 'check'
           amount: PRICING_TABLE[sub.profile].amount
+        appLog.info 'Payment by check done'
       catch error
         appLog.warn error, typeof error
         throw new Meteor.Error 'payment',
           'Vos données sont corrompues. Effacer vos cookies et ré-essayer.'
     clientToken: (client) ->
+      appLog.info 'Creating customer on Braintree'
       # Check transimtted data consistency
       try
         check client, SubscribersSchema
         # Check if client is in the database
+        appLog.info 'Checking if customer is presubscribed'
         clientDb = Subscribers.findOne email: client.email
         unless clientDb?
           throw new Meteor.Error 'payment', "Unknown client: #{client.email}"
@@ -281,10 +288,10 @@ if Meteor.isServer
               throw new Meteor.Error 'payment',
                 "Consistency #{client.email}, #{k}: #{v}, #{clientDb[k]}"
       catch error
-        appLog.warn 'Fraud attempt:', error.message
+        appLog.warn 'Fraud attempt:', error
         throw new Meteor.Error 'payment',
           'Vos informations de paiement ne sont pas consistantes.'
-      appLog.info 'Creating customer on Braintree', client
+      appLog.info 'Customer presubscribed, creating token', client
       # Create a Braintree customer
       braintreeCustomer =
         firstName: client.forname
@@ -294,38 +301,43 @@ if Meteor.isServer
       unless client.phone is ''
         _.extend braintreeCustomer, phone: client.phone
       braintreeCustomer = BrainTreeConnect.customer.create braintreeCustomer
-      appLog.info 'Customer created', braintreeCustomer
+      appLog.info 'Updating DB for Braintree customer', braintreeCustomer
       # Create token for customer
       token = BrainTreeConnect.clientToken.generate
         customerId: braintreeCustomer.customer.id
-      appLog.info 'Token created', token
+      appLog.info 'Payment token created', token
       Subscribers.update clientDb._id, $set:
         paymentUserValidated: true
         paymentType: 'card'
         braintreeCustomerId: braintreeCustomer.customer.id
         paymentCardToken: token.clientToken
         amount: PRICING_TABLE[clientDb.profile].amount
+      appLog.info 'Customer and token created'
       return {
         customer: braintreeCustomer
         token: token
       }
     cardPayment: (customerId, nonce) ->
+      appLog.info 'Payment by card'
       # Check if client is in the database
       try
         check customerId, String
         check nonce, String
+        appLog.info 'Find client in DB', customerId
         clientDb = Subscribers.findOne braintreeCustomerId: customerId
         unless clientDb?
           throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
         # Perform the payment
+        appLog.info 'Creating a sale transaction', clientDb, nonce
         result = BrainTreeConnect.transaction.sale
           amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
           paymentMethodNonce: nonce
-        appLog.info 'Payment request performed', result
+        appLog.info 'Updating DB for the payment', result
         throw new Meteor.Error 'payment', result.message unless result.success
         Subscribers.update clientDb._id, $set:
           paymentStatus: true
           paymentTransactionId: result.transaction.id
+        appLog.info 'Payment request performed'
         return result
       catch error
         appLog.warn 'Fraud attempt:', error.message
