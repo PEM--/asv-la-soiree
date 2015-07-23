@@ -69,7 +69,7 @@ if Meteor.isServer
       if fields.paymentStatus? and fields.paymentStatus is true
         sub = Subscribers.findOne id
         pricing = PRICING_TABLE[sub.profile]
-        sendTransactionEmail sub._id, sub.email,
+        sendTransactionEmail sub.easyInvitationId, sub.email,
           "#{sub.forname} #{sub.name}",
           numeral(pricing.amount).format('0,0.00$'),
           pricing.tag

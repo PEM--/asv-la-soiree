@@ -121,9 +121,11 @@ if Meteor.isClient
 
 Meteor.methods
   presubscribe: (obj) ->
-    check obj, SubscribersSchema
     try
-      Subscribers.insert _.extend obj, createdAt: new Date
+      check obj, SubscribersSchema
+      Subscribers.insert _.extend obj,
+        createdAt: new Date
+        easyInvitationId: 100 + Subscribers.find().count()
       appLog.info 'Inserted new subscriber', obj
     catch error
       appLog.warn error, typeof error
@@ -294,8 +296,3 @@ SubscribersFullSchema = new SimpleSchema [
 ]
 
 Subscribers.attachSchema SubscribersFullSchema
-
-# @TODO Migrate data when server starts
-if Meteor.isServer
-  appLog.info 'Subscribers: Data migration'
-  

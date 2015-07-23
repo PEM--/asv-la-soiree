@@ -26,6 +26,9 @@ main(data-role='payment')
           .check-form(data-bind='visible: isPaymentTypeCheck')
             form.check(autocomplete='off').fadeIn
               p Nous vous remercions de votre demande d'inscription à ASV La Soirée 2015 !
+              p 
+                | Votre n° d'inscription à rappeler sur votre chèque est le : 
+                span#easyInvitationId(data-bind='text: easyInvitationId')
               p Vous avez choisi de régler votre participation par chèque, veuillez trouver ci-après les coordonnées postales d'envoi de votre règlement :
               p.text-center
                 b APFORM<br>

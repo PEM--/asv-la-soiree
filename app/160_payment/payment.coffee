@@ -76,6 +76,7 @@ if Meteor.isClient
       Meteor.setTimeout (=> @validateCardDisabled false), 5000
       sAlert.error error.reason
     validateCheckDisabled: false
+    easyInvitationId: '102'
     validateCheck: (e) ->
       e.preventDefault()
       @validateCheckDisabled true
@@ -159,6 +160,8 @@ if Meteor.isClient
               obj = CookieSingleton.get().content()
               obj.preSubscriptionValue.paymentUserValidated = true
               CookieSingleton.get().preSubStore obj.preSubscriptionValue
+              # Reset form
+              @reset()
               # Go back to subscription screen
               Router.go '/#subscription'
       catch error
