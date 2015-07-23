@@ -4,12 +4,15 @@ if Meteor.isClient
     #  the end subscription message.
     @autorun =>
       endSubscription = orion.dictionary.get 'settings.endSubscription'
-      if endSubscription
+      unless endSubscription is ''
         @viewmodel.reset()
+        @viewmodel.errorText ''
         @viewmodel.isPaymentUserValidated false
+        @viewmodel.endSubscription true
       else
         # Depending on user's state (subscribed but no payment or payment
         #  validated), fill the initial values of the form.
+        @viewmodel.endSubscription false
         cookie = CookieSingleton.get()
         if cookie.isPaymentUserValidated()
           @viewmodel.isPaymentUserValidated true

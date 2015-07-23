@@ -34,10 +34,9 @@ if Meteor.isClient
 if Meteor.isServer
   # Values injected in the head of the initial HTML payload
   @headValues =
-    cookie:
-      message: "En poursuivant votre navigation sur ce site, \
-        vous acceptez l'utilisation des cookies pour vous \
-        proposer des services et offres adaptés."
+    cookie: message: "En poursuivant votre navigation sur ce site, \
+      vous acceptez l'utilisation des cookies pour vous \
+      proposer des services et offres adaptés."
   _.extend headValues, seoHeadValues()
   _.extend headValues, socialValues()
   # There's only one item in the dictionnary which serves
