@@ -2,34 +2,36 @@ if Meteor.isClient
   Template.subscription.onRendered ->
     # If subscrption are closed, prevent any form access or display of
     #  the end subscription message.
-    if orion.dictionary.get 'settings.endSubscription'
-      @viewmodel.isPaymentUserValidated false
-      @viewmodel.endSubscription true
-    else
-      # Depending on user's state (subscribed but no payment or payment
-      #  validated), fill the initial values of the form.
-      cookie = CookieSingleton.get()
-      if cookie.isPaymentUserValidated()
-        @viewmodel.isPaymentUserValidated true
-      else
+    @autorun =>
+      endSubscription = orion.dictionary.get 'settings.endSubscription'
+      if endSubscription
+        @viewmodel.reset()
         @viewmodel.isPaymentUserValidated false
-        if cookie.isPreSubed()
-          cookieCnt = cookie.content()
-          @viewmodel.profile cookieCnt.preSubscriptionValue.profile
-          if cookieCnt.preSubscriptionValue.asvPromo
-            @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
-            @viewmodel.enabledAsvPromo true
-          if cookieCnt.preSubscriptionValue.attendant?
-            @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
-            @viewmodel.attendantDisabled false
-          @viewmodel.name cookieCnt.preSubscriptionValue.name
-          @viewmodel.forname cookieCnt.preSubscriptionValue.forname
-          @viewmodel.email cookieCnt.preSubscriptionValue.email
-          @viewmodel.contactType cookieCnt.preSubscriptionValue.contactType
-          if cookieCnt.preSubscriptionValue.phone?
-            @viewmodel.phone cookieCnt.preSubscriptionValue.phone
-          if cookieCnt.preSubscriptionValue.newsletter?
-            @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
+      else
+        # Depending on user's state (subscribed but no payment or payment
+        #  validated), fill the initial values of the form.
+        cookie = CookieSingleton.get()
+        if cookie.isPaymentUserValidated()
+          @viewmodel.isPaymentUserValidated true
+        else
+          @viewmodel.isPaymentUserValidated false
+          if cookie.isPreSubed()
+            cookieCnt = cookie.content()
+            @viewmodel.profile cookieCnt.preSubscriptionValue.profile
+            if cookieCnt.preSubscriptionValue.asvPromo
+              @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
+              @viewmodel.enabledAsvPromo true
+            if cookieCnt.preSubscriptionValue.attendant?
+              @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
+              @viewmodel.attendantDisabled false
+            @viewmodel.name cookieCnt.preSubscriptionValue.name
+            @viewmodel.forname cookieCnt.preSubscriptionValue.forname
+            @viewmodel.email cookieCnt.preSubscriptionValue.email
+            @viewmodel.contactType cookieCnt.preSubscriptionValue.contactType
+            if cookieCnt.preSubscriptionValue.phone?
+              @viewmodel.phone cookieCnt.preSubscriptionValue.phone
+            if cookieCnt.preSubscriptionValue.newsletter?
+              @viewmodel.newsletter cookieCnt.preSubscriptionValue.newsletter
     # Avoid error text when screen is created
     Meteor.defer =>
       @viewmodel.errorText ''
@@ -37,13 +39,7 @@ if Meteor.isClient
   Template.subscription.viewmodel
     isCookieAccepted: -> CookieSingleton.get().isAccepted()
     isPaymentUserValidated: true
-    endSubscription: ->
-      endSubscription = orion.dictionnary.get 'settings.endSubscription'
-      if endSubscription
-        @reset()
-        @isPaymentUserValidated false
-        return true
-      return false
+    endSubscription: false
     profile: ''
     asvPromo: ''
     asvPromoDisabled: true

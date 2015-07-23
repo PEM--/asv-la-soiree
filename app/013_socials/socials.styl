@@ -21,17 +21,19 @@ shareButtons()
   shareButtons()
 
 // Specific for subscription
-.main-container .router-container section.subscription article.form .alreadyPaid div
-  shareButtons()
-  ul.share-buttons
-    margin-top 1em
-    background-color white
-    border-radius 1em
-    relative top left 50%
-    width auto
-    display inline-block
-    padding .5em 2em
-    transform translate3d(-50%,0,0)
-    li a
-      pointer-events auto
-      cursor pointer
+.main-container .router-container section.subscription article.form
+  .alreadyPaid, .endSubscription
+    div
+      shareButtons()
+      ul.share-buttons
+        margin-top 1em
+        background-color white
+        border-radius 1em
+        relative top left 50%
+        width auto
+        display inline-block
+        padding .5em 2em
+        transform translate3d(-50%,0,0)
+        li a
+          pointer-events auto
+          cursor pointer

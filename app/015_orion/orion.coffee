@@ -8,6 +8,7 @@ orion.dictionary.addDefinition 'message', 'cookie',
 # Stop subscription
 orion.dictionary.addDefinition 'endSubscription', 'settings',
   type: Boolean, label: 'Fermer les inscriptions'
+  defaultValue: false
 
 # OrionJS options
 # Avoid registration without invitation
