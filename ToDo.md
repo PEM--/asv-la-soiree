@@ -12,11 +12,9 @@
 - [X] #10 Mauvaise césure sur les liens du footer.
 - [X] #11 Facture trop large sur Android.
 - [X] Mise à jour des packages : Mandrill, Braintree, SpinKit : Gros impact sur Mandrill.
-- [/] #12 N° d'inscription plus friendly
-- [ ] Afficher le numéro d'inscription sur l'écran du chèque.
-- [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
+- [X] #12 N° d'inscription plus friendly
+- [X] #19 Retrait logo SNVEL
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
-- [ ] Rattrapage des données courantes pour les champs supplémentaires.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
