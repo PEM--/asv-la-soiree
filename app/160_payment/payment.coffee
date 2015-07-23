@@ -58,6 +58,9 @@ if Meteor.isClient
     isCorrectCookie: -> CookieSingleton.get().isPreSubed()
     paiementInformations: ->
       cookieContent = CookieSingleton.get().content()
+      # Benefit from the access to the cookie information for displaying
+      #  the easy invitation ID
+      @easyInvitationId cookieContent.preSubscriptionValue.easyInvitationId
       pricing = PRICING_TABLE[cookieContent.preSubscriptionValue.profile]
       #0123456789012345678901234567890123456789
       dashLine = s.repeat '-', 40
@@ -74,9 +77,9 @@ if Meteor.isClient
     paymentError: (reason) ->
       appLog.warn reason
       Meteor.setTimeout (=> @validateCardDisabled false), 5000
-      sAlert.error error.reason
+      sAlert.error reason
     validateCheckDisabled: false
-    easyInvitationId: '102'
+    easyInvitationId: ''
     validateCheck: (e) ->
       e.preventDefault()
       @validateCheckDisabled true

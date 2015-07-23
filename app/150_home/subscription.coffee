@@ -112,6 +112,8 @@ if Meteor.isClient
           if error and error.error is 'presubscribe.already'
             appLog.warn 'Subscription already done'
             sAlert.warning error.reason
+          # Get easy invitation ID from result of the server call
+          obj.easyInvitationId = result
           # Store the subscription so that it cannot be done twice
           CookieSingleton.get().preSubStore obj
           # Reset the form and mask pre-subscription
@@ -123,10 +125,12 @@ Meteor.methods
   presubscribe: (obj) ->
     try
       check obj, SubscribersSchema
+      easyInvitationId = 100 + Subscribers.find().count()
       Subscribers.insert _.extend obj,
         createdAt: new Date
-        easyInvitationId: 100 + Subscribers.find().count()
+        easyInvitationId: easyInvitationId
       appLog.info 'Inserted new subscriber', obj
+      return easyInvitationId
     catch error
       appLog.warn error, typeof error
       if ((JSON.stringify error).search 'duplicate') isnt -1
@@ -240,16 +244,17 @@ SimpleSchema.messages
     label: 'Paiement validé par le client'
     optional: true
     defaultValue: false
-
-# Set fields for payment validation
-@PaymentsSchema = new SimpleSchema
   easyInvitationId:
     type: Number
-    min: 100
     label: 'N° d\'inscription simplifié'
+    min: 100
+    optional: true
     autoValue: ->
       if @insert
         return 100 + Subscribers.find().count()
+
+# Set fields for payment validation
+@PaymentsSchema = new SimpleSchema
   paymentStatus:
     type: Boolean
     defaultValue: false
