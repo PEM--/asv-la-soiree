@@ -149,6 +149,7 @@ Meteor.methods
             return moment(val).calendar()
           return 'Jamais inscrit'
       }
+      { data: 'easyInvitationId', title: 'N° d\'inscription' }
       { data: 'paymentTransactionId', title: 'N° de paiement' }
     ]
 
@@ -240,6 +241,13 @@ SimpleSchema.messages
 
 # Set fields for payment validation
 @PaymentsSchema = new SimpleSchema
+  easyInvitationId:
+    type: Number
+    min: 100
+    label: 'N° d\'inscription simplifié'
+    autoValue: ->
+      if @insert
+        return 100 + Subscribers.find().count()
   paymentStatus:
     type: Boolean
     defaultValue: false
@@ -286,3 +294,8 @@ SubscribersFullSchema = new SimpleSchema [
 ]
 
 Subscribers.attachSchema SubscribersFullSchema
+
+# @TODO Migrate data when server starts
+if Meteor.isServer
+  appLog.info 'Subscribers: Data migration'
+  

@@ -1,8 +1,4 @@
 ## Review 15/07/2015
-- [ ] Afficher le numéro d'inscription sur l'écran du chèque.
-- [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
-- [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
-- [ ] Rattrapage des données courantes pour les champs supplémentaires.
 - [X] Anomalie sur l'entrée de la date d'expiration de la carte + traductions.
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [X] #1, #8 Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
@@ -15,8 +11,12 @@
 - [X] #9 Paiement par chèque mal inséré en base : mauvais type de paiement et montant non fourni.
 - [X] #10 Mauvaise césure sur les liens du footer.
 - [X] #11 Facture trop large sur Android.
-- [X] Mise à jour des packages: Mandrill, Braintree, SpinKit : Gros impact sur Mandrill.
-- [ ] #12 Créer un numéro d'inscription plus friendly (incrémental à partir de 100).
+- [X] Mise à jour des packages : Mandrill, Braintree, SpinKit : Gros impact sur Mandrill.
+- [/] #12 N° d'inscription plus friendly
+- [ ] Afficher le numéro d'inscription sur l'écran du chèque.
+- [ ] Rappeler le numéro d'inscription sur le mail de confirmation de paiement.
+- [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
+- [ ] Rattrapage des données courantes pour les champs supplémentaires.
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
@@ -128,7 +128,7 @@
 - [X] Dynamic and editable footer
 - [X] Loading subscription template
 - [X] Social sharing
-- [/] Subscription with payment
+- [X] Subscription with payment
   - https://github.com/meteorclub/shareit
 - [X] EULA / CGU
 - [X] Cookie informations
