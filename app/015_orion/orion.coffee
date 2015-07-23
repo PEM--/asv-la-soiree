@@ -5,6 +5,9 @@ orion.dictionary.addDefinition 'google-ua', 'analytics',
 orion.dictionary.addDefinition 'message', 'cookie',
   type: String, label: 'Message d\'information'
   autoform: type: 'textarea'
+# Stop subscription
+orion.dictionary.addDefinition 'endsubscription', 'settings',
+  type: Boolean, label: 'Fermer les inscriptions'
 
 # OrionJS options
 # Avoid registration without invitation

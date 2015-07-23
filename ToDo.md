@@ -14,6 +14,7 @@
 - [X] Mise à jour des packages : Mandrill, Braintree, SpinKit : Gros impact sur Mandrill.
 - [X] #12 N° d'inscription plus friendly
 - [X] #19 Retrait logo SNVEL
+- [/] #20 Clôture des inscriptions
 - [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
 
 ## Review 10/07/2015
