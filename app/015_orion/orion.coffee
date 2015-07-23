@@ -6,7 +6,7 @@ orion.dictionary.addDefinition 'message', 'cookie',
   type: String, label: 'Message d\'information'
   autoform: type: 'textarea'
 # Stop subscription
-orion.dictionary.addDefinition 'endsubscription', 'settings',
+orion.dictionary.addDefinition 'endSubscription', 'settings',
   type: Boolean, label: 'Fermer les inscriptions'
 
 # OrionJS options

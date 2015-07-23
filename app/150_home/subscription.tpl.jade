@@ -13,6 +13,10 @@ section.subscription
         p Merci pour votre inscription.
         p À très bientôt
         +socials
+    .endSubscription(data-bind='if: endSubscription')
+      div
+        p Fermeture des inscriptions
+        +socials
     form
       fieldset
         legend Votre profil
