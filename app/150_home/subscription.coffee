@@ -23,10 +23,16 @@ if Meteor.isClient
             @viewmodel.profile cookieCnt.preSubscriptionValue.profile
             if cookieCnt.preSubscriptionValue.asvPromo
               @viewmodel.asvPromo cookieCnt.preSubscriptionValue.asvPromo
-              @viewmodel.enabledAsvPromo true
+              @viewmodel.enableAsvPromo true
             if cookieCnt.preSubscriptionValue.attendant?
               @viewmodel.attendant cookieCnt.preSubscriptionValue.attendant
               @viewmodel.attendantDisabled false
+            if cookieCnt.preSubscriptionValue.animalOwnership
+              @viewmodel.animalOwnership \
+                cookieCnt.preSubscriptionValue.animalOwnership
+            switch cookieCnt.preSubscriptionValue.profile
+              when 'asv_graduate', 'asv_serving'
+                @viewmodel.animalOwnershipEnabled true
             @viewmodel.name cookieCnt.preSubscriptionValue.name
             @viewmodel.forname cookieCnt.preSubscriptionValue.forname
             @viewmodel.email cookieCnt.preSubscriptionValue.email
@@ -46,11 +52,19 @@ if Meteor.isClient
     profile: ''
     asvPromo: ''
     asvPromoDisabled: true
-    enabledAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
+    enableAsvPromo: -> @asvPromoDisabled not (@profile() is 'asv_graduate')
     attendant: 'Choisissez :'
     attendantDisabled: true
-    enabledAttendant: -> @attendantDisabled not (@profile() is 'attendant')
+    enableAttendant: -> @attendantDisabled not (@profile() is 'attendant')
     attendantTypes: -> SubscribersSchema.getAllowedValuesForKey 'attendant'
+    animalOwnershipEnabled: false
+    animalOwnershipTypes: ->
+      SubscribersSchema.getAllowedValuesForKey 'animalOwnership'
+    enableAnimalOwnership: ->
+      @animalOwnershipEnabled switch @profile()
+        when 'asv_graduate', 'asv_serving' then true
+        else false
+    animalOwnership: 'Aucun'
     name: ''
     forname: ''
     email: ''
@@ -66,7 +80,7 @@ if Meteor.isClient
         '<span class=\'amount\'>' +
           numeral(PRICING_TABLE[@profile()].amount).format('0,0.00$') +
         '</span>'
-    disabledSubmit: ->
+    disableSubmit: ->
       obj =
         profile: @profile()
         asvPromo: @asvPromo()
@@ -105,6 +119,7 @@ if Meteor.isClient
         profile: @profile()
         asvPromo: @asvPromo()
         attendant: @attendant()
+        animalOwnership: @animalOwnership()
         name: @name()
         forname: @forname()
         email: @email()
@@ -117,15 +132,18 @@ if Meteor.isClient
         @setErrorText 'Veuillez vérifier vos informations'
       else
         Meteor.call 'presubscribe', obj, (error, result) =>
+          console.log '*** presubscribe', error, result
           # Display an error message and do not store the presubscription cookie
           if error and error.error isnt 'presubscribe.already'
             appLog.warn 'Subscription failed', error.reason, error
             return @setErrorText error.reason
           if error and error.error is 'presubscribe.already'
-            appLog.warn 'Subscription already done'
-            sAlert.warning error.reason
-          # Get easy invitation ID from result of the server call
-          obj.easyInvitationId = result
+            appLog.warn 'Subscription already done', error
+            # Get the easyInvitationId from the error's details
+            obj.easyInvitationId = error.reason
+          else
+            # Get easy invitation ID from result of the server call
+            obj.easyInvitationId = result
           # Store the subscription so that it cannot be done twice
           CookieSingleton.get().preSubStore obj
           # Reset the form and mask pre-subscription
@@ -146,7 +164,8 @@ Meteor.methods
     catch error
       appLog.warn error, typeof error
       if ((JSON.stringify error).search 'duplicate') isnt -1
-        throw new Meteor.Error 'presubscribe.already','Vous êtes déjà inscrit'
+        sub = Subscribers.findOne email: obj.email
+        throw new Meteor.Error 'presubscribe.already', sub.easyInvitationId
       else
         throw new Meteor.Error 'presubscribe', 'Internal server error'
 
@@ -214,6 +233,18 @@ SimpleSchema.messages
           (@value not in @definition.allowedValues.slice 1)
         return 'attendantInvalid'
       return null
+  animalOwnership:
+    type: String
+    label: 'Type d\'animal'
+    optional: true
+    allowedValues: [
+      'Aucun'
+      'Chien'
+      'Chat'
+      'NAC'
+      'Autres'
+    ]
+    defaultValue: 'Aucun'
   name:
     type: String
     label: 'Nom'

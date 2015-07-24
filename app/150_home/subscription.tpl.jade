@@ -28,49 +28,54 @@ section.subscription
             span.choice
               input#profile-graduate(
                 type='radio', name='profile', value='asv_graduate',
-                data-bind='checked: profile, change: disabledSubmit, change: enabledAsvPromo'
+                data-bind='checked: profile, change: disableSubmit, change: enableAsvPromo'
               )
               label(for='profile-graduate'): span ASV Diplômé<br>GIPSA<br>en 2014<br>ou 2015
             span.input
               input#asvPromo(
                 type='text', name='asvPromo'
-                data-bind='disabled: asvPromoDisabled, value: asvPromo, class: {filled: asvPromo}, change: disabledSubmit'
+                data-bind='disabled: asvPromoDisabled, value: asvPromo, class: {filled: asvPromo}, change: disableSubmit'
               )
               label(for='asvPromo'): span N° de promo
           .choice-and-option
             span.choice
               input#profile-serving(
                 type='radio', name='profile', value='asv_serving',
-                data-bind='checked: profile, change: disabledSubmit'
+                data-bind='checked: profile, change: disableSubmit, change: enableAnimalOwnership'
               )
               label(for='profile-serving'): span ASV<br>Auxiliaire<br>Vétérinaire
           .choice-and-option
             span.choice
               input#profile-attendant(
                 type='radio', name='profile', value='attendant',
-                data-bind='checked: profile, change: disabledSubmit, change: enabledAttendant'
+                data-bind='checked: profile, change: disableSubmit, change: enableAnimalOwnership, change: enableAttendant'
               )
               label(for='profile-attendant'): span Autres
             select(
-              data-bind='disabled: attendantDisabled, options: attendantTypes, value: attendant, change: disabledSubmit'
+              data-bind='disabled: attendantDisabled, options: attendantTypes, value: attendant, change: disableSubmit, change: enableAnimalOwnership'
+            )
+        .input-animalOwnership(data-bind='class: {shown: animalOwnershipEnabled}')
+            label Êtes-vous propriétaire d'un animal ?
+            select(
+              data-bind='options: animalOwnershipTypes, value: animalOwnership'
             )
         .input-contact
           span.input
             input#name(
               type='text', name='name',
-              data-bind='value: name, class: {filled: name}, change: disabledSubmit'
+              data-bind='value: name, class: {filled: name}, change: disableSubmit'
             )
             label(for='name'): span Nom (de jeune fille)
           span.input
             input#forname(
               type='text', name='forname',
-              data-bind='value: forname, class: {filled: forname}, change: disabledSubmit'
+              data-bind='value: forname, class: {filled: forname}, change: disableSubmit'
             )
             label(for='forname'): span Prénom
           span.input
             input#email(
               type='email', name='email',
-              data-bind='value: email, class: {filled: email}, change: disabledSubmit'
+              data-bind='value: email, class: {filled: email}, change: disableSubmit'
             )
             label(for='email'): span E-mail
       .group-contact-submit
@@ -82,19 +87,19 @@ section.subscription
           span.choice
             input#contact-type-mail(
               type='radio', name='contactType', value='mail',
-              data-bind='checked: contactType, change: disabledSubmit'
+              data-bind='checked: contactType, change: disableSubmit'
             )
             label(for='contact-type-mail'): span Mail
           span.choice
             input#contact-type-phone(
               type='radio', name='contactType', value='phone',
-              data-bind='checked: contactType, change: disabledSubmit'
+              data-bind='checked: contactType, change: disableSubmit'
             )
             label(for='contact-type-phone'): span Téléphone
           span.input
             input#phone(
               type='tel', name='phone',
-              data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disabledSubmit'
+              data-bind='value: phone, class: {filled: phone}, disabled: phoneRequired, change: disableSubmit'
             )
             label(for='phone'): span Numéro
           span.checkbox
@@ -109,6 +114,6 @@ section.subscription
         .submit
           button.inspiration(
             type='button', data-text='Je m\'inscris',
-            data-bind='disabled: disabledSubmit, click: subscribe'
+            data-bind='disabled: disableSubmit, click: subscribe'
           )
             span Je m'inscris

@@ -12,7 +12,7 @@ if Meteor.isClient
     name: ''
     email: ''
     message: ''
-    disabledSubmit: ->
+    disableSubmit: ->
       obj =
         name: @name()
         email: @email()

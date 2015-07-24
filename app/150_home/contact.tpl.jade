@@ -14,18 +14,18 @@ section.contact
         span.input
           input#name(
             type='text', name='name'
-            data-bind='value: name, class: {filled: name}, change: disabledSubmit'
+            data-bind='value: name, class: {filled: name}, change: disableSubmit'
           )
           label(for='name'): span Nom (de jeune fille)
         span.input
           input#email(
             type='email', name='email'
-            data-bind='value: email, class: {filled: email}, change: disabledSubmit'
+            data-bind='value: email, class: {filled: email}, change: disableSubmit'
           )
           label(for='email'): span E-mail
         textarea(
           name='message',  form='contact-form', placeholder='Votre demande', rows='10'
-          data-bind='value: message, change: disabledSubmit'
+          data-bind='value: message, change: disableSubmit'
         )
       fieldset.info-submit
         div
@@ -36,7 +36,7 @@ section.contact
         .submit
           button(
             type='button',
-            data-bind='disabled: disabledSubmit, click: sendMessage'
+            data-bind='disabled: disableSubmit, click: sendMessage'
           ) Envoyez
 section.access-location-picture
         

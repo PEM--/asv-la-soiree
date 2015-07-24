@@ -181,6 +181,7 @@
             min-width maxSize*.3
           >fieldset, .group-contact-submit fieldset
             border none
+            // Profil selection
             .input-profil
               width 100%
               display flex
@@ -240,6 +241,21 @@
               margin-left 0
               padding-left 0
               font-weight 300
+            // Animal ownership selection
+            .input-animalOwnership
+              opacity 0
+              display block
+              height 0
+              transition opacity defaultTransitionValue, height defaultTransitionValue
+              select
+                width 100%
+              label
+                font-size 80%
+                padding-bottom 0
+              &.shown
+                opacity 1
+                height 3.9em
+                padding-top .4em
           .group-contact-submit
             fieldset
               padding 0
