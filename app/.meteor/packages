@@ -63,7 +63,7 @@ orionjs:froala
 orionjs:filesystem
 orionjs:file-attribute
 orionjs:relationships
-brightbind:orion-gridfs
+vsivsi:orion-file-collection
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill

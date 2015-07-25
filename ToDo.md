@@ -16,7 +16,7 @@
 - [X] #19 Retrait logo SNVEL
 - [X] #20 Clôture des inscriptions
 - [X] #21 Audit propriété d'un animal pour les ASV
-- [ ] Champ en plus dans l'entrée uniquement pour les ASV avec case à cocher.
+- [X] Meilleur support pour GridFS
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
