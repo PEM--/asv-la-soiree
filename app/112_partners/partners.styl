@@ -14,13 +14,29 @@
         size 17%
         a img
           size 100%
+    &:last-child
+      ul li
+        size 14%
 
 @media only screen and (max-width 414px)
-  .main-container footer section article:nth-child(2) section
-    ul
-      inline-list 3%
-      width 100%
-      li
-        size 30%
-        a img
-          size 100%
+  .main-container footer section article:nth-child(2)
+    section
+      h1
+        border-top 1px solid brandColor
+        padding-top 1em
+      ul
+        inline-list 3%
+        width 100%
+        display flex
+        flex-wrap wrap
+        justify-content center
+        li
+          flex-grow 0
+          flex-shrink 0
+          size 30%
+          display inline-block
+          a img
+            size 100%
+      &:last-child
+        ul li
+          size 20%
