@@ -16,6 +16,7 @@
 - [X] #19 Retrait logo SNVEL
 - [X] #20 Clôture des inscriptions
 - [X] #21 Audit propriété d'un animal pour les ASV
+- [X] #25 Mettre à jour les logos footer / Partenaire
 - [X] Meilleur support pour GridFS
 
 ## Review 10/07/2015

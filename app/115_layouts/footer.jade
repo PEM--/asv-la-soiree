@@ -2,23 +2,18 @@ template(name='footer')
   section
     article
       h1 Comité d'organisation
-      a(href='http://apform.fr/', target='_blank')
-        .svg-logo-container
-          +apformLogo
-      a(href='http://www.afvac.com/', target='_blank')
-        .svg-logo-container
-          +afvacLogo
-      a(href='https://www.facebook.com/AssAV.association.auxilaires.veterinaires', target='_blank')
-        .svg-logo-container
-          +assavLogo
+      ul
+        li
+          a(href='http://apform.fr/', target='_blank')
+            img(src='partners/apform.png', width='300', height='300', alt='APForm')
+        li
+          a(href='http://www.afvac.com/', target='_blank')
+            img(src='partners/afvac.png', width='300', height='300', alt='AFVAC')
+        li
+          a(href='https://www.facebook.com/AssAV.association.auxilaires.veterinaires', target='_blank')
+            img(src='partners/assav.png', width='300', height='300', alt='AssAV')
     article
-      h1 Partenaires
-      a(href='http://www.gipsa.fr/', target='_blank')
-        .svg-logo-container
-          +gipsaLogo
-      //- a(href='http://www.snvel.fr/', target='_blank')
-      //-   .svg-logo-container
-      //-     +snvelLogo
+      +partners
     article
       +socials youtube=true
     article
