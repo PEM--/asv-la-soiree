@@ -77,10 +77,14 @@
           width 100%
           display block
           cpLinks(brandColor)
-        // Avoid breakpoints on external links
-        span.nb
-          line-break strict
-          display inline-block
+          ul
+            inline-list 0
+            margin 0 auto
+            display inline-block
+            // Dash between each link
+            li:not(:last-child)::after
+              content '-'
+              margin 0 8px
         a, a:visited
           color textColor
           font-size 80%
@@ -97,3 +101,18 @@
       flex-basis @width
       padding-left 0
       border-left none
+    // Other links
+    article:nth-child(4) aside
+      ul
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        width 100%
+        &::before, &::after
+          display none
+        // Remove dash
+        li::after
+          display none
+        // Center last child
+        li:last-child
+          width 100%

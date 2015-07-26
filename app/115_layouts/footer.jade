@@ -18,13 +18,14 @@ template(name='footer')
       +socials youtube=true
     article
       aside
-        if Template.subscriptionsReady
-          each links
-            +footerItem
-            |  - 
-        span.nobp
-          a(href='http://apform.fr/', target='_blank') APForm
-          | © 2015
+        ul
+          if Template.subscriptionsReady
+            each links
+              li
+                +footerItem
+          li
+            a(href='http://apform.fr/', target='_blank') APForm
+            | © 2015
 
 template(name='footerItem')
   a.internal(data-bind='value: slug, attr: { href: slug }, click: changeRoute, text: name')
