@@ -111,6 +111,7 @@ if Meteor.isServer
           'from{transform:rotate(0deg);}' +
           'to{transform: rotate(359deg);}' +
         '}' +
+        'main[data-role=\'home\']{min-height:100vh;}' +
       '</style>'
     # Insert hight priority body assets
     bodyIdx = html.indexOf '<body>'

@@ -84,3 +84,16 @@
         a, a:visited
           color textColor
           font-size 80%
+
+@media only screen and (max-width 414px)
+  .main-container footer section
+    // Steering comittee
+    article:nth-child(1)
+      width 100%
+      flex-basis @width
+    // Partners
+    article:nth-child(2)
+      width 100%
+      flex-basis @width
+      padding-left 0
+      border-left none
