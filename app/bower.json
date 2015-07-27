@@ -5,10 +5,10 @@
     "waypoints": "3.1.1",
     "loglevel": "1.3.1",
     "js-cookie": "2.0.3",
-    "SpinKit": "1.2.0",
     "flipclock": "0.7.7",
     "card": "1.1.0",
-    "braintree-web": "2.10.1"
+    "braintree-web": "2.10.1",
+    "stream": "3.46.1"
   },
   "ignoredDependencies": [
     "jquery"
@@ -25,6 +25,7 @@
     "js-cookie": { "arch": [ "client" ] },
     "flipclock": { "arch": [ "client" ] },
     "card": { "arch": [ "client" ] },
-    "braintree-web": { "arch": [ "client" ] }
+    "braintree-web": { "arch": [ "client" ] },
+    "stream": { "arch": [ "client" ] }
   }
 }

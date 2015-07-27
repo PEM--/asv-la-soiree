@@ -18,6 +18,8 @@
 - [X] #21 Audit propriété d'un animal pour les ASV
 - [X] #25 Mettre à jour les logos footer / Partenaire
 - [X] Meilleur support pour GridFS
+- [X] Retrait de SpinKit pour une animation d'attente intégrée.
+- [/] #22 Export SAGE
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
