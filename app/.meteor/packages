@@ -65,6 +65,8 @@ orionjs:file-attribute
 orionjs:image-attribute
 orionjs:relationships
 vsivsi:orion-file-collection
+cfs:standard-packages
+cfs:gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill

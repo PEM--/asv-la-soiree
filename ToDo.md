@@ -18,6 +18,7 @@
 - [X] Meilleur support pour GridFS
 - [X] Retrait de SpinKit pour une animation d'attente intégrée.
 - [X] #22 Export SAGE
+- [X] #30 Système d'ajout de partenaires
 - [X] #31 Numéro de téléphone trop long
 
 ## Review 10/07/2015

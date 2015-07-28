@@ -1,3 +1,5 @@
+FS.debug = true
+
 @Partners = new orion.collection 'partners',
   singularName: 'partenaire'
   pluralName: 'partenaires'
@@ -6,7 +8,6 @@
   tabular: columns: [
     { data: 'name', title: 'Nom' }
     { data: 'category', title: 'Catégorie' }
-    orion.attributeColumn('image', 'logo', 'Logo')
   ]
 
 Partners.attachSchema new SimpleSchema
@@ -16,4 +17,16 @@ Partners.attachSchema new SimpleSchema
     type: String
     label: 'Catégorie'
     allowedValues: ['gold', 'silver', 'bronze']
-  logo: orion.attribute 'image', label: 'Logo'
+  logo: orion.attribute 'image', label: 'Logo (120x120, PNG)'
+
+if Meteor.isClient
+  Template.partners.onCreated ->
+    @subscribe 'partners'
+
+  Template.partners.helpers
+    gold: -> Partners.find category: 'gold'
+    silver: -> Partners.find category: 'silver'
+    bronze: -> Partners.find category: 'bronze'
+
+if Meteor.isServer
+  Meteor.publish 'partners', -> Partners.find()

@@ -7,24 +7,21 @@ section
 section
   h1 Partenaires d'Or
   ul
-    li
-      a(href='http://www.royalcanin.fr/', target='_blank')
-        img(src='partners/royal_canin.png', width='120', height='120', alt='Royal Canin')
-    li
-      a(href='http://www.incineris.fr/', target='_blank')
-        img(src='partners/compagnie_des_veterinaires.png', width='120', height='120', alt='La compagnie des vétérinaires')
-    li
-      a(href='http://www.santevet.com/', target='_blank')
-        img(src='partners/santevet.png', width='120', height='120', alt='SantéVet')
+    each gold
+      li
+        a(href=url, target='_blank')
+          img(src=logo.url, width='120', height='120', alt=name)
 section
   h1 Partenaires d'Argent
   ul
-    li
-      a(href='http://fr.merial.com/Pages/default.aspx', target='_blank')
-        img(src='partners/merial.png', width='120', height='120', alt='Merial')
+    each silver
+      li
+        a(href=url, target='_blank')
+          img(src=logo.url, width='120', height='120', alt=name)
 section
   h1 Nos Partenaires
   ul
-    li
-      a(href='http://www.wamine.fr/', target='_blank')
-        img(src='partners/wamine.png', width='120', height='120', alt='Wamine')
+    each bronze
+      li
+        a(href=url, target='_blank')
+          img(src=logo.url, width='120', height='120', alt=name)
