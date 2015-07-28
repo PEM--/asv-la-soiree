@@ -1,7 +1,7 @@
 if Meteor.isClient
   # Sage exports
   class @SageExporter
-    constructor: ->
+    constructor: (@fullName, @invoiceDate, @price)->
       appLog.info 'Creating SAGE export'
       @content = []
     # Drapeau d’en-tête (#FLG)
@@ -13,7 +13,7 @@ if Meteor.isClient
       @write "#VER #{version}"
       @
     # Document ("#CHEN")
-    document: (fullName, invoiceDate)->
+    document: ->
       options =
         # Domain: VENTE
         domain: { fct: 'write', val: 1}
@@ -26,9 +26,9 @@ if Meteor.isClient
         # N° de pièce (max 9 chars)
         pieceNum: { fct: 'write9', val: 'NUMFAC'}
         # Date facture
-        date: { fct: 'writeDate', val: invoiceDate}
+        date: { fct: 'writeDate', val: @invoiceDate}
         # Référence (max 17 chars) NOM RESERVATAIRE
-        reference: { fct: 'write17', val: fullName}
+        reference: { fct: 'write17', val: @fullName}
         # Livraison (date)
         deliveryDate: { fct: 'writeDate', val: null}
         # Livraison réalisée (date)
@@ -96,7 +96,7 @@ if Meteor.isClient
         # Compte général
         generalAccount: { fct: 'write', val: '41100000'}
         # Heure
-        hour: { fct: 'writeHour', val: invoiceDate}
+        hour: { fct: 'writeHour', val: @invoiceDate}
         # Caisse (max 35 chars)
         cashier: { fct: 'write35', val: ''}
         # Nom du caissier (max 35 chars)
@@ -162,10 +162,10 @@ if Meteor.isClient
       @write "#CHEN"
         .writeDict options
     # Informations libres (#CIVA)
-    freeInformation: (fullName) ->
+    freeInformation: ->
       options =
         # NOM PARTICIPANT OU RESERVATAIRE
-        fullName: {fct: 'write35', val: fullName}
+        fullName: {fct: 'write35', val: @fullName}
         # ADRESSE 1
         address1: {fct: 'write35', val: ''}
         # ADRESSE 2
@@ -179,11 +179,11 @@ if Meteor.isClient
       @write '#CIVA'
         .writeDict options
     # Lignes de document (#CHLI)
-    documentLines: (fullName, invoiceDate, price) ->
+    documentLines: ->
       # NOM RESERVATAIRE
       options =
         # Référence ligne (max 17 chars): NOM PARTICIPANT OU RESERVATAIRE
-        lineReference: {fct: 'write17', val: fullName}
+        lineReference: {fct: 'write17', val: @fullName}
         # Référence article (max 18 chars): 99ASV
         articleReference: {fct: 'write18', val: '99ASV'}
         # Désignation (max 19 chars)
@@ -205,9 +205,9 @@ if Meteor.isClient
         # Type de prix: 0 HT, 1 TTC
         priceType: {fct: 'write', val: 1}
         # Prix unitaire
-        unitaryPrice: {fct: 'writeDouble', val: price}
+        unitaryPrice: {fct: 'writeDouble', val: @price}
         # Prix unitaire en devise
-        unitaryCurrencyPrice: {fct: 'writeDouble', val: price}
+        unitaryCurrencyPrice: {fct: 'writeDouble', val: @price}
         # Quantité
         quantity: {fct: 'writeNumeric', val: 1}
         # Quantité colisée
@@ -287,7 +287,7 @@ if Meteor.isClient
         # Projet (max 9 chars)
         project: { fct: 'write9', val: ''}
         # Date
-        date: { fct: 'writeDate', val: invoiceDate}
+        date: { fct: 'writeDate', val: @invoiceDate}
         # Code emplacement (max 13 chars)
         locationCode: { fct: 'write13', val: 'C120'}
         # Quantité emplacement
@@ -301,6 +301,27 @@ if Meteor.isClient
         # N° d'OF Gestion de production (max 11 chars)
         productionManagementOF: { fct: 'write11', val: ''}
       @write '#CHLI'
+        .writeDict options
+    # Acomptes / Echéances (#CHRE)
+    paymentsTerms: ->
+      options =
+        # Type: 0 Acompte, 1 Bon d'achat, 2 Echéance
+        type: { fct: 'write', val: 2}
+        # Date
+        date: { fct: 'writeDate', val: @invoiceDate}
+        # Libellé (max 35 chars)
+        label: { fct: 'write35', val: ''}
+        # Montant
+        amount: { fct: 'writeNumeric', val: 0}
+        # Montant en devise
+        currencyAmount: { fct: 'writeNumeric', val: 0}
+        # Mode de réglement
+        paymentMode: { fct: 'write', val: 1}
+        # Clôturé: 0 non, 1 clôturé
+        closed: { fct: 'write', val: 0}
+        # Numéro de pièce (max 8 chars)
+        itemNumber: { fct: 'write8', val: ''}
+      @write '#CHRE'
         .writeDict options
     # Fin (#FIN)
     end: ->
@@ -320,9 +341,11 @@ if Meteor.isClient
     writeNumeric: (amount) -> @write s.numberFormat amount, 2, ',', ''
     writeDouble: (amount) -> @write s.numberFormat amount, 4, ',', ''
     write5: (data) -> @write data.substr 0, 5
+    write8: (data) -> @write data.substr 0, 8
     write9: (data) -> @write data.substr 0, 9
     write10: (data) -> @write data.substr 0, 10
     write11: (data) -> @write data.substr 0, 11
+    write13: (data) -> @write data.substr 0, 13
     write17: (data) -> @write data.substr 0, 17
     write18: (data) -> @write data.substr 0, 18
     write19: (data) -> @write data.substr 0, 19
@@ -345,12 +368,13 @@ if Meteor.isClient
 
   @se = {}
   Meteor.startup ->
-    @se = new SageExporter
     invoiceDate = new Date
+    @se = new SageExporter 'Aurélie De Barros', invoiceDate, 35
     se.headFlag 0                   # Get this value from Orion's dictionary
       .versionFlag 18               # Match export in Sage 7.70
-      .document 'Aurélie De Barros', invoiceDate
-      .freeInformation 'Aurélie De Barros'
-      .documentLines 'Aurélie De Barros', invoiceDate, 35
+      .document()
+      .freeInformation()
+      .documentLines()
+      .paymentsTerms()
       .end()
     appLog.warn se.toString()
