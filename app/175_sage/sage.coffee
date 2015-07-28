@@ -40,7 +40,7 @@ if Meteor.isClient
         # Dépôt de stockage (max 35 chars)
         storageDeposit: { fct: 'write35', val: 'APFORM'}
         # Dépôt de livraison (max 35 chars)
-        deliveryDeposit: { fct: 'write35', val: 'CONGRE - SOIREES'}
+        deliveryDeposit: { fct: 'write35', val: 'CONGRES - SOIREES'}
         # Périodicité de 1 à 10
         periodicity: { fct: 'write', val: 1}
         # Devise de 0 à 32
@@ -230,6 +230,47 @@ if Meteor.isClient
         cmup: {fct: 'writeNumeric', val: 0}
         # Provenance facture: 0, normal
         invoiceOrigin: {fct: 'write', val: 0}
+        # Nom représentant (max 35 chars)
+        representativeName: {fct: 'write35', val: ''}
+        # Prénom représentant (max 35 chars)
+        representativeForname: {fct: 'write35', val: ''}
+        # Date de livraison
+        deliveryDate: {fct: 'writeDate', val: null}
+        # Dépôt de stockage (max 35 chars)
+        warehouse: {fct: 'write35', val: ''}
+        # Affaire
+        deal: { fct: 'write', val: '99DIV'}
+        # Valorisation: 0 non, 1 normale
+        valuation: { fct: 'write', val: '1'}
+        # Référence composée (max 18 chars)
+        madeReference: { fct: 'write18', val: ''}
+        # Article non livré: 0 aucune ligne générée
+        notDeliveredArticle: { fct: 'write', val: 0}
+        # Taux taxe 1
+        taxRate1: { fct: 'writeDouble', val: 20}
+        # Type taux taxe 1
+        taxRateType1: { fct: 'write', val: 0}
+        # Type de taxe 1
+        taxType1: { fct: 'write', val: 1}
+        # Taux taxe 2
+        taxRate2: { fct: 'writeDouble', val: 0}
+        # Type taux taxe 2
+        taxRateType2: { fct: 'write', val: 0}
+        # Type de taxe 2
+        taxType2: { fct: 'write', val: 0}
+        # Taux taxe 3
+        taxRate3: { fct: 'writeDouble', val: 0}
+        # Type taux taxe 3
+        taxRateType3: { fct: 'write', val: 0}
+        # Type de taxe 3
+        taxType3: { fct: 'write', val: 0}
+        # Numéro tiers (max 17 chars)
+        tiers: { fct: 'write17', val: 'CONGRES'}
+        # Référence fournisseur (max 18 chars)
+        supplierReference: { fct: 'write18', val: ''}
+        # Référence client (max 18 chars)
+        customerReference: { fct: 'write18', val: ''}
+
 
       @write '#CHLI'
         .writeDict options
