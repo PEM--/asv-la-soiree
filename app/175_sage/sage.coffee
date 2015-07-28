@@ -323,6 +323,67 @@ if Meteor.isClient
         itemNumber: { fct: 'write8', val: ''}
       @write '#CHRE'
         .writeDict options
+    # Réglements (#CRGT)
+    payments: ->
+      options =
+        # Type de règlement de 1 à 8
+        type: { fct: 'write', val: 0}
+        # N° Tiers (max 17 chars)
+        tiers: { fct: 'write17', val: 'CONGRES'}
+        # Date
+        date: { fct: 'writeDate', val: @invoiceDate}
+        # Référence (max 17 chars)
+        reference: { fct: 'write17', val: @fullName}
+        # Libellé (max 35 chars)
+        label: { fct: 'write35', val: 'REGLEMENT CB OU CHEQUE Nø NUMFAC'}
+        # Montant
+        amount: { fct: 'writeNumeric', val: @price}
+        # Devise
+        currency: {fct: 'write', val: 0}
+        # Cours (de la devise)
+        currencyPrice: { fct: 'writePrice', val: 0}
+        # Montant en devise
+        amountInCurrency: { fct: 'writeNumeric', val: 0}
+        # Mode de réglement de 1 à 30
+        paymentMode: { fct: 'write', val: 1}
+        # Etat: 0 non comptabilisé, 1 comptabilisé
+        status: { fct: 'write', val: 0}
+        # Code journal (max 6 chars)
+        logCode: { fct: 'write6', val: 'CM'}
+        # Compte contrepartie
+        offsetAccount: { fct: 'write', val: '44571000'}
+        # Date impayé
+        unpaidDate: { fct: 'writeDate', val: null}
+        # Compte d'écart de règlement
+        paymentGapAccount: { fct: 'write', val: ''}
+        # Montant écart de règlement
+        paymentGapAmaount: { fct: 'writeNumeric', val: 0}
+        # Code journal écart de règlement (max 6 chars)
+        logCodePaymentGap: { fct: 'write6', val: ''}
+        # Compte général
+        generalAccount: { fct: 'write', val: '41100000'}
+        # N° de pièce (max 13 chars)
+        itemNumber: { fct: 'write13', val: '10404'}
+        # Heure
+        hour: { fct: 'writeHour', val: @invoiceDate}
+        # Caisse (max 35 chars)
+        cashier: { fct: 'write35', val: ''}
+        # Nom du caissier (max 35 chars)
+        cashierName: { fct: 'write35', val: ''}
+        # Prénom du caissier (max 35 chars)
+        cashierForname: { fct: 'write35', val: ''}
+        # Mise en banque: 0 non, 1 oui
+        bankProvisionned: { fct: 'write', val: 0}
+        # Clôturé: 0 non, 1 clôturé
+        closed: { fct: 'write', val: 0}
+        # Souche: 1-50
+        stub: { fct: 'write', val: 0}
+        # Tiers d'origine (max 17 chars)
+        originTiers: { fct: 'write17', val: 'CONGRES'}
+        # Echéance contrepartie
+        term: { fct: 'writeDate', val: @invoiceDate}
+      @write '#CRGT'
+        .writeDict options
     # Fin (#FIN)
     end: ->
       @write '#FIN'
@@ -341,6 +402,7 @@ if Meteor.isClient
     writeNumeric: (amount) -> @write s.numberFormat amount, 2, ',', ''
     writeDouble: (amount) -> @write s.numberFormat amount, 4, ',', ''
     write5: (data) -> @write data.substr 0, 5
+    write6: (data) -> @write data.substr 0, 6
     write8: (data) -> @write data.substr 0, 8
     write9: (data) -> @write data.substr 0, 9
     write10: (data) -> @write data.substr 0, 10
@@ -376,5 +438,6 @@ if Meteor.isClient
       .freeInformation()
       .documentLines()
       .paymentsTerms()
+      .payments()
       .end()
     appLog.warn se.toString()
