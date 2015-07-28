@@ -179,7 +179,7 @@ if Meteor.isClient
       @write '#CIVA'
         .writeDict options
     # Lignes de document (#CHLI)
-    documentLines: (fullName) ->
+    documentLines: (fullName, price) ->
       # NOM RESERVATAIRE
       options =
         # Référence ligne (max 17 chars): NOM PARTICIPANT OU RESERVATAIRE
@@ -197,7 +197,40 @@ if Meteor.isClient
         # N° de série & Lot (max 30 chars)
         serialNbBatch: {fct: 'write30', val: ''}
         # Complément série/lot
-        
+        additionalSerialBatch: {fct: 'write30', val: ''}
+        # Date péremption
+        lapsingDate: {fct: 'writeDate', val: null}
+        # Date fabricaion
+        manufacturingDate: {fct: 'writeDate', val: null}
+        # Type de prix: 0 HT, 1 TTC
+        priceType: {fct: 'write', val: 1}
+        # Prix unitaire
+        unitaryPrice: {fct: 'writeDouble', val: price}
+        # Prix unitaire en devise
+        unitaryCurrencyPrice: {fct: 'writeDouble', val: price}
+        # Quantité
+        quantity: {fct: 'writeNumeric', val: 1}
+        # Quantité colisée
+        packagedQuantity: {fct: 'writeNumeric', val: 1}
+        # Conditionnement (max 21 chars)
+        packaging: {fct: 'write21', val: 'Unit'}
+        # Poids net global
+        netWeight: {fct: 'writeDouble', val: 0}
+        # Poids brut global
+        rawWeight: {fct: 'writeDouble', val: 0}
+        # Remise (max 45 chars)
+        discount: {fct: 'write45', val: ''}
+        # Type de ligne (0: Normale)
+        lineType: {fct: 'write', val: 0}
+        # Prix de revient unitaire
+        costPrice: {fct: 'writeNumeric', val: 0}
+        # Frais
+        fee: {fct: 'writeNumeric', val: 0}
+        # CMUP
+        cmup: {fct: 'writeNumeric', val: 0}
+        # Provenance facture: 0, normal
+        invoiceOrigin: {fct: 'write', val: 0}
+
       @write '#CHLI'
         .writeDict options
     # Fin (#FIN)
@@ -225,6 +258,8 @@ if Meteor.isClient
     write25: (data) -> @write data.substr 0, 25
     write30: (data) -> @write data.substr 0, 30
     write35: (data) -> @write data.substr 0, 35
+    write45: (data) -> @write data.substr 0, 45
+    write69: (data) -> @write data.substr 0, 69
     write1980: (data) -> @write data.substr 0, 1980
     write: (data) ->
       txt = (Diacritics.clean String data).toUpperCase()
@@ -244,6 +279,6 @@ if Meteor.isClient
       .versionFlag 18               # Match export in Sage 7.70
       .document invoiceDate, 'Aurélie De Barros'
       .freeInformation 'Aurélie De Barros'
-      .documentLines 'Aurélie De Barros'
+      .documentLines 'Aurélie De Barros', 35
       .end()
     appLog.warn se.toString()
