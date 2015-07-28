@@ -162,10 +162,10 @@ if Meteor.isClient
       @write "#CHEN"
         .writeDict options
     # Informations libres (#CIVA)
-    freeInformation: (fullname, email, phone)->
+    freeInformation: (fullName, email, phone)->
       options =
         # NOM PARTICIPANT OU RESERVATAIRE
-        fullname: {fct: 'write35', val: fullname}
+        fullName: {fct: 'write35', val: fullName}
         # ADRESSE 1
         address1: {fct: 'write35', val: ''}
         # ADRESSE 2
