@@ -52,16 +52,17 @@ if Meteor.isClient
             {paymentStatus: true},
             {fields: {name: 1, forname: 1, createdAt: 1, amount: 1}}
           ).fetch()
-          sageFileContent = ''
-          appLog.warn 'SAGE', data, sageFileContent
+          fileContent = ''
           # Populate SAGE file with all the subscribers that are in paid status
+          version = orion.dictionary.get 'sage.version', 0
           for sub in data
             fullName = "#{sub.name} #{sub.forname}"
             sageUnitary = new SageExporter fullName, sub.createdAt, sub.amount
-            sageUnitary.formatAll()
-            sageFileContent = sageFileContent.concat sageUnitary.toString()
-          # Automatic download of the SAGE as a Blob file
-          blobDownload sageFileContent, 'sage.txt', 'text/plain'
+            sageUnitary.formatAll version
+            fileContent = fileContent.concat sageUnitary.toString(), '\n'
+          fileName = "sage-#{s.lpad version, 3, '0'}.txt"
+          # Automatic download of the SAGE file as a Blob file
+          blobDownload fileContent, fileName, 'text/plain'
           # Allow further extracts
           sageButton.removeClass 'disabled'
         onError: (err) ->

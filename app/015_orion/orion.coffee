@@ -9,6 +9,10 @@ orion.dictionary.addDefinition 'message', 'cookie',
 orion.dictionary.addDefinition 'endSubscription', 'settings',
   type: Boolean, label: 'Fermer les inscriptions'
   defaultValue: false
+# Sage versionning
+orion.dictionary.addDefinition 'version', 'sage',
+  type: Number, label: 'Version des extractions'
+  defaultValue: 0
 
 # OrionJS options
 # Avoid registration without invitation
