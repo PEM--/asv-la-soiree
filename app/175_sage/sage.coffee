@@ -13,7 +13,7 @@ if Meteor.isClient
       @write "#VER #{version}"
       @
     # Document ("#CHEN")
-    document: (invoiceDate, fullName)->
+    document: (fullName, invoiceDate)->
       options =
         # Domain: VENTE
         domain: { fct: 'write', val: 1}
@@ -153,12 +153,12 @@ if Meteor.isClient
         validatedSale: { fct: 'write', val: 0}
         # N° FA origine
         faOriginNumber: { fct: 'write9', val: ''}
-        # Code taxe 1
-        taxCode1: { fct: 'write9', val: ''}
-        # Code taxe 2
-        taxCode2: { fct: 'write9', val: ''}
-        # Code taxe 3
-        taxCode3: { fct: 'write9', val: ''}
+        # Code taxe 1 (max 5 chars)
+        taxCode1: { fct: 'write5', val: ''}
+        # Code taxe 2 (max 5 chars)
+        taxCode2: { fct: 'write5', val: ''}
+        # Code taxe 3 (max 5 chars)
+        taxCode3: { fct: 'write5', val: ''}
       @write "#CHEN"
         .writeDict options
     # Informations libres (#CIVA)
@@ -179,7 +179,7 @@ if Meteor.isClient
       @write '#CIVA'
         .writeDict options
     # Lignes de document (#CHLI)
-    documentLines: (fullName, price) ->
+    documentLines: (fullName, invoiceDate, price) ->
       # NOM RESERVATAIRE
       options =
         # Référence ligne (max 17 chars): NOM PARTICIPANT OU RESERVATAIRE
@@ -270,8 +270,36 @@ if Meteor.isClient
         supplierReference: { fct: 'write18', val: ''}
         # Référence client (max 18 chars)
         customerReference: { fct: 'write18', val: ''}
-
-
+        # Facturation sur le poids net: 0 non, 1 oui
+        invoiceNetPrice: { fct: 'write', val: 0}
+        # Hors escompte: 0 non, 1 oui
+        offDiscount: { fct: 'write', val: 0}
+        # Numéro de colis (max 19 chars)
+        packageNumber: { fct: 'write19', val: ''}
+        # Code ressource (max 10 chars)
+        ressourceCode: { fct: 'write10', val: ''}
+        # Quantité ressource
+        ressourceQuantity: { fct: 'write', val: 0}
+        # Existence agenda: 0 non, 1 oui
+        availableAgenda: { fct: 'write', val: 0}
+        # Date avancement
+        completionDate: { fct: 'writeDate', val: null}
+        # Projet (max 9 chars)
+        project: { fct: 'write9', val: ''}
+        # Date
+        date: { fct: 'writeDate', val: invoiceDate}
+        # Code emplacement (max 13 chars)
+        locationCode: { fct: 'write13', val: 'C120'}
+        # Quantité emplacement
+        locationQuantity: { fct: 'write', val: ''}
+        # Code taxe 1 (max 5 chars)
+        taxCode1: { fct: 'write5', val: ''}
+        # Code taxe 2 (max 5 chars)
+        taxCode2: { fct: 'write5', val: ''}
+        # Code taxe 3 (max 5 chars)
+        taxCode3: { fct: 'write5', val: ''}
+        # N° d'OF Gestion de production (max 11 chars)
+        productionManagementOF: { fct: 'write11', val: ''}
       @write '#CHLI'
         .writeDict options
     # Fin (#FIN)
@@ -291,7 +319,10 @@ if Meteor.isClient
     writePrice: (price) -> @write s.numberFormat price, 6, ',', ''
     writeNumeric: (amount) -> @write s.numberFormat amount, 2, ',', ''
     writeDouble: (amount) -> @write s.numberFormat amount, 4, ',', ''
+    write5: (data) -> @write data.substr 0, 5
     write9: (data) -> @write data.substr 0, 9
+    write10: (data) -> @write data.substr 0, 10
+    write11: (data) -> @write data.substr 0, 11
     write17: (data) -> @write data.substr 0, 17
     write18: (data) -> @write data.substr 0, 18
     write19: (data) -> @write data.substr 0, 19
@@ -318,8 +349,8 @@ if Meteor.isClient
     invoiceDate = new Date
     se.headFlag 0                   # Get this value from Orion's dictionary
       .versionFlag 18               # Match export in Sage 7.70
-      .document invoiceDate, 'Aurélie De Barros'
+      .document 'Aurélie De Barros', invoiceDate
       .freeInformation 'Aurélie De Barros'
-      .documentLines 'Aurélie De Barros', 35
+      .documentLines 'Aurélie De Barros', invoiceDate, 35
       .end()
     appLog.warn se.toString()
