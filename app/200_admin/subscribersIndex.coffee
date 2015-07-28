@@ -24,23 +24,51 @@ if Meteor.isClient
         Router.go path
     'click button.import-csv': (e, t) ->
       # Prevent further actions
-      (t.$ 'button.import-csv').addClass 'disabled'
+      csvButton = t.$ 'button.import-csv'
+      csvButton.addClass 'disabled'
       subscription = Meteor.subscribe 'allSubscribers',
         onReady: ->
           data = Subscribers.find({},{name: 1, forname: 1, _id: 0}).fetch()
           # Create the header
           csv = (_.keys data[0]).join ';'
-          for sub, idx in data
+          for sub in data
             csv += '\n' + (_.values sub).join ';'
           # Automatic download of the CSV as a Blob file
           blobDownload csv, 'subscribers.csv', 'text/csv'
           # Allow further extracts
-          ($ 'button.import-csv').removeClass 'disabled'
+          csvButton.removeClass 'disabled'
         onError: (err) ->
           sAlert.warning 'Récupération des inscrits impossible'
           appLog.warn 'CSV subscription failed', err
           # Allow further extracts
-          ($ 'button.import-csv').removeClass 'disabled'
+          csvButton.removeClass 'disabled'
+    'click button.import-sage': (e, t) ->
+      # Prevent further actions
+      sageButton = t.$ 'button.import-sage'
+      sageButton.addClass 'disabled'
+      subscription = Meteor.subscribe 'allSubscribers',
+        onReady: ->
+          data = Subscribers.find(
+            {paymentStatus: true},
+            {fields: {name: 1, forname: 1, createdAt: 1, amount: 1}}
+          ).fetch()
+          sageFileContent = ''
+          appLog.warn 'SAGE', data, sageFileContent
+          # Populate SAGE file with all the subscribers that are in paid status
+          for sub in data
+            fullName = "#{sub.name} #{sub.forname}"
+            sageUnitary = new SageExporter fullName, sub.createdAt, sub.amount
+            sageUnitary.formatAll()
+            sageFileContent = sageFileContent.concat sageUnitary.toString()
+          # Automatic download of the SAGE as a Blob file
+          blobDownload sageFileContent, 'sage.txt', 'text/plain'
+          # Allow further extracts
+          sageButton.removeClass 'disabled'
+        onError: (err) ->
+          sAlert.warning 'Récupération des inscrits impossible'
+          appLog.warn 'SAGE subscription failed', err
+          # Allow further extracts
+          sageButton.removeClass 'disabled'
 
   Template.subscribersIndex.helpers
     showTable: ->

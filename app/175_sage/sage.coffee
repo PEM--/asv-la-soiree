@@ -437,19 +437,14 @@ if Meteor.isClient
       for key, val of dict
         @[val.fct] val.val
       @
+    formatAll: (version) ->
+      @headFlag version
+      @versionFlag 18     # Match export in Sage 7.70
+      @document()
+      @freeInformation()
+      @documentLines()
+      @paymentsTerms()
+      @payments()
+      @linksPayments()
+      @end()
     toString: -> @content.join '\n'
-
-  @se = {}
-  Meteor.startup ->
-    invoiceDate = new Date
-    @se = new SageExporter 'Aurélie De Barros', invoiceDate, 35
-    se.headFlag 0                   # Get this value from Orion's dictionary
-      .versionFlag 18               # Match export in Sage 7.70
-      .document()
-      .freeInformation()
-      .documentLines()
-      .paymentsTerms()
-      .payments()
-      .linksPayments()
-      .end()
-    appLog.warn se.toString()
