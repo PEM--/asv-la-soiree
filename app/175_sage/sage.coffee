@@ -384,6 +384,17 @@ if Meteor.isClient
         term: { fct: 'writeDate', val: @invoiceDate}
       @write '#CRGT'
         .writeDict options
+    # Liens règlements / échéances (#CREC)
+    linksPayments: ->
+      options =
+        # N° de pièce (max 8 chars)
+        itemNumber: { fct: 'write8', val: 'NUMFAC'}
+        # Date
+        date: { fct: 'writeDate', val: @invoiceDate}
+        # Montant imputé
+        chargedAmount: { fct: 'writeNumeric', val: @price}
+      @write '#CREC'
+        .writeDict options
     # Fin (#FIN)
     end: ->
       @write '#FIN'
@@ -439,5 +450,6 @@ if Meteor.isClient
       .documentLines()
       .paymentsTerms()
       .payments()
+      .linksPayments()
       .end()
     appLog.warn se.toString()
