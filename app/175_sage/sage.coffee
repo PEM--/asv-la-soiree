@@ -162,7 +162,7 @@ if Meteor.isClient
       @write "#CHEN"
         .writeDict options
     # Informations libres (#CIVA)
-    freeInformation: (fullName, email, phone)->
+    freeInformation: (fullName) ->
       options =
         # NOM PARTICIPANT OU RESERVATAIRE
         fullName: {fct: 'write35', val: fullName}
@@ -177,6 +177,28 @@ if Meteor.isClient
         # Blank line
         dummy: {fct: 'write', val: ''}
       @write '#CIVA'
+        .writeDict options
+    # Lignes de document (#CHLI)
+    documentLines: (fullName) ->
+      # NOM RESERVATAIRE
+      options =
+        # Référence ligne (max 17 chars): NOM PARTICIPANT OU RESERVATAIRE
+        lineReference: {fct: 'write17', val: fullName}
+        # Référence article (max 18 chars): 99ASV
+        articleReference: {fct: 'write18', val: '99ASV'}
+        # Désignation (max 19 chars)
+        designation:{fct:'write69',val:'PARTICIPATION SOIREE ASV-CONGRES AFVAC'}
+        # Texte complémentaire (max 1980 chars)
+        additionalText: {fct: 'write1980', val: ''}
+        # Enuméré de gamme 1 (max 21 chars)
+        listedRange1: {fct: 'write21', val: ''}
+        # Enuméré de gamme 2 (max 21 chars)
+        listedRange2: {fct: 'write21', val: ''}
+        # N° de série & Lot (max 30 chars)
+        serialNbBatch: {fct: 'write30', val: ''}
+        # Complément série/lot
+        
+      @write '#CHLI'
         .writeDict options
     # Fin (#FIN)
     end: ->
@@ -197,8 +219,13 @@ if Meteor.isClient
     writeDouble: (amount) -> @write s.numberFormat amount, 4, ',', ''
     write9: (data) -> @write data.substr 0, 9
     write17: (data) -> @write data.substr 0, 17
+    write18: (data) -> @write data.substr 0, 18
+    write19: (data) -> @write data.substr 0, 19
+    write21: (data) -> @write data.substr 0, 21
     write25: (data) -> @write data.substr 0, 25
+    write30: (data) -> @write data.substr 0, 30
     write35: (data) -> @write data.substr 0, 35
+    write1980: (data) -> @write data.substr 0, 1980
     write: (data) ->
       txt = (Diacritics.clean String data).toUpperCase()
       @content.push txt
@@ -216,5 +243,7 @@ if Meteor.isClient
     se.headFlag 0                   # Get this value from Orion's dictionary
       .versionFlag 18               # Match export in Sage 7.70
       .document invoiceDate, 'Aurélie De Barros'
+      .freeInformation 'Aurélie De Barros'
+      .documentLines 'Aurélie De Barros'
       .end()
     appLog.warn se.toString()
