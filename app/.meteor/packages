@@ -62,6 +62,7 @@ orionjs:froala
 #orionjs:quill
 orionjs:filesystem
 orionjs:file-attribute
+orionjs:image-attribute
 orionjs:relationships
 vsivsi:orion-file-collection
 orionjs:admin-unstyled

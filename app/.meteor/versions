@@ -100,6 +100,7 @@ orionjs:dictionary@1.2.1
 orionjs:file-attribute@1.2.0
 orionjs:filesystem@1.2.0
 orionjs:froala@1.2.0
+orionjs:image-attribute@1.2.0
 orionjs:iron-router-progress@1.0.3
 orionjs:lang-en@1.2.0
 orionjs:relationships@1.2.0
@@ -110,7 +111,7 @@ percolate:momentum@0.7.2
 percolate:momentum-iron-router@0.7.0
 percolate:velocityjs@1.1.0
 pierreeric:creativepure@0.1.17
-pierreeric:orion-lang-fr@1.1.0
+pierreeric:orion-lang-fr@1.2.0
 pierreeric:useraccounts-creativepure@0.1.0
 raix:handlebar-helpers@0.2.4
 random@1.0.3
