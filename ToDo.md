@@ -3,8 +3,6 @@
 - [X] Mettre plus en avant la sélection de moyen de paiement.
 - [X] #1, #8 Attendre la validation d'un moyen de paiement avant les remerciements pour l'inscription.
 - [X] #2 Changement de texte sur le formulaire d'inscription.
-- [ ] Intégrer un encodeur ASCII127.
-- [ ] Export vers SAGE GESCOM 100 au format TXT (ASCII127).
 - [X] #4 Barre orange restante.
 - [X] #7 Labels plus lisibles : passage en majuscule.
 - [X] #7 Labels plus lisibles : abandon du passage en majuscule.
@@ -19,7 +17,8 @@
 - [X] #25 Mettre à jour les logos footer / Partenaire
 - [X] Meilleur support pour GridFS
 - [X] Retrait de SpinKit pour une animation d'attente intégrée.
-- [/] #22 Export SAGE
+- [X] #22 Export SAGE
+- [X] #31 Numéro de téléphone trop long
 
 ## Review 10/07/2015
 - [X] Mise à jour des packages et dépendances.
@@ -34,10 +33,8 @@
 - [ ] Problème de vérification du certificat SSL sur les DNS OVH.
 - [X] Correction du le lien de l'interface d'administration.
 - [X] Meilleure sécurité pour les BrowserPolicy.
-- [ ] Clôture des inscriptions et affichage d'un message sympa.
+- [X] #20 Clôture des inscriptions.
 - [X] Bonus : Select/options sans labels.
-- [ ] Bonus : CSV avec des valeurs en français.
-- [ ] Bonus : SSR pour SEO naturel plus important.
 
 ## Review 06/07/2015
 - [X] Nouvelle structure de tarifs :

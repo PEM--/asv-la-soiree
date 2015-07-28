@@ -132,7 +132,6 @@ if Meteor.isClient
         @setErrorText 'Veuillez vérifier vos informations'
       else
         Meteor.call 'presubscribe', obj, (error, result) =>
-          console.log '*** presubscribe', error, result
           # Display an error message and do not store the presubscription cookie
           if error and error.error isnt 'presubscribe.already'
             appLog.warn 'Subscription failed', error.reason, error
@@ -269,13 +268,16 @@ SimpleSchema.messages
     type: String
     label: 'N° de téléphone'
     optional: true
+    min: 10
+    max: 10
     custom: ->
-      regEx = /(0|\\+33|0033)[1-9][0-9]{8}/
+      #regEx = /(0|\\+33|0033)[1-9][0-9]{8}/
+      regEx = /(0)[1-9][0-9]{8}/
       if @field('contactType').value is 'phone'
         if @value.length is 0
           return 'required'
-        unless @value.match /(0|\\+33|0033)[1-9][0-9]{8}/
-          return 'minNumber'
+        unless @value.match regEx
+          return 'regEx'
       return null
   newsletter:
     type: Boolean
