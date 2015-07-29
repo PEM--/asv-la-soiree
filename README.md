@@ -58,3 +58,10 @@ docker run XXX
 docker pull pemarchandet/nginx-asv_la_soiree
 docker run --link meteor-asv_la_soiree:meteor-asv_la_soiree --name nginx-asv_la_soiree -d -p 80:80 pemarchandet/nginx-asv_la_soiree
 ```
+
+Re-launching a new release
+```
+docker pull pemarchandet/meteor-asv_la_soiree
+docker restart meteor-asv_la_soiree
+docker restart nginx-asv_la_soiree
+```

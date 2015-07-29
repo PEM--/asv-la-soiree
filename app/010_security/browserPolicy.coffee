@@ -11,13 +11,16 @@ if Meteor.isServer
   # Only allow necessary protocols
   appLog.info 'Settings', Meteor.settings.public.proxy.url
   # Allow origin for Meteor hosting
-  for protocol in ['http', 'https', 'ws', 'wss']
-    url = Meteor.settings.public.proxy.url
-    if s.contains url, 'meteor'
-      url = "#{protocol}://*.meteor.com"
-    else
-      url = url.replace 'http', protocol
-    BrowserPolicy.content.allowConnectOrigin url
+  for origin in [
+    '*.meteor.com'
+    '*.asv-la-soiree.com'
+    '*.asv-la-soiree.dev'
+    'localhost:3000'
+    '192.168.33.10'
+    '192.168.33.10/sockjs/info'
+  ]
+    for protocol in ['http', 'https', 'ws', 'wss']
+      BrowserPolicy.content.allowConnectOrigin "#{protocol}://#{origin}"
   # For remote debugging for protocol in ['http', 'https', 'ws', 'wss']
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000"
   #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000/sockjs/info"
