@@ -35,3 +35,8 @@ npm -g install gulp
 cd assets
 npm install
 ```
+
+## Vagrant - Test environment
+```
+vagrant up
+```
