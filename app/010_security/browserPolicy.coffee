@@ -17,7 +17,8 @@ if Meteor.isServer
     '*.asv-la-soiree.dev'
     'localhost:3000'
     '192.168.33.10'
-    '192.168.33.10/sockjs/info'
+    '192.168.33.10/cfs/servertime*'
+    '192.168.33.10/sockjs/info*'
   ]
     for protocol in ['http', 'https', 'ws', 'wss']
       BrowserPolicy.content.allowConnectOrigin "#{protocol}://#{origin}"
