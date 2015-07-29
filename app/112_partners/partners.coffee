@@ -1,5 +1,3 @@
-FS.debug = true
-
 @Partners = new orion.collection 'partners',
   singularName: 'partenaire'
   pluralName: 'partenaires'

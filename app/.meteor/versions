@@ -12,6 +12,7 @@ binary-heap@1.0.3
 blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
+brightbind:orion-gridfs@0.1.0
 browser-policy@1.0.4
 browser-policy-common@1.0.3
 browser-policy-content@1.0.4
@@ -154,8 +155,6 @@ underscorestring:underscore.string@3.1.1
 url@1.0.4
 useraccounts:core@1.10.0
 velocityjs:velocityjs@1.2.1
-vsivsi:file-collection@1.1.5
-vsivsi:orion-file-collection@0.1.0
 webapp@1.2.0
 webapp-hashing@1.0.3
 wylio:mandrill@1.0.1

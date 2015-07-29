@@ -64,16 +64,15 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:image-attribute
 orionjs:relationships
-vsivsi:orion-file-collection
-cfs:standard-packages
-cfs:gridfs
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill
 patrickml:braintree
 meteorhacks:npm
+npm-container
 pascoual:pdfkit
 percolate:migrations
+brightbind:orion-gridfs
 
 # Others
 dburles:google-maps
@@ -82,4 +81,3 @@ rzymek:moment-locale-fr
 numeral:numeral
 juliancwirko:s-alert
 juliancwirko:s-alert-jelly
-npm-container
