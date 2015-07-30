@@ -26,7 +26,7 @@ Options.set 'homePath', Meteor.settings.public.proxy.url
 Options.arrayPush 'defaultRoles', 'public'
 Options.set 'profileSchema',
   picture: orion.attribute 'file',
-    label: 'Picture'
+    label: 'Avatar ou photo (PNG en 120x120)'
     optional: true
 ,
   name: type: String
@@ -43,7 +43,7 @@ if Meteor.isServer
       proposer des services et offres adaptés."
   _.extend headValues, seoHeadValues()
   _.extend headValues, socialValues()
-  # There's only one item in the dictionnary which serves
+  # There's only one item in the dictionary which serves
   #  as an object containing all properties for the site.
   dicId = (orion.dictionary.findOne())._id
   orion.dictionary.update dicId, {'$set': headValues} , (err) ->
