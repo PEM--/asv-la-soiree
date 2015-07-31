@@ -107,7 +107,8 @@ if Meteor.isClient
         when ' n\'est pas une valeur autorisée'
           'Choisissez votre profil'
         when  'N° de téléphone ne satisfait pas l\'expression régulière', \
-              'N° de téléphone doit être supérieur ou égal à [min]'
+              'N° de téléphone doit être supérieur ou égal à [min]', \
+              'N° de téléphone doit contenir [min] caractères'
           'Le n° de téléphone doit être du type: 0612345678'
         when  'Internal server error'
           'Nous n\'étions pas prêts. Pourriez-vous ré-essayer plus tard ?'
@@ -267,14 +268,14 @@ SimpleSchema.messages
     type: String
     label: 'N° de téléphone'
     optional: true
-    min: 10
-    max: 10
     custom: ->
       #regEx = /(0|\\+33|0033)[1-9][0-9]{8}/
       regEx = /(0)[1-9][0-9]{8}/
       if @field('contactType').value is 'phone'
         if @value.length is 0
           return 'required'
+        unless @value.length is 10
+          return 'minString'
         unless @value.match regEx
           return 'regEx'
       return null
