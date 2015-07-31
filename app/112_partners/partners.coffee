@@ -22,9 +22,9 @@ if Meteor.isClient
     @subscribe 'partners'
 
   Template.partners.helpers
-    gold: -> Partners.find category: 'gold'
-    silver: -> Partners.find category: 'silver'
-    bronze: -> Partners.find category: 'bronze'
+    gold: -> Partners.find {category: 'gold'}, sort: {name: 1}
+    silver: -> Partners.find {category: 'silver'}, sort: {name: 1}
+    bronze: -> Partners.find {category: 'bronze'}, sort: {name: 1}
 
 if Meteor.isServer
   Meteor.publish 'partners', -> Partners.find()
