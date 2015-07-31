@@ -3,8 +3,7 @@ if Meteor.isClient
     # If subscrption are closed, prevent any form access or display of
     #  the end subscription message.
     @autorun =>
-      endSubscription = orion.dictionary.get 'settings.endSubscription'
-      unless endSubscription is ''
+      if orion.dictionary.get 'settings.endSubscription'
         @viewmodel.reset()
         @viewmodel.errorText ''
         @viewmodel.isPaymentUserValidated false
