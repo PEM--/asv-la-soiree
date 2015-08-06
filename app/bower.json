@@ -7,7 +7,7 @@
     "js-cookie": "2.0.3",
     "flipclock": "0.7.7",
     "card": "1.1.0",
-    "braintree-web": "2.10.1",
+    "braintree-web": "2.11.2",
     "diacritic": "0.0.3"
   },
   "ignoredDependencies": [
