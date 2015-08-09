@@ -17,7 +17,7 @@ template(name='atTextInput')
 template(name='atCheckboxInput')
   // atCheckboxInput
   span.checkbox.at-input
-    abel(for="at-field-{{_id}}")= displayName
+    label(for="at-field-{{_id}}")= displayName
     input/(type="{{type}}", id="at-field-{{_id}}", name="at-field-{{_id}}", "{{disabled}}")
 
 template(name='atSelectInput')

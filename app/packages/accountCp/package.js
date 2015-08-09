@@ -15,11 +15,11 @@ Package.on_use(function(api, where) {
   ], 'client');
 
   api.use([
-    'useraccounts:core@1.11.0',
+    'useraccounts:core@1.11.1'
   ], ['client', 'server']);
 
   api.imply([
-    'useraccounts:core@1.11.0',
+    'useraccounts:core@1.11.1'
   ], ['client', 'server']);
 
   api.add_files([
