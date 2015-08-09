@@ -31,5 +31,8 @@
     h2 {{ i18n 'accounts.update.sections.deleteUser.title' }}
     div.well
       p  {{ i18n 'accounts.update.sections.deleteUser.advice' }}
-      button#btnDeleteUser.user-btn-action-warning(user="{{user._id}}") {{ i18n 'accounts.update.sections.deleteUser.button' }}
+      if confirmDelete
+        button#btnConfirmDeleteUser.user-btn-action-warning(user="{{user._id}}") {{i18n 'global.confirm'}}
+      else
+        button#btnDeleteUser.user-btn-action-warning(user="{{user._id}}") {{ i18n 'accounts.update.sections.deleteUser.button' }}
         
