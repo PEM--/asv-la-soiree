@@ -1,12 +1,12 @@
 Package.describe({
   summary: 'Accounts Templates unstyled.',
-  version: '0.1.0',
+  version: '0.2.0',
   name: 'pierreeric:useraccounts-creativepure',
   git: 'https://github.com/meteor-useraccounts/unstyled.git',
 });
 
 Package.on_use(function(api, where) {
-  api.versionsFrom('METEOR@1.1.0.2');
+  api.versionsFrom('METEOR@1.1.0.3');
 
   api.use([
     'templating',
@@ -15,11 +15,11 @@ Package.on_use(function(api, where) {
   ], 'client');
 
   api.use([
-    'useraccounts:core',
+    'useraccounts:core@1.11.0',
   ], ['client', 'server']);
 
   api.imply([
-    'useraccounts:core@1.10.0',
+    'useraccounts:core@1.11.0',
   ], ['client', 'server']);
 
   api.add_files([

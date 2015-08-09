@@ -5,22 +5,4 @@
     a(href="{{ pathFor 'accounts.create' }}"): i.fa.fa-plus
 
 +Layout template='orionCpContentContainer'
-  table
-    thead: tr
-      th {{i18n 'accounts.index.tableTitles.name'}}
-      th {{i18n 'accounts.index.tableTitles.email'}}
-      th {{i18n 'accounts.index.tableTitles.roles'}}
-      th {{i18n 'accounts.index.tableTitles.actions'}}
-    tbody
-      each users
-        tr
-          td: b= profile.name
-          td
-            each emails
-              | {{ address }}
-          td
-            each roles
-              span.role(data-attr=this)= this
-          td
-            each buttons
-              a.user-btn-action(data-user="{{ ../_id }}")= title
+  +tabular table=table class='table index-table'
