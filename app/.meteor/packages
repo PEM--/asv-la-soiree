@@ -55,15 +55,14 @@ gadicohen:robots-txt
 
 # CMS
 aldeed:autoform
+zimme:active-route
 pierreeric:orion-lang-fr
 orionjs:core
-orionjs:config
 orionjs:froala
 #orionjs:quill
 orionjs:filesystem
 orionjs:file-attribute
 orionjs:image-attribute
-orionjs:relationships
 orionjs:admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill

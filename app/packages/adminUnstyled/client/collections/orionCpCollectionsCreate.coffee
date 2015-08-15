@@ -1,5 +1,5 @@
 Template.orionCpCollectionsCreate.onCreated ->
-  orionLog.info 'orionCpCollectionsCreate created'
+  orion.log.info 'orionCpCollectionsCreate created'
 
 Template.orionCpCollectionsCreate.events
   'click .create-btn': ->

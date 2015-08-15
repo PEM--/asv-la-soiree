@@ -1,5 +1,5 @@
 Template.orionCpCollectionsUpdate.onCreated ->
-  orionLog.info 'orionCpCollectionsUpdate created'
+  orion.log.info 'orionCpCollectionsUpdate created'
 
 Template.orionCpCollectionsUpdate.events
   'click .save-btn': ->

@@ -4,5 +4,12 @@ EasySecurity.config
   #methods:
   #  createMethod: type: 'rateLimit', ms: 1000 * 10
   #  commentMethod: type: 'throttle', ms: 500
-  ignoredMethods: ['clientToken', 'cardPayment']
+  ignoredMethods: [
+    'clientToken'
+    'cardPayment'
+    '/cfs.images.filerecord/update'
+    '/cfs.images.filerecord/remove'
+    '/orionFiles/insert'
+    '/orionFiles/remove'
+  ]
   maxQueueLength: 200

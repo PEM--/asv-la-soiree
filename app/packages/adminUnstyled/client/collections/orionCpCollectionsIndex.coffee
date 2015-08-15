@@ -1,5 +1,5 @@
 Template.orionCpCollectionsIndex.onCreated ->
-  orionLog.info 'orionCpCollectionsIndex created'
+  orion.log.info 'orionCpCollectionsIndex created'
 
 Template.orionCpCollectionsIndex.events
   'click tr': (event) ->

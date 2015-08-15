@@ -1,7 +1,7 @@
 Package.describe({
   name: 'orionjs:admin-unstyled',
   summary: 'A simple theme for orion',
-  version: '1.3.0',
+  version: '1.4.0',
   git: 'https://github.com/orionjs/orion'
 });
 
@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'meteor-platform',
     'coffeescript',
     'mquandalle:jade@0.4.3',
-    'orionjs:core@1.3.0',
+    'orionjs:core@1.4.0',
     'iron:layout@1.0.8',
     'aldeed:autoform@5.4.0',
     'aldeed:tabular@1.2.0',

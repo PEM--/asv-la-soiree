@@ -1,2 +1,2 @@
 Template.orionCpCollectionsDelete.onCreated ->
-  orionLog.info 'orionCpCollectionsDelete created'
+  orion.log.info 'orionCpCollectionsDelete created'

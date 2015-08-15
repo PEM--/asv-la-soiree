@@ -1,6 +1,3 @@
-#@orionLog = new Logger 'orion'
-@orionLog = console
-
 # Global admin option
 for option in ['homePath', 'siteName']
   Options.init option
@@ -26,7 +23,7 @@ for rxTpl in [
   {name: 'configUpdate', layout: 'orionCpConfigUpdate'}
   {name: 'dictionaryUpdate', layout: 'orionCpDictionaryUpdate'}
 ]
-  orionLog.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
+  orion.log.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
   ReactiveTemplates.set rxTpl.name, rxTpl.layout
 # Set the default entity templates
 for entity in [
@@ -35,11 +32,11 @@ for entity in [
   {tpl: 'collectionsDefaultUpdateTemplate', action: 'orionCpCollectionsUpdate'}
   {tpl: 'collectionsDefaultDeleteTemplate', action: 'orionCpCollectionsDelete'}
 ]
-  orionLog.info "Set entity #{entity.tpl} with template #{entity.action}"
+  orion.log.info "Set entity #{entity.tpl} with template #{entity.action}"
   Options.set entity.tpl, entity.action
 
 if Meteor.isClient
-  orionLog.info 'Use the default plain template for Autoform'
+  orion.log.info 'Use the default plain template for Autoform'
   AutoForm.setDefaultTemplate 'plain'
 
 # Reactive template on pages
@@ -49,5 +46,5 @@ if Meteor.isClient
 #   {name: 'pages.update', layout: 'orionCpPagesUpdate'}
 #   {name: 'pages.delete', layout: 'orionCpPagesDelete'}
 # ]
-#   orionLog.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
+#   orion.log.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
 #   ReactiveTemplates.set rxTpl.name, rxTpl.layout
