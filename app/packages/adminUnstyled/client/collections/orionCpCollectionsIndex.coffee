@@ -10,7 +10,7 @@ Template.orionCpCollectionsIndex.events
     if rowData
       if rowData.canShowUpdate()
         path = collection.updatePath rowData
-        Router.go path
+        RouterLayer.go path
 
 Template.orionCpCollectionsIndex.onRendered ->
   @autorun ->

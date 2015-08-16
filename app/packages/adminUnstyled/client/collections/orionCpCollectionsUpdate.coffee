@@ -6,4 +6,4 @@ Template.orionCpCollectionsUpdate.events
     $('#orionCpCollectionsUpdateForm').submit()
 
 AutoForm.addHooks 'orionCpCollectionsUpdateForm',
-  onSuccess: -> Router.go this.collection.indexPath()
+  onSuccess: -> RouterLayer.go this.collection.indexPath()

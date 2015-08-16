@@ -6,8 +6,8 @@
     .alert.alert-success
       | {{i18n 'accounts.messages.successfullyCreated'}}
     p
-      a(href="{{ pathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
-    a.user-btn-action(href="{{ pathFor 'accounts.index' }}") {{i18n 'global.back'}}
+      a(href="{{ RouterLayerPathFor 'registerWithInvitation' _id=invitationId }}") {{ urlFor 'registerWithInvitation' _id=invitationId }}
+    a.user-btn-action(href="{{ RouterLayerPathFor 'accounts.index' }}") {{i18n 'global.back'}}
     button.btn-invite-another {{i18n 'accounts.invite.inviteOther'}}
   else
     form.create
@@ -36,5 +36,5 @@
         p
           | {{i18n 'accounts.schema.password.confirm'}}
           input(type='password', name='confirm')
-      a.user-btn-action(href="{{ pathFor 'accounts.index' }}") {{i18n 'global.cancel'}}
+      a.user-btn-action(href="{{ RouterLayerPathFor 'accounts.index' }}") {{i18n 'global.cancel'}}
       button {{i18n 'global.create'}}

@@ -16,7 +16,7 @@ template(name='orionCpSidebarLink')
       if routeName
         a.collaps-link-right(data-target='#admin-links-{{identifier}}', data-toggle='collapse')
           span.caret
-        a(href='{{pathFor routeName}}')= title
+        a(href='{{RouterLayerPathFor routeName}}')= title
       else
         a(data-target='#admin-links-{{identifier}}', data-toggle='collapse')= title
           span.caret
@@ -26,5 +26,5 @@ template(name='orionCpSidebarLink')
           +orionCpSidebarLink
   else
     li(class='{{isActiveRoute regex=activeRouteRegex}}')
-      a(href='{{pathFor routeName}}')= title
+      a(href='{{RouterLayerPathFor routeName}}')= title
         

@@ -14,5 +14,5 @@
         each roles
           span.role(data-attr=this)= this
   a.user-btn-action.logout {{ i18n 'global.logout' }}
-  a.user-btn-action(href="{{ pathFor 'myAccount.profile' }}") {{ i18n 'accounts.updateProfile.title' }}
-  a.user-btn-action(href="{{ pathFor 'myAccount.password' }}") {{ i18n 'accounts.changePassword.title' }}
+  a.user-btn-action(href="{{ RouterLayerPathFor 'myAccount.profile' }}") {{ i18n 'accounts.updateProfile.title' }}
+  a.user-btn-action(href="{{ RouterLayerPathFor 'myAccount.password' }}") {{ i18n 'accounts.changePassword.title' }}

@@ -23,7 +23,7 @@ for rxTpl in [
   {name: 'configUpdate', layout: 'orionCpConfigUpdate'}
   {name: 'dictionaryUpdate', layout: 'orionCpDictionaryUpdate'}
 ]
-  orion.log.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
+  orion.log.info "Registering tpl #{rxTpl.name} with layout #{rxTpl.layout}"
   ReactiveTemplates.set rxTpl.name, rxTpl.layout
 # Set the default entity templates
 for entity in [
@@ -46,5 +46,5 @@ if Meteor.isClient
 #   {name: 'pages.update', layout: 'orionCpPagesUpdate'}
 #   {name: 'pages.delete', layout: 'orionCpPagesDelete'}
 # ]
-#   orion.log.info "Registering template #{rxTpl.name} with layout #{rxTpl.layout}"
+#   orion.log.info "Registering tpl #{rxTpl.name} with layout #{rxTpl.layout}"
 #   ReactiveTemplates.set rxTpl.name, rxTpl.layout

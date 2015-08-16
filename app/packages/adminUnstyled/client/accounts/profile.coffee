@@ -20,4 +20,4 @@ Template.orionCpRegisterWithInvitation.onCreated ->
   orion.log.info 'orionCpRegisterWithInvitation created'
 
 AutoForm.addHooks 'updateMyProfileForm',
-  onSuccess: -> Router.go 'myAccount.index'
+  onSuccess: -> RouterLayer.go 'myAccount.index'

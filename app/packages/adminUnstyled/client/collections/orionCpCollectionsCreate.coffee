@@ -6,4 +6,4 @@ Template.orionCpCollectionsCreate.events
     $('#orionCpCollectionsCreateForm').submit()
 
 AutoForm.addHooks 'orionCpCollectionsCreateForm',
-  onSuccess: -> Router.go @collection.indexPath()
+  onSuccess: -> RouterLayer.go @collection.indexPath()

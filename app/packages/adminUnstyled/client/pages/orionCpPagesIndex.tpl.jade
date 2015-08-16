@@ -1,6 +1,6 @@
 // orionCpPagesIndex
 +Layout template='orionCpTitle'
   | {{ i18n 'pages.index.title' }}
-  a(href="{{ pathFor 'pages.create' }}"): i.fa.fa-plus
+  a(href="{{ RouterLayerPathFor 'pages.create' }}"): i.fa.fa-plus
 +Layout template='orionCpContentContainer'
   +tabular table=tabularTable class='table index-table'

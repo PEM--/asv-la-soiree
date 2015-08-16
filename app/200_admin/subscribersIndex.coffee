@@ -21,7 +21,7 @@ if Meteor.isClient
       rowData = dataTable.row(e.currentTarget).data()
       if rowData?.canShowUpdate()
         path = collection.updatePath rowData
-        Router.go path
+        RouterLayer.go path
     'click button.import-csv': (e, t) ->
       # Prevent further actions
       csvButton = t.$ 'button.import-csv'

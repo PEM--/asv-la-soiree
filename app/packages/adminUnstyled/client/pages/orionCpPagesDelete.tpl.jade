@@ -3,5 +3,5 @@
   | {{ i18n 'pages.delete.title' }}
 +Layout template='orionCpContentContainer'
   p {{ i18n 'pages.delete.confirmQuestion' }}
-  a.cancel-delete(href="{{ pathFor 'pages.update' }}") {{ i18n 'global.cancel' }}
+  a.cancel-delete(href="{{ RouterLayerPathFor 'pages.update' }}") {{ i18n 'global.cancel' }}
   a.confirm-delete {{ i18n 'global.confirm'}}
