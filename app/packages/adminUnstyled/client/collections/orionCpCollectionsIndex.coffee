@@ -14,7 +14,7 @@ Template.orionCpCollectionsIndex.events
 
 Template.orionCpCollectionsIndex.onRendered ->
   @autorun ->
-    Template.currentData()
+    RouterLayer.isActiveRoute ''
     Session.set 'orionCpCollectionsIndex_showTable', false
     Meteor.defer -> Session.set 'orionCpCollectionsIndex_showTable', true
 

@@ -6,13 +6,14 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('1.0');
 
   api.use([
     'meteor-platform',
     'coffeescript',
     'mquandalle:jade@0.4.3',
     'orionjs:core@1.4.0',
+    'orionjs:logging@1.4.1',
     'iron:layout@1.0.8',
     'aldeed:autoform@5.4.0',
     'aldeed:tabular@1.2.0',
@@ -21,6 +22,7 @@ Package.onUse(function(api) {
 
   api.imply([
     'orionjs:core',
+    'orionjs:logging',
     'iron:layout',
     'aldeed:autoform'
   ]);

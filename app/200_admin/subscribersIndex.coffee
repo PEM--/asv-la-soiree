@@ -8,7 +8,7 @@ if Meteor.isClient
 
   Template.subscribersIndex.onRendered ->
     @autorun =>
-      Template.currentData()
+      RouterLayer.isActiveRoute ''
       @subscribersIndex_showTable.set false
       Meteor.defer =>
         @subscribersIndex_showTable.set true
