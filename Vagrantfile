@@ -1,16 +1,20 @@
+# hosts = {
+#   "dev" => "192.168.33.10",
+#   "preprod" => "192.168.33.11"
+# }
+
 hosts = {
-  "dev" => "192.168.33.10",
-  "preprod" => "192.168.33.11"
+  "dev" => "192.168.33.10"
 }
 
 $provisionningScript = <<SCRIPT
 sudo apt-get update
-sudo apt-get upgrade -y
+sudo apt-get -y upgrade
 sudo apt-get install -y docker.io
 SCRIPT
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "boxcutter/ubuntu1504-docker"
+  config.vm.box = "ubuntu/vivid64"
   config.ssh.insert_key = false
   hosts.each do |name, ip|
     config.vm.define name do |vm|

@@ -4,9 +4,9 @@ Template.orionCpCollectionsIndex.onCreated ->
 Template.orionCpCollectionsIndex.events
   'click tr': (event) ->
     return unless $(event.target).is('td')
-    collection = Template.currentData().collection
     dataTable = $(event.target).closest('table').DataTable()
     rowData = dataTable.row(event.currentTarget).data()
+    collection = rowData._collection()
     if rowData
       if rowData.canShowUpdate()
         path = collection.updatePath rowData
