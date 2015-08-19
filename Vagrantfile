@@ -3,6 +3,12 @@ hosts = {
   "preprod" => "192.168.33.11"
 }
 
+$provisionningScript = <<SCRIPT
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -y docker.io
+SCRIPT
+
 Vagrant.configure(2) do |config|
   config.vm.box = "boxcutter/ubuntu1504-docker"
   config.ssh.insert_key = false
@@ -13,6 +19,7 @@ Vagrant.configure(2) do |config|
       vm.vm.provider "virtualbox" do |v|
         v.name = name
       end
+      vm.vm.provision "shell", inline: $provisionningScript
     end
   end
 end
