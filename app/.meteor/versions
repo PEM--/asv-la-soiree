@@ -75,7 +75,7 @@ localstorage@1.0.3
 logging@1.0.7
 manuel:isdev@1.0.0
 manuel:reactivearray@1.0.5
-manuel:viewmodel@1.9.2
+manuel:viewmodel@1.9.3
 matb33:collection-hooks@0.7.14
 matteodem:easy-security@0.1.4
 meteor@1.1.6
@@ -159,4 +159,4 @@ velocityjs:velocityjs@1.2.1
 webapp@1.2.0
 webapp-hashing@1.0.3
 wylio:mandrill@1.0.1
-zimme:active-route@2.3.0
+zimme:active-route@2.3.1
