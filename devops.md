@@ -50,13 +50,11 @@ docker-machine create -d generic \
   --generic-ip-address 192.168.33.10 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
-  --generic-ssh-port 22 \
   dev
 docker-machine create -d generic \
   --generic-ip-address 192.168.33.11 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
-  --generic-ssh-port 22 \
   preprod
 ```
 
