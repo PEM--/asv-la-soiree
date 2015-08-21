@@ -9,20 +9,45 @@ hosts = {
 
 
 # $provisioningScript = <<SCRIPT
-# sudo apt-get update
-# sudo apt-get -y upgrade
-# sudo apt-get install -y curl
 # curl -sSL https://get.docker.com/ | sh
+# sudo apt-get -y upgrade
 # sudo usermod -aG docker vagrant
+#
+#
+# # Server certificate authority
+# openssl genrsa -aes256 -passout file:passphrase.txt -out ca-key.pem 4096
+# openssl req -passin file:passphrase.txt -subj '/C=FR/ST=Paris/L=Paris/CN=dev.example.com'  -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
+# openssl genrsa -out server-key.pem 4096
+# # Server certificate
+# openssl req -subj "/CN=dev.example.com" -sha256 -new -key server-key.pem -out server.csr
+# echo subjectAltName = IP:192.168.33.10,IP:127.0.0.1 > extfile.cnf
+# openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
+# # Client certificate
+# openssl genrsa -out key.pem 4096
+# openssl req -subj '/CN=client' -new -key key.pem -out client.csr
+# echo extendedKeyUsage = clientAuth > extfile.cnf
+# openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.cnf
+# # Clean up CSR
+# rm -v client.csr server.csr
+# # Secure file access
+# chmod -v 0400 ca-key.pem key.pem server-key.pem
+# chmod -v 0444 ca.pem server-cert.pem cert.pem
+#
+# echo 'DOCKER_OPTS="--tlsverify --tlscacert=/root/ca.pem --tlscert=/root/server-cert.pem --tlskey=/root/server-key.pem -H=0.0.0.0:2376"' | sudo tee /etc/default/docker
+#
+#
+#
+# echo 'DOCKER_OPTS="-r=true --api-enable-cors=true -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock ${DOCKER_OPTS}"' | sudo tee /etc/default/docker
 # sudo apt-get autoremove -y
+# # Enable Docker on server reboot
 # sudo systemctl enable docker
-# sudo service docker start
+# # Start Docker
+# sudo systemctl start docker
 # SCRIPT
 
 $provisioningScript = <<SCRIPT
 echo Provisioning done
 SCRIPT
-
 
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/vivid64"

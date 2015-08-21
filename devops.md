@@ -63,3 +63,6 @@ docker-machine create -d generic \
 * [Homebrew](http://brew.sh/)
 * [Caskroom](https://github.com/caskroom/homebrew-cask)
 * [Docker documentation](https://docs.docker.com/)
+* [Secure Docker](https://docs.docker.com/articles/https/)
+* [OpenSSL Howto](https://www.madboa.com/geek/openssl/)
+* [Control and configure Docker with Systemd](https://docs.docker.com/articles/systemd/)
