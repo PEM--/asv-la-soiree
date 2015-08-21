@@ -1,4 +1,4 @@
-## Devops on OSX
+## Devops on OSX with Docker set for Ubuntu 15.04
 ### Installing the tooling
 If you have never done it before install Homebrew and its plugin Caskroom.
 ```sh
@@ -26,8 +26,19 @@ hosts = {
   "preprod" => "192.168.33.11"
 }
 
+$provisioningScript = <<SCRIPT
+# Overriding bad Systemd default in Docker startup script
+sudo mkdir -p /etc/systemd/system/docker.service.d
+echo -e '[Service]\n# workaround to include default options\nEnvironmentFile=-/etc/default/docker\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// $DOCKER_OPTS' | sudo tee /etc/systemd/system/docker.service.d/ubuntu.conf
+echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic"'  | sudo tee /etc/default/docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+# Enable Docker on server reboot
+sudo systemctl enable docker
+SCRIPT
+
 Vagrant.configure(2) do |config|
-  config.vm.box = "boxcutter/ubuntu1504-docker"
+  config.vm.box = "ubuntu/vivid64"
   config.ssh.insert_key = false
   hosts.each do |name, ip|
     config.vm.define name do |vm|
@@ -36,6 +47,7 @@ Vagrant.configure(2) do |config|
       vm.vm.provider "virtualbox" do |v|
         v.name = name
       end
+      vm.vm.provision "shell", inline: $provisioningScript
     end
   end
 end
@@ -43,19 +55,33 @@ end
 
 Now, we are starting our virtual server and declare it as a Docker Machine:
 ```sh
-vagrant up
-vagrant provision
-vagrant reload
+vagrant up --no-provision
+```
+
+Open 3 terminal sessions. In the first session, launch the following commands:
+```sh
 docker-machine -D create -d generic \
   --generic-ip-address 192.168.33.10 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   dev
+```
+
+In the second session, launch the following commands:
+```sh
 docker-machine -D create -d generic \
   --generic-ip-address 192.168.33.11 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   preprod
+```
+
+Now, in the last session, wait for the 2 previous session to be blocked
+on the following repeated message
+`Daemon not responding yet: dial tcp 192.168.33.10:2376: connection refused`
+and issue the following command:
+```sh
+vagrant provision preprod
 ```
 
 
