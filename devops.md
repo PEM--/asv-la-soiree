@@ -46,12 +46,12 @@ Now, we are starting our virtual server and declare it as a Docker Machine:
 vagrant up
 vagrant provision
 vagrant reload
-docker-machine create -d generic \
+docker-machine -D create -d generic \
   --generic-ip-address 192.168.33.10 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   dev
-docker-machine create -d generic \
+docker-machine -D create -d generic \
   --generic-ip-address 192.168.33.11 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
@@ -66,3 +66,4 @@ docker-machine create -d generic \
 * [Secure Docker](https://docs.docker.com/articles/https/)
 * [OpenSSL Howto](https://www.madboa.com/geek/openssl/)
 * [Control and configure Docker with Systemd](https://docs.docker.com/articles/systemd/)
+* [How to configure Docker on Ubuntu 15.04 (workaround)](http://nknu.net/how-to-configure-docker-on-ubuntu-15-04/)
