@@ -17,7 +17,6 @@ brew install docker docker-machine docker-compose
 ```
 
 ### Create your Docker machines
-#### Initializing the VM with Vagrant
 Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
 ```
@@ -83,6 +82,20 @@ and issue the following command:
 ```sh
 vagrant provision preprod
 ```
+
+### Creating your local registry
+In your first terminal session, activate your development Docker Machine:
+```sh
+eval "$(docker-machine env dev)"
+```
+> If you are using [Fish](http://fishshell.com/) like me, use the following command:
+  `eval (docker-machine env dev)`.
+
+Now, we will use the development Docker Machine as our local registry:
+```sh
+docker run -d -p 5000:5000 --name registry registry:2
+```
+
 
 
 ### Links
