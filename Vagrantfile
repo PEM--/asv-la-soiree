@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
       vm.vm.provider "virtualbox" do |v|
         v.name = name
       end
-      vm.vm.provision "shell", path: "provisioningScript.sh"
+      vm.vm.provision "shell", path: "provisioning.sh"
     end
   end
 end

@@ -36,7 +36,7 @@ Vagrant.configure(2) do |config|
       vm.vm.provider "virtualbox" do |v|
         v.name = name
       end
-      vm.vm.provision "shell", path: "provisioningScript.sh"
+      vm.vm.provision "shell", path: "provisioning.sh"
     end
   end
 end
@@ -48,7 +48,7 @@ end
   your container gains public access within your LAN. Note that for both of these
   network configurations, I've used static IPs.
 
-Before creating our virtual machine, we need to setup a `provisioningScript.sh`:
+Before creating our virtual machine, we need to setup a `provisioning.sh`:
 ```sh
 #!/bin/bash
 # Overriding bad Systemd default in Docker startup script
@@ -91,10 +91,10 @@ on the following repeated message
 `Daemon not responding yet: dial tcp 192.168.33.10:2376: connection refused`
 and issue the following command:
 ```sh
-vagrant provision preprod
+vagrant provision
 ```
 
-> *What's going on here?*: Actually, the current state of Docker for Ubuntu 15.04
+> **What's going on here?**: Actually, the current state of Docker for Ubuntu 15.04
   doesn't support `DOCKER_OPTS`. This is due to the transition in Ubuntu from
   **upstart** to **Systemd**. Plus, when we are creating our Docker Machine in
   our local OSX, Docker Machine re-install Docker on the host. Thus, we end up
@@ -103,11 +103,52 @@ vagrant provision preprod
   Basically, the vagrant provisioning script patches both vagrant virtual servers.
   You can reuse the content of this script on your production server when you
   create the associated Docker Machine. For this, you can use the following command:
-  `ssh root@example.com "bash -s" < ./provisioningScript.sh`
+  `ssh root@example.com "bash -s" < ./provisioning.sh`
+
+In this last section, we will finish our configuration of our development and
+pre-production VM by installing Docker Machine and securing their open ports
+with simple firewall rules. The script that we are using is named `postProvisioning.sh`.
+```sh
+#!/bin/bash
+# Install Docker Machine
+curl -L https://github.com/docker/machine/releases/download/v0.4.0/docker-machine_linux-amd64 | sudo tee /usr/local/bin/docker-machine > /dev/null
+sudo chmod u+x /usr/local/bin/docker-machine
+
+# Install Firewall
+sudo apt-get install -y ufw
+# Allow SSH
+sudo ufw allow ssh
+# Allow HTTP and WS
+sudo ufw allow 80/tcp
+# Allow HTTPS and WSS
+sudo ufw allow 443/tcp
+# Allow Docker daemon port and forwarding policy
+sudo ufw allow 2376/tcp
+sudo sed -i -e "s/^DEFAULT_FORWARD_POLICY=\"DROP\"/DEFAULT_FORWARD_POLICY=\"ACCEPT\"/" /etc/default/ufw
+# Enable and reload
+yes | sudo ufw enable
+sudo ufw reload
+```
+
+We execute this script on both VM using simple SSH commands like so:
+```sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.33.10 "bash -s" < ./postProvisioning.sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.33.11 "bash -s" < ./postProvisioning.sh
+```
 
 ### Reference your production host as a Docker Machine
-@TODO
+In this example, we are using a VPS from OVH with a pre-installed Ubuntu 15.05
+with Docker. These VPS starts at 2.99€ (around $3.5) per month and comes with
+interesting features such as Anti-DDos, real time monitoring, ...
 
+Preinstalled VPS comes with an OpenSSH access. Therefore, we will be using
+the **generic-ssh** driver for our Docker Machine just like we did for the
+Vagrant VM for development and pre-production.
+
+
+`ssh root@example.com "bash -s" < ./provisioning.sh`
+
+@TODO
 
 ### Creating your local registry
 In your first terminal session, activate your development Docker Machine:
@@ -152,6 +193,10 @@ docker run -d -p 5000:5000 --name registry registry:2
 ### Secure NGinx
 @TODO
 
+- Case of the development version (self signed certificate)
+- Case of a bought certificate + verification text
+- Proxy HTTP for one file, rewrite for HTTP to HTTPS
+
 ### Scale Mongo
 @TODO
 
@@ -164,12 +209,20 @@ docker run -d -p 5000:5000 --name registry registry:2
 ### Update your Docker hosts
 @TODO
 
+### Docker clean-up
+@TODO
+
+http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/23540202#23540202
+
 
 ### Links
 * [Homebrew](http://brew.sh/)
 * [Caskroom](https://github.com/caskroom/homebrew-cask)
 * [Docker documentation](https://docs.docker.com/)
+* [Docker Installation on Ubuntu](https://docs.docker.com/installation/ubuntulinux)
 * [Secure Docker](https://docs.docker.com/articles/https/)
 * [OpenSSL Howto](https://www.madboa.com/geek/openssl/)
 * [Control and configure Docker with Systemd](https://docs.docker.com/articles/systemd/)
 * [How to configure Docker on Ubuntu 15.04 (workaround)](http://nknu.net/how-to-configure-docker-on-ubuntu-15-04/)
+* [Ulexus/Meteor: A Docker container for Meteor](https://hub.docker.com/r/ulexus/meteor/)
+* [VPS SSD at OVH](https://www.ovh.com/fr/vps/vps-ssd.xml).
