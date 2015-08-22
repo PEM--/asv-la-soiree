@@ -16,7 +16,7 @@ Now install Docker and its tools:
 brew install docker docker-machine docker-compose
 ```
 
-### Create your Docker machines
+### Create your virtual machines as Docker Machine
 Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
 ```ruby
@@ -105,6 +105,10 @@ vagrant provision preprod
   create the associated Docker Machine. For this, you can use the following command:
   `ssh root@example.com "bash -s" < ./provisioningScript.sh`
 
+### Reference your production host as a Docker Machine
+@TODO
+
+
 ### Creating your local registry
 In your first terminal session, activate your development Docker Machine:
 ```sh
@@ -118,6 +122,47 @@ Now, we will use the development Docker Machine as our local registry:
 docker run -d -p 5000:5000 --name registry registry:2
 ```
 
+### Building Mongo
+@TODO
+
+- Oplog
+- Authentication
+
+### Building Meteor
+@TODO
+
+- Settings without importing them
+- No demeteorizer
+
+### Building NGinx
+@TODO
+
+- Cache Meteor static files
+
+### Launching or refreshing your application
+@TODO
+
+- docker-compose
+- systemd startup script: autostart your container
+
+
+### Tagging version of your containers
+@TODO
+
+### Secure NGinx
+@TODO
+
+### Scale Mongo
+@TODO
+
+### Scale Meteor
+@TODO
+
+### Backup Mongo data
+@TODO
+
+### Update your Docker hosts
+@TODO
 
 
 ### Links
