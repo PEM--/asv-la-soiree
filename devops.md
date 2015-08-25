@@ -59,13 +59,14 @@ Before creating our virtual machine, we need to setup a `provisioning.sh`:
 # Overriding bad Systemd default in Docker startup script
 sudo mkdir -p /etc/systemd/system/docker.service.d
 echo -e '[Service]\n# workaround to include default options\nEnvironmentFile=-/etc/default/docker\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// $DOCKER_OPTS' | sudo tee /etc/systemd/system/docker.service.d/ubuntu.conf
-echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic"'  | sudo tee /etc/default/docker
+echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4 --iptables=false"'  | sudo tee /etc/default/docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 # Enable Docker on server reboot
 sudo systemctl enable docker
-# Remove unused packages
+# Remove and clean unused packages
 sudo apt-get autoremove -y
+sudo apt-get autoclean -y
 ```
 
 Now, we are starting our virtual server and declare it as a Docker Machine:
@@ -216,7 +217,7 @@ ufw reload
 
 
 @TODO insecure registry sur la pre-prod
-@TODO login
+@TODO login au docker hub, login à la registry locale
 
 ### Building Mongo
 @TODO
@@ -289,6 +290,7 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 * [Docker documentation](https://docs.docker.com/)
 * [Docker Installation on Ubuntu](https://docs.docker.com/installation/ubuntulinux)
 * [Secure Docker](https://docs.docker.com/articles/https/)
+* [The dangers of UFW + Docker](http://blog.viktorpetersson.com/post/101707677489/the-dangers-of-ufw-docker)
 * [OpenSSL Howto](https://www.madboa.com/geek/openssl/)
 * [Control and configure Docker with Systemd](https://docs.docker.com/articles/systemd/)
 * [How to configure Docker on Ubuntu 15.04 (workaround)](http://nknu.net/how-to-configure-docker-on-ubuntu-15-04/)
