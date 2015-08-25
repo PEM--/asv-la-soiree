@@ -192,7 +192,7 @@ a firewall on the host and removing the old packages:
 ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
 ```
 
-### Creating your local registry
+### Creating your own registry
 In your first terminal session, activate your development Docker Machine:
 ```sh
 eval "$(docker-machine env dev)"
@@ -204,6 +204,18 @@ Now, we will use the development Docker Machine as our local registry:
 ```sh
 docker run -d -p 5000:5000 --name registry registry:2
 ```
+
+For making it visible to our preproduction VM, we need to update our
+default firewall rules:
+```sh
+ssh root@192.168.1.50
+ufw allow 5000/tcp
+ufw reload
+```
+
+@TODO open port 5000
+
+@TODO insecure registry sur la pre-prod
 
 ### Building Mongo
 @TODO
