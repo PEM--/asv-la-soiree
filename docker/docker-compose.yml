@@ -1,0 +1,18 @@
+db:
+  build: mongo
+  ports:
+    - "27017:27017"
+server:
+  build: meteor
+  environment:
+    MONGO_URL: "mongodb://docker_db_1:27017"
+  ports:
+    - "3000:3000"
+  links:
+    - db
+front:
+  build: nginx
+  ports:
+    - "80:80"
+  links:
+    - server
