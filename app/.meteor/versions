@@ -75,13 +75,13 @@ localstorage@1.0.3
 logging@1.0.7
 manuel:isdev@1.0.0
 manuel:reactivearray@1.0.5
-manuel:viewmodel@1.9.4
+manuel:viewmodel@1.9.5
 matb33:collection-hooks@0.7.14
 matteodem:easy-security@0.1.4
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:async@1.0.0
-meteorhacks:fast-render@2.8.1
+meteorhacks:fast-render@2.9.0
 meteorhacks:inject-data@1.4.0
 meteorhacks:inject-initial@1.0.2
 meteorhacks:kadira@2.23.0
@@ -119,7 +119,7 @@ orionjs:dictionary@1.4.0
 orionjs:file-attribute@1.4.0
 orionjs:filesystem@1.4.0
 orionjs:froala@1.4.0
-orionjs:image-attribute@1.4.1
+orionjs:image-attribute@1.4.2
 orionjs:iron-router-progress@1.0.3
 orionjs:lang-en@1.4.0
 orionjs:logging@1.4.1
@@ -131,7 +131,7 @@ percolate:momentum-iron-router@0.7.0
 percolate:velocityjs@1.1.0
 pierreeric:creativepure@0.1.17
 pierreeric:orion-lang-fr@1.3.0
-pierreeric:useraccounts-creativepure@0.2.0
+pierreeric:useraccounts-creativepure@1.12.3
 raix:eventemitter@0.1.3
 raix:handlebar-helpers@0.2.4
 random@1.0.3
@@ -144,7 +144,7 @@ rzymek:moment-locale-fr@2.9.0
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3
-softwarerero:accounts-t9n@1.1.3
+softwarerero:accounts-t9n@1.1.4
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3

@@ -16,6 +16,11 @@ Now install Docker and its tools:
 brew install docker docker-machine docker-compose
 ```
 
+For easing the access to VM and servers, we are using an SSH key installer:
+```sh
+brew install ssh-copy-id
+```
+
 ### Create your virtual machines as Docker Machine
 Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
@@ -99,7 +104,7 @@ vagrant provision
   **upstart** to **Systemd**. Plus, when we are creating our Docker Machine in
   our local OSX, Docker Machine re-install Docker on the host. Thus, we end up
   with a screwed installation on the host unable to speak to the outside world
-  (leading to the message `Daemon not responding yet: dial tcp 192.168.33.10:2376: connection refused`).
+  (leading to the message `Daemon not responding yet: dial tcp 192.168.33.X:2376: connection refused`).
   Basically, the vagrant provisioning script patches both vagrant virtual servers.
   You can reuse the content of this script on your production server when you
   create the associated Docker Machine. For this, you can use the following command:
@@ -143,7 +148,49 @@ interesting features such as Anti-DDos, real time monitoring, ...
 
 Preinstalled VPS comes with an OpenSSH access. Therefore, we will be using
 the **generic-ssh** driver for our Docker Machine just like we did for the
-Vagrant VM for development and pre-production.
+Vagrant VM for development and pre-production. And like before, we are using
+2 terminal sessions to overcome the Docker installation issue on Ubuntu 15.04:
+
+
+
+
+@TODO
+
+http://pem-musing.blogspot.fr/2014/05/easy-sending-your-public-ssh-key-to.html
+<pre class="prettyprint">brew install ssh-copy-id
+</pre>
+<br />
+And sending your public ssh keys is done like so on a local server at <code>192.168.1.32</code>:
+<br />
+<pre class="prettyprint">ssh-copy-id root@192.168.1.32
+</pre>
+<b>Note</b>: If you have never generated your SSH key pair, simply issue the following command:
+<br />
+<pre class="prettyprint">ssh-keygen -t rsa -C <your_email_address>
+</your_email_address></pre>
+
+
+
+
+
+
+
+
+
+On the first terminal session, we launch:
+```sh
+docker-machine -D create -d generic \
+  --generic-ip-address X.X.X.X \
+  --generic-ssh-user root \
+  production
+```
+
+And on the second terminal session, when the message
+`Daemon not responding yet: dial tcp X.X.X.X:2376: connection refused` appears
+on the first session, we launch:
+```sh
+ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
+```
 
 
 `ssh root@example.com "bash -s" < ./provisioning.sh`
@@ -190,6 +237,10 @@ docker run -d -p 5000:5000 --name registry registry:2
 ### Tagging version of your containers
 @TODO
 
+### Secure the hosts and the container
+@TODO
+http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
+
 ### Secure NGinx
 @TODO
 
@@ -218,6 +269,7 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 ### Links
 * [Homebrew](http://brew.sh/)
 * [Caskroom](https://github.com/caskroom/homebrew-cask)
+* [Easy sending your public SSH key to your remote servers](http://pem-musing.blogspot.fr/2014/05/easy-sending-your-public-ssh-key-to.html)
 * [Docker documentation](https://docs.docker.com/)
 * [Docker Installation on Ubuntu](https://docs.docker.com/installation/ubuntulinux)
 * [Secure Docker](https://docs.docker.com/articles/https/)
@@ -225,4 +277,4 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 * [Control and configure Docker with Systemd](https://docs.docker.com/articles/systemd/)
 * [How to configure Docker on Ubuntu 15.04 (workaround)](http://nknu.net/how-to-configure-docker-on-ubuntu-15-04/)
 * [Ulexus/Meteor: A Docker container for Meteor](https://hub.docker.com/r/ulexus/meteor/)
-* [VPS SSD at OVH](https://www.ovh.com/fr/vps/vps-ssd.xml).
+* [VPS SSD at OVH](https://www.ovh.com/fr/vps/vps-ssd.xml)

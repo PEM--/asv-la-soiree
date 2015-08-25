@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'iron:layout@1.0.8',
     'aldeed:autoform@5.4.0',
     'aldeed:tabular@1.2.0',
-    'pierreeric:useraccounts-creativepure@0.1.0'
+    'pierreeric:useraccounts-creativepure@1.12.3'
   ]);
 
   api.imply([

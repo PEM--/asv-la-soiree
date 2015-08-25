@@ -1,6 +1,6 @@
 Package.describe({
   summary: 'Accounts Templates unstyled.',
-  version: '0.2.0',
+  version: '1.12.3',
   name: 'pierreeric:useraccounts-creativepure',
   git: 'https://github.com/meteor-useraccounts/unstyled.git',
 });
@@ -15,12 +15,16 @@ Package.on_use(function(api, where) {
   ], 'client');
 
   api.use([
-    'useraccounts:core@1.11.1'
+    'useraccounts:core@1.12.3'
   ], ['client', 'server']);
 
   api.imply([
-    'useraccounts:core@1.11.1'
+    'useraccounts:core@1.12.3'
   ], ['client', 'server']);
+
+  // Requires all routing packages loads before this asking for weak dependencies.
+   api.use('useraccounts:flow-routing@1.12.1', ['client', 'server'], {weak: true});
+   api.use('useraccounts:iron-routing@1.12.1', ['client', 'server'], {weak: true});
 
   api.add_files([
     'lib/animation.coffee',

@@ -7,7 +7,7 @@ Template.atInput.events AccountsTemplates.atInputEvents
 
 # Simply 'inherites' helpers from AccountsTemplates
 Template.atTextInput.helpers AccountsTemplates.atInputHelpers
-Template.atTextInput.rendered = ->
+Template.atTextInput.onRendered ->
   Meteor.setTimeout ->
     @$ 'input'
     .each (idx, el) =>
