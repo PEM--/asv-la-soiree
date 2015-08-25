@@ -27,7 +27,7 @@ Here, we are using an Ubuntu 15.04 with Docker pre-installed.
 ```ruby
 hosts = {
   "dev" => "192.168.33.10",
-  "preprod" => "192.168.33.11"
+  "pre" => "192.168.33.11"
 }
 
 Vagrant.configure(2) do |config|
@@ -88,7 +88,7 @@ docker-machine -D create -d generic \
   --generic-ip-address 192.168.33.11 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
-  preprod
+  pre
 ```
 
 Now, in the last session, wait for the 2 previous session to be blocked
@@ -172,7 +172,7 @@ And sending your public ssh keys is done like so on a local server at <code>192.
 
 
 
-
+@TODO Config de Grub pour cgroup
 
 
 
