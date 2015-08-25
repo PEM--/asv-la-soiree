@@ -162,34 +162,16 @@ the **generic-ssh** driver for our Docker Machine just like we did for the
 Vagrant VM for development and pre-production. And like before, we are using
 2 terminal sessions to overcome the Docker installation issue on Ubuntu 15.04.
 
-In the first terminal session, we will get our
+In the first terminal session, we setup a root SSH access without password like so:
+```
+ssh-copy-id root@X.X.X.X
+# Now, you should check if your key is properly copied
+ssh root@X.X.X.X "cat /root/.ssh/authorized_keys"
+cat ~/.ssh/id_rsa.pub
+# These 2 last commands should return the exact same key
+```
 
-
-
-@TODO
-
-http://pem-musing.blogspot.fr/2014/05/easy-sending-your-public-ssh-key-to.html
-<pre class="prettyprint">brew install ssh-copy-id
-</pre>
-<br />
-And sending your public ssh keys is done like so on a local server at <code>192.168.1.32</code>:
-<br />
-<pre class="prettyprint">ssh-copy-id root@192.168.1.32
-</pre>
-<b>Note</b>: If you have never generated your SSH key pair, simply issue the following command:
-<br />
-<pre class="prettyprint">ssh-keygen -t rsa -C <your_email_address>
-</your_email_address></pre>
-
-
-
-
-@TODO Config de Grub pour cgroup
-
-
-
-
-On the first terminal session, we launch:
+Next and still on the same terminal session, we declare our production host :
 ```sh
 docker-machine -D create -d generic \
   --generic-ip-address X.X.X.X \
@@ -201,13 +183,14 @@ And on the second terminal session, when the message
 `Daemon not responding yet: dial tcp X.X.X.X:2376: connection refused` appears
 on the first session, we launch:
 ```sh
-ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
+ssh root@X.X.X.X "bash -s" < ./provisioning.sh
 ```
 
-
-`ssh root@example.com "bash -s" < ./provisioning.sh`
-
-@TODO
+The last remaining step consists into solidifying our security by enabling
+a firewall on the host and removing the old packages:
+```sh
+ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
+```
 
 ### Creating your local registry
 In your first terminal session, activate your development Docker Machine:
