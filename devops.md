@@ -26,8 +26,8 @@ Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
 ```ruby
 hosts = {
-  "dev" => "192.168.33.10",
-  "pre" => "192.168.33.11"
+  "dev" => "192.168.1.50",
+  "pre" => "192.168.1.51"
 }
 
 Vagrant.configure(2) do |config|
@@ -76,7 +76,7 @@ vagrant up --no-provision
 Open 3 terminal sessions. In the first session, launch the following commands:
 ```sh
 docker-machine -D create -d generic \
-  --generic-ip-address 192.168.33.10 \
+  --generic-ip-address 192.168.1.50 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   dev
@@ -85,7 +85,7 @@ docker-machine -D create -d generic \
 In the second session, launch the following commands:
 ```sh
 docker-machine -D create -d generic \
-  --generic-ip-address 192.168.33.11 \
+  --generic-ip-address 192.168.1.51 \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   pre
@@ -137,9 +137,20 @@ sudo ufw reload
 
 We execute this script on both VM using simple SSH commands like so:
 ```sh
-ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.33.10 "bash -s" < ./postProvisioning.sh
-ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.33.11 "bash -s" < ./postProvisioning.sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.50 "bash -s" < ./postProvisioning.sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.51 "bash -s" < ./postProvisioning.sh
 ```
+
+Now you can access your VM either via Docker, Vagrant and plain SSH. To finish our
+VM configuration, we are going to allow full root access to the VM without requiring
+to use password. For that, you need a public and a private SSH keys on your local
+machine. If you haven't done it before simply use the following command:
+```
+ssh-keygen -t rsa
+```
+
+Now, using Vagrant, copy the content of your ` ~/.ssh/id_rsa.pub` in each of the
+VM's `/root/.ssh/authorized_key`.
 
 ### Reference your production host as a Docker Machine
 In this example, we are using a VPS from OVH with a pre-installed Ubuntu 15.05
@@ -149,8 +160,9 @@ interesting features such as Anti-DDos, real time monitoring, ...
 Preinstalled VPS comes with an OpenSSH access. Therefore, we will be using
 the **generic-ssh** driver for our Docker Machine just like we did for the
 Vagrant VM for development and pre-production. And like before, we are using
-2 terminal sessions to overcome the Docker installation issue on Ubuntu 15.04:
+2 terminal sessions to overcome the Docker installation issue on Ubuntu 15.04.
 
+In the first terminal session, we will get our
 
 
 
@@ -182,7 +194,7 @@ On the first terminal session, we launch:
 docker-machine -D create -d generic \
   --generic-ip-address X.X.X.X \
   --generic-ssh-user root \
-  production
+  prod
 ```
 
 And on the second terminal session, when the message
@@ -221,11 +233,14 @@ docker run -d -p 5000:5000 --name registry registry:2
 
 - Settings without importing them
 - No demeteorizer
+- Spiderable
 
 ### Building NGinx
 @TODO
 
 - Cache Meteor static files
+- Stop form spamming
+- https://www.tollmanz.com/http2-nghttp2-nginx-tls/
 
 ### Launching or refreshing your application
 @TODO
@@ -247,6 +262,11 @@ http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
 - Case of the development version (self signed certificate)
 - Case of a bought certificate + verification text
 - Proxy HTTP for one file, rewrite for HTTP to HTTPS
+
+### Secure NGinx
+@TODO
+
+
 
 ### Scale Mongo
 @TODO
