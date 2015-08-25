@@ -11,6 +11,10 @@ sudo ufw allow ssh
 sudo ufw allow 80/tcp
 # Allow HTTPS and WSS
 sudo ufw allow 443/tcp
+# Deny everything else
+sudo ufw default deny incoming
+# Allow outgoing traffic (for logs, updates, ...)
+sudo ufw default allow outgoing
 # Allow Docker daemon port and forwarding policy
 sudo ufw allow 2376/tcp
 sudo sed -i -e "s/^DEFAULT_FORWARD_POLICY=\"DROP\"/DEFAULT_FORWARD_POLICY=\"ACCEPT\"/" /etc/default/ufw
