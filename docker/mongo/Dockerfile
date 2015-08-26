@@ -18,8 +18,8 @@ RUN apt-get install -y mongodb-org
 # Prepare environment for Mongo daemon: Use a Docker Volume container
 VOLUME /db
 
-# Create admin account, eportfolio DB and eportfolio user
-ENV PROJECT_NAME eportfolio
+# Create admin account, DB and user
+ENV PROJECT_NAME asv-la-soiree
 COPY mongodbInit.conf /etc/mongodb.conf
 # COPY initAccount.sh /initAccount.sh
 # RUN /initAccount.sh

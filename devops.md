@@ -42,6 +42,11 @@ For easing the access to VM and servers, we are using an SSH key installer:
 brew install ssh-copy-id
 ```
 
+For parsing and querying JSON produced by Docker, we are using `./jq`:
+```sh
+brew install jq
+```
+
 ### Create your virtual machines as Docker Machine
 Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
@@ -279,10 +284,30 @@ docker login
   operations though lighten since Docker 1.6 and Docker Registry 2.
 
 ### Building Mongo
-@TODO
+First things, we backup our current Mongo data. This is done outside of any
+Docker container as we don't want to put user's data into our Docker images:
+```sh
+# Set the host
+eval "$(docker-machine env dev)"
+# In BASH
+VOLUME=`docker inspect docker_db_1 | jq '.[0] | {Source: .Mounts[0].Source} | .Source'`
+# In Fish
+set VOLUME (docker inspect docker_db_1 | jq '.[0] | {Source: .Mounts[0].Source} | .Source')
+# Make a full copy of your host's data on your local machine
+scp -r root@192.168.1.50:$VOLUME backup
+```
 
+> Repeat this procedure on all your hosts :development, preproduction, production.
+
+
+
+@TODO
+- volume
 - Oplog
 - Authentication
+
+
+
 
 ### Building Meteor
 @TODO
@@ -302,6 +327,7 @@ docker login
 @TODO
 
 - docker-compose
+- restart sur Meteor : à cause de Stylus, Sass, ...
 - systemd startup script: autostart your container
 
 
@@ -356,3 +382,6 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 * [Ulexus/Meteor: A Docker container for Meteor](https://hub.docker.com/r/ulexus/meteor/)
 * [VPS SSD at OVH](https://www.ovh.com/fr/vps/vps-ssd.xml)
 * [Your Docker Hub account](https://docs.docker.com/docker-hub/accounts/)
+* [Creating a single instance MongoDB replica set for Meteor](https://blog.kayla.com.au/creating-a-single-instance-mongodb-replica-set-for-meteor/)
+* [jq is a lightweight and flexible command-line JSON processor](https://stedolan.github.io/jq/)
+* [How to add environment variables to nginx.conf](https://gist.github.com/xaviervia/6adea3ddba269cadb794)
