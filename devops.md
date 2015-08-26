@@ -1,4 +1,22 @@
 ## Devops on OSX with Docker set for Ubuntu 15.04
+### Introduction
+While using Meteor in development is an easy task and deploying it on Meteor's
+infrastructure is a no brainer, things may start to get messy if you need to
+deploy it, secure it and scale it on your cloud. Especially if your customer
+imposes you a specific constraint on cloud sovereignty.
+
+I hope that this tutorial will lead you on the appropriate tracks.
+
+### Versions applied in this tutorial
+
+* OSX: 10.10.5
+* Ubuntu: 15.04
+* Docker: 1.8.1
+* Docker Registry: 2
+* Docker Machine: 0.4.1
+* Docker Compose: 1.4.0
+* Meteor: 1.1.0.3
+
 ### Installing the tooling
 If you have never done it before install Homebrew and its plugin Caskroom.
 ```sh
@@ -59,6 +77,13 @@ Before creating our virtual machine, we need to setup a `provisioning.sh`:
 # Overriding bad Systemd default in Docker startup script
 sudo mkdir -p /etc/systemd/system/docker.service.d
 echo -e '[Service]\n# workaround to include default options\nEnvironmentFile=-/etc/default/docker\nExecStart=\nExecStart=/usr/bin/docker -d -H fd:// $DOCKER_OPTS' | sudo tee /etc/systemd/system/docker.service.d/ubuntu.conf
+# Set Docker daemon with the following properties:
+# * Daemon listen to external request and is exposed on port 2376, the default Docker port.
+# * Docker uses the AUFS driver for file storage.
+# * Daemon uses Docker's provided certification chain.
+# * Dameon has a generic label.
+# * Daemon is able to resolve DNS query using Google's DNS.
+# * Docker will not handle firewalling leaving this task to UFW (the default firewall manager for Ubuntu).
 echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4 --iptables=false"'  | sudo tee /etc/default/docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
@@ -171,6 +196,10 @@ ssh root@X.X.X.X "cat /root/.ssh/authorized_keys"
 cat ~/.ssh/id_rsa.pub
 # These 2 last commands should return the exact same key
 ```
+> I've been tricked by some `ssh-user-agent` issue there. Docker wasn't reporting
+  any issue even in debug mode and was just exiting with a default error code.
+  So, be careful that your public key is exactly the same on your local machine,
+  your VM and your production host.
 
 Next and still on the same terminal session, we declare our production host :
 ```sh
@@ -212,10 +241,31 @@ firewall rules:
 ssh root@192.168.1.50 ufw allow 5000
 ```
 
+Now we are editing our `/etc/default/docker` configuration file for adding this
+insecure registry in both our development and preproduction VM with this new
+flag:
+```sh
+# On 192.168.1.50 & 192.168.1.51, in /etc/default/docker, we add in DOCKER_OPTS:
+--insecure-registry 192.168.1.50:5000
+```
 
+We need to restart our Docker daemon and restart the Docker registry on the
+development VM:
+```sh
+ssh root@192.168.1.50 systemctl restart docker
+ssh root@192.168.1.51 systemctl restart docker
+eval "$(docker-machine env dev)"
+docker start registry
+```
 
-@TODO insecure registry sur la pre-prod
-@TODO login au docker hub, login à la registry locale
+Our final step in the registry management is to login your preproduction VM and
+your production server to Docker Hub using your Docker credential.
+```sh
+eval "$(docker-machine env pre)"
+docker login
+eval "$(docker-machine env prod)"
+docker login
+```
 
 ### Building Mongo
 @TODO
