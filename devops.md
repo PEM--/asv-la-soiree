@@ -267,6 +267,12 @@ eval "$(docker-machine env prod)"
 docker login
 ```
 
+> Note that our registry isn't published outside our LAN. This makes it unusable
+  for our production host. This development chain uses Docker Hub for publishing
+  your images. Exposing this private registry to the outside world would require
+  some additional configurations to tighten its security and server with a
+  publicly exposed IP.
+
 ### Building Mongo
 @TODO
 
