@@ -206,12 +206,10 @@ Now, we will use the development Docker Machine as our local registry:
 docker run -d -p 5000:5000 --name registry registry:2
 ```
 
-For making it visible to our preproduction VM, we need to update our
-default firewall rules:
+For making it visible to our preproduction VM, we need to update our default
+firewall rules:
 ```sh
-ssh root@192.168.1.50
-ufw allow 5000/tcp
-ufw reload
+ssh root@192.168.1.50 ufw allow 5000
 ```
 
 
