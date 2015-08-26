@@ -299,13 +299,117 @@ scp -r root@192.168.1.50:$VOLUME backup
 
 > Repeat this procedure on all your hosts :development, preproduction, production.
 
+Our `mongo/Dockerfile` is based on Mongo's official one. It adds to the
+picture the configuration of small ReplicaSet for making OPLOG available:
+```
+# Based on: https://github.com/docker-library/mongo/blob/d5aca073ca71a7023e0d4193bd14642c6950d454/3.0/Dockerfile
+FROM debian:wheezy
+MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
+USER root
 
-@TODO
-- volume
-- Oplog
-- Authentication
+RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
 
+# Update system
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl numactl apt-utils psmisc && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoremove -y && \
+    apt-get autoclean -y
+
+# Install the necessary packages
+# Grab gosu for easy step-down from root
+RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
+    curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
+    curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
+    gpg --verify /usr/local/bin/gosu.asc && \
+    rm /usr/local/bin/gosu.asc && \
+    chmod +x /usr/local/bin/gosu
+
+# Install MongoDB
+# gpg: key 7F0CEB10: public key "Richard Kreuter <richard@10gen.com>" imported
+RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10
+ENV MONGO_MAJOR 3.0
+ENV MONGO_VERSION 3.0.6
+RUN echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y \
+      mongodb-org=$MONGO_VERSION \
+      mongodb-org-server=$MONGO_VERSION \
+      mongodb-org-shell=$MONGO_VERSION \
+      mongodb-org-mongos=$MONGO_VERSION \
+      mongodb-org-tools=$MONGO_VERSION && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/mongodb && \
+    mv /etc/mongod.conf /etc/mongod.conf.orig && \
+    apt-get autoremove -y && \
+    apt-get autoclean -y
+
+# Prepare environment for Mongo daemon: Use a Docker Volume container
+RUN mkdir -p /db && chown -R mongodb:mongodb /db
+VOLUME /db
+
+# Step1: Initialize a first configuration allowing:
+# * Set the DB into an accessible mode for the command line
+# * Create an initial ReplicaSet for OPLOG
+# Note that the regular stop of the service doesn't work properly so we
+# circumvent this by killing the service as properly as possible.
+COPY mongod.conf /etc/mongod.conf
+RUN service mongod stop && \
+    service mongod start && \
+    mongo --eval "rs.initiate(); rs.conf();" && \
+    sleep 5 && \
+    sync && \
+    killall -9 mongod && \
+    service mongod stop
+
+# Step2: Initialize a second configuration allowing:
+# * Binding to localhost so that only linked container can access to this instance.
+RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
+EXPOSE 27017
+CMD ["mongod", "-f", "/etc/mongod.conf"]
+```
+
+We need a configuration file for this Docker image to be built `mongo/mongod.conf`:
+```
+storage:
+  dbPath: "/db"
+  engine: "wiredTiger"
+  wiredTiger:
+    engineConfig:
+      cacheSizeGB: 1
+    collectionConfig:
+      blockCompressor: snappy
+replication:
+  oplogSizeMB: 128
+  replSetName: "rs0"
+net:
+  # bindIp: 127.0.0.1
+  port: 27017
+  wireObjectCheck : false
+  unixDomainSocket:
+    enabled : true
+```
+
+We could build this image and run it, but I prefer using a Docker Comopse file.
+These file eases the process of build and run of your Docker images acting as
+a project file when multiple Docker images are required to work together for an
+application. Here's the minima `docker-compose.yml` that we will enrich in the
+next steps of this tutorial:
+```
+db:
+  build: mongo
+  ports:
+    - "27017:27017"
+```
+
+For building our Mongo Docker image:
+```sh
+docker-compose build db
+# Or even faster, for building and running
+docker-compose up -d db
+```
 
 Some useful commands while developing a container:
 ```sh
@@ -339,6 +443,11 @@ docker rmi (docker images -q)
 - Stop form spamming
 - https://www.tollmanz.com/http2-nghttp2-nginx-tls/
 
+- Case of the development version (self signed certificate)
+- Case of a bought certificate + verification text
+- Proxy HTTP for one file, rewrite for HTTP to HTTPS
+
+
 ### Launching or refreshing your application
 @TODO
 
@@ -354,34 +463,6 @@ docker rmi (docker images -q)
 @TODO
 http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
 
-### Secure NGinx
-@TODO
-
-- Case of the development version (self signed certificate)
-- Case of a bought certificate + verification text
-- Proxy HTTP for one file, rewrite for HTTP to HTTPS
-
-### Secure NGinx
-@TODO
-
-
-
-### Scale Mongo
-@TODO
-
-### Scale Meteor
-@TODO
-
-### Backup Mongo data
-@TODO
-
-### Update your Docker hosts
-@TODO
-
-### Docker clean-up
-@TODO
-
-http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/23540202#23540202
 
 
 ### Links

@@ -49,7 +49,9 @@ VOLUME /db
 # Step1: Initialize a first configuration allowing:
 # * Set the DB into an accessible mode for the command line
 # * Create an initial ReplicaSet for OPLOG
-COPY mongodStep1.conf /etc/mongod.conf
+# Note that the regular stop of the service doesn't work properly so we
+# circumvent this by killing the service as properly as possible.
+COPY mongod.conf /etc/mongod.conf
 RUN service mongod stop && \
     service mongod start && \
     mongo --eval "rs.initiate(); rs.conf();" && \
@@ -60,6 +62,6 @@ RUN service mongod stop && \
 
 # Step2: Initialize a second configuration allowing:
 # * Binding to localhost so that only linked container can access to this instance.
-COPY mongodStep2.conf /etc/mongod.conf
+RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
 EXPOSE 27017
-CMD ["mongod", "-f", "/etc/mongod.conf", "--smallfiles"]
+CMD ["mongod", "-f", "/etc/mongod.conf"]
