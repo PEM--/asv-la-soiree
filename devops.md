@@ -484,3 +484,4 @@ http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
 * [How to add environment variables to nginx.conf](https://gist.github.com/xaviervia/6adea3ddba269cadb794)
 * [MongoDB configuration options](http://docs.mongodb.org/manual/reference/configuration-options/)
 * [MongoDB sample YAML files](http://dba.stackexchange.com/questions/82591/sample-yaml-configuration-files-for-mongodb)
+* [The magic of Meteor oplog tailing](http://projectricochet.com/blog/magic-meteor-oplog-tailing#.Vd3eRlNRQVw)

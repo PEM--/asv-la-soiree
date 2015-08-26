@@ -1,11 +1,15 @@
-FROM debian:latest
+# https://github.com/joyent/docker-node/blob/787d816f90dc1bf933b6503b876bdeb752b24f96/0.10/Dockerfile
+FROM debian:wheezy
 MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
 USER root
 
 # Update system
-RUN apt-get update
-RUN apt-get autoremove
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl numactl apt-utils psmisc && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get autoremove -y && \
+    apt-get autoclean -y
 
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -14,25 +18,27 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Install base dependencies
-RUN apt-get update && apt-get install -y -q --no-install-recommends \
-        apt-utils \
-        curl \
-        apt-transport-https \
-        build-essential \
-        ca-certificates \
-        curl \
-        git \
-        libssl-dev \
-        python \
-        rsync \
-        software-properties-common \
-        wget \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y -q --no-install-recommends \
+      apt-utils \
+      curl \
+      apt-transport-https \
+      build-essential \
+      ca-certificates \
+      curl \
+      git \
+      libssl-dev \
+      python \
+      rsync \
+      software-properties-common \
+      wget && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install nvm with node, npm and nvm
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 0.10.38
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash \
+ENV MVM_VERSION 0.28.1
+ENV NODE_VERSION 0.10.40
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
     && source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \

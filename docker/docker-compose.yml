@@ -6,6 +6,7 @@ server:
   build: meteor
   environment:
     MONGO_URL: "mongodb://docker_db_1:27017"
+    MONGO_OPLOG_URL: "mongodb://docker_db_1:27017/local"
   ports:
     - "3000:3000"
   links:
