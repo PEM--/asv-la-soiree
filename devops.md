@@ -307,7 +307,23 @@ scp -r root@192.168.1.50:$VOLUME backup
 - Authentication
 
 
+Some useful commands while developing a container:
+```sh
+# Access to a container in interactive mode
+docker run -ti -P docker_db
 
+# In BASH
+# Delete all containers
+docker rm $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)
+
+# In Fish
+# Delete all containers
+docker rm (docker ps -a -q)
+# Delete all images
+docker rmi (docker images -q)
+```
 
 ### Building Meteor
 @TODO
@@ -385,3 +401,5 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 * [Creating a single instance MongoDB replica set for Meteor](https://blog.kayla.com.au/creating-a-single-instance-mongodb-replica-set-for-meteor/)
 * [jq is a lightweight and flexible command-line JSON processor](https://stedolan.github.io/jq/)
 * [How to add environment variables to nginx.conf](https://gist.github.com/xaviervia/6adea3ddba269cadb794)
+* [MongoDB configuration options](http://docs.mongodb.org/manual/reference/configuration-options/)
+* [MongoDB sample YAML files](http://dba.stackexchange.com/questions/82591/sample-yaml-configuration-files-for-mongodb)
