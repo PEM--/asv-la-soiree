@@ -8,14 +8,17 @@ imposes you a specific constraint on cloud sovereignty.
 I hope that this tutorial will lead you on the appropriate tracks.
 
 ### Versions applied in this tutorial
+As you may need to update this tutorial for your own DevOps use cases, here is
+the complete list of versions used in this tutorial:
 
-* OSX: 10.10.5
-* Ubuntu: 15.04
-* Docker: 1.8.1
-* Docker Registry: 2
-* Docker Machine: 0.4.1
-* Docker Compose: 1.4.0
-* Meteor: 1.1.0.3
+* OSX 10.10.5
+* Ubuntu 15.04
+* Docker 1.8.1
+* Docker Registry 2
+* Docker Machine 0.4.1
+* Docker Compose 1.4.0
+* VirtualBox 5.0.2
+* Meteor 1.1.0.3
 
 ### Installing the tooling
 If you have never done it before install Homebrew and its plugin Caskroom.
@@ -179,7 +182,7 @@ Now, using Vagrant, copy the content of your ` ~/.ssh/id_rsa.pub` in each of the
 VM's `/root/.ssh/authorized_key`.
 
 ### Reference your production host as a Docker Machine
-In this example, we are using a VPS from OVH with a pre-installed Ubuntu 15.05
+In this example, we are using a VPS from OVH with a pre-installed Ubuntu 15.04
 with Docker. These VPS starts at 2.99€ (around $3.5) per month and comes with
 interesting features such as Anti-DDos, real time monitoring, ...
 
@@ -271,7 +274,9 @@ docker login
   for our production host. This development chain uses Docker Hub for publishing
   your images. Exposing this private registry to the outside world would require
   some additional configurations to tighten its security and server with a
-  publicly exposed IP.
+  publicly exposed IP. While you could solely rely on Docker Hub for publishing
+  your images, pushing and pulling to the outside world of your LAN are lengthy
+  operations though lighten since Docker 1.6 and Docker Registry 2.
 
 ### Building Mongo
 @TODO
@@ -350,3 +355,4 @@ http://stackoverflow.com/questions/17236796/how-to-remove-old-docker-containers/
 * [How to configure Docker on Ubuntu 15.04 (workaround)](http://nknu.net/how-to-configure-docker-on-ubuntu-15-04/)
 * [Ulexus/Meteor: A Docker container for Meteor](https://hub.docker.com/r/ulexus/meteor/)
 * [VPS SSD at OVH](https://www.ovh.com/fr/vps/vps-ssd.xml)
+* [Your Docker Hub account](https://docs.docker.com/docker-hub/accounts/)
