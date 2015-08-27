@@ -2,13 +2,11 @@
 FROM debian:wheezy
 MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
-USER root
-
 # Update system
 RUN apt-get update && \
     apt-get upgrade -y --no-install-recommends && \
     apt-get install -y --no-install-recommends \
-      ca-certificates curl numactl apt-utils psmisc && \
+      ca-certificates curl && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
@@ -16,7 +14,6 @@ RUN apt-get update && \
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-# Install the necessary packages
 # Grab gosu for easy step-down from root
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
     curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
@@ -26,13 +23,12 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364
     chmod +x /usr/local/bin/gosu
 
 # Install MongoDB
-RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
-# gpg: key 7F0CEB10: public key "Richard Kreuter <richard@10gen.com>" imported
-RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10
 ENV MONGO_MAJOR 3.0
 ENV MONGO_VERSION 3.0.6
-RUN echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
-RUN set -x && \
+RUN groupadd -r mongodb && \
+    useradd -r -g mongodb mongodb && \
+    apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10 && \
+    echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list && \
     apt-get update && \
     apt-get install -y -q --no-install-recommends \
       mongodb-org=$MONGO_VERSION \
@@ -44,10 +40,11 @@ RUN set -x && \
     rm -rf /var/lib/mongodb && \
     mv /etc/mongod.conf /etc/mongod.conf.orig && \
     apt-get autoremove -y && \
-    apt-get autoclean -y
+    apt-get autoclean -y  && \
+    rm -rf /var/lib/apt/lists/* && \
+    # Prepare environment for Mongo daemon: Use a Docker Volume container
+    mkdir -p /db && chown -R mongodb:mongodb /db
 
-# Prepare environment for Mongo daemon: Use a Docker Volume container
-RUN mkdir -p /db && chown -R mongodb:mongodb /db
 VOLUME /db
 
 # Step1: Initialize a first configuration allowing:
@@ -56,15 +53,14 @@ VOLUME /db
 # Note that the regular stop of the service doesn't work properly so we
 # circumvent this by killing the service as properly as possible.
 COPY mongod.conf /etc/mongod.conf
-RUN service mongod stop && \
-    service mongod start && \
-    mongo --eval "rs.initiate(); rs.conf();" && \
-    sync && \
-    sleep 5 && \
-    killall -9 mongod && \
-    service mongod stop
+# RUN service mongod start
+# USER mongod
+# RUN mongo --eval "rs.initiate(); rs.conf();"
+
+# ENTRYPOINT ["/usr/bin/svscan", "/etc/services/"]
 
 # Step2: Initialize a second configuration allowing:
 # * Binding to localhost so that only linked container can access to this instance.
-RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
-CMD ["mongod", "-f", "/etc/mongod.conf"]
+#RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
+
+# CMD ["mongod", "-f", "/etc/mongod.conf"]

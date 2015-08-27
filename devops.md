@@ -423,12 +423,16 @@ docker run -ti -P docker_db
 docker rm $(docker ps -a -q)
 # Delete all images that are not being used in a running container
 docker rmi $(docker images -q)
+# Delete all images that failed to build (untagged images)
+docker rmi $(docker images -f "dangling=true" -q)
 
 # In Fish
 # Delete all stopped containers
 docker rm (docker ps -a -q)
 # Delete all images that are not being used in a running container
 docker rmi (docker images -q)
+# Delete all images that failed to build (dangling images)
+docker rmi (docker images -f "dangling=true" -q)
 ```
 
 ### Building Meteor
