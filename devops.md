@@ -91,8 +91,7 @@ echo -e '[Service]\n# workaround to include default options\nEnvironmentFile=-/e
 # * Daemon uses Docker's provided certification chain.
 # * Dameon has a generic label.
 # * Daemon is able to resolve DNS query using Google's DNS.
-# * Docker will not handle firewalling leaving this task to UFW (the default firewall manager for Ubuntu).
-echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4 --iptables=false"'  | sudo tee /etc/default/docker
+echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4"'  | sudo tee /etc/default/docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 # Enable Docker on server reboot
@@ -308,14 +307,17 @@ MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
 USER root
 
-RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
-
 # Update system
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates curl numactl apt-utils psmisc && \
-    rm -rf /var/lib/apt/lists/* && \
+    apt-get upgrade -y --no-install-recommends && \
+    apt-get install -y --no-install-recommends \
+      ca-certificates curl numactl apt-utils psmisc && \
     apt-get autoremove -y && \
-    apt-get autoclean -y
+    apt-get autoclean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# Replace shell with bash so we can source files
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install the necessary packages
 # Grab gosu for easy step-down from root
@@ -327,6 +329,7 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364
     chmod +x /usr/local/bin/gosu
 
 # Install MongoDB
+RUN groupadd -r mongodb && useradd -r -g mongodb mongodb
 # gpg: key 7F0CEB10: public key "Richard Kreuter <richard@10gen.com>" imported
 RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10
 ENV MONGO_MAJOR 3.0
@@ -334,7 +337,7 @@ ENV MONGO_VERSION 3.0.6
 RUN echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list
 RUN set -x && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y -q --no-install-recommends \
       mongodb-org=$MONGO_VERSION \
       mongodb-org-server=$MONGO_VERSION \
       mongodb-org-shell=$MONGO_VERSION \
@@ -359,15 +362,14 @@ COPY mongod.conf /etc/mongod.conf
 RUN service mongod stop && \
     service mongod start && \
     mongo --eval "rs.initiate(); rs.conf();" && \
-    sleep 5 && \
     sync && \
+    sleep 5 && \
     killall -9 mongod && \
     service mongod stop
 
 # Step2: Initialize a second configuration allowing:
 # * Binding to localhost so that only linked container can access to this instance.
 RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
-EXPOSE 27017
 CMD ["mongod", "-f", "/etc/mongod.conf"]
 ```
 

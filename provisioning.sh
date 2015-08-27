@@ -8,8 +8,7 @@ echo -e '[Service]\n# workaround to include default options\nEnvironmentFile=-/e
 # * Daemon uses Docker's provided certification chain.
 # * Dameon has a generic label.
 # * Daemon is able to resolve DNS query using Google's DNS.
-# * Docker will not handle firewalling leaving this task to UFW (the default firewall manager for Ubuntu).
-echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4 --iptables=false"'  | sudo tee /etc/default/docker
+echo 'DOCKER_OPTS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --storage-driver aufs --tlsverify --tlscacert /etc/docker/ca.pem --tlscert /etc/docker/server.pem --tlskey /etc/docker/server-key.pem --label provider=generic --dns 8.8.8.8 --dns 8.8.4.4"'  | sudo tee /etc/default/docker
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 # Enable Docker on server reboot

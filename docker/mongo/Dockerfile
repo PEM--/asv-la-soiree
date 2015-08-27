@@ -6,10 +6,12 @@ USER root
 
 # Update system
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates curl numactl apt-utils psmisc && \
-    rm -rf /var/lib/apt/lists/* && \
+    apt-get upgrade -y --no-install-recommends && \
+    apt-get install -y --no-install-recommends \
+      ca-certificates curl numactl apt-utils psmisc && \
     apt-get autoremove -y && \
-    apt-get autoclean -y
+    apt-get autoclean -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Replace shell with bash so we can source files
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
@@ -65,5 +67,4 @@ RUN service mongod stop && \
 # Step2: Initialize a second configuration allowing:
 # * Binding to localhost so that only linked container can access to this instance.
 RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
-EXPOSE 27017
 CMD ["mongod", "-f", "/etc/mongod.conf"]
