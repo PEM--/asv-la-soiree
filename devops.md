@@ -419,15 +419,15 @@ Some useful commands while developing a container:
 docker run -ti -P docker_db
 
 # In BASH
-# Delete all containers
+# Delete all stopped containers
 docker rm $(docker ps -a -q)
-# Delete all images
+# Delete all images that are not being used in a running container
 docker rmi $(docker images -q)
 
 # In Fish
-# Delete all containers
+# Delete all stopped containers
 docker rm (docker ps -a -q)
-# Delete all images
+# Delete all images that are not being used in a running container
 docker rmi (docker images -q)
 ```
 

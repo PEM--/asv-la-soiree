@@ -11,9 +11,9 @@ server:
     - "3000:3000"
   links:
     - db
-front:
-  build: nginx
-  ports:
-    - "80:80"
-  links:
-    - server
+# front:
+#   build: nginx
+#   ports:
+#     - "80:80"
+#   links:
+#     - server
