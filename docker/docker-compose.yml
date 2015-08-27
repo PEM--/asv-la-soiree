@@ -4,8 +4,8 @@ db:
     - /var/db:/db
   ports:
     - "27017:27017"
-  # expose:
-  #   - "27017"
+  expose:
+    - "27017"
 server:
   build: meteor
   links:
