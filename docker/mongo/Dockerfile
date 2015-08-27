@@ -3,21 +3,20 @@ FROM debian:wheezy
 MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
 # Update system
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends && \
-    apt-get install -y --no-install-recommends \
-      ca-certificates curl && \
-    apt-get autoremove -y && \
-    apt-get autoclean -y && \
+    apt-get upgrade -y -qq --no-install-recommends && \
+    apt-get install -y -qq --no-install-recommends apt-utils && \
+    apt-get install -y -qq --no-install-recommends \
+      ca-certificates curl psmisc apt-utils && \
+    apt-get autoremove -y -qq && \
+    apt-get autoclean -y -qq && \
     rm -rf /var/lib/apt/lists/*
-
-# Replace shell with bash so we can source files
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Grab gosu for easy step-down from root
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
-    curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
-    curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
+    curl -sS -o /usr/local/bin/gosu -L "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture)" && \
+    curl -sS -o /usr/local/bin/gosu.asc -L "https://github.com/tianon/gosu/releases/download/1.2/gosu-$(dpkg --print-architecture).asc" && \
     gpg --verify /usr/local/bin/gosu.asc && \
     rm /usr/local/bin/gosu.asc && \
     chmod +x /usr/local/bin/gosu
@@ -30,7 +29,7 @@ RUN groupadd -r mongodb && \
     apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 492EAFE8CD016A07919F1D2B9ECBEC467F0CEB10 && \
     echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/$MONGO_MAJOR main" > /etc/apt/sources.list.d/mongodb-org.list && \
     apt-get update && \
-    apt-get install -y -q --no-install-recommends \
+    apt-get install -y -qq --no-install-recommends \
       mongodb-org=$MONGO_VERSION \
       mongodb-org-server=$MONGO_VERSION \
       mongodb-org-shell=$MONGO_VERSION \
@@ -39,28 +38,14 @@ RUN groupadd -r mongodb && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/lib/mongodb && \
     mv /etc/mongod.conf /etc/mongod.conf.orig && \
-    apt-get autoremove -y && \
-    apt-get autoclean -y  && \
+    apt-get autoremove -y -qq && \
+    apt-get autoclean -y -qq && \
     rm -rf /var/lib/apt/lists/* && \
     # Prepare environment for Mongo daemon: Use a Docker Volume container
     mkdir -p /db && chown -R mongodb:mongodb /db
 
-VOLUME /db
-
-# Step1: Initialize a first configuration allowing:
-# * Set the DB into an accessible mode for the command line
-# * Create an initial ReplicaSet for OPLOG
-# Note that the regular stop of the service doesn't work properly so we
-# circumvent this by killing the service as properly as possible.
+# Launch Mongo
 COPY mongod.conf /etc/mongod.conf
-# RUN service mongod start
-# USER mongod
-# RUN mongo --eval "rs.initiate(); rs.conf();"
-
-# ENTRYPOINT ["/usr/bin/svscan", "/etc/services/"]
-
-# Step2: Initialize a second configuration allowing:
-# * Binding to localhost so that only linked container can access to this instance.
-#RUN sed -i -e "s/^  # bindIp: 127.0.0.1/  bindIp: 127.0.0.1/" /etc/mongod.conf
-
-# CMD ["mongod", "-f", "/etc/mongod.conf"]
+COPY init.sh /tmp/initReplicaSet.sh
+RUN chmod u+x /tmp/initReplicaSet.sh
+CMD ["/tmp/initReplicaSet.sh"]

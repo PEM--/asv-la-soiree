@@ -2,20 +2,19 @@
 FROM debian:wheezy
 MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
 
-USER root
-
 # Update system
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
-    apt-get upgrade -y --no-install-recommends && \
-    apt-get install -y --no-install-recommends \
+    apt-get upgrade -qq -y --no-install-recommends && \
+    apt-get install -qq -y --no-install-recommends \
       # CURL
       ca-certificates curl wget \
       # SCM
       bzr git mercurial openssh-client subversion \
       # Build
       build-essential && \
-    apt-get autoremove -y && \
-    apt-get autoclean -y && \
+    apt-get autoremove -qq -y && \
+    apt-get autoclean -qq -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Install NodeJS
@@ -31,8 +30,8 @@ RUN set -ex \
   done
 ENV NODE_VERSION 0.10.40
 ENV NPM_VERSION 2.13.3
-RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
-    curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" && \
+RUN curl -sSLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" && \
+    curl -sSLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" && \
     gpg --verify SHASUMS256.txt.asc && \
     grep " node-v$NODE_VERSION-linux-x64.tar.gz\$" SHASUMS256.txt.asc | sha256sum -c - && \
     tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 && \
