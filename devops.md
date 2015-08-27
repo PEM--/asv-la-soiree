@@ -477,6 +477,7 @@ http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
 
 
 ### Links
+Informations used for this tutorial:
 * [Homebrew](http://brew.sh/)
 * [Caskroom](https://github.com/caskroom/homebrew-cask)
 * [Easy sending your public SSH key to your remote servers](http://pem-musing.blogspot.fr/2014/05/easy-sending-your-public-ssh-key-to.html)
@@ -496,3 +497,10 @@ http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
 * [MongoDB configuration options](http://docs.mongodb.org/manual/reference/configuration-options/)
 * [MongoDB sample YAML files](http://dba.stackexchange.com/questions/82591/sample-yaml-configuration-files-for-mongodb)
 * [The magic of Meteor oplog tailing](http://projectricochet.com/blog/magic-meteor-oplog-tailing#.Vd3eRlNRQVw)
+* [Docker: Containers for the Masses -- using Docker](http://patg.net/containers,virtualization,docker/2014/06/10/using-docker/)
+
+Going further:
+* [Deploying HTTP/2 and Strong TLS with Nghttp2 and Nginx](https://www.tollmanz.com/http2-nghttp2-nginx-tls/)
+* [HTTP/2.0 with Nginx & NGHTTP2](https://timnash.co.uk/http2-0-with-nginx-nghttp2/)
+* [SSL and Meteor.js](http://joshowens.me/ssl-and-meteor-js/?utm_content=buffera7818&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+* [Un serveur MongoDB sécurisé sur Docker](http://pierrepironin.fr/docker-et-mongodb/)
