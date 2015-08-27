@@ -75,7 +75,7 @@ localstorage@1.0.3
 logging@1.0.7
 manuel:isdev@1.0.0
 manuel:reactivearray@1.0.5
-manuel:viewmodel@1.9.5
+manuel:viewmodel@1.9.6
 matb33:collection-hooks@0.7.14
 matteodem:easy-security@0.1.4
 meteor@1.1.6
@@ -95,7 +95,7 @@ momentjs:moment@2.10.6
 mongo@1.1.0
 mongo-livedata@1.0.8
 mquandalle:bower@1.4.1_3
-mquandalle:jade@0.4.3
+mquandalle:jade@0.4.3_1
 mquandalle:jade-compiler@0.4.3
 mquandalle:stylus@1.1.1
 mrt:isolate-value@2.0.2
@@ -152,7 +152,7 @@ templating@1.1.1
 tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
-underscorestring:underscore.string@3.1.1
+underscorestring:underscore.string@3.2.0
 url@1.0.4
 useraccounts:core@1.12.3
 velocityjs:velocityjs@1.2.1
