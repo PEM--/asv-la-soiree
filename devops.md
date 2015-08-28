@@ -439,9 +439,25 @@ docker rmi (docker images -f "dangling=true" -q)
 - Settings without importing them
 
 ### Building NGinx
+
+ssh root@192.168.1.50 "mkdir /var/cache; chmod go+w /var/cache"
+ssh root@192.168.1.50 "mkdir /var/tmp; chmod go+w /var/tmp"
+
+ssh root@192.168.1.51 "mkdir /var/cache; chmod go+w /var/cache"
+ssh root@192.168.1.51 "mkdir /var/tmp; chmod go+w /var/tmp"
+
+ssh root@X.X.X.X "mkdir /var/cache; chmod go+w /var/cache"
+ssh root@X.X.X.X "mkdir /var/tmp; chmod go+w /var/tmp"
+
+Volumes + chmod
+    - /var/cache:/var/cache
+    - /var/tmp:/var/tmp
+
+
 @TODO
 
-- Cache Meteor static files
+- Cache NodeJS Meteor response (other HTML + CSS + JS)
+- Rework the case of separation in the import (server vs web.app stuff)
 - 404, 50X
 - Stop form spamming
 - https://www.tollmanz.com/http2-nghttp2-nginx-tls/

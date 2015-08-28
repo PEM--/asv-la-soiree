@@ -17,6 +17,9 @@ server:
     - "3000"
 front:
   build: nginx
+  volumes:
+    - /var/cache:/var/cache
+    - /var/tmp:/var/tmp
   ports:
     - "80:80"
     - "443:443"

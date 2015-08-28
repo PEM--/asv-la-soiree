@@ -39,7 +39,9 @@ ADD src /www
 ADD public /www
 
 # Ensure proper rights on statis assets
-RUN chown -R www:www /www
+RUN chown -R www:www /www && \
+    chown -R www:www /var/cache && \
+    chown -R www:www /var/tmp
 
 # Launch NGinx
 CMD ["nginx", "-g", "daemon off;"]
