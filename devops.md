@@ -440,6 +440,11 @@ docker rmi (docker images -q)
 docker rmi (docker images -f "dangling=true" -q)
 ```
 
+Initialize a single instance ReplicaSet:
+```sh
+docker-compose run db mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
+```
+
 ### Building Meteor
 @TODO
 

@@ -49,12 +49,6 @@ WORKDIR /app
 # Install Meteor's dependencies
 RUN (cd programs/server && npm install)
 
-EXPOSE 3000
-
-# Set environment variables for Meteor
-ENV PORT 3000
-ENV ROOT_URL "http://192.168.1.50:$PORT"
-
 # Launch application
 COPY startMeteor.sh /app/startMeteor.sh
 CMD ["./startMeteor.sh"]
