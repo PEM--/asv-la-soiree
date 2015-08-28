@@ -19,6 +19,8 @@ the complete list of versions used in this tutorial:
 * Docker Compose 1.4.0
 * VirtualBox 5.0.2
 * Meteor 1.1.0.3
+* NodeJS 0.10.40
+* Mongo 3.0.6 - WiredTiger
 
 ### Installing the tooling
 If you have never done it before install Homebrew and its plugin Caskroom.

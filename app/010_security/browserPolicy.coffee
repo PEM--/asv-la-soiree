@@ -19,7 +19,9 @@ if Meteor.isServer
     Meteor.absoluteUrl('sockjs/info*').split('://')[1]
   ]
     for protocol in ['http', 'https', 'ws', 'wss']
-      BrowserPolicy.content.allowConnectOrigin "#{protocol}://#{origin}"
+      url = "#{protocol}://#{origin}"
+      appLog.info 'Authorizing', url
+      BrowserPolicy.content.allowConnectOrigin url
   # Allow external CSS
   for origin in ['fonts.googleapis']
     for protocol in ['http', 'https']
