@@ -351,9 +351,7 @@ RUN groupadd -r mongodb && \
 
 # Launch Mongo
 COPY mongod.conf /etc/mongod.conf
-COPY initReplicaSet.sh /tmp/initReplicaSet.sh
-RUN chmod u+x /tmp/initReplicaSet.sh
-CMD ["/tmp/initReplicaSet.sh"]
+CMD ["gosu", "mongodb", "mongod", "-f", "/etc/mongod.conf"]
 ```
 
 We need a configuration file for this Docker image to be built `mongo/mongod.conf`:
@@ -377,20 +375,6 @@ net:
     enabled : true
 ```
 
-We also need an init script `mongo/initReplicaSet.sh` that creates a single
-instance ReplicaSet in case none has been done before (for Oplog tailing) and
-launch Mongo with the appropriate rights:
-```sh
-#!/bin/bash
-gosu mongodb mongod -f /etc/mongod.conf &
-sleep 2
-mongo admin --quiet --eval "rs.initiate(); rs.conf(); db.shutdownServer({timeoutSecs: 0});"
-sync
-sleep 2
-killall -9 mongod
-gosu mongodb mongod -f /etc/mongod.conf
-```
-
 We could build this image and run it, but I prefer using a Docker Compose file.
 These file eases the process of build and run of your Docker images acting as
 a project file when multiple Docker images are required to work together for an
@@ -406,7 +390,7 @@ db:
 ```
 
 Before building or launching this Docker image, we need to prepare the
-volume on each host that will receive and persists Mongo's data:
+volume on each host that receives and persists Mongo's data:
 ```sh
 ssh root@192.168.1.50 "mkdir /var/db; chmod go+w /var/db"
 ssh root@192.168.1.51 "mkdir /var/db; chmod go+w /var/db"
@@ -418,6 +402,12 @@ For building our Mongo Docker image:
 docker-compose build db
 # Or even faster, for building and running
 docker-compose up -d db
+```
+
+And once it's running, initialize a single instance ReplicaSet for making
+Oplog tailing available:
+```sh
+docker-compose run db mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
 ```
 
 Some useful commands while developing a container:
@@ -440,11 +430,6 @@ docker rm (docker ps -a -q)
 docker rmi (docker images -q)
 # Delete all images that failed to build (dangling images)
 docker rmi (docker images -f "dangling=true" -q)
-```
-
-Initialize a single instance ReplicaSet:
-```sh
-docker-compose run db mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
 ```
 
 ### Building Meteor

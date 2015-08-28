@@ -49,8 +49,8 @@ fastclick@1.0.3
 fortawesome:fontawesome@4.4.0
 froala:editor@1.2.8
 gadicohen:reactive-window@1.0.6
-gadicohen:robots-txt@0.0.9
-gadicohen:sitemaps@0.0.22
+gadicohen:robots-txt@0.0.10
+gadicohen:sitemaps@0.0.23
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
@@ -107,6 +107,7 @@ npm-bcrypt@0.7.8_2
 npm-container@1.1.0
 numeral:numeral@1.5.3
 observe-sequence@1.0.6
+ongoworks:spiderable@1.0.7
 ordered-dict@1.0.3
 orionjs:accounts@1.4.2
 orionjs:attributes@1.4.0

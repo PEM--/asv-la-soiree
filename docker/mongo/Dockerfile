@@ -46,7 +46,4 @@ RUN groupadd -r mongodb && \
 
 # Launch Mongo
 COPY mongod.conf /etc/mongod.conf
-#COPY initReplicaSet.sh /tmp/initReplicaSet.sh
-#RUN chmod u+x /tmp/initReplicaSet.sh
-#CMD ["/tmp/initReplicaSet.sh"]
 CMD ["gosu", "mongodb", "mongod", "-f", "/etc/mongod.conf"]
