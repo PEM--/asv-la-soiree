@@ -442,6 +442,7 @@ docker rmi (docker images -f "dangling=true" -q)
 @TODO
 
 - Cache Meteor static files
+- 404, 50X
 - Stop form spamming
 - https://www.tollmanz.com/http2-nghttp2-nginx-tls/
 
