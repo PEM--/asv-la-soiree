@@ -1,9 +1,0 @@
-// orionCpCollectionsIndex
-+Layout template='orionCpTitle'
-  | {{ collection.title }}
-  if collection.canShowCreate
-    a(href="{{ collection.createPath }}"): i.fa.fa-plus
-+Layout template='orionCpContentContainer'
-  if collection.canIndex
-    if showTable
-      +tabular table=collection.tabularTable class='table index-table'

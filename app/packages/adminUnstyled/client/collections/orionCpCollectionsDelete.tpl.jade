@@ -1,8 +1,0 @@
-// orionCpCollectionsDelete
-+Layout template='orionCpTitle'
-  | {{ i18n 'collections.delete.title' collection.singularName }}
-+Layout template='orionCpContentContainer'
-  p {{ i18n 'collections.delete.confirmQuestion' collection.singularName }}
-  a.user-btn-action(href="{{ collection.indexPath }}") {{ i18n 'global.cancel' }}
-  if item.canShowRemove
-    a.user-btn-action-warning.confirm-delete {{ i18n 'global.confirm' }}

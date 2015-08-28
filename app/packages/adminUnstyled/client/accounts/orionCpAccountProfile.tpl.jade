@@ -1,8 +1,0 @@
-// orionCpAccountProfile
-+Layout template='orionCpTitle'
-  | {{ i18n 'accounts.updateProfile.title' }}
-+Layout template='orionCpContentContainer'
-  +autoForm schema=getSchema id='updateMyProfileForm' collection='Meteor.users' type='update' doc=getDoc
-    +afQuickFields name='profile'
-    a(href="{{ pathFor 'myAccount.index' }}") {{ i18n 'global.cancel' }}
-    button {{ i18n 'global.save' }}

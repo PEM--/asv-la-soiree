@@ -58,13 +58,14 @@ aldeed:autoform
 zimme:active-route
 pierreeric:orion-lang-fr
 orionjs:core
-orionjs:logging
+#orionjs:logging
+pierreeric:orionjs-logging
 orionjs:froala
 #orionjs:quill
 orionjs:filesystem
 orionjs:file-attribute
 orionjs:image-attribute
-orionjs:admin-unstyled
+pierreeric:orionjs-admin-unstyled
 #meteorhacks:subs-manager
 wylio:mandrill
 patrickml:braintree

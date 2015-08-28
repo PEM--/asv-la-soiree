@@ -2,19 +2,19 @@ db:
   build: mongo
   volumes:
     - /var/db:/db
-  ports:
-    - "27017:27017"
+  # ports:
+  #   - "27017:27017"
   expose:
     - "27017"
 server:
   build: meteor
   links:
     - db
-  # environment:
-  #   MONGO_URL: "mongodb://$DB_1_PORT_27017_TCP_ADDR:$DB_1_PORT_27017_TCP_PORT"
-  #   MONGO_OPLOG_URL: "$MONGO_URL/local"
   environment:
-    MONGO_URL: "mongodb://172.17.0.68:27017"
+    MONGO_URL: "mongodb://db:27017"
+    MONGO_OPLOG_URL: "$MONGO_URL/local"
+  # environment:
+  #   MONGO_URL: "mongodb://172.17.0.68:27017"
   ports:
     - "3000:3000"
   expose:

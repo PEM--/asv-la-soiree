@@ -44,13 +44,12 @@ ADD bundle /app
 WORKDIR /app
 
 # Install Meteor's dependencies
-RUN npm install
+#RUN npm install
 
 # Set environment variables for Meteor
-EXPOSE 3000
 ENV PORT 3000
 ENV ROOT_URL "http://localhost:$PORT"
 
 # Launch application
-COPY startMeteor.sh /app/startMeteor.sh
-CMD ["./startMeteor.sh"]
+# COPY startMeteor.sh /app/startMeteor.sh
+# CMD ["./startMeteor.sh"]

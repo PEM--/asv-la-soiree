@@ -1,9 +1,0 @@
-// orionCpDictionaryUpdate
-+Layout template='orionCpTitle'
-  | {{ i18n 'dictionary.update.title' }}
-+Layout template='orionCpContentContainer'
-  +reactiveTemplate template="tabs" data=getDataForTabs
-  +autoForm collection='orion.dictionary' id='updateDictionaryForm' type='update' doc=getDoc
-    if currentCategory
-      +afQuickFields name=currentCategory
-    button {{ i18n 'global.save' }}

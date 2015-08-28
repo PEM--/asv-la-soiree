@@ -1,8 +1,0 @@
-// orionCpAccountsIndex
-+Layout template='orionCpTitle'
-  | {{i18n 'accounts.index.title'}}
-  if userHasPermission 'accounts.showCreate'
-    a(href="{{ RouterLayerPathFor 'accounts.create' }}"): i.fa.fa-plus
-
-+Layout template='orionCpContentContainer'
-  +tabular table=table class='table index-table'

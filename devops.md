@@ -466,14 +466,12 @@ docker rmi (docker images -f "dangling=true" -q)
 - restart sur Meteor : à cause de Stylus, Sass, ...
 - systemd startup script: autostart your container
 
+### Mongo backups
+@TODO
+
 
 ### Tagging version of your containers
 @TODO
-
-### Secure the hosts and the container
-@TODO
-http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/
-
 
 
 ### Links
@@ -504,3 +502,4 @@ Going further:
 * [HTTP/2.0 with Nginx & NGHTTP2](https://timnash.co.uk/http2-0-with-nginx-nghttp2/)
 * [SSL and Meteor.js](http://joshowens.me/ssl-and-meteor-js/?utm_content=buffera7818&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 * [Un serveur MongoDB sécurisé sur Docker](http://pierrepironin.fr/docker-et-mongodb/)
+* [Docker sans utilisateur root sur l'hôte et dans les containers](http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/)
