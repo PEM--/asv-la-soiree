@@ -14,17 +14,12 @@ if Meteor.isServer
   for origin in [
     '*.meteor.com'
     '*.asv-la-soiree.com'
-    '*.asv-la-soiree.dev'
-    'localhost:3000'
-    '192.168.33.10'
-    '192.168.33.10/cfs/servertime*'
-    '192.168.33.10/sockjs/info*'
+    Meteor.absoluteUrl().split('://')[1]
+    Meteor.absoluteUrl('cfs/servertime*').split('://')[1]
+    Meteor.absoluteUrl('sockjs/info*').split('://')[1]
   ]
     for protocol in ['http', 'https', 'ws', 'wss']
       BrowserPolicy.content.allowConnectOrigin "#{protocol}://#{origin}"
-  # For remote debugging for protocol in ['http', 'https', 'ws', 'wss']
-  #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000"
-  #  BrowserPolicy.content.allowConnectOrigin "#{protocol}://192.168.1.34:3000/sockjs/info"
   # Allow external CSS
   for origin in ['fonts.googleapis']
     for protocol in ['http', 'https']

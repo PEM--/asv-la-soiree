@@ -39,17 +39,22 @@ RUN curl -sSLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux
     npm install -g npm@"$NPM_VERSION" && \
     npm cache clear
 
+# Add PM2 for process management and restart
+RUN npm install -g pm2
+
 # Import sources
 ADD bundle /app
 WORKDIR /app
 
 # Install Meteor's dependencies
-#RUN npm install
+RUN (cd programs/server && npm install)
+
+EXPOSE 3000
 
 # Set environment variables for Meteor
 ENV PORT 3000
-ENV ROOT_URL "http://localhost:$PORT"
+ENV ROOT_URL "http://192.168.1.50:$PORT"
 
 # Launch application
-# COPY startMeteor.sh /app/startMeteor.sh
-# CMD ["./startMeteor.sh"]
+COPY startMeteor.sh /app/startMeteor.sh
+CMD ["./startMeteor.sh"]
