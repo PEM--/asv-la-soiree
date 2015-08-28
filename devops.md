@@ -19,6 +19,7 @@ the complete list of versions used in this tutorial:
 * Docker Compose 1.4.0
 * VirtualBox 5.0.2
 * Meteor 1.1.0.3
+* NGinx 1.9.4-1
 * NodeJS 0.10.40
 * Mongo 3.0.6 - WiredTiger
 
@@ -436,8 +437,6 @@ docker rmi (docker images -f "dangling=true" -q)
 @TODO
 
 - Settings without importing them
-- No demeteorizer
-- Spiderable
 
 ### Building NGinx
 @TODO

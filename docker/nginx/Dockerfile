@@ -9,7 +9,9 @@ ENV NGINX_VERSION 1.9.4-1~wheezy
 
 # Update system
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && \
+RUN groupadd -r www && \
+    useradd -r -g www www && \
+    apt-get update && \
     apt-get upgrade -qq -y --no-install-recommends && \
     apt-get install -qq -y --no-install-recommends \
       ca-certificates nginx=${NGINX_VERSION} && \
@@ -25,18 +27,19 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 VOLUME ["/var/cache/nginx"]
 
 # Configuration
-# COPY h5bp-nginx-cfg/nginx.conf /etc/nginx/nginx.conf
-# COPY h5bp-nginx-cfg/mime.types /etc/nginx/mime.types
-# COPY h5bp-nginx-cfg/h5bp /etc/nginx/h5bp
-# COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
+COPY h5bp-nginx-cfg/nginx.conf /etc/nginx/nginx.conf
+COPY h5bp-nginx-cfg/mime.types /etc/nginx/mime.types
+COPY h5bp-nginx-cfg/h5bp /etc/nginx/h5bp
+COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
 
 # Source
 # Just a test file for checking NGinx
-# ADD src /www
+ADD src /www
 # Project static files
-# ADD public /www
+ADD public /www
 
+# Ensure proper rights on statis assets
+RUN chown www:www /www
 
 # Launch NGinx
-EXPOSE 80 443
 CMD ["nginx", "-g", "daemon off;"]
