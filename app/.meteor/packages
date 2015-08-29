@@ -17,7 +17,7 @@ mquandalle:stylus
 # Security
 browser-policy
 matteodem:easy-security
-force-ssl
+#force-ssl
 
 # Development helpers
 # Development helpers: Must be removed in production

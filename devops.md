@@ -440,6 +440,26 @@ docker rmi (docker images -f "dangling=true" -q)
 
 ### Building NGinx
 
+
+# Server certificate authority
+echo "MyPassphrase" > passphrase.txt
+openssl genrsa -aes256 -passout file:passphrase.txt -out ca-key.pem 4096
+openssl req -passin file:passphrase.txt -subj '/C=FR/ST=Paris/L=Paris/CN=192.168.1.50'  -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
+# Server certificate
+openssl genrsa -out server-key.pem 4096
+openssl req -subj "/CN=192.168.1.50" -sha256 -new -key server-key.pem -out server.csr
+echo subjectAltName = IP:192.168.1.50,IP:127.0.0.1 > extfile.cnf# openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
+# Client certificate
+openssl genrsa -out key.pem 4096
+openssl req -subj '/CN=client' -new -key key.pem -out client.csr
+echo extendedKeyUsage = clientAuth > extfile.cnf
+openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.cnf
+# Clean up CSR
+rm -v client.csr server.csr # Secure file access
+chmod -v 0400 ca-key.pem key.pem server-key.pem
+chmod -v 0444 ca.pem server-cert.pem cert.pem
+
+
 ssh root@192.168.1.50 "mkdir /var/cache; chmod go+w /var/cache"
 ssh root@192.168.1.50 "mkdir /var/tmp; chmod go+w /var/tmp"
 
@@ -504,6 +524,7 @@ Informations used for this tutorial:
 * [MongoDB sample YAML files](http://dba.stackexchange.com/questions/82591/sample-yaml-configuration-files-for-mongodb)
 * [The magic of Meteor oplog tailing](http://projectricochet.com/blog/magic-meteor-oplog-tailing#.Vd3eRlNRQVw)
 * [Docker: Containers for the Masses -- using Docker](http://patg.net/containers,virtualization,docker/2014/06/10/using-docker/)
+* [How To Create an SSL Certificate on Nginx for Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04)
 
 Going further:
 * [Deploying HTTP/2 and Strong TLS with Nghttp2 and Nginx](https://www.tollmanz.com/http2-nghttp2-nginx-tls/)

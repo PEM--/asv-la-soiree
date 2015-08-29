@@ -5,3 +5,4 @@ node_modules
 app/public/img
 app/public/videos
 .vagrant
+*.pem

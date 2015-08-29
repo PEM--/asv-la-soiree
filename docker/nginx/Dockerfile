@@ -23,14 +23,14 @@ RUN groupadd -r www && \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Improves performance by declaring an explicit volume.
-VOLUME ["/var/cache/nginx"]
-
 # Configuration
 COPY h5bp-nginx-cfg/nginx.conf /etc/nginx/nginx.conf
 COPY h5bp-nginx-cfg/mime.types /etc/nginx/mime.types
 COPY h5bp-nginx-cfg/h5bp /etc/nginx/h5bp
 COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
+
+# Mount points for volumes
+RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
 
 # Source
 # Just a test file for checking NGinx
