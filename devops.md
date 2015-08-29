@@ -456,8 +456,8 @@ Volumes + chmod
 
 @TODO
 
-- Cache NodeJS Meteor response (other HTML + CSS + JS)
 - Rework the case of separation in the import (server vs web.app stuff)
+- Cache NodeJS Meteor response (other HTML + CSS + JS)
 - 404, 50X
 - Stop form spamming
 - https://www.tollmanz.com/http2-nghttp2-nginx-tls/

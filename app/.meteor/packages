@@ -77,6 +77,7 @@ percolate:migrations
 brightbind:orion-gridfs
 
 # Others
+appcache
 dburles:google-maps
 momentjs:moment
 rzymek:moment-locale-fr
