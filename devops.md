@@ -441,6 +441,11 @@ docker rmi (docker images -f "dangling=true" -q)
 ### Building NGinx
 
 
+Sel signed certificate
+openssl req -nodes -new -x509 -keyout server.key -out server.cert
+
+
+
 # Server certificate authority
 echo "MyPassphrase" > passphrase.txt
 openssl genrsa -aes256 -passout file:passphrase.txt -out ca-key.pem 4096
