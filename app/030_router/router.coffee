@@ -15,8 +15,8 @@ class @AppCtrl extends RouteController
   onStop: ->
     mainMenuModel.menuContentOpened false
   waitOn: -> [
-    Meteor.subscribe 'innerlinks'
-    Meteor.subscribe 'basicpages'
+    globalSubs.subscribe 'innerlinks'
+    globalSubs.subscribe 'basicpages'
   ]
 
 # Common server and client config
@@ -50,7 +50,7 @@ if Meteor.isClient
   Router.mainCntEl = '.main-container[data-role=\'layout\']'
   Router.routerEl = '>.router-container'
   Router.declareClientRoutes = ->
-    Meteor.subscribe 'basicpages', =>
+    globalSubs.subscribe 'basicpages', =>
       Router.declareRoutes()
       @start()
   Router.oldGo = Router.go
@@ -80,7 +80,7 @@ Meteor.startup ->
 
   # Set dynamic routes depending on pages created in Orion
   appLog.info 'Starting subscription and routing'
-  Meteor.subscribe 'basicpages', ->
+  globalSubs.subscribe 'basicpages', ->
     BasicPages.find().observeChanges
       added: (id, fields) ->
         if Router.routes[fields.slug] is undefined

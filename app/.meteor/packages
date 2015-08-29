@@ -55,6 +55,7 @@ gadicohen:robots-txt
 # Meteor optimizations
 appcache
 meteorhacks:fast-render
+meteorhacks:subs-manager
 #meteorhacks:ssr
 
 # CMS
@@ -70,7 +71,6 @@ orionjs:filesystem
 orionjs:file-attribute
 orionjs:image-attribute
 pierreeric:orionjs-admin-unstyled
-#meteorhacks:subs-manager
 wylio:mandrill
 patrickml:braintree
 meteorhacks:npm

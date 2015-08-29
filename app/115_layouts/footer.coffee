@@ -1,7 +1,7 @@
 if Meteor.isClient
   Template.footer.onCreated ->
     appLog.info 'Footer created'
-    @subscribe 'basicpages'
+    globalSubs.subscribe 'basicpages'
 
   # ViewModel for the footer
   Template.footer.viewmodel

@@ -26,7 +26,7 @@ if Meteor.isClient
       # Prevent further actions
       csvButton = t.$ 'button.import-csv'
       csvButton.addClass 'disabled'
-      subscription = Meteor.subscribe 'allSubscribers',
+      subscription = globalSubs.subscribe 'allSubscribers',
         onReady: ->
           data = Subscribers.find({},{name: 1, forname: 1, _id: 0}).fetch()
           # Create the header
@@ -46,7 +46,7 @@ if Meteor.isClient
       # Prevent further actions
       sageButton = t.$ 'button.import-sage'
       sageButton.addClass 'disabled'
-      subscription = Meteor.subscribe 'allSubscribers',
+      subscription = globalSubs.subscribe 'allSubscribers',
         onReady: ->
           data = Subscribers.find(
             {paymentStatus: true},

@@ -19,7 +19,7 @@ Partners.attachSchema new SimpleSchema
 
 if Meteor.isClient
   Template.partners.onCreated ->
-    @subscribe 'partners'
+    globalSubs.subscribe 'partners'
 
   Template.partners.helpers
     gold: -> Partners.find {category: 'gold'}, sort: {name: 1}

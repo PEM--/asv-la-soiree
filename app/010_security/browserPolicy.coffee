@@ -15,8 +15,7 @@ if Meteor.isServer
     '*.meteor.com'
     '*.asv-la-soiree.com'
     Meteor.absoluteUrl().split('://')[1]
-    Meteor.absoluteUrl('cfs/servertime*').split('://')[1]
-    Meteor.absoluteUrl('sockjs/info*').split('://')[1]
+    Meteor.absoluteUrl('*').split('://')[1]
   ]
     for protocol in ['http', 'https', 'ws', 'wss']
       url = "#{protocol}://#{origin}"
