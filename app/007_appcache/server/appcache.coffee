@@ -4,4 +4,5 @@ Meteor.AppCache.config onlineOnly: [
   '/icons/'
   '/partners/'
   '/videos/'
+  '/packages/'
 ]

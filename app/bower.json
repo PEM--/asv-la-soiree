@@ -2,11 +2,11 @@
   "name": "asv_la_soiree",
   "version": "1.0.0",
   "dependencies": {
-    "waypoints": "3.1.1",
+    "waypoints": "4.0.0",
     "js-cookie": "2.0.3",
     "flipclock": "0.7.7",
     "card": "1.1.0",
-    "braintree-web": "2.11.2",
+    "braintree-web": "2.11.4",
     "diacritic": "0.0.3"
   },
   "ignoredDependencies": [
