@@ -48,6 +48,8 @@ if Meteor.isServer
     #'cdn.mxpnl.com'
     # Kadira
     '*.kadira.io'
+    # Meteor
+    '*.meteor.com'
   ]
     for protocol in ['http', 'https']
       porigin = "#{protocol}://#{origin}"
