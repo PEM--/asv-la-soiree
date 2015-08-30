@@ -441,7 +441,7 @@ docker rmi (docker images -f "dangling=true" -q)
 ### Building NGinx
 
 
-Sel signed certificate
+Ssl self-signed certificate
 openssl req -nodes -new -x509 -keyout server.key -out server.cert
 
 

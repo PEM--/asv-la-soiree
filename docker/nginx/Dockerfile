@@ -33,15 +33,13 @@ COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
 
 # Source
-# Just a test file for checking NGinx
-ADD src /www
-# Project static files
-ADD public /www
+# Raw source files exposed as HTTP
+ADD raw /www
+# Project files exposed as HTTPS
+ADD public /wwws
 
 # Ensure proper rights on statis assets
-RUN chown -R www:www /www && \
-    chown -R www:www /var/cache && \
-    chown -R www:www /var/tmp
+RUN chown -R www:www /www /wwws /var/cache /var/tmp
 
 # Launch NGinx
 CMD ["nginx", "-g", "daemon off;"]
