@@ -31,9 +31,9 @@ RUN npm install -g pm2 phantomjs
 
 # Import sources
 COPY bundle /app
-WORKDIR /app
 
 # Install Meteor's dependencies
+WORKDIR /app
 RUN (cd programs/server && npm install)
 
 # Launch application

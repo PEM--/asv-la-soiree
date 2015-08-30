@@ -13,7 +13,7 @@ the complete list of versions used in this tutorial:
 
 * OSX 10.10.5 as the development platform
 * Ubuntu 15.04 as Docker host system
-* Debian Jessie 7 as Docker container system
+* Debian Jessie 7 with latest updates as Docker container system
 * Docker 1.8.1
 * Docker Registry 2
 * Docker Machine 0.4.1

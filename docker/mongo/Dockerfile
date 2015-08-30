@@ -46,4 +46,5 @@ RUN groupadd -r mongodb && \
 
 # Launch Mongo
 COPY mongod.conf /etc/mongod.conf
-CMD ["gosu", "mongodb", "mongod", "-f", "/etc/mongod.conf"]
+USER mongodb
+CMD ["mongod", "-f", "/etc/mongod.conf"]

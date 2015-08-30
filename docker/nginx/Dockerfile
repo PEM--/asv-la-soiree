@@ -19,16 +19,16 @@ RUN groupadd -r www && \
     apt-get autoclean -qq -y && \
     rm -rf /var/lib/apt/lists/*
 
-# forward request and error logs to Docker log collector
+# Forward request and error logs to Docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Configuration
+# Configuration files
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY conf /etc/nginx/conf
-COPY host-specific/servername-dev.conf /etc/nginx/conf/servername.conf
+COPY conf host-specific /etc/nginx/conf/
+
 # Mount points for volumes
-RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
+RUN mkdir -p /etc/certs /var/cache/nginx /var/tmp
 
 # Source
 # Raw source files exposed as HTTP and HTTPS
@@ -44,4 +44,6 @@ COPY  bundle/programs/web.browser/*.js \
 RUN chown -R www:www /www /var/cache /var/tmp
 
 # Launch NGinx
-CMD ["nginx", "-g", "daemon off;"]
+COPY startNginx.sh /startNginx.sh
+RUN chmod u+x /startNginx.sh
+CMD ["/startNginx.sh"]

@@ -1,9 +1,12 @@
+# Persistence layer: Mongo
 db:
+
   build: mongo
   volumes:
     - /var/db:/db
   expose:
     - "27017"
+# Application server: NodeJS (Meteor)
 server:
   build: meteor
   links:
@@ -15,14 +18,17 @@ server:
     ROOT_URL: "https://192.168.1.50"
   expose:
     - "3000"
+# Front layer, static file, SSL, proxy cache: NGinx
 front:
   build: nginx
+  links:
+    - server
   volumes:
     - /etc/certs:/etc/certs
     - /var/cache:/var/cache
     - /var/tmp:/var/tmp
+  environment:
+    HOST_TARGET: "dev"
   ports:
     - "80:80"
     - "443:443"
-  links:
-    - server
