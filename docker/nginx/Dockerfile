@@ -33,8 +33,9 @@ COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
 
 # Source
-# Raw source files exposed as HTTP
+# Raw source files exposed as HTTP and HTTPS
 ADD raw /www
+ADD raw /wwws
 # Project files exposed as HTTPS
 ADD public /wwws
 

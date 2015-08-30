@@ -11,8 +11,9 @@ I hope that this tutorial will lead you on the appropriate tracks.
 As you may need to update this tutorial for your own DevOps use cases, here is
 the complete list of versions used in this tutorial:
 
-* OSX 10.10.5
-* Ubuntu 15.04
+* OSX 10.10.5 as the development platform
+* Ubuntu 15.04 as Docker host system
+* Debian Jessie 7 as Docker container system
 * Docker 1.8.1
 * Docker Registry 2
 * Docker Machine 0.4.1
@@ -530,10 +531,10 @@ Informations used for this tutorial:
 * [The magic of Meteor oplog tailing](http://projectricochet.com/blog/magic-meteor-oplog-tailing#.Vd3eRlNRQVw)
 * [Docker: Containers for the Masses -- using Docker](http://patg.net/containers,virtualization,docker/2014/06/10/using-docker/)
 * [How To Create an SSL Certificate on Nginx for Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04)
+* [SSL and Meteor.js](http://joshowens.me/ssl-and-meteor-js/?utm_content=buffera7818&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
 Going further:
 * [Deploying HTTP/2 and Strong TLS with Nghttp2 and Nginx](https://www.tollmanz.com/http2-nghttp2-nginx-tls/)
 * [HTTP/2.0 with Nginx & NGHTTP2](https://timnash.co.uk/http2-0-with-nginx-nghttp2/)
-* [SSL and Meteor.js](http://joshowens.me/ssl-and-meteor-js/?utm_content=buffera7818&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 * [Un serveur MongoDB sécurisé sur Docker](http://pierrepironin.fr/docker-et-mongodb/)
 * [Docker sans utilisateur root sur l'hôte et dans les containers](http://blog.zol.fr/2015/08/06/travailler-avec-docker-sans-utilisateur-root/)
