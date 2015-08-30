@@ -24,27 +24,24 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 # Configuration
-COPY h5bp-nginx-cfg/nginx.conf /etc/nginx/nginx.conf
-COPY h5bp-nginx-cfg/mime.types /etc/nginx/mime.types
-COPY h5bp-nginx-cfg/h5bp /etc/nginx/h5bp
-COPY h5bp-nginx-cfg/sites-available/default.conf /etc/nginx/conf.d/default.conf
-
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY conf /etc/nginx/conf
+COPY host-specific/servername-dev.conf /etc/nginx/conf/servername.conf
 # Mount points for volumes
 RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
 
 # Source
 # Raw source files exposed as HTTP and HTTPS
-ADD raw /www/
-ADD raw /wwws/
+COPY raw /www/
 # Project files exposed as HTTPS
-ADD bundle/programs/web.browser/*.js \
-    bundle/programs/web.browser/*.css \
-    bundle/programs/web.browser/packages \
-    bundle/programs/web.browser/app \
-    /wwws/
+COPY  bundle/programs/web.browser/*.js \
+      bundle/programs/web.browser/*.css \
+      bundle/programs/web.browser/packages \
+      bundle/programs/web.browser/app \
+      /www/
 
 # Ensure proper rights on statis assets
-RUN chown -R www:www /www /wwws /var/cache /var/tmp
+RUN chown -R www:www /www /var/cache /var/tmp
 
 # Launch NGinx
 CMD ["nginx", "-g", "daemon off;"]
