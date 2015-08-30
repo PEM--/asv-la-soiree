@@ -34,10 +34,14 @@ RUN mkdir -p /etc/certs /var/cache/nginx  /var/tmp
 
 # Source
 # Raw source files exposed as HTTP and HTTPS
-ADD raw /www
-ADD raw /wwws
+ADD raw /www/
+ADD raw /wwws/
 # Project files exposed as HTTPS
-ADD public /wwws
+ADD bundle/programs/web.browser/*.js \
+    bundle/programs/web.browser/*.css \
+    bundle/programs/web.browser/packages \
+    bundle/programs/web.browser/app \
+    /wwws/
 
 # Ensure proper rights on statis assets
 RUN chown -R www:www /www /wwws /var/cache /var/tmp
