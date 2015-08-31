@@ -458,29 +458,12 @@ docker rmi (docker images -f "dangling=true" -q)
 
 Create your self signed certificate for development and preproduction hosts:
 ```sh
-ssh root@192.168.1.50 "openssl req -nodes -new -x509 -keyout server.key -out server.cert"
-ssh root@192.168.1.51 "openssl req -nodes -new -x509 -keyout server.key -out server.cert"
+ssh root@192.168.1.50 "mkdir -p /etc/certs; openssl req -nodes -new -x509 -keyout /etc/certs/server.key -out /etc/certs/server.cert -subj '/C=FR/ST=Paris/L=Paris/CN=192.168.1.50'"
+ssh root@192.168.1.51 "mkdir -p /etc/certs; openssl req -nodes -new -x509 -keyout /etc/certs/server.key -out /etc/certs/server.cert -subj '/C=FR/ST=Paris/L=Paris/CN=192.168.1.51'"
 ```
 
-# Server certificate authority
-echo "MyPassphrase" > passphrase.txt
-openssl genrsa -aes256 -passout file:passphrase.txt -out ca-key.pem 4096
-openssl req -passin file:passphrase.txt -subj '/C=FR/ST=Paris/L=Paris/CN=192.168.1.50'  -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
-# Server certificate
-openssl genrsa -out server-key.pem 4096
-openssl req -subj "/CN=192.168.1.50" -sha256 -new -key server-key.pem -out server.csr
-echo subjectAltName = IP:192.168.1.50,IP:127.0.0.1 > extfile.cnf# openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf
-# Client certificate
-openssl genrsa -out key.pem 4096
-openssl req -subj '/CN=client' -new -key key.pem -out client.csr
-echo extendedKeyUsage = clientAuth > extfile.cnf
-openssl x509 -passin file:passphrase.txt -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.cnf
-# Clean up CSR
-rm -v client.csr server.csr # Secure file access
-chmod -v 0400 ca-key.pem key.pem server-key.pem
-chmod -v 0444 ca.pem server-cert.pem cert.pem
-
-
+@TODO volumes
+```sh
 ssh root@192.168.1.50 "mkdir /var/cache; chmod go+w /var/cache"
 ssh root@192.168.1.50 "mkdir /var/tmp; chmod go+w /var/tmp"
 
@@ -489,6 +472,7 @@ ssh root@192.168.1.51 "mkdir /var/tmp; chmod go+w /var/tmp"
 
 ssh root@X.X.X.X "mkdir /var/cache; chmod go+w /var/cache"
 ssh root@X.X.X.X "mkdir /var/tmp; chmod go+w /var/tmp"
+```
 
 Volumes + chmod
     - /var/cache:/var/cache
@@ -585,14 +569,20 @@ and ensure that your ReplicationSet creation is applied:
 ```sh
 eval "$(docker-machine env pre)"
 docker-compose -f deploy-pre.yml up -d
-docker-compose -f deploy-pre.yml run db --rm mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
+docker-compose -f deploy-pre.yml run --rm db mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
 ```
 
 Once you are satisfied with you containers, it's time to make them
 available to your production server.
 
 #### Push to Docker Hub
-For Mongo:
+Now we go back on our development host for publishing these container on
+the public Docker Hub:
+```sh
+eval "$(docker-machine env dev)"
+```
+
+And we publish our containers for Mongo:
 ```sh
 docker tag -f docker_db pemarchandet/mongo-asv-la-soiree:v1.1.0
 docker push pemarchandet/mongo-asv-la-soiree:v1.1.0
@@ -616,10 +606,16 @@ docker tag -f docker_front pemarchandet/nginx-asv-la-soiree:latest
 docker push pemarchandet/nginx-asv-la-soiree:latest
 ```
 
-# Deployment
-In production:
+# Deployment in production
+Before running everything in production, we must pull our images. Behind the
+scene so that our users doesn't notice the changes, then we will stop our current
+running containers, launch our new ones and finish by a ReplicaSet configuration.
 ```sh
+eval "$(docker-machine env prod)"
+docker-compose -f deploy-prod.yml pull
+docker stop "$(docker ps -a -q)"
 docker-compose -f deploy-prod.yml up -d
+docker-compose -f deploy-prod.yml run --rm db mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
 ```
 
 ### Links
