@@ -8,26 +8,19 @@ db:
 # Application server: NodeJS (Meteor)
 server:
   build: meteor
-  links:
-    - db
   environment:
     MONGO_URL: "mongodb://db:27017"
     MONGO_OPLOG_URL: "mongodb://db:27017/local"
     PORT: 3000
-    ROOT_URL: "https://192.168.1.50"
   expose:
     - "3000"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   build: nginx
-  links:
-    - server
   volumes:
     - /etc/certs:/etc/certs
     - /var/cache:/var/cache
     - /var/tmp:/var/tmp
-  environment:
-    HOST_TARGET: "dev"
   ports:
     - "80:80"
     - "443:443"
