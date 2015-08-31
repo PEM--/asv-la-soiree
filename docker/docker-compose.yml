@@ -1,6 +1,5 @@
 # Persistence layer: Mongo
 db:
-
   build: mongo
   volumes:
     - /var/db:/db
