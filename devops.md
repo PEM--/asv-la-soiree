@@ -241,9 +241,23 @@ eval "$(docker-machine env dev)"
 > If you are using [Fish](http://fishshell.com/) like me, use the following command:
   `eval (docker-machine env dev)`.
 
+Create a Docker Compose file `registry.yml`:
+```
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 5000:5000
+  environment:
+    REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+  volumes:
+    - /var/lib/registry:/var/lib/registry
+```
+
 Now, we will use the development Docker Machine as our local registry:
 ```sh
-docker run -d -p 5000:5000 --name registry registry:2
+ssh root@192.168.1.50 "mkdir /var/lib/registry"
+docker-compose -f registry.yml up -d
 ```
 
 For making it visible to our preproduction VM, we need to update our default
@@ -442,10 +456,11 @@ docker rmi (docker images -f "dangling=true" -q)
 ### Building NGinx
 
 
-Ssl self-signed certificate
-openssl req -nodes -new -x509 -keyout server.key -out server.cert
-
-
+Create your self signed certificate for development and preproduction hosts:
+```sh
+ssh root@192.168.1.50 "openssl req -nodes -new -x509 -keyout server.key -out server.cert"
+ssh root@192.168.1.51 "openssl req -nodes -new -x509 -keyout server.key -out server.cert"
+```
 
 # Server certificate authority
 echo "MyPassphrase" > passphrase.txt
@@ -504,9 +519,108 @@ Volumes + chmod
 @TODO
 
 
-### Tagging version of your containers
-@TODO
+### Push to your local registry
+For Mongo:
+```sh
+docker tag -f docker_db 192.168.1.50:5000/mongo-asv-la-soiree:v1.1.0
+docker push 192.168.1.50:5000/mongo-asv-la-soiree:v1.1.0
+docker tag -f docker_db 192.168.1.50:5000/mongo-asv-la-soiree:latest
+docker push 192.168.1.50:5000/mongo-asv-la-soiree:latest
+```
 
+For Meteor:
+```sh
+docker tag -f docker_server 192.168.1.50:5000/meteor-asv-la-soiree:v1.1.0
+docker push 192.168.1.50:5000/meteor-asv-la-soiree:v1.1.0
+docker tag -f docker_server 192.168.1.50:5000/meteor-asv-la-soiree:latest
+docker push 192.168.1.50:5000/meteor-asv-la-soiree:latest
+```
+
+For NGinx:
+```sh
+docker tag -f docker_front 192.168.1.50:5000/nginx-asv-la-soiree:v1.1.0
+docker push 192.168.1.50:5000/nginx-asv-la-soiree:v1.1.0
+docker tag -f docker_front 192.168.1.50:5000/nginx-asv-la-soiree:latest
+docker push 192.168.1.50:5000/nginx-asv-la-soiree:latest
+```
+
+### Deployment in pre-production
+Create a `deploy-pre.yml` file for using Docker Compose to ease
+the pull and launch of your services:
+```
+# Persistence layer: Mongo
+db:
+  image: 192.168.1.50:5000/mongo-asv-la-soiree:v1.1.0
+  extends:
+    file: common.yml
+    service: db
+  restart: always
+# Application server: NodeJS (Meteor)
+server:
+  image: 192.168.1.50:meteor-asv-la-soiree:v1.1.0
+  extends:
+    file: common.yml
+    service: server
+  links:
+    - db
+  environment:
+    ROOT_URL: "https://192.168.1.51"
+  restart: always
+# Front layer, static file, SSL, proxy cache: NGinx
+front:
+  image: 192.168.1.50:5000/nginx-asv-la-soiree:v1.1.0
+  extends:
+    file: common.yml
+    service: front
+  links:
+    - server
+  environment:
+    # Can be: dev, pre, prod
+    HOST_TARGET: "pre"
+  restart: always
+```
+
+Connect Docker Machine to your preproduction host, start your services
+and ensure that your ReplicationSet creation is applied:
+```sh
+eval "$(docker-machine env pre)"
+docker-compose -f deploy-pre.yml up -d
+docker-compose -f deploy-pre.yml run db --rm mongo db:27017/admin --quiet --eval "rs.initiate(); rs.conf();"
+```
+
+Once you are satisfied with you containers, it's time to make them
+available to your production server.
+
+#### Push to Docker Hub
+For Mongo:
+```sh
+docker tag -f docker_db pemarchandet/mongo-asv-la-soiree:v1.1.0
+docker push pemarchandet/mongo-asv-la-soiree:v1.1.0
+docker tag -f docker_db pemarchandet/mongo-asv-la-soiree:latest
+docker push pemarchandet/mongo-asv-la-soiree:latest
+```
+
+For Meteor:
+```sh
+docker tag -f docker_server pemarchandet/meteor-asv-la-soiree:v1.1.0
+docker push pemarchandet/meteor-asv-la-soiree:v1.1.0
+docker tag -f docker_server pemarchandet/meteor-asv-la-soiree:latest
+docker push pemarchandet/meteor-asv-la-soiree:latest
+```
+
+For NGinx:
+```sh
+docker tag -f docker_front pemarchandet/nginx-asv-la-soiree:v1.1.0
+docker push pemarchandet/nginx-asv-la-soiree:v1.1.0
+docker tag -f docker_front pemarchandet/nginx-asv-la-soiree:latest
+docker push pemarchandet/nginx-asv-la-soiree:latest
+```
+
+# Deployment
+In production:
+```sh
+docker-compose -f deploy-prod.yml up -d
+```
 
 ### Links
 Informations used for this tutorial:
