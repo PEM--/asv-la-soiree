@@ -1,9 +1,14 @@
-## Devops on OSX with Docker set for Ubuntu 15.04
+## Meteor Devops on OSX with Docker set for Ubuntu 15.04
 ### Introduction
 While using Meteor in development is an easy task and deploying it on Meteor's
 infrastructure is a no brainer, things may start to get messy if you need to
 deploy it, secure it and scale it on your cloud. Especially if your customer
-imposes you a specific constraint on cloud sovereignty.
+imposes you a specific constraint on cloud sovereignty. The best way to
+achieve easy deployment is using the excellent
+[Meteeor Up](https://github.com/arunoda/meteor-up) tool. But if it fails or
+if you need to go a bit further in your infrastructure deployment,
+I recommend that you start using [Docker](https://www.docker.com/) to get
+familiar with this handy DevOps tool.
 
 I hope that this tutorial will lead you on the appropriate tracks.
 
@@ -23,6 +28,12 @@ the complete list of versions used in this tutorial:
 * NGinx 1.9.4-1
 * NodeJS 0.10.40
 * Mongo 3.0.6 - WiredTiger
+
+> Why Debian Jessie instead of Debian Wheezie? Simple, a 30 MB of footprint.
+  Note that we could have set this tutorial on other even smaller Linux
+  distributions for our Docker Images, like Alpine Linux. But as time of
+  this writing, other smaller distributions do not offer the package required
+  for installing Meteor.
 
 ### Installing the tooling
 If you have never done it before install Homebrew and its plugin Caskroom.
@@ -110,10 +121,28 @@ Now, we are starting our virtual server and declare it as a Docker Machine:
 vagrant up --no-provision
 ```
 
+Throughout this terminal, we need some environment variables, we store them
+in a `local_env.sh` file that we fill step by step and source each time we
+open a new terminal session:
+```sh
+export HOST_IP_DEV='192.168.1.50'
+export HOST_IP_PRE='192.168.1.51'
+# Use preferably your FQDN (example.org)
+export HOST_IP_PROD='X.X.X.X'
+```
+
+If you are using [Fish](http://fishshell.com/) like me, use the following content:
+```sh
+set -x HOST_IP_DEV '192.168.1.50'
+set -x HOST_IP_PRE '192.168.1.51'
+# Use preferably your FQDN (example.org)
+set -x HOST_IP_PROD 'X.X.X.X'
+```
+
 Open 3 terminal sessions. In the first session, launch the following commands:
 ```sh
 docker-machine -D create -d generic \
-  --generic-ip-address 192.168.1.50 \
+  --generic-ip-address $HOST_IP_DEV \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   dev
@@ -122,7 +151,7 @@ docker-machine -D create -d generic \
 In the second session, launch the following commands:
 ```sh
 docker-machine -D create -d generic \
-  --generic-ip-address 192.168.1.51 \
+  --generic-ip-address $HOST_IP_PRE \
   --generic-ssh-user vagrant \
   --generic-ssh-key ~/.vagrant.d/insecure_private_key \
   pre
@@ -145,7 +174,7 @@ vagrant provision
   Basically, the vagrant provisioning script patches both vagrant virtual servers.
   You can reuse the content of this script on your production server when you
   create the associated Docker Machine. For this, you can use the following command:
-  `ssh root@example.com "bash -s" < ./provisioning.sh`
+  `ssh root@$HOST_IP_PROD "bash -s" < ./provisioning.sh`
 
 In this last section, we will finish our configuration of our development and
 pre-production VM by installing Docker Machine and securing their open ports
@@ -174,8 +203,8 @@ sudo ufw reload
 
 We execute this script on both VM using simple SSH commands like so:
 ```sh
-ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.50 "bash -s" < ./postProvisioning.sh
-ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.51 "bash -s" < ./postProvisioning.sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@$HOST_IP_DEV "bash -s" < ./postProvisioning.sh
+ssh -i ~/.vagrant.d/insecure_private_key vagrant@$HOST_IP_PRE "bash -s" < ./postProvisioning.sh
 ```
 
 Now you can access your VM either via Docker, Vagrant and plain SSH. To finish
@@ -238,9 +267,9 @@ ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
 In your first terminal session, activate your development Docker Machine:
 ```sh
 eval "$(docker-machine env dev)"
+# In Fish
+eval (docker-machine env dev)
 ```
-> If you are using [Fish](http://fishshell.com/) like me, use the following command:
-  `eval (docker-machine env dev)`.
 
 Create a Docker Compose file `registry.yml`:
 ```
@@ -435,6 +464,9 @@ docker rmi (docker images -f "dangling=true" -q)
 ```
 
 ### Building Meteor
+
+
+
 @TODO
 
 - Settings without importing them
