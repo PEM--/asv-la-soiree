@@ -62,6 +62,18 @@ For parsing and querying JSON produced by Docker, we are using `./jq`:
 brew install jq
 ```
 
+### Some file structure
+For differentiating the Meteor project from the DevOps project, we
+store our files like so:
+```sh
+.
+├── app
+└── docker
+```
+
+The `app` folder contains the root of Meteor sources and the `docker`
+folder contains the root of DevOps sources.
+
 ### Create your virtual machines as Docker Machine
 Create a `Vagrantfile` that matches your production environment.
 Here, we are using an Ubuntu 15.04 with Docker pre-installed.
@@ -116,7 +128,7 @@ sudo apt-get autoremove -y
 sudo apt-get autoclean -y
 ```
 
-Now, we are starting our virtual server and declare it as a Docker Machine:
+Now, we are starting our virtual hosts and declare it as a Docker Machine:
 ```sh
 vagrant up --no-provision
 ```
