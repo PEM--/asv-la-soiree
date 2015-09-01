@@ -178,10 +178,11 @@ ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.50 "bash -s" < ./post
 ssh -i ~/.vagrant.d/insecure_private_key vagrant@192.168.1.51 "bash -s" < ./postProvisioning.sh
 ```
 
-Now you can access your VM either via Docker, Vagrant and plain SSH. To finish our
-VM configuration, we are going to allow full root access to the VM without requiring
-to use password. For that, you need a public and a private SSH keys on your local
-machine. If you haven't done it before simply use the following command:
+Now you can access your VM either via Docker, Vagrant and plain SSH. To finish
+our VM configuration, we are going to allow full root access to the VM without
+requiring to use password. For that, you need a public and a private SSH keys
+on your local machine. If you haven't done it before simply use the following
+command:
 ```
 ssh-keygen -t rsa
 ```
@@ -301,21 +302,6 @@ docker login
   operations though lighten since Docker 1.6 and Docker Registry 2.
 
 ### Building Mongo
-First things, we backup our current Mongo data. This is done outside of any
-Docker container as we don't want to put user's data into our Docker images:
-```sh
-# Set the host
-eval "$(docker-machine env dev)"
-# In BASH
-VOLUME=`docker inspect docker_db_1 | jq '.[0] | {Source: .Mounts[0].Source} | .Source'`
-# In Fish
-set VOLUME (docker inspect docker_db_1 | jq '.[0] | {Source: .Mounts[0].Source} | .Source')
-# Make a full copy of your host's data on your local machine
-scp -r root@192.168.1.50:$VOLUME backup
-```
-
-> Repeat this procedure on all your hosts :development, preproduction, production.
-
 Our `mongo/Dockerfile` is based on Mongo's official one. It adds to the
 picture the configuration of small ReplicaSet for making OPLOG available:
 ```
@@ -392,10 +378,10 @@ net:
 ```
 
 We could build this image and run it, but I prefer using a Docker Compose file.
-These file eases the process of build and run of your Docker images acting as
-a project file when multiple Docker images are required to work together for an
-application. Here's the minima `docker-compose.yml` that we will enrich in the
-next steps of this tutorial:
+These file eases the process of build, run and deploys of your Docker images
+acting as a project file when multiple Docker images are required to work
+together for an application. Here's the minimal `docker-compose.yml` that we
+will enrich in the next steps of this tutorial:
 ```
 db:
   build: mongo
@@ -452,6 +438,9 @@ docker rmi (docker images -f "dangling=true" -q)
 @TODO
 
 - Settings without importing them
+
+
+
 
 ### Building NGinx
 
