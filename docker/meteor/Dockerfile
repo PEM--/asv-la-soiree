@@ -37,5 +37,4 @@ WORKDIR /app
 RUN (cd programs/server && npm install)
 
 # Launch application
-COPY startMeteor.sh /app/startMeteor.sh
-CMD ["./startMeteor.sh"]
+CMD ["pm2", "start", "-s", "--no-daemon", "--no-vizion", "main.js"]

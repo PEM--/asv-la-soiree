@@ -284,7 +284,7 @@ eval (docker-machine env dev)
 ```
 
 Create a Docker Compose file `registry.yml`:
-```
+```yml
 registry:
   restart: always
   image: registry:2
@@ -345,7 +345,7 @@ docker login
 ### Building Mongo
 Our `mongo/Dockerfile` is based on Mongo's official one. It adds to the
 picture the configuration of small ReplicaSet for making OPLOG available:
-```
+```sh
 # Based on: https://github.com/docker-library/mongo/blob/d5aca073ca71a7023e0d4193bd14642c6950d454/3.0/Dockerfile
 FROM debian:wheezy
 MAINTAINER Pierre-Eric Marchandet <pemarchandet@gmail.com>
@@ -398,7 +398,7 @@ CMD ["gosu", "mongodb", "mongod", "-f", "/etc/mongod.conf"]
 ```
 
 We need a configuration file for this Docker image to be built `mongo/mongod.conf`:
-```
+```yml
 storage:
   dbPath: "/db"
   engine: "wiredTiger"
@@ -411,7 +411,6 @@ replication:
   oplogSizeMB: 128
   replSetName: "rs0"
 net:
-  # bindIp: 127.0.0.1
   port: 27017
   wireObjectCheck : false
   unixDomainSocket:
@@ -423,7 +422,7 @@ These file eases the process of build, run and deploys of your Docker images
 acting as a project file when multiple Docker images are required to work
 together for an application. Here's the minimal `docker-compose.yml` that we
 will enrich in the next steps of this tutorial:
-```
+```yml
 db:
   build: mongo
   volumes:
