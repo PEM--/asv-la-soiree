@@ -212,7 +212,7 @@ our VM configuration, we are going to allow full root access to the VM without
 requiring to use password. For that, you need a public and a private SSH keys
 on your local machine. If you haven't done it before simply use the following
 command:
-```
+```sh
 ssh-keygen -t rsa
 ```
 
@@ -230,10 +230,10 @@ Vagrant VM for development and pre-production. And like before, we are using
 2 terminal sessions to overcome the Docker installation issue on Ubuntu 15.04.
 
 In the first terminal session, we setup a root SSH access without password like so:
-```
-ssh-copy-id root@X.X.X.X
+```sh
+ssh-copy-id root@$HOST_IP_PROD
 # Now, you should check if your key is properly copied
-ssh root@X.X.X.X "cat /root/.ssh/authorized_keys"
+ssh root@$HOST_IP_PROD "cat /root/.ssh/authorized_keys"
 cat ~/.ssh/id_rsa.pub
 # These 2 last commands should return the exact same key
 ```
@@ -245,7 +245,7 @@ cat ~/.ssh/id_rsa.pub
 Next and still on the same terminal session, we declare our production host :
 ```sh
 docker-machine -D create -d generic \
-  --generic-ip-address X.X.X.X \
+  --generic-ip-address $HOST_IP_PROD \
   --generic-ssh-user root \
   prod
 ```
@@ -254,13 +254,13 @@ And on the second terminal session, when the message
 `Daemon not responding yet: dial tcp X.X.X.X:2376: connection refused` appears
 on the first session, we launch:
 ```sh
-ssh root@X.X.X.X "bash -s" < ./provisioning.sh
+ssh root@$HOST_IP_PROD "bash -s" < ./provisioning.sh
 ```
 
 The last remaining step consists into solidifying our security by enabling
 a firewall on the host and removing the old packages:
 ```sh
-ssh root@X.X.X.X "bash -s" < ./postProvisioning.sh
+ssh root@$HOST_IP_PROD "bash -s" < ./postProvisioning.sh
 ```
 
 ### Creating your own registry
@@ -286,14 +286,14 @@ registry:
 
 Now, we will use the development Docker Machine as our local registry:
 ```sh
-ssh root@192.168.1.50 "mkdir /var/lib/registry"
+ssh root@$HOST_IP_DEV "mkdir /var/lib/registry"
 docker-compose -f registry.yml up -d
 ```
 
 For making it visible to our preproduction VM, we need to update our default
 firewall rules:
 ```sh
-ssh root@192.168.1.50 ufw allow 5000
+ssh root@$HOST_IP_DEV ufw allow 5000
 ```
 
 Now we are editing our `/etc/default/docker` configuration file for adding this
@@ -307,8 +307,8 @@ flag:
 We need to restart our Docker daemon and restart the Docker registry on the
 development VM:
 ```sh
-ssh root@192.168.1.50 systemctl restart docker
-ssh root@192.168.1.51 systemctl restart docker
+ssh root@$HOST_IP_DEV systemctl restart docker
+ssh root@$HOST_IP_PRE systemctl restart docker
 eval "$(docker-machine env dev)"
 docker start registry
 ```
@@ -423,9 +423,9 @@ db:
 Before building or launching this Docker image, we need to prepare the
 volume on each host that receives and persists Mongo's data:
 ```sh
-ssh root@192.168.1.50 "mkdir /var/db; chmod go+w /var/db"
-ssh root@192.168.1.51 "mkdir /var/db; chmod go+w /var/db"
-ssh root@X.X.X.X "mkdir /var/db; chmod go+w /var/db"
+ssh root@$HOST_IP_DEV "mkdir /var/db; chmod go+w /var/db"
+ssh root@$HOST_IP_PRE "mkdir /var/db; chmod go+w /var/db"
+ssh root@$HOST_IP_PROD "mkdir /var/db; chmod go+w /var/db"
 ```
 
 For building our Mongo Docker image:
@@ -446,7 +446,6 @@ Some useful commands while developing a container:
 # Access to a container in interactive mode
 docker run -ti -P docker_db
 
-# In BASH
 # Delete all stopped containers
 docker rm $(docker ps -a -q)
 # Delete all images that are not being used in a running container
