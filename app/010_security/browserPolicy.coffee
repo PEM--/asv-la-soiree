@@ -35,9 +35,8 @@ if Meteor.isServer
     BrowserPolicy.content.allowFontOrigin "#{protocol}://fonts.gstatic.com"
   # Trusted sites
   for origin in [
-    # Google analytics
+    # Google services
     '*.google-analytics.com'
-    # Google Maps
     '*.googleapis.com'
     '*.gstatic.com'
     # Browser update warning
@@ -50,6 +49,8 @@ if Meteor.isServer
     '*.kadira.io'
     # Meteor
     '*.meteor.com'
+    # Meteor
+    '*.asv-la-soiree.com'
   ]
     for protocol in ['http', 'https']
       porigin = "#{protocol}://#{origin}"

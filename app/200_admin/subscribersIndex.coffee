@@ -16,7 +16,7 @@ if Meteor.isClient
   Template.subscribersIndex.events
     'click tr': (e, t) ->
       return unless $(event.target).is 'td'
-      collection = Template.currentData().collection
+      collection = orion.collections.list.subscribers
       dataTable = $(e.target).closest('table').DataTable()
       rowData = dataTable.row(e.currentTarget).data()
       if rowData?.canShowUpdate()

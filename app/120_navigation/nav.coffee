@@ -35,7 +35,7 @@ if Meteor.isClient
     name: -> @page().title
     changeRoute: (e) ->
       e.preventDefault()
-      @parent().menuContentOpened false
+      mainMenuModel.menuContentOpened false
       Router.go @slug()
 
   # ViewModel for the menu's items on links
@@ -46,5 +46,5 @@ if Meteor.isClient
     name: -> @page().title
     changeRoute: (e) ->
       e.preventDefault()
-      @parent().menuContentOpened false
+      mainMenuModel.menuContentOpened false
       Router.go @slug()
