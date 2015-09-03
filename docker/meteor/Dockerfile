@@ -26,7 +26,7 @@ RUN curl -sSLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux
     npm install -g npm@"$NPM_VERSION" && \
     npm cache clear
 
-# Add PM2 for process management and restart
+# Add PM2 for process management and phantomjs
 RUN npm install -g pm2 phantomjs
 
 # Import sources
