@@ -1,6 +1,7 @@
 # Persistence layer: Mongo
 db:
   build: mongo
+  log_driver: "json-file"
   volumes:
     - /var/db:/db
   expose:
@@ -8,6 +9,7 @@ db:
 # Application server: NodeJS (Meteor)
 server:
   build: meteor
+  log_driver: "json-file"
   environment:
     MONGO_URL: "mongodb://db:27017"
     MONGO_OPLOG_URL: "mongodb://db:27017/local"
@@ -18,6 +20,7 @@ server:
     - "3000"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
+  log_driver: "json-file"
   build: nginx
   volumes:
     - /etc/certs:/etc/certs
