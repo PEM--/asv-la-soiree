@@ -7,7 +7,7 @@ db:
   restart: always
 # Application server: NodeJS (Meteor)
 server:
-  image: pemarchandet/meteor-asv-la-soiree:v1.1.0
+  image: pemarchandet/meteor-asv-la-soiree:v1.1.1
   extends:
     file: common.yml
     service: server
@@ -18,7 +18,7 @@ server:
   restart: always
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
-  image: pemarchandet/nginx-asv-la-soiree:v1.1.0
+  image: pemarchandet/nginx-asv-la-soiree:v1.1.1
   extends:
     file: common.yml
     service: front
